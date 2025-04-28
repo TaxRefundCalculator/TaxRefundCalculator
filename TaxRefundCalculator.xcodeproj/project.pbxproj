@@ -38,6 +38,21 @@
 			path = TaxRefundCalculator;
 			sourceTree = "<group>";
 		};
+		3B5B838A2DBF55FC00268C99 /* StartPage */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = StartPage;
+			sourceTree = "<group>";
+		};
+		3B5B838B2DBF561000268C99 /* CalculatePage */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CalculatePage;
+			sourceTree = "<group>";
+		};
+		3B5B83922DBF57C600268C99 /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +75,9 @@
 		3B5B83542DBB40C300268C99 = {
 			isa = PBXGroup;
 			children = (
+				3B5B83922DBF57C600268C99 /* Models */,
+				3B5B838B2DBF561000268C99 /* CalculatePage */,
+				3B5B838A2DBF55FC00268C99 /* StartPage */,
 				3B5B835F2DBB40C300268C99 /* TaxRefundCalculator */,
 				3B5B835E2DBB40C300268C99 /* Products */,
 			);
@@ -90,6 +108,9 @@
 			);
 			fileSystemSynchronizedGroups = (
 				3B5B835F2DBB40C300268C99 /* TaxRefundCalculator */,
+				3B5B838A2DBF55FC00268C99 /* StartPage */,
+				3B5B838B2DBF561000268C99 /* CalculatePage */,
+				3B5B83922DBF57C600268C99 /* Models */,
 			);
 			name = TaxRefundCalculator;
 			packageProductDependencies = (
