@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3B5B837A2DBF4F6000268C99 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3B5B83792DBF4F6000268C99 /* SnapKit */; };
+		3B5B837D2DBF4F7600268C99 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3B5B837C2DBF4F7600268C99 /* Then */; };
+		3B5B83802DBF4FB100268C99 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3B5B837F2DBF4FB100268C99 /* RxCocoa */; };
+		3B5B83822DBF4FB100268C99 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B5B83812DBF4FB100268C99 /* RxSwift */; };
+		3B5B83852DBF519400268C99 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3B5B83842DBF519400268C99 /* FirebaseCore */; };
+		3B5B83872DBF519400268C99 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3B5B83862DBF519400268C99 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		3B5B835D2DBB40C300268C99 /* TaxRefundCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxRefundCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +45,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B5B83802DBF4FB100268C99 /* RxCocoa in Frameworks */,
+				3B5B83852DBF519400268C99 /* FirebaseCore in Frameworks */,
+				3B5B837A2DBF4F6000268C99 /* SnapKit in Frameworks */,
+				3B5B83822DBF4FB100268C99 /* RxSwift in Frameworks */,
+				3B5B837D2DBF4F7600268C99 /* Then in Frameworks */,
+				3B5B83872DBF519400268C99 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +93,12 @@
 			);
 			name = TaxRefundCalculator;
 			packageProductDependencies = (
+				3B5B83792DBF4F6000268C99 /* SnapKit */,
+				3B5B837C2DBF4F7600268C99 /* Then */,
+				3B5B837F2DBF4FB100268C99 /* RxCocoa */,
+				3B5B83812DBF4FB100268C99 /* RxSwift */,
+				3B5B83842DBF519400268C99 /* FirebaseCore */,
+				3B5B83862DBF519400268C99 /* FirebaseFirestore */,
 			);
 			productName = TaxRefundCalculator;
 			productReference = 3B5B835D2DBB40C300268C99 /* TaxRefundCalculator.app */;
@@ -107,6 +128,12 @@
 			);
 			mainGroup = 3B5B83542DBB40C300268C99;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3B5B83782DBF4F6000268C99 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				3B5B837B2DBF4F7600268C99 /* XCRemoteSwiftPackageReference "Then" */,
+				3B5B837E2DBF4FB100268C99 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				3B5B83832DBF519400268C99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3B5B835E2DBB40C300268C99 /* Products */;
 			projectDirPath = "";
@@ -150,7 +177,6 @@
 				INFOPLIST_FILE = TaxRefundCalculator/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -178,7 +204,6 @@
 				INFOPLIST_FILE = TaxRefundCalculator/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -335,6 +360,74 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3B5B83782DBF4F6000268C99 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		3B5B837B2DBF4F7600268C99 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		3B5B837E2DBF4FB100268C99 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
+		3B5B83832DBF519400268C99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3B5B83792DBF4F6000268C99 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B5B83782DBF4F6000268C99 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		3B5B837C2DBF4F7600268C99 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B5B837B2DBF4F7600268C99 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		3B5B837F2DBF4FB100268C99 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B5B837E2DBF4FB100268C99 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		3B5B83812DBF4FB100268C99 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B5B837E2DBF4FB100268C99 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		3B5B83842DBF519400268C99 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B5B83832DBF519400268C99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		3B5B83862DBF519400268C99 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B5B83832DBF519400268C99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3B5B83552DBB40C300268C99 /* Project object */;
 }
