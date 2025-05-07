@@ -11,7 +11,7 @@ import Then
 
 final class SavedRecordCell: UITableViewCell {
 
-    static let identifier = "SavedRecordCellView"
+    static let id = "SavedRecordCell"
 
     private let cardView = UIView().then {
         $0.backgroundColor = .bgPrimary
@@ -82,8 +82,8 @@ final class SavedRecordCell: UITableViewCell {
     }
 
     private func setupUI() {
-        backgroundColor = .bgPrimary
-        contentView.backgroundColor = .bgSecondary
+        backgroundColor = .subButton
+        contentView.backgroundColor = .subButton
 
         contentView.addSubview(cardView)
         cardView.addSubviews(flagLabel, countryLabel, dateLabel, leftStack, rightStack)
