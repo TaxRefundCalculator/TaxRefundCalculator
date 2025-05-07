@@ -83,7 +83,7 @@ final class SavedView: UIView {
     // 기록 리스트
     let tableView = UITableView().then {
         $0.separatorStyle = .none
-        $0.backgroundColor = .bgSecondary
+        $0.backgroundColor = .subButton
         $0.allowsSelection = false
     }
 
@@ -97,7 +97,7 @@ final class SavedView: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = .bgSecondary
+        backgroundColor = .subButton
 
         addSubviews(totalContainer, filterContainer, tableView)
         filterContainer.addSubviews(filterButton)
