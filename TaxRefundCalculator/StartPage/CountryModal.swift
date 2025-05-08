@@ -105,7 +105,7 @@ extension CountryModal: UITableViewDataSource {
     // 셀 생성
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 셀 재사용
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FruitCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath)
         cell.textLabel?.text = countries[indexPath.row] // 텍스트 설정
         return cell
     }
