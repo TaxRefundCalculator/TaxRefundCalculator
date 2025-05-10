@@ -145,7 +145,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
     }
     
     private func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .bgSecondary
         
         view.addSubview(titleLabel) // "택스리펀 환급금 예상 계산기"
         titleLabel.snp.makeConstraints {
