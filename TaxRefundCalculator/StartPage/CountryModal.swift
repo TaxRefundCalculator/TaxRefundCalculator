@@ -77,22 +77,38 @@ class CountryModal: UIViewController {
         setupTableView()
     }
     
-    private func setupTableView() {
-            // 테이블뷰를 뷰에 추가
-            view.addSubview(tableView)
-
-            // 오토레이아웃 설정 (SnapKit 사용)
-            tableView.snp.makeConstraints {
-                $0.edges.equalToSuperview()
-            }
-
-            // 델리게이트 & 데이터소스 연결
-            tableView.delegate = self
-            tableView.dataSource = self
-
-            // 셀 등록
-            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CountryCell")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let sheet = self.sheetPresentationController {
+            sheet.detents = [.custom(resolver: { context in
+                return context.maximumDetentValue * 0.5 // 현재 화면의 절반 높이
+            })]
+            sheet.prefersGrabberVisible = true // 상단에 작은 Grabber를 표시할지 여부
+            sheet.preferredCornerRadius = 20   // 둥근 모서리 설정
         }
+    }
+    
+    private func setupTableView() {
+        // 테이블뷰를 뷰에 추가
+        view.addSubview(tableView)
+        
+        // 오토레이아웃 설정
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        // 델리게이트 & 데이터소스 연결
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        // 셀 등록
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CountryCell")
+        
+        // Grabber와 첫 번째 셀 사이 간격
+        tableView.contentInset.top = 16
+        tableView.setContentOffset(CGPoint(x: 0, y: -16), animated: false)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -101,7 +117,7 @@ extension CountryModal: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countries.count
     }
-
+    
     // 셀 생성
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 셀 재사용
