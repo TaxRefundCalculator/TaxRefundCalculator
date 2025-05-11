@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class SettingVC: UIViewController {
+class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
     // MARK: 앱 설정 카드
     private let settingCard = UIView().then {
@@ -128,7 +128,7 @@ class SettingVC: UIViewController {
         $0.textColor = .subText
     }
     private let updateDay = UILabel().then {
-        $0.text="2025.05.11"
+        $0.text = "2025.05.11"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
         $0.textColor = .subText
     }
@@ -159,7 +159,7 @@ class SettingVC: UIViewController {
         settingCard.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(360)
+            $0.height.equalTo(365)
         }
         
         settingCard.addSubview(settingLabel)
@@ -183,12 +183,13 @@ class SettingVC: UIViewController {
         settingCard.addSubview(resetRow)
         resetRow.addSubview(reset)
         
+        // 제목
         settingLabel.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.top.equalToSuperview().inset(16)
         }
         
-        // Language Row Constraints
+        // Language Row
         languageRow.snp.makeConstraints {
             $0.top.equalTo(settingLabel.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
@@ -259,6 +260,23 @@ class SettingVC: UIViewController {
             $0.centerY.equalToSuperview()
         }
         
+        // Set tag values for baseCurrencyRow and currencyRow
+        baseCurrencyRow.tag = 0
+        currencyRow.tag = 1
+
+        //MARK: 각 row 클릭시
+        let baseTap = UITapGestureRecognizer(target: self, action: #selector(didTapBaseCurrencyRow))
+        baseCurrencyRow.addGestureRecognizer(baseTap)
+        baseCurrencyRow.isUserInteractionEnabled = true
+        let travelTap = UITapGestureRecognizer(target: self, action: #selector(didTapTravelCurrencyRow))
+        currencyRow.addGestureRecognizer(travelTap)
+        currencyRow.isUserInteractionEnabled = true
+        let langTap = UITapGestureRecognizer(target: self, action: #selector(didTapLanguageRow))
+        languageRow.addGestureRecognizer(langTap)
+        languageRow.isUserInteractionEnabled = true
+        let resetTap = UITapGestureRecognizer(target: self, action: #selector(didTapResetRow))
+        resetRow.addGestureRecognizer(resetTap)
+        resetRow.isUserInteractionEnabled = true
         
         // MARK: Info Card
         view.addSubview(infoCard)
@@ -307,13 +325,61 @@ class SettingVC: UIViewController {
         
     }
     
+
+    // MARK: - Tap Actions 클릭시 모달로 출력
+    @objc private func didTapLanguageRow() {
+        let vc = LanguageModal()
+        vc.delegate = self
+        vc.modalPresentationStyle = .pageSheet
+        present(vc, animated: true, completion: nil)
+    }
+    @objc private func didTapBaseCurrencyRow() {
+        let vc = CountryModal()
+        vc.delegate = self
+        vc.selectedTextFieldTag = baseCurrencyRow.tag
+        vc.modalPresentationStyle = .pageSheet
+        present(vc, animated: true, completion: nil)
+    }
+
+    @objc private func didTapTravelCurrencyRow() {
+        let vc = CountryModal()
+        vc.delegate = self
+        vc.selectedTextFieldTag = currencyRow.tag
+        vc.modalPresentationStyle = .pageSheet
+        present(vc, animated: true, completion: nil)
+    }
+    @objc private func didTapResetRow() {
+        let alert = UIAlertController(title: "기록 삭제", message: "모든 기록을 삭제하시겠습니까?", preferredStyle: .alert)
+            
+            let confirmAction = UIAlertAction(title: "예", style: .destructive) { _ in
+                print("기록 삭제됨")
+            }
+            let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+            
+            alert.addAction(confirmAction)
+            alert.addAction(cancelAction)
+            
+            present(alert, animated: true, completion: nil)
+    }
+
+
+    // MARK: - Delegate Methods
+    // 언어 선택 부분
+    func didSelectLanguage(_ language: String) {
+        nowLanguage.text = language
+    }
+    // 화폐 선택 부분들
+    func didSelectCountry(_ country: String, forFieldTag tag: Int) {
+        switch tag {
+        case 0:
+            nowBaseCurrency.text = country
+        case 1:
+            nowCurreny.text = country
+        default:
+            break
+        }
+    }
     
-//    // MARK: 다크모드 토글스위치 액션 (구현 필요)
-//    private let viewModel = SettingVM()
-//
-//    @objc private func switchValueChanged(_ sender: UISwitch) {
-//        let result = viewModel.getNetworkStatus(isOnline: sender.isOn)
-//        networkTextField.text = result.text
-//        networkTextField.textColor = result.color
-//    }
+    
+
 }
