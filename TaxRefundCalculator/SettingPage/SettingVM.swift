@@ -2,7 +2,7 @@
 //  SettingVM.swift
 //  TaxRefundCalculator
 //
-//  Created by YoungJin on 4/28/25.
+//  Created by 이재건 on 4/28/25.
 //
 
 import Foundation
