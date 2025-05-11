@@ -21,12 +21,80 @@ class SettingVC: UIViewController {
         $0.layer.shadowRadius = 6
     }
     private let settingLabel = UILabel().then {
-        $0.text = "⚙️ 앱 설정"
+        $0.text = "🛠️ 앱 설정"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 20, weight: .bold)
+        $0.textAlignment = .left
     }
-    private let changeLanguage = UITextView().then {
-        $0.text = "언어 변경"
+    
+    // 언어변경 row
+    private let changeLanguage = UILabel().then {
+        $0.text = "🌏 언어 변경"
+        $0.textColor = .primaryText
+        $0.font = .systemFont(ofSize: 17)
+    }
+    private let nowLanguage = UILabel().then {
+        $0.text = "한국어"
+        $0.textColor = .primaryText
+        $0.font = .systemFont(ofSize: 17)
+    }
+    private let languageRow = UIView().then {
+        $0.backgroundColor = .clear
+    }
+    
+    // 기준 화폐 변경 row
+    private let baseCurrencyChange = UILabel().then {
+        $0.text = "💰 기준 화폐 변경"
+        $0.textColor = .primaryText
+        $0.font = .systemFont(ofSize: 17)
+    }
+    private let nowBaseCurrency = UILabel().then {
+        $0.text = "KRW"
+        $0.textColor = .primaryText
+        $0.font = .systemFont(ofSize: 17)
+    }
+    private let baseCurrencyRow = UIView().then {
+        $0.backgroundColor = .clear
+    }
+    
+    // 여행 화폐 변경 row
+    private let currencyChange = UILabel().then {
+        $0.text = "🛫 여행 화폐 변경"
+        $0.textColor = .primaryText
+        $0.font = .systemFont(ofSize: 17)
+    }
+    private let nowCurreny = UILabel().then {
+        $0.text = "EUR"
+        $0.textColor = .primaryText
+        $0.font = .systemFont(ofSize: 17)
+    }
+    private let currencyRow = UIView().then {
+        $0.backgroundColor = .clear
+    }
+    
+    // 다크모드 row
+    private let darkMode = UILabel().then {
+        $0.text = "🌜 다크 모드"
+        $0.textColor = .primaryText
+        $0.font = .systemFont(ofSize: 17)
+    }
+    private let darkModeSwitch = UISwitch().then {
+        $0.isOn = false
+        $0.onTintColor = .mainTeal
+        //$0.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
+    }
+    private let darkModeRow = UIView().then {
+        $0.backgroundColor = .clear
+    }
+    
+    // 리셋 row
+    private let reset = UILabel().then {
+        $0.text = "🗑️ 기록 초기화"
+        $0.textColor = .primaryText
+        $0.font = .systemFont(ofSize: 17)
+    }
+    private let resetRow = UIView().then {
+        $0.backgroundColor = .clear
     }
     
     
@@ -42,7 +110,7 @@ class SettingVC: UIViewController {
     private let infoLabel = UILabel().then {
         $0.text = "🚀 앱 정보"
         $0.textColor = .primaryText
-        $0.font = .systemFont(ofSize: 20, weight: .regular)
+        $0.font = .systemFont(ofSize: 20, weight: .bold)
     }
     private let version = UILabel().then {
         $0.text = "버전"
@@ -91,7 +159,104 @@ class SettingVC: UIViewController {
         settingCard.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(350)
+            $0.height.equalTo(360)
+        }
+        
+        settingCard.addSubview(settingLabel)
+        
+        settingCard.addSubview(languageRow)
+        languageRow.addSubview(changeLanguage)
+        languageRow.addSubview(nowLanguage)
+        
+        settingCard.addSubview(baseCurrencyRow)
+        baseCurrencyRow.addSubview(baseCurrencyChange)
+        baseCurrencyRow.addSubview(nowBaseCurrency)
+        
+        settingCard.addSubview(currencyRow)
+        currencyRow.addSubview(currencyChange)
+        currencyRow.addSubview(nowCurreny)
+        
+        settingCard.addSubview(darkModeRow)
+        darkModeRow.addSubview(darkMode)
+        darkModeRow.addSubview(darkModeSwitch)
+        
+        settingCard.addSubview(resetRow)
+        resetRow.addSubview(reset)
+        
+        settingLabel.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.top.equalToSuperview().inset(16)
+        }
+        
+        // Language Row Constraints
+        languageRow.snp.makeConstraints {
+            $0.top.equalTo(settingLabel.snp.bottom).offset(20)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(60)
+        }
+        changeLanguage.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+        }
+        nowLanguage.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+        }
+
+        // Base Currency Row Constraints
+        baseCurrencyRow.snp.makeConstraints {
+            $0.top.equalTo(languageRow.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(60)
+        }
+        baseCurrencyChange.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+        }
+        nowBaseCurrency.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+        }
+
+        // Currency Row Constraints
+        currencyRow.snp.makeConstraints {
+            $0.top.equalTo(baseCurrencyRow.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(60)
+        }
+        currencyChange.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+        }
+        nowCurreny.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+        }
+
+        // Dark Mode Row Constraints
+        darkModeRow.snp.makeConstraints {
+            $0.top.equalTo(currencyRow.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(60)
+        }
+        darkMode.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+        }
+        darkModeSwitch.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+        }
+
+        // Reset Row Constraints
+        resetRow.snp.makeConstraints {
+            $0.top.equalTo(darkModeRow.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(60)
+        }
+        reset.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
         }
         
         
@@ -141,4 +306,14 @@ class SettingVC: UIViewController {
         }
         
     }
+    
+    
+//    // MARK: 다크모드 토글스위치 액션 (구현 필요)
+//    private let viewModel = SettingVM()
+//
+//    @objc private func switchValueChanged(_ sender: UISwitch) {
+//        let result = viewModel.getNetworkStatus(isOnline: sender.isOn)
+//        networkTextField.text = result.text
+//        networkTextField.textColor = result.color
+//    }
 }

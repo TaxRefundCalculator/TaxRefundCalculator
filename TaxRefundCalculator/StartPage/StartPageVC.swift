@@ -93,7 +93,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
     }
     private let networkSwitch = UISwitch().then {
         $0.isOn = false
-        $0.onTintColor = .systemGreen
+        $0.onTintColor = .mainTeal
         $0.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
     }
     

@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import SnapKit
+import Then
+
+class SettingVM {
+    
+}
