@@ -11,6 +11,11 @@ import Then
 
 class CalculateVC: UIViewController {
     
+    // MARK: 사이즈 대응을 위한 스크롤 뷰
+    let scrollView = UIScrollView()
+    let scrollContentView = UIView()
+
+    
     // MARK: 선택 통화, 환율 카드
     private let currencyRateCard = UIView().then {
         $0.backgroundColor = .bgPrimary
@@ -122,8 +127,24 @@ class CalculateVC: UIViewController {
     private func configureUI() {
         view.backgroundColor = .bgSecondary
         
+        
+        // MARK: 사이즈 대응을 위한 스크롤 뷰
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
+
+        scrollView.addSubview(scrollContentView)
+        scrollContentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+        
+        
         // MARK: 선택된 국가 환율, 기준 환율 카드
-        view.addSubview(currencyRateCard)
+        scrollContentView.addSubview(currencyRateCard)
         currencyRateCard.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             $0.leading.trailing.equalToSuperview().inset(16)
@@ -144,7 +165,7 @@ class CalculateVC: UIViewController {
         
         
         // MARK: 구매금액 입력 카드
-        view.addSubview(priceCard)
+        scrollContentView.addSubview(priceCard)
         priceCard.snp.makeConstraints {
             $0.top.equalTo(currencyRateCard.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
@@ -166,11 +187,12 @@ class CalculateVC: UIViewController {
         
         
         // MARK: 계산 카드
-        view.addSubview(calculateCard)
+        scrollContentView.addSubview(calculateCard)
         calculateCard.snp.makeConstraints {
             $0.top.equalTo(priceCard.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(240)
+            $0.bottom.equalTo(scrollContentView.snp.bottom)
         }
         
         calculateCard.addSubview(vatLabel)
