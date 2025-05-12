@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
+class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, LanguageModalDelegate {
     
     // MARK: 상단 제목 두개
     private let titleLabel = UILabel().then {
@@ -26,6 +26,38 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
     }
     
     
+    // MARK: 사이즈 대응을 위한 스크롤 뷰
+    let scrollView = UIScrollView()
+    let scrollContentView = UIView()
+    
+    
+    // MARK: 언어 선택 카드
+    private let languageCard = UIView().then {
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 15
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOpacity = 0.1
+        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+        $0.layer.shadowRadius = 6
+    }
+    private let languageLabel = UILabel().then {
+        $0.text = "언어 선택"
+        $0.textAlignment = .left
+        $0.textColor = .systemGray
+        $0.font = UIFont.systemFont(ofSize: 16)
+    }
+    private let languageField = UITextField().then {
+        $0.placeholder = "언어를 선택하세요."
+        $0.backgroundColor = .white
+        $0.borderStyle = .none // 기본 테두리를 제거
+        $0.layer.borderWidth = 0.7 // 테두리 두께 설정
+        $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
+        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0.0)) // 텍스트필드 값 왼쪽 여백
+        $0.leftViewMode = .always
+        $0.tag = 0
+    }
+    
+    
     // MARK: 기준 통화 선택, 여행국가 선택 카드
     private let currencyCard = UIView().then {
         $0.backgroundColor = .white
@@ -35,19 +67,14 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.layer.shadowRadius = 6
     }
+
     private let baseCurrency = UILabel().then {
         $0.text = "기준 통화 선택"
         $0.textAlignment = .left
         $0.textColor = .systemGray
         $0.font = UIFont.systemFont(ofSize: 16)
     }
-    private let travelCurrency = UILabel().then {
-        $0.text = "여행국가 선택"
-        $0.textAlignment = .left
-        $0.textColor = .systemGray
-        $0.font = UIFont.systemFont(ofSize: 16)
-    }
-    private let textField = UITextField().then {
+    private let baseCurrencyField = UITextField().then {
         $0.placeholder = "기준화폐를 선택하세요."
         $0.backgroundColor = .white
         $0.borderStyle = .none // 기본 테두리를 제거
@@ -55,9 +82,15 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0.0)) // 텍스트필드 값 왼쪽 여백
         $0.leftViewMode = .always
-        $0.tag = 0
+        $0.tag = 1
     }
-    private let textField2 = UITextField().then {
+    private let travelCurrency = UILabel().then {
+        $0.text = "여행국가 선택"
+        $0.textAlignment = .left
+        $0.textColor = .systemGray
+        $0.font = UIFont.systemFont(ofSize: 16)
+    }
+    private let travelCurrencytField = UITextField().then {
         $0.placeholder = "여행국가를 선택하세요."
         $0.backgroundColor = .white
         $0.borderStyle = .none // 기본 테두리를 제거
@@ -65,7 +98,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0.0)) // 텍스트필드 값 왼쪽 여백
         $0.leftViewMode = .always
-        $0.tag = 1
+        $0.tag = 2
     }
     
     
@@ -138,8 +171,9 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textField.delegate = self
-        textField2.delegate = self
+        languageField.delegate = self
+        baseCurrencyField.delegate = self
+        travelCurrencytField.delegate = self
         
         configureUI()
     }
@@ -147,10 +181,10 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
     private func configureUI() {
         view.backgroundColor = .bgSecondary
         
+        // MARK: Labels
         view.addSubview(titleLabel) // "택스리펀 환급금 예상 계산기"
         titleLabel.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(25)
-            //$0.top.equalToSuperview().inset(70)
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
         }
         
@@ -161,34 +195,80 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         }
         
         
+        // MARK: 시작하기 버튼
+        view.addSubview(startButton)
+        startButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(30)
+            $0.leading.trailing.equalToSuperview().inset(25)
+            $0.height.equalTo(55)
+        }
+        
+        
+        // MARK: 사이즈 대응을 위한 스크롤 뷰
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints {
+            $0.top.equalTo(subLabel.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(startButton.snp.top)
+        }
+
+        scrollView.addSubview(scrollContentView)
+        scrollContentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+        
+        
+        // MARK: 언어 선택 카드
+        scrollContentView.addSubview(languageCard)
+        languageCard.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.leading.trailing.equalToSuperview().inset(25)
+            $0.height.equalTo(130)
+        }
+        
+        languageCard.addSubview(languageLabel)
+        languageCard.addSubview(languageField)
+        
+        languageLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(20)
+            $0.leading.trailing.equalToSuperview().inset(25)
+        }
+        languageField.snp.makeConstraints {
+            $0.top.equalTo(languageLabel.snp.bottom).offset(8)
+            $0.leading.trailing.equalToSuperview().inset(25)
+            $0.height.equalTo(55)
+        }
+        
+        
         // MARK: 기준 통화 선택, 여행국가 선택 카드
-        view.addSubview(currencyCard)
+        scrollContentView.addSubview(currencyCard)
         currencyCard.snp.makeConstraints {
-            $0.top.equalTo(subLabel.snp.bottom).offset(20)
+            $0.top.equalTo(languageCard.snp.bottom).offset(15)
             $0.leading.trailing.equalToSuperview().inset(25)
             $0.height.equalTo(230)
             // $0.height.equalTo(view.snp.height).multipliedBy(0.25) // 화면 높이의 약 1/3
         }
         
         currencyCard.addSubview(baseCurrency)
-        currencyCard.addSubview(textField)
+        currencyCard.addSubview(baseCurrencyField)
         currencyCard.addSubview(travelCurrency)
-        currencyCard.addSubview(textField2)
+        currencyCard.addSubview(travelCurrencytField)
         
         baseCurrency.snp.makeConstraints {
             $0.top.equalToSuperview().inset(20)
             $0.leading.trailing.equalToSuperview().inset(25)
         }
-        textField.snp.makeConstraints {
+        baseCurrencyField.snp.makeConstraints {
             $0.top.equalTo(baseCurrency.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(25)
             $0.height.equalTo(55)
         }
         travelCurrency.snp.makeConstraints {
-            $0.top.equalTo(textField.snp.bottom).offset(16)
+            $0.top.equalTo(baseCurrencyField.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(25)
         }
-        textField2.snp.makeConstraints {
+        travelCurrencytField.snp.makeConstraints {
             $0.top.equalTo(travelCurrency.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(25)
             $0.height.equalTo(55)
@@ -196,7 +276,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         
         
         // MARK: 온오프라인 모드 카드
-        view.addSubview(networkCard)
+        scrollContentView.addSubview(networkCard)
         networkCard.snp.makeConstraints {
             $0.top.equalTo(currencyCard.snp.bottom).offset(15)
             $0.leading.trailing.equalToSuperview().inset(25)
@@ -223,7 +303,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         
         
         // MARK: 환율 정보 카드
-        view.addSubview(exchangeRateCard)
+        scrollContentView.addSubview(exchangeRateCard)
         exchangeRateCard.snp.makeConstraints {
             $0.top.equalTo(networkCard.snp.bottom).offset(15)
             $0.leading.trailing.equalToSuperview().inset(25)
@@ -247,40 +327,46 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         
         
         // MARK: 환급 조건 카드
-        view.addSubview(conditionCard)
+        scrollContentView.addSubview(conditionCard)
         conditionCard.snp.makeConstraints {
             $0.top.equalTo(exchangeRateCard.snp.bottom).offset(15)
+            $0.bottom.equalToSuperview().inset(20)
             $0.leading.trailing.equalToSuperview().inset(25)
             $0.height.equalTo(65)
-        }
-        
-        
-        // MARK: 시작하기 버튼
-        view.addSubview(startButton)
-        startButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(50)
-            $0.leading.trailing.equalToSuperview().inset(25)
-            $0.height.equalTo(55)
+            
         }
 
     }
     
     // MARK: 모달 관련
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        let countryModal = CountryModal()
-        countryModal.delegate = self
-        countryModal.selectedTextFieldTag = textField.tag
-        countryModal.modalPresentationStyle = .pageSheet
-        
-        present(countryModal, animated: true, completion: nil)
+        if textField.tag == 0 {
+            let languageModal = LanguageModal()
+            languageModal.delegate = self
+            languageModal.modalPresentationStyle = .pageSheet
+            present(languageModal, animated: true, completion: nil)
+        } else {
+            let countryModal = CountryModal()
+            countryModal.delegate = self
+            countryModal.selectedTextFieldTag = textField.tag
+            countryModal.modalPresentationStyle = .pageSheet
+            present(countryModal, animated: true, completion: nil)
+        }
         return false
     }
+    
+    // 언어 선택
+    func didSelectLanguage(_ language: String) {
+        languageField.text = language
+    }
+    
+    // 화폐 선택
     func didSelectCountry(_ country: String, forFieldTag tag: Int) {
         switch tag {
-        case 0:
-            textField.text = country
         case 1:
-            textField2.text = country
+            baseCurrencyField.text = country
+        case 2:
+            travelCurrencytField.text = country
         default:
             break
         }
