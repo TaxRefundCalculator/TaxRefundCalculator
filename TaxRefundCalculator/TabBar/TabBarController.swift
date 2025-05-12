@@ -15,10 +15,10 @@ final class TabBarController: UITabBarController {
     }
 
     private func setupTabBar() {
-        let calculateVC = UINavigationController(rootViewController: CalculateVC())
-        let savedVC = UINavigationController(rootViewController: SavedVC())
-        let exchangeVC = UINavigationController(rootViewController: ExchangeVC())
-        let settingVC = UINavigationController(rootViewController: SettingVC())
+        let calculateVC = CalculateVC()
+        let savedVC = SavedVC()
+        let exchangeVC = ExchangeVC()
+        let settingVC = SettingVC()
 
         calculateVC.tabBarItem = UITabBarItem(title: "계산", image: UIImage(systemName: "plus.slash.minus"), tag: 0)
         savedVC.tabBarItem = UITabBarItem(title: "기록", image: UIImage(systemName: "clock"), tag: 1)
