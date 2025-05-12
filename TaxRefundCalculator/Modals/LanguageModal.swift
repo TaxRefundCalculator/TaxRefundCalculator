@@ -28,6 +28,7 @@ class LanguageModal: UIViewController {
         "🇫🇷 français",
         "🇪🇸 español",
         "🇺🇸 English",
+        "🇷🇺 русский язык"
     ]
     
     private let tableView = UITableView().then {
