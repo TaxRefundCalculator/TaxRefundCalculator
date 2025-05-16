@@ -144,6 +144,12 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     }
     
     
+//    // MARK: 네비게이션 바 가리기
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: false)
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

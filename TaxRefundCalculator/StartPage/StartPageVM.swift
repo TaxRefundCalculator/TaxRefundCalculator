@@ -19,4 +19,17 @@ class StartPageVM {
             return ("오프라인 모드", .downRed)
         }
     }
+    
+    func getRefundPolicy(for text: String) -> VATRefundPolicy? {
+        // 추출 가능한 이모지 범위로 가정: 국기 이모지 유니코드는 대부분 두 글자
+        let flagEmojis = RefundCondition.flagToPolicyMap.keys
+
+        for flag in flagEmojis {
+            if text.contains(flag) {
+                return RefundCondition.flagToPolicyMap[flag]
+            }
+        }
+
+        return nil
+    }
 }
