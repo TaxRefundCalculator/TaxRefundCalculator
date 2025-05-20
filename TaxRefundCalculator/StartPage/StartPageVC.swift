@@ -11,6 +11,8 @@ import Then
 
 class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, LanguageModalDelegate {
     
+    let viewModel = StartPageVM()
+    
     // MARK: 상단 제목 두개
     private let titleLabel = UILabel().then {
         $0.text = "택스리펀 환급금 예상 계산기"
@@ -355,9 +357,13 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         return false
     }
     
+    
+    // MARK: 텍스트필드에 리턴 및 유저디폴트에 저장
     // 언어 선택
     func didSelectLanguage(_ language: String) {
         languageField.text = language
+        viewModel.saveSelectedLanguage(language) // userDefaults에 저장
+        print("유저디폴트에 \(language)가 선택된 언어로 저장됨")
     }
     
     // 화폐 선택
@@ -365,13 +371,13 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         switch tag {
         case 1:
             baseCurrencyField.text = country
+            viewModel.saveBaseCurrency(country) // userDefaults에 저장
         case 2:
             travelCurrencytField.text = country
+            viewModel.saveTravelCurrency(country)
             // ✅ 선택된 country에서 환급 정책 출력
-            let policy = StartPageVM().getRefundPolicy(for: country)
-                    
-                    // 예시: 콘솔에 출력
-                    print("📌 환급 정책: \(policy)")
+            let policy = viewModel.getRefundPolicy(for: country) // userDefaults에 저장
+            print("📌 환급 정책: \(policy)")
         default:
             break
         }
@@ -379,7 +385,6 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     
     // MARK: 온오프라인 토글버튼 액션
-    private let viewModel = StartPageVM()
 
     @objc private func switchValueChanged(_ sender: UISwitch) {
         let result = viewModel.getNetworkStatus(isOnline: sender.isOn)
@@ -393,3 +398,4 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
 // **TODO**
 // 키보드 내리기 등 설정하기
 // 뷰, 뷰컨 나누기
+
