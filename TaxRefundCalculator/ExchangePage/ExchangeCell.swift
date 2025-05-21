@@ -73,10 +73,6 @@ final class ExchangeCell: UITableViewCell {
         contentView.addSubviews(flagLabel, currencyCodeLabel, currencyNameLabel,
                              priceLabel, codeLabel, diffLabel, upArrow, downArrow)
 
-        contentView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-
         flagLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()

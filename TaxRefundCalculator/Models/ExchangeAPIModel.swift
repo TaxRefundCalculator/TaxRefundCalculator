@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// API 환율 모델
+/// API 환율 모델 (앱 내부에서 사용하는 통합 환율 모델)
 struct ExchangeAPIModel: Codable {
     let base: String
     let date: String

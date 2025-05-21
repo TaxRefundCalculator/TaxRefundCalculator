@@ -45,7 +45,7 @@ final class ExchangeRateAPIService {
     }
 }
 
-// 내부 응답 모델 (private 유지 권장)
+// 내부 응답 모델 (private 유지 권장) - API 응답 전용 모델 (1차 디코딩용)
 private struct ExchangeRateResponse: Codable {
     let data: [String: Double]
 }
