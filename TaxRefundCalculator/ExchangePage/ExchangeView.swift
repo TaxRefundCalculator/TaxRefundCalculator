@@ -29,14 +29,12 @@ final class ExchangeView: UIView {
         $0.textColor = .bodyText
     }
     
-    /// TODO - 날짜 적용 필요
-    private let refreshLabel = UILabel().then {
-        $0.text = "최근갱신일: 2025-04-30"
+    let refreshLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 16)
         $0.textColor = .currency
     }
 
-    // 갱신버튼
+    /// 갱신버튼 - 당일 데이터일 시 갱신버튼 히든처리 필요
     let refreshButton = UIButton(type: .system).then {
         $0.setTitle("갱신", for: .normal)
         $0.setTitleColor(.systemBlue, for: .normal)

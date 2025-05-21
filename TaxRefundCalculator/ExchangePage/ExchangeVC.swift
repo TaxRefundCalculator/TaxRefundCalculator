@@ -38,6 +38,7 @@ final class ExchangeVC: UIViewController {
         bindTableView()
         bindSelection()
         bindRefreshButton()
+        bindUpdateDateLabel()
         viewModel.fetchExchangeRates()
     }
 
@@ -55,6 +56,13 @@ final class ExchangeVC: UIViewController {
             ) { row, model, cell in
                 cell.bind(model: model)
             }
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindUpdateDateLabel() {
+        viewModel.latestUpdateDate
+            .map { "최근갱신일: \($0)" }
+            .bind(to: exchangeView.refreshLabel.rx.text)
             .disposed(by: disposeBag)
     }
     

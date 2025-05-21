@@ -13,6 +13,7 @@ class ExchangeVM {
     private let apiService: ExchangeRateAPIService
     private let firebaseService: FirebaseExchangeService
     let exchangeRates = BehaviorRelay<[ExchangeRateModel]>(value: [])
+    let latestUpdateDate = BehaviorRelay<String>(value: "") // 갱신날짜
     private let disposeBag = DisposeBag()
 
     init(apiService: ExchangeRateAPIService, firebaseService: FirebaseExchangeService) {
@@ -59,6 +60,7 @@ class ExchangeVM {
             }
 
         self.exchangeRates.accept(models)
+        self.latestUpdateDate.accept(model.date)
     }
 
     /// 파이어베이스에 데이터 업로드하기
