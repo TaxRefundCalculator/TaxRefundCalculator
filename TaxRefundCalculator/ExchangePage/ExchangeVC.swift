@@ -15,26 +15,16 @@ final class ExchangeVC: UIViewController {
 
     private let exchangeView = ExchangeView()
     private let disposeBag = DisposeBag()
+    private let viewModel: ExchangeVM
 
-    /// 더미데이터 VM으로 이동 필요
-    private let exchangeRates = BehaviorRelay<[ExchangeRateModel]>(value: [
-        ExchangeRateModel(
-            flag: "🇺🇸",
-            currencyCode: "USD",
-            currencyName: "미국 달러",
-            formattedRate: "1,320.50",
-            diffPercentage: "0.31%",
-            isUp: true
-        ),
-        ExchangeRateModel(
-            flag: "🇪🇺",
-            currencyCode: "EUR",
-            currencyName: "유로",
-            formattedRate: "1,420.80",
-            diffPercentage: "0.15%",
-            isUp: false
-        )
-    ])
+    init(viewModel: ExchangeVM = ExchangeVM(apiService: ExchangeRateAPIService(), firebaseService: FirebaseExchangeService())) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Lifecycle
 
@@ -47,17 +37,19 @@ final class ExchangeVC: UIViewController {
         setupTableView()
         bindTableView()
         bindSelection()
-        fetchExchangeRates()
+        bindRefreshButton()
+        bindUpdateDateLabel()
+        viewModel.fetchExchangeRates()
     }
 
-    // MARK: - Setup
+    // MARK: - Setup, binding
 
     private func setupTableView() {
         exchangeView.tableView.register(ExchangeCell.self, forCellReuseIdentifier: ExchangeCell.id)
     }
 
     private func bindTableView() {
-        exchangeRates
+        viewModel.exchangeRates
             .bind(to: exchangeView.tableView.rx.items(
                 cellIdentifier: ExchangeCell.id,
                 cellType: ExchangeCell.self)
@@ -67,6 +59,12 @@ final class ExchangeVC: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    private func bindUpdateDateLabel() {
+        viewModel.latestUpdateDate
+            .map { "최근갱신일: \($0)" }
+            .bind(to: exchangeView.refreshLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
     
     private func bindSelection() {
         exchangeView.tableView.rx
@@ -77,7 +75,7 @@ final class ExchangeVC: UIViewController {
                 modalVC.modalPresentationStyle = .overFullScreen
                 modalVC.modalTransitionStyle = .crossDissolve
 
-                // Configure modal with selected model
+                // 모달에 데이터 적용
                 modalVC.configure(
                     flag: model.flag,
                     currencyCode: model.currencyCode,
@@ -91,55 +89,14 @@ final class ExchangeVC: UIViewController {
             }
             .disposed(by: disposeBag)
     }
-    // MARK: - API
-    /// 의존성 주입 및 API 분리 필요
-
-    private func fetchExchangeRates() {
-        let service = ExchangeRateAPIService()
-        service.fetchRates()
-            .observe(on: MainScheduler.instance)
-            .subscribe(onSuccess: { [weak self] model in
-                let converted = model.rates.map {
-                    ExchangeRateModel(
-                        flag: $0.key.flagEmoji,
-                        currencyCode: $0.key,
-                        currencyName: $0.key.localizedName,
-                        formattedRate: $0.value.roundedString(),
-                        diffPercentage: "-",
-                        isUp: false
-                    )
-                }
-                self?.exchangeRates.accept(converted)
-            }, onFailure: { error in
-                print("❌ API 실패: \(error.localizedDescription)")
-            })
+    
+    /// 갱신, 업로드
+    private func bindRefreshButton() {
+        exchangeView.refreshButton.rx.tap
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .bind { [weak self] in
+                self?.viewModel.uploadRatesToFirebase()
+            }
             .disposed(by: disposeBag)
-    }
-}
-
-// MARK: - Utility Extensions
-
-/// Utils 로 이동 및 수정 필요
-extension String {
-    var flagEmoji: String {
-        let base = UnicodeScalar("🇦").value - UnicodeScalar("A").value
-        return self.uppercased().unicodeScalars
-            .compactMap { UnicodeScalar(base + $0.value)?.description }
-            .joined()
-    }
-
-    var localizedName: String {
-        let locale = Locale.current
-        return locale.localizedString(forCurrencyCode: self) ?? self
-    }
-}
-
-extension Double {
-    func roundedString(fractionDigits: Int = 2) -> String {
-        let formatter = NumberFormatter()
-        formatter.minimumFractionDigits = fractionDigits
-        formatter.maximumFractionDigits = fractionDigits
-        formatter.numberStyle = .decimal
-        return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
     }
 }
