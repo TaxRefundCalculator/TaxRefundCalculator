@@ -48,12 +48,17 @@ final class SavedVC: UIViewController {
     }
 
     private func setupTableView() {
-        savedView.tableView.register(SavedRecordCell.self, forCellReuseIdentifier: SavedRecordCell.identifier)
+        savedView.tableView.register(SavedRecordCell.self, forCellReuseIdentifier: SavedRecordCell.id)
 
         Observable.just(dummyData)
-            .bind(to: savedView.tableView.rx.items(cellIdentifier: SavedRecordCell.identifier, cellType: SavedRecordCell.self)) { row, model, cell in
+            .bind(to: savedView.tableView.rx.items(cellIdentifier: SavedRecordCell.id, cellType: SavedRecordCell.self)) { row, model, cell in
                 cell.configure(with: model)
             }
             .disposed(by: disposeBag)
     }
 }
+
+/// TODO
+/// 셀 선택 or 꾹 누를 시 편집
+/// 슬라이드 삭제
+///
