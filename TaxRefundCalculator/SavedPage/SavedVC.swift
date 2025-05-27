@@ -13,30 +13,7 @@ final class SavedVC: UIViewController {
 
     private let savedView = SavedView()
     private let disposeBag = DisposeBag()
-
-    private let dummyData = [
-        SavedCard(
-            flag: "🇫🇷",
-            country: "프랑스",
-            date: "2025.04.10",
-            purchaseAmount: "500 EUR",
-            refundAmount: "83.33 EUR"
-        ),
-        SavedCard(
-            flag: "🇯🇵",
-            country: "일본",
-            date: "2025.03.25",
-            purchaseAmount: "40,000 JPY",
-            refundAmount: "3,636 JPY"
-        ),
-        SavedCard(
-            flag: "🇪🇸",
-            country: "스페인",
-            date: "2025.02.12",
-            purchaseAmount: "300 EUR",
-            refundAmount: "50 EUR"
-        )
-    ]
+    private let viewModel = SavedVM()
 
     override func loadView() {
         view = savedView
@@ -44,13 +21,14 @@ final class SavedVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+        bindTableView()
+        viewModel.saveMockData()
     }
 
-    private func setupTableView() {
+    private func bindTableView() {
         savedView.tableView.register(SavedRecordCell.self, forCellReuseIdentifier: SavedRecordCell.id)
 
-        Observable.just(dummyData)
+        viewModel.savedCards
             .bind(to: savedView.tableView.rx.items(cellIdentifier: SavedRecordCell.id, cellType: SavedRecordCell.self)) { row, model, cell in
                 cell.configure(with: model)
             }

@@ -67,17 +67,19 @@ final class SavedView: UIView {
         $0.layer.shadowRadius = 4
     }
 
-    // 날짜 선택 버튼
-    let filterButton = UIButton(type: .system).then {
+
+    let countryLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 16, weight: .medium)
+        $0.text = "국가"
+    }
+    
+    // 국가 변경 버튼
+    let changeButton = UIButton(type: .system).then {
         var config = UIButton.Configuration.plain()
-        config.title = "2025년 3월 xx일"
-        config.baseForegroundColor = .label
-        config.image = UIImage(systemName: "line.horizontal.3.decrease.circle")
-        config.imagePlacement = .trailing
-        config.imagePadding = 6
-        config.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        config.title = "변경"
+        config.baseForegroundColor = .mainTeal
         $0.configuration = config
-        $0.contentHorizontalAlignment = .left
+        $0.contentHorizontalAlignment = .right
     }
 
     // 기록 리스트
@@ -100,7 +102,7 @@ final class SavedView: UIView {
         backgroundColor = .subButton
 
         addSubviews(totalContainer, filterContainer, tableView)
-        filterContainer.addSubviews(filterButton)
+        filterContainer.addSubviews(countryLabel, changeButton)
 
         leftStack.addArrangedSubviews(totalPurchaseLabel, totalPurchaseAmountLabel)
         rightStack.addArrangedSubviews(totalRefundLabel, totalRefundAmountLabel)
@@ -135,8 +137,14 @@ final class SavedView: UIView {
             $0.height.equalTo(48)
         }
 
-        filterButton.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(16)
+        countryLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+        }
+        
+        changeButton.snp.makeConstraints {
+            $0.leading.equalTo(countryLabel.snp.trailing).offset(4)
+            $0.centerY.equalToSuperview()
         }
 
         tableView.snp.makeConstraints {
