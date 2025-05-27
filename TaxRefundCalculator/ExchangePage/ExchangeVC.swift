@@ -15,25 +15,16 @@ final class ExchangeVC: UIViewController {
 
     private let exchangeView = ExchangeView()
     private let disposeBag = DisposeBag()
+    private let viewModel: ExchangeVM
 
-    private let exchangeRates = BehaviorRelay<[ExchangeRateModel]>(value: [
-        ExchangeRateModel(
-            flag: "🇺🇸",
-            currencyCode: "USD",
-            currencyName: "미국 달러",
-            formattedRate: "1,320.50",
-            diffPercentage: "0.31%",
-            isUp: true
-        ),
-        ExchangeRateModel(
-            flag: "🇪🇺",
-            currencyCode: "EUR",
-            currencyName: "유로",
-            formattedRate: "1,420.80",
-            diffPercentage: "0.15%",
-            isUp: false
-        )
-    ])
+    init(viewModel: ExchangeVM = ExchangeVM(apiService: ExchangeRateAPIService(), firebaseService: FirebaseExchangeService())) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Lifecycle
 
@@ -46,16 +37,19 @@ final class ExchangeVC: UIViewController {
         setupTableView()
         bindTableView()
         bindSelection()
+        bindRefreshButton()
+        bindUpdateDateLabel()
+        viewModel.fetchExchangeRates()
     }
 
-    // MARK: - Setup
+    // MARK: - Setup, binding
 
     private func setupTableView() {
         exchangeView.tableView.register(ExchangeCell.self, forCellReuseIdentifier: ExchangeCell.id)
     }
 
     private func bindTableView() {
-        exchangeRates
+        viewModel.exchangeRates
             .bind(to: exchangeView.tableView.rx.items(
                 cellIdentifier: ExchangeCell.id,
                 cellType: ExchangeCell.self)
@@ -65,6 +59,12 @@ final class ExchangeVC: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    private func bindUpdateDateLabel() {
+        viewModel.latestUpdateDate
+            .map { "최근갱신일: \($0)" }
+            .bind(to: exchangeView.refreshLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
     
     private func bindSelection() {
         exchangeView.tableView.rx
@@ -75,7 +75,7 @@ final class ExchangeVC: UIViewController {
                 modalVC.modalPresentationStyle = .overFullScreen
                 modalVC.modalTransitionStyle = .crossDissolve
 
-                // Configure modal with selected model
+                // 모달에 데이터 적용
                 modalVC.configure(
                     flag: model.flag,
                     currencyCode: model.currencyCode,
@@ -86,6 +86,16 @@ final class ExchangeVC: UIViewController {
                 )
 
                 self?.present(modalVC, animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    /// 갱신, 업로드
+    private func bindRefreshButton() {
+        exchangeView.refreshButton.rx.tap
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .bind { [weak self] in
+                self?.viewModel.uploadRatesToFirebase()
             }
             .disposed(by: disposeBag)
     }
