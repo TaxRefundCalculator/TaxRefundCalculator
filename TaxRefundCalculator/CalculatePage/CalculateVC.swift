@@ -11,6 +11,8 @@ import Then
 
 class CalculateVC: UIViewController {
     
+    let viewModel = CalculateVM()
+    
     // MARK: 사이즈 대응을 위한 스크롤 뷰
     let scrollView = UIScrollView()
     let scrollContentView = UIView()
@@ -25,8 +27,8 @@ class CalculateVC: UIViewController {
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.layer.shadowRadius = 6
     }
-    private let counrty = UILabel().then {
-        $0.text = "🇫🇷 프랑스 - EUR"
+    private let travelCurrency = UILabel().then {
+        $0.text = "이곳에 저장된 통화"
         $0.font = UIFont.systemFont(ofSize: 19, weight: .bold)
         $0.textColor = .primaryText
     }
@@ -122,8 +124,17 @@ class CalculateVC: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        loadTravelCurrency()
     }
     
+    // MARK: UserDefaults에서 값 불러오기
+    private func loadTravelCurrency() {
+        if let savedTravelCurrency = viewModel.getTravelCurrency() {
+            travelCurrency.text = savedTravelCurrency
+        }
+    }
+    
+    // MARK: UI 구성
     private func configureUI() {
         view.backgroundColor = .bgSecondary
         
@@ -151,10 +162,10 @@ class CalculateVC: UIViewController {
             $0.height.equalTo(90)
         }
         
-        currencyRateCard.addSubview(counrty)
+        currencyRateCard.addSubview(travelCurrency)
         currencyRateCard.addSubview(rate)
         
-        counrty.snp.makeConstraints {
+        travelCurrency.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.top.equalToSuperview().offset(16)
         }

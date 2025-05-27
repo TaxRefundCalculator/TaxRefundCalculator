@@ -17,10 +17,12 @@ final class TabBarController: UITabBarController {
     private func setupTabBar() {
         let calculateVC = CalculateVC()
         let savedVC = SavedVC()
+
         let exchangeService = ExchangeRateAPIService()
         let firebaseExchangeService = FirebaseExchangeService()
         let exchangeVM = ExchangeVM(apiService: exchangeService, firebaseService: firebaseExchangeService)
         let exchangeVC = ExchangeVC(viewModel: exchangeVM)
+
         let settingVC = SettingVC()
 
         calculateVC.tabBarItem = UITabBarItem(title: "계산", image: UIImage(systemName: "plus.slash.minus"), tag: 0)
