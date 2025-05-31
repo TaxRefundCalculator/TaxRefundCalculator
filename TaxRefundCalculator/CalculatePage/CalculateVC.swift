@@ -120,6 +120,7 @@ class CalculateVC: UIViewController {
         $0.distribution = .fillEqually
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -127,12 +128,14 @@ class CalculateVC: UIViewController {
         loadTravelCurrency()
     }
     
+    
     // MARK: UserDefaults에서 값 불러오기
     private func loadTravelCurrency() {
         if let savedTravelCurrency = viewModel.getTravelCurrency() {
             travelCurrency.text = savedTravelCurrency
         }
     }
+    
     
     // MARK: UI 구성
     private func configureUI() {
@@ -210,8 +213,6 @@ class CalculateVC: UIViewController {
         calculateCard.addSubview(expectation)
         calculateCard.addSubview(result)
         calculateCard.addSubview(summary)
-//        calculateCard.addSubview(saveBtn)
-//        calculateCard.addSubview(checkBtn)
         calculateCard.addSubview(btnStackView)
         
         vatLabel.snp.makeConstraints {
@@ -244,21 +245,14 @@ class CalculateVC: UIViewController {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(40)
         }
-//        saveBtn.snp.makeConstraints {
-//            $0.height.equalTo(40)
-//        }
-//        checkBtn.snp.makeConstraints {
-//            $0.height.equalTo(40)
-//        }
     }
     
     
     // MARK: 환급조건 보기 버튼 액션
     @objc
     private func checkBtnTapped() {
-        let refundModal = RefundModal()
-        refundModal.modalPresentationStyle = .fullScreen
-        present(refundModal, animated: true, completion: nil)
+        let modal = RefundModal()
+        present(modal, animated: true, completion: nil)
     }
-
+    
 }
