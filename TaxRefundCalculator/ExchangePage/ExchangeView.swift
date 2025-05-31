@@ -29,10 +29,16 @@ final class ExchangeView: UIView {
         $0.textColor = .bodyText
     }
     
-    private let refreshLabel = UILabel().then {
-        $0.text = "최근갱신일: 2025-04-30"
+    let refreshLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 16)
         $0.textColor = .currency
+    }
+
+    /// 갱신버튼 - 당일 데이터일 시 갱신버튼 히든처리 필요
+    let refreshButton = UIButton(type: .system).then {
+        $0.setTitle("갱신", for: .normal)
+        $0.setTitleColor(.systemBlue, for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
     }
 
     let tableView = UITableView().then {
@@ -60,7 +66,7 @@ final class ExchangeView: UIView {
 
     private func setupUI() {
         backgroundColor = .subButton
-        addSubviews(searchTextField, titleLabel, refreshLabel, tableView)
+        addSubviews(searchTextField, titleLabel, refreshLabel, refreshButton, tableView)
 
         searchTextField.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(16)
@@ -76,6 +82,11 @@ final class ExchangeView: UIView {
         refreshLabel.snp.makeConstraints {
             $0.centerY.equalTo(titleLabel)
             $0.trailing.equalToSuperview().inset(16)
+        }
+
+        refreshButton.snp.makeConstraints {
+            $0.centerY.equalTo(refreshLabel)
+            $0.trailing.equalTo(refreshLabel.snp.leading).offset(-8)
         }
 
         tableView.snp.makeConstraints {
