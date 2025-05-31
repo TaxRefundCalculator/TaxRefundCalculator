@@ -7,10 +7,10 @@
 
 import UIKit
 import SnapKit
-import SnapKit
+import Then
 
 protocol LanguageModalDelegate: AnyObject {
-    func didSelectCountry(_ country: String, forFieldTag tag: Int)
+    func didSelectLanguage(_ Languages: String)
 }
 
 class LanguageModal: UIViewController {
@@ -20,7 +20,7 @@ class LanguageModal: UIViewController {
     
     
     // MARK: 지원국가 목록 배열
-    private let countries = [
+    private let Languages = [
         "🇰🇷 한국어",
         "🇯🇵 日本語",
         "🇮🇹 italiano",
@@ -28,6 +28,7 @@ class LanguageModal: UIViewController {
         "🇫🇷 français",
         "🇪🇸 español",
         "🇺🇸 English",
+        "🇷🇺 русский язык"
     ]
     
     private let tableView = UITableView().then {
@@ -78,14 +79,14 @@ class LanguageModal: UIViewController {
 extension LanguageModal: UITableViewDataSource {
     // 셀 개수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countries.count
+        return Languages.count
     }
     
     // 셀 생성
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 셀 재사용
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath)
-        cell.textLabel?.text = countries[indexPath.row] // 텍스트 설정
+        cell.textLabel?.text = Languages[indexPath.row] // 텍스트 설정
         return cell
     }
 }
@@ -94,12 +95,9 @@ extension LanguageModal: UITableViewDataSource {
 extension LanguageModal: UITableViewDelegate {
     // 셀 선택 시 행동
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("선택한 언어: \(countries[indexPath.row])")
-        let selectedCountry = countries[indexPath.row]
-        if let tag = selectedTextFieldTag {
-            delegate?.didSelectCountry(selectedCountry, forFieldTag: tag)
-        }
-        tableView.deselectRow(at: indexPath, animated: true) // 선택 해제
+        let selectedLanguage = Languages[indexPath.row]
+        delegate?.didSelectLanguage(selectedLanguage)
+        tableView.deselectRow(at: indexPath, animated: true)
         dismiss(animated: true)
     }
 }
