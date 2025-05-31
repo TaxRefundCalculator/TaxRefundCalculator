@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-import SnapKit
+import Then
 
 protocol CountryModalDelegate: AnyObject {
     func didSelectCountry(_ country: String, forFieldTag tag: Int)

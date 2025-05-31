@@ -163,12 +163,17 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.layer.shadowRadius = 6
     }
+    
+    
     // MARK: 시작버튼
     private let startButton = UIButton().then {
         $0.setTitle("시작하기 →", for: .normal)
         $0.backgroundColor = .mainTeal
         $0.layer.cornerRadius = 15
+        
+        $0.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -375,7 +380,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         case 2:
             travelCurrencytField.text = country
             viewModel.saveTravelCurrency(country)
-            // ✅ 선택된 country에서 환급 정책 출력
+            // 선택된 country에서 환급 정책 출력
             let policy = viewModel.getRefundPolicy(for: country) // userDefaults에 저장
             print("📌 환급 정책: \(policy)")
         default:
@@ -385,11 +390,19 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     
     // MARK: 온오프라인 토글버튼 액션
-
     @objc private func switchValueChanged(_ sender: UISwitch) {
         let result = viewModel.getNetworkStatus(isOnline: sender.isOn)
         networkTextField.text = result.text
         networkTextField.textColor = result.color
+    }
+    
+    
+    // MARK: 시작하기버튼 액션
+    @objc
+    private func startButtonTapped() {
+        let tabBar = TabBarController()
+        self.navigationController?.pushViewController(tabBar, animated: true)
+
     }
     
     
