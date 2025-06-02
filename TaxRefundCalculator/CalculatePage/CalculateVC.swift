@@ -28,7 +28,6 @@ class CalculateVC: UIViewController {
         $0.layer.shadowRadius = 6
     }
     private let travelCurrency = UILabel().then {
-        $0.text = "이곳에 저장된 통화"
         $0.font = UIFont.systemFont(ofSize: 19, weight: .bold)
         $0.textColor = .primaryText
     }
