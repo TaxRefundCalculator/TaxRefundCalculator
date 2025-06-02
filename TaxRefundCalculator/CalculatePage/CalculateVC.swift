@@ -28,7 +28,6 @@ class CalculateVC: UIViewController {
         $0.layer.shadowRadius = 6
     }
     private let travelCurrency = UILabel().then {
-        $0.text = "이곳에 저장된 통화"
         $0.font = UIFont.systemFont(ofSize: 19, weight: .bold)
         $0.textColor = .primaryText
     }
@@ -67,7 +66,6 @@ class CalculateVC: UIViewController {
         $0.leftViewMode = .always
         $0.rightView = textFieldLabel
         $0.rightViewMode = .always
-        
     }
     
     
@@ -113,12 +111,14 @@ class CalculateVC: UIViewController {
         $0.backgroundColor = .currency
         $0.setTitle("환급 조건 보기", for: .normal)
         $0.layer.cornerRadius = 8
+        $0.addTarget(self, action: #selector(checkBtnTapped), for: .touchUpInside)
     }
     private lazy var btnStackView = UIStackView(arrangedSubviews: [saveBtn, checkBtn]).then {
         $0.axis = .horizontal
         $0.spacing = 8
         $0.distribution = .fillEqually
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,12 +127,14 @@ class CalculateVC: UIViewController {
         loadTravelCurrency()
     }
     
+    
     // MARK: UserDefaults에서 값 불러오기
     private func loadTravelCurrency() {
         if let savedTravelCurrency = viewModel.getTravelCurrency() {
             travelCurrency.text = savedTravelCurrency
         }
     }
+    
     
     // MARK: UI 구성
     private func configureUI() {
@@ -142,22 +144,20 @@ class CalculateVC: UIViewController {
         // MARK: 사이즈 대응을 위한 스크롤 뷰
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
-
+        
         scrollView.addSubview(scrollContentView)
         scrollContentView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.width.equalToSuperview()
+            $0.edges.equalTo(scrollView.contentLayoutGuide)
+            $0.width.equalTo(scrollView.frameLayoutGuide)
         }
         
         
         // MARK: 선택된 국가 환율, 기준 환율 카드
         scrollContentView.addSubview(currencyRateCard)
         currencyRateCard.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            $0.top.equalToSuperview().offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(90)
         }
@@ -203,7 +203,7 @@ class CalculateVC: UIViewController {
             $0.top.equalTo(priceCard.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(240)
-            $0.bottom.equalTo(scrollContentView.snp.bottom)
+            $0.bottom.equalToSuperview().offset(20)
         }
         
         calculateCard.addSubview(vatLabel)
@@ -212,8 +212,6 @@ class CalculateVC: UIViewController {
         calculateCard.addSubview(expectation)
         calculateCard.addSubview(result)
         calculateCard.addSubview(summary)
-        calculateCard.addSubview(saveBtn)
-        calculateCard.addSubview(checkBtn)
         calculateCard.addSubview(btnStackView)
         
         vatLabel.snp.makeConstraints {
@@ -228,7 +226,7 @@ class CalculateVC: UIViewController {
             $0.centerX.centerY.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(20)
         }
-        separator.snp.makeConstraints {
+        separator.snp.makeConstraints  {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.top.equalTo(vatLabel.snp.bottom).offset(12)
             $0.height.equalTo(1)
@@ -244,14 +242,16 @@ class CalculateVC: UIViewController {
         btnStackView.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(20)
             $0.leading.trailing.equalToSuperview().inset(20)
-        }
-        saveBtn.snp.makeConstraints {
-            $0.height.equalTo(40)
-        }
-        checkBtn.snp.makeConstraints {
             $0.height.equalTo(40)
         }
     }
     
+    
+    // MARK: 환급조건 보기 버튼 액션
+    @objc
+    private func checkBtnTapped() {
+        let modal = RefundModal()
+        present(modal, animated: true, completion: nil)
+    }
     
 }

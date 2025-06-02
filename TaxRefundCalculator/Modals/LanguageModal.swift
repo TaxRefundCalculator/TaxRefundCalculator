@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-import SnapKit
+import Then
 
 protocol LanguageModalDelegate: AnyObject {
     func didSelectLanguage(_ Languages: String)
