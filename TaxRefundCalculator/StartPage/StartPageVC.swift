@@ -11,6 +11,8 @@ import Then
 
 class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, LanguageModalDelegate {
     
+    let viewModel = StartPageVM()
+    
     // MARK: 상단 제목 두개
     private let titleLabel = UILabel().then {
         $0.text = "택스리펀 환급금 예상 계산기"
@@ -74,7 +76,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         $0.textColor = .systemGray
         $0.font = UIFont.systemFont(ofSize: 16)
     }
-    private let baseCurrencyField = UITextField().then {
+    let baseCurrencyField = UITextField().then {
         $0.placeholder = "기준화폐를 선택하세요."
         $0.backgroundColor = .white
         $0.borderStyle = .none // 기본 테두리를 제거
@@ -161,12 +163,17 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.layer.shadowRadius = 6
     }
+    
+    
     // MARK: 시작버튼
     private let startButton = UIButton().then {
         $0.setTitle("시작하기 →", for: .normal)
         $0.backgroundColor = .mainTeal
         $0.layer.cornerRadius = 15
+        
+        $0.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -355,9 +362,13 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         return false
     }
     
+    
+    // MARK: 텍스트필드에 리턴 및 유저디폴트에 저장
     // 언어 선택
     func didSelectLanguage(_ language: String) {
         languageField.text = language
+        viewModel.saveSelectedLanguage(language) // userDefaults에 저장
+        print("유저디폴트에 \(language)가 선택된 언어로 저장됨")
     }
     
     // 화폐 선택
@@ -365,8 +376,13 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         switch tag {
         case 1:
             baseCurrencyField.text = country
+            viewModel.saveBaseCurrency(country) // userDefaults에 저장
         case 2:
             travelCurrencytField.text = country
+            viewModel.saveTravelCurrency(country)
+            // 선택된 country에서 환급 정책 출력
+            let policy = viewModel.getRefundPolicy(for: country) // userDefaults에 저장
+            print("📌 환급 정책: \(policy)")
         default:
             break
         }
@@ -374,8 +390,6 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     
     // MARK: 온오프라인 토글버튼 액션
-    private let viewModel = StartPageVM()
-
     @objc private func switchValueChanged(_ sender: UISwitch) {
         let result = viewModel.getNetworkStatus(isOnline: sender.isOn)
         networkTextField.text = result.text
@@ -383,4 +397,18 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     }
     
     
+    // MARK: 시작하기버튼 액션
+    @objc
+    private func startButtonTapped() {
+        let tabBar = TabBarController()
+        self.navigationController?.pushViewController(tabBar, animated: true)
+
+    }
+    
+    
 }
+
+// **TODO**
+// 키보드 내리기 등 설정하기
+// 뷰, 뷰컨 나누기
+
