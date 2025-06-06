@@ -170,26 +170,21 @@ class CalculateVC: UIViewController {
     // MARK: UserDefaults에서 값 불러오기
     private func loadFromUserdefaults() {
         // 여행국가화폐 불러오기
-        if let savedTravelCurrency = viewModel.getTravelCurrency() {
-            travelCurrency.text = savedTravelCurrency // 최상단 선택된 여행국가 Label
-            
-            let travelCurrencyLast3 = String(savedTravelCurrency.suffix(3)) // 뒤에서 3글자. 화폐단위만 추출
-            
-            currency1.text = " \(travelCurrencyLast3)" // 현재 환율 칸
-            textFieldLabel.text = "\(travelCurrencyLast3)    " // 구매금액 입력칸
-            resultCurrency.text = " \(travelCurrencyLast3)" // 예상환급금액 칸
+        if let savedTravelCurrency = viewModel.getTravelCurrency3() {
+            travelCurrency.text = savedTravelCurrency.full
+            currency1.text = " \(savedTravelCurrency.code)"
+            textFieldLabel.text = "\(savedTravelCurrency.code)    "
+            resultCurrency.text = " \(savedTravelCurrency.code)"
         }
         
         // 기준화폐 가져오기
-        if let savedBaseCurrency = viewModel.getBaseCurrency() {
-            let baseCurrencyLast3 = String(savedBaseCurrency.suffix(3)) // 뒤에서 3글자. 화폐단위만 추출
-            
-            currency2.text = " \(baseCurrencyLast3)" // 현재 환욜 칸
+        if let savedBaseCurrency = viewModel.getBaseCurrency3() {
+            currency2.text = " \(savedBaseCurrency)"
         }
         
         // 부가세율 가져오기
-        if let (flag, policy) = viewModel.getRefundPolicyByCurrency() {
-            percent.text = "\(policy.vatRate)%"
+        if let vatText = viewModel.getVatRate() {
+            percent.text = vatText
         }
 
     }

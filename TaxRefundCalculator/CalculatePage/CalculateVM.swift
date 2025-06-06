@@ -34,6 +34,21 @@ class CalculateVM {
         return RefundCondition.flagToPolicyMap[flag].map { (flag, $0) }
     }
     
+    // MARK: 유저디폴트에 있는 화폐들, 부가세 띄우기
+    // 부가세
+    func getVatRate() -> String? {
+        return getRefundPolicyByCurrency().map { "\($0.policy.vatRate)%" }
+    }
     
+    // 여행국가 통화
+    func getTravelCurrency3() -> (full: String, code: String)? {
+        guard let currency = getTravelCurrency() else { return nil }
+        return (currency, String(currency.suffix(3))) // 뒤에서 3글자만 추출
+    }
+    
+    // 기준통화
+    func getBaseCurrency3() -> String? {
+        return getBaseCurrency().map { String($0.suffix(3)) }
+    }
     
 }
