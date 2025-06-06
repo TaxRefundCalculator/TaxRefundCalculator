@@ -22,6 +22,7 @@ final class SavedVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindTableView()
+        bindTotalAmount()
         viewModel.saveMockData()
     }
 
@@ -32,6 +33,23 @@ final class SavedVC: UIViewController {
             .bind(to: savedView.tableView.rx.items(cellIdentifier: SavedRecordCell.id, cellType: SavedRecordCell.self)) { row, model, cell in
                 cell.configure(with: model)
             }
+            .disposed(by: disposeBag)
+    }
+    
+    // 총합 계산
+    private func bindTotalAmount() {
+        viewModel.savedCards
+            .map { cards in
+                let totalPurchase = cards.reduce(0) { $0 + $1.convertedPurchaseAmount }
+                let totalRefund = cards.reduce(0) { $0 + $1.convertedRefundAmount }
+                let currency = cards.first?.convertedCurrency ?? "KRW"
+                return ("\(totalPurchase) \(currency)", "\(totalRefund) \(currency)")
+            }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] purchase, refund in
+                self?.savedView.totalPurchaseAmountLabel.text = purchase
+                self?.savedView.totalRefundAmountLabel.text = refund
+            })
             .disposed(by: disposeBag)
     }
 }

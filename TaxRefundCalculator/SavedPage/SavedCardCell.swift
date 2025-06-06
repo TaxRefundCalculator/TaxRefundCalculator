@@ -48,6 +48,10 @@ final class SavedRecordCell: UITableViewCell {
         $0.font = .systemFont(ofSize: 15, weight: .semibold)
     }
 
+    private let convertedPurchaseLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .semibold)
+    }
+    
     private let refundTitleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .medium)
         $0.text = "환급 금액"
@@ -59,6 +63,11 @@ final class SavedRecordCell: UITableViewCell {
         $0.textColor = .mainTeal
     }
 
+    private let convertedRefundLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .semibold)
+        $0.textColor = .mainTeal
+    }
+    
     // 구매 금액 스택
     private let leftStack = UIStackView().then {
         $0.axis = .vertical
@@ -88,8 +97,8 @@ final class SavedRecordCell: UITableViewCell {
         contentView.addSubview(cardView)
         cardView.addSubviews(flagLabel, countryLabel, dateLabel, leftStack, rightStack)
 
-        leftStack.addArrangedSubviews(purchaseTitleLabel, purchaseAmountLabel)
-        rightStack.addArrangedSubviews(refundTitleLabel, refundAmountLabel)
+        leftStack.addArrangedSubviews(purchaseTitleLabel, purchaseAmountLabel, convertedPurchaseLabel)
+        rightStack.addArrangedSubviews(refundTitleLabel, refundAmountLabel, convertedRefundLabel)
 
         cardView.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -128,6 +137,8 @@ final class SavedRecordCell: UITableViewCell {
         countryLabel.text = model.country
         dateLabel.text = model.date
         purchaseAmountLabel.text = model.purchaseAmount
+        convertedPurchaseLabel.text = "\(model.convertedPurchaseAmount) \(model.convertedCurrency)"
         refundAmountLabel.text = model.refundAmount
+        convertedRefundLabel.text = "\(model.convertedRefundAmount) \(model.convertedCurrency)"
     }
 }
