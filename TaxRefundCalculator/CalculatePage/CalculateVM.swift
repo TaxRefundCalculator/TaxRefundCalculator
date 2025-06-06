@@ -34,19 +34,21 @@ class CalculateVM {
         return RefundCondition.flagToPolicyMap[flag].map { (flag, $0) }
     }
     
+    // MARK: 유저디폴트에 있는 화폐들, 부가세 띄우기
+    // 부가세
+    func getVatRate() -> String? {
+        return getRefundPolicyByCurrency().map { "\($0.policy.vatRate)%" }
+    }
     
-    // MARK: 국기 인식 및 환급기준 매칭
-    func getRefundPolicy(for text: String) -> VATRefundPolicy? {
-        // 추출 가능한 이모지 범위로 가정: 국기 이모지 유니코드는 대부분 두 글자
-        let flagEmojis = RefundCondition.flagToPolicyMap.keys
-        
-        for flag in flagEmojis {
-            if text.contains(flag) {
-                return RefundCondition.flagToPolicyMap[flag]
-            }
-        }
-        
-        return nil
+    // 여행국가 통화
+    func getTravelCurrency3() -> (full: String, code: String)? {
+        guard let currency = getTravelCurrency() else { return nil }
+        return (currency, String(currency.suffix(3))) // 뒤에서 3글자만 추출
+    }
+    
+    // 기준통화
+    func getBaseCurrency3() -> String? {
+        return getBaseCurrency().map { String($0.suffix(3)) }
     }
     
 }
