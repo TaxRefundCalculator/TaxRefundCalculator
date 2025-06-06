@@ -11,8 +11,8 @@ import Then
 
 class CalculateVC: UIViewController {
     
-    let viewModel = CalculateVM()
-    
+    private let viewModel = CalculateVM()
+
     // MARK: 사이즈 대응을 위한 스크롤 뷰
     let scrollView = UIScrollView()
     let scrollContentView = UIView()
@@ -31,10 +31,33 @@ class CalculateVC: UIViewController {
         $0.font = UIFont.systemFont(ofSize: 19, weight: .bold)
         $0.textColor = .primaryText
     }
-    private let rate = UILabel().then {
-        $0.text = "1 EUR   =   1,430 KRW"
+    private let currency1Num = UILabel().then {
+        $0.text = "1"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         $0.textColor = .subText
+    }
+    private let currency1 = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        $0.textColor = .subText
+    }
+    private let equal = UILabel().then {
+        $0.text = " = "
+        $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        $0.textColor = .subText
+    }
+    private let currency2Num = UILabel().then {
+        $0.text = "999"
+        $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        $0.textColor = .subText
+    }
+    private let currency2 = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        $0.textColor = .subText
+    }
+    private lazy var currencyStackView = UIStackView(arrangedSubviews: [currency1Num, currency1, equal, currency2Num, currency2]).then {
+        $0.axis = .horizontal
+        $0.spacing = 5
+        $0.distribution = .fillProportionally
     }
     
     
@@ -49,10 +72,9 @@ class CalculateVC: UIViewController {
     }
     private let priceLabel = UILabel().then {
         $0.text = "구매 금액 입력"
-        $0.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        $0.font = UIFont.systemFont(ofSize: 19, weight: .regular)
     }
     private let textFieldLabel = UILabel().then {
-        $0.text = "EUR    "
         $0.textColor = .subText
         $0.font = UIFont.systemFont(ofSize: 14, weight: .bold)
     }
@@ -67,7 +89,12 @@ class CalculateVC: UIViewController {
         $0.rightView = textFieldLabel
         $0.rightViewMode = .always
     }
-    
+    private let calculateBtn = UIButton().then {
+        $0.backgroundColor = .mainTeal
+        $0.setTitle("계산하기", for: .normal)
+        $0.layer.cornerRadius = 8
+        $0.addTarget(self, action: #selector(calculateBtnTapped), for: .touchUpInside)
+    }
     
     // MARK: 계산 카드
     private let calculateCard = UIView().then {
@@ -93,13 +120,25 @@ class CalculateVC: UIViewController {
         $0.text = "예상 환급 금액"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
     }
-    private let result = UILabel().then {
-        $0.text = "0.00 EUR"
+    private let resultNum = UILabel().then {
+        $0.text = "10.00"
         $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         $0.textColor = .mainTeal
     }
-    private let summary = UILabel().then {
+    private let resultCurrency = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+        $0.textColor = .mainTeal
+    }
+    private lazy var resultStackView = UIStackView(arrangedSubviews: [resultNum, resultCurrency]).then {
+        $0.axis = .horizontal
+        $0.spacing = 5
+        $0.distribution = .fill
+    }
+    private let summaryNum = UILabel().then {
         $0.text = "약 0 KRW"
+        $0.font = UIFont.systemFont(ofSize: 16.5, weight: .thin)
+    }
+    private let summaryCurrency = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16.5, weight: .thin)
     }
     private lazy var saveBtn = UIButton().then {
@@ -124,15 +163,35 @@ class CalculateVC: UIViewController {
         super.viewDidLoad()
         
         configureUI()
-        loadTravelCurrency()
+        loadFromUserdefaults()
     }
     
     
     // MARK: UserDefaults에서 값 불러오기
-    private func loadTravelCurrency() {
+    private func loadFromUserdefaults() {
+        // 여행국가화폐 불러오기
         if let savedTravelCurrency = viewModel.getTravelCurrency() {
-            travelCurrency.text = savedTravelCurrency
+            travelCurrency.text = savedTravelCurrency // 최상단 선택된 여행국가 Label
+            
+            let travelCurrencyLast3 = String(savedTravelCurrency.suffix(3)) // 뒤에서 3글자. 화폐단위만 추출
+            
+            currency1.text = " \(travelCurrencyLast3)" // 현재 환율 칸
+            textFieldLabel.text = "\(travelCurrencyLast3)    " // 구매금액 입력칸
+            resultCurrency.text = " \(travelCurrencyLast3)" // 예상환급금액 칸
         }
+        
+        // 기준화폐 가져오기
+        if let savedBaseCurrency = viewModel.getBaseCurrency() {
+            let baseCurrencyLast3 = String(savedBaseCurrency.suffix(3)) // 뒤에서 3글자. 화폐단위만 추출
+            
+            currency2.text = " \(baseCurrencyLast3)" // 현재 환욜 칸
+        }
+        
+        // 부가세율 가져오기
+        if let (flag, policy) = viewModel.getRefundPolicyByCurrency() {
+            percent.text = "\(policy.vatRate)%"
+        }
+
     }
     
     
@@ -163,14 +222,14 @@ class CalculateVC: UIViewController {
         }
         
         currencyRateCard.addSubview(travelCurrency)
-        currencyRateCard.addSubview(rate)
+        currencyRateCard.addSubview(currencyStackView)
         
         travelCurrency.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.top.equalToSuperview().offset(16)
         }
-        rate.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(16)
+        currencyStackView.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview().inset(16)
         }
         
@@ -180,20 +239,28 @@ class CalculateVC: UIViewController {
         priceCard.snp.makeConstraints {
             $0.top.equalTo(currencyRateCard.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(120)
+            $0.height.equalTo(180)
         }
         
         priceCard.addSubview(priceLabel)
         priceCard.addSubview(priceTextField)
+        priceCard.addSubview(calculateBtn)
         
         priceLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(20)
+            $0.top.equalToSuperview().offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
+            
         }
         priceTextField.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(20)
+            $0.top.equalTo(priceLabel.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(50)
+        }
+        calculateBtn.snp.makeConstraints {
+            $0.top.equalTo(priceTextField.snp.bottom).offset(16)
+            $0.bottom.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(40)
         }
         
         
@@ -210,8 +277,8 @@ class CalculateVC: UIViewController {
         calculateCard.addSubview(percent)
         calculateCard.addSubview(separator)
         calculateCard.addSubview(expectation)
-        calculateCard.addSubview(result)
-        calculateCard.addSubview(summary)
+        calculateCard.addSubview(resultStackView)
+        calculateCard.addSubview(summaryNum)
         calculateCard.addSubview(btnStackView)
         
         vatLabel.snp.makeConstraints {
@@ -222,10 +289,6 @@ class CalculateVC: UIViewController {
             $0.top.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(20)
         }
-        result.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(20)
-        }
         separator.snp.makeConstraints  {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.top.equalTo(vatLabel.snp.bottom).offset(12)
@@ -233,10 +296,14 @@ class CalculateVC: UIViewController {
         }
         expectation.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
-            $0.bottom.equalTo(result.snp.top).offset(-10)
+            $0.bottom.equalTo(resultCurrency.snp.top).offset(-10)
         }
-        summary.snp.makeConstraints {
-            $0.top.equalTo(result.snp.bottom).offset(5)
+        resultStackView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().inset(20)
+        }
+        summaryNum.snp.makeConstraints {
+            $0.top.equalTo(resultCurrency.snp.bottom).offset(5)
             $0.leading.equalToSuperview().inset(20)
         }
         btnStackView.snp.makeConstraints {
@@ -252,6 +319,13 @@ class CalculateVC: UIViewController {
     private func checkBtnTapped() {
         let modal = RefundModal()
         present(modal, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: 계산하기 버튼 액션
+    @objc
+    private func calculateBtnTapped() {
+        print("클릭됨")
     }
     
 }
