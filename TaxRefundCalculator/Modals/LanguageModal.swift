@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-import SnapKit
+import Then
 
 protocol LanguageModalDelegate: AnyObject {
     func didSelectLanguage(_ Languages: String)
@@ -28,6 +28,7 @@ class LanguageModal: UIViewController {
         "🇫🇷 français",
         "🇪🇸 español",
         "🇺🇸 English",
+        "🇷🇺 русский язык"
     ]
     
     private let tableView = UITableView().then {
