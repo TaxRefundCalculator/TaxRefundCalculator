@@ -11,7 +11,7 @@ import Then
 
 class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, LanguageModalDelegate {
     
-    let viewModel = StartPageVM()
+    private let viewModel = StartPageVM()
     
     // MARK: 상단 제목 두개
     private let titleLabel = UILabel().then {
@@ -379,7 +379,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
             viewModel.saveBaseCurrency(country) // userDefaults에 저장
         case 2:
             travelCurrencytField.text = country
-            viewModel.saveTravelCurrency(country)
+            viewModel.saveTravelCurrency(country) // userDefaults에 저장
             // 선택된 country에서 환급 정책 출력
             let policy = viewModel.getRefundPolicy(for: country) // userDefaults에 저장
             print("📌 환급 정책: \(policy)")
