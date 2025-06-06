@@ -30,13 +30,13 @@ final class SavedView: UIView {
     }
 
     let totalPurchaseAmountLabel = UILabel().then {
-        $0.text = "0 EUR"
+        $0.text = "0"
         $0.textColor = .bgPrimary
         $0.font = .boldSystemFont(ofSize: 20)
     }
 
     let totalRefundAmountLabel = UILabel().then {
-        $0.text = "0 EUR"
+        $0.text = "0"
         $0.textColor = .bgPrimary
         $0.font = .boldSystemFont(ofSize: 20)
     }
@@ -67,16 +67,14 @@ final class SavedView: UIView {
         $0.layer.shadowRadius = 4
     }
 
-
-    let countryLabel = UILabel().then {
+    let dateRangeLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 16, weight: .medium)
-        $0.text = "국가"
     }
     
-    // 국가 변경 버튼
+    // 날짜 변경 버튼
     let changeButton = UIButton(type: .system).then {
         var config = UIButton.Configuration.plain()
-        config.title = "변경"
+        config.title = "날짜 변경"
         config.baseForegroundColor = .mainTeal
         $0.configuration = config
         $0.contentHorizontalAlignment = .right
@@ -102,7 +100,7 @@ final class SavedView: UIView {
         backgroundColor = .subButton
 
         addSubviews(totalContainer, filterContainer, tableView)
-        filterContainer.addSubviews(countryLabel, changeButton)
+        filterContainer.addSubviews(dateRangeLabel, changeButton)
 
         leftStack.addArrangedSubviews(totalPurchaseLabel, totalPurchaseAmountLabel)
         rightStack.addArrangedSubviews(totalRefundLabel, totalRefundAmountLabel)
@@ -137,13 +135,13 @@ final class SavedView: UIView {
             $0.height.equalTo(48)
         }
 
-        countryLabel.snp.makeConstraints {
+        dateRangeLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()
         }
         
         changeButton.snp.makeConstraints {
-            $0.leading.equalTo(countryLabel.snp.trailing).offset(4)
+            $0.leading.equalTo(dateRangeLabel.snp.trailing).offset(4)
             $0.centerY.equalToSuperview()
         }
 
