@@ -104,35 +104,6 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     }
     
     
-    // MARK: 온오프라인 모드 카드
-    private let networkCard = UIView().then {
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = 15
-        $0.layer.shadowColor = UIColor.black.cgColor
-        $0.layer.shadowOpacity = 0.1
-        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
-        $0.layer.shadowRadius = 6
-    }
-    private let networkLabel = UILabel().then {
-        $0.text = "인터넷 연결"
-        $0.font = UIFont.systemFont(ofSize: 17, weight: .ultraLight)
-    }
-    private let networkTextField = UITextField().then {
-        $0.text = "오프라인 모드"
-        $0.textColor = .downRed
-        $0.backgroundColor = .white
-        $0.borderStyle = .none
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0.0))
-        $0.leftViewMode = .always
-        $0.isUserInteractionEnabled = false // 커서 생성 방지
-    }
-    private let networkSwitch = UISwitch().then {
-        $0.isOn = false
-        $0.onTintColor = .mainTeal
-        $0.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
-    }
-    
-    
     // MARK: 환율 정보 카드
     private let exchangeRateCard = UIView().then {
         $0.backgroundColor = .white
@@ -282,37 +253,10 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         }
         
         
-        // MARK: 온오프라인 모드 카드
-        scrollContentView.addSubview(networkCard)
-        networkCard.snp.makeConstraints {
-            $0.top.equalTo(currencyCard.snp.bottom).offset(15)
-            $0.leading.trailing.equalToSuperview().inset(25)
-            $0.height.equalTo(65)
-        }
-        
-        networkCard.addSubview(networkLabel)
-        networkCard.addSubview(networkTextField)
-        networkCard.addSubview(networkSwitch)
-        
-        networkLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(20)
-            $0.centerY.equalToSuperview()
-            $0.height.equalTo(40)
-        }
-        networkTextField.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-            $0.height.equalTo(40)
-        }
-        networkSwitch.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(20)
-            $0.centerY.equalToSuperview()
-        }
-        
-        
         // MARK: 환율 정보 카드
         scrollContentView.addSubview(exchangeRateCard)
         exchangeRateCard.snp.makeConstraints {
-            $0.top.equalTo(networkCard.snp.bottom).offset(15)
+            $0.top.equalTo(currencyCard.snp.bottom).offset(15)
             $0.leading.trailing.equalToSuperview().inset(25)
             $0.height.equalTo(65)
         }
@@ -386,14 +330,6 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         default:
             break
         }
-    }
-    
-    
-    // MARK: 온오프라인 토글버튼 액션
-    @objc private func switchValueChanged(_ sender: UISwitch) {
-        let result = viewModel.getNetworkStatus(isOnline: sender.isOn)
-        networkTextField.text = result.text
-        networkTextField.textColor = result.color
     }
     
     
