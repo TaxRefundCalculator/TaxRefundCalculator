@@ -11,7 +11,7 @@ import Then
 
 class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
-    private let viewModel = SettingVM()
+    private let viewModel = SettingVM.shared // 싱글턴 패턴이기때문에 싱글턴 인스턴스. 새로 생성하면 안됨.
     
     // MARK: 앱 설정 카드
     private let settingCard = UIView().then {
@@ -398,10 +398,10 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         switch tag {
         case 0:
             nowBaseCurrency.text = country
-            viewModel.saveBaseCurrency(country) // userDefaults에 저장
+            SettingVM.shared.saveBaseCurrency(country) // userDefaults에 저장 및 Combine
         case 1:
             nowCurreny.text = country
-            viewModel.saveTravelCurrency(country) // userDefaults에 저장
+            SettingVM.shared.saveTravelCurrency(country) // userDefaults에 저장 및 Combine
         default:
             break
         }
