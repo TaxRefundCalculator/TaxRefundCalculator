@@ -13,4 +13,7 @@ struct SavedCard {
     let date: String             // 날짜
     let purchaseAmount: String   // 구매 금액
     let refundAmount: String     // 환금 금액
+    let convertedPurchaseAmount: Int
+    let convertedRefundAmount: Int
+    let convertedCurrency: String
 }
