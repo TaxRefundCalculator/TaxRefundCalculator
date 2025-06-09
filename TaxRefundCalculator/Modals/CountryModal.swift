@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-import SnapKit
+import Then
 
 protocol CountryModalDelegate: AnyObject {
     func didSelectCountry(_ country: String, forFieldTag tag: Int)
@@ -24,12 +24,10 @@ class CountryModal: UIViewController {
         "🇰🇷 대한민국 - KRW",
         "🇯🇵 일본 - JPY",
         "🇹🇭 태국 - THB",
-        "🇵🇭 필리핀 - PHP",
         "🇲🇾 말레이시아 - MYR",
         "🇸🇬 싱가포르 - SGD",
         "🇮🇩 인도네시아 - IDR",
         "🇦🇺 호주 - AUD",
-        "🇳🇿 뉴질랜드 - NZD",
         "🇹🇷 튀르키예 - TRY",
         "🇿🇦 남아프리카공화국 - ZAR",
         "🇨🇿 체코 - CZK",
@@ -51,11 +49,8 @@ class CountryModal: UIViewController {
         "🇩🇰 덴마크 - DKK",
         "🇳🇴 노르웨이 - NOK",
         "🇫🇮 핀란드 - EUR",
-        "🇺🇸 미국 - USD",
-        "🇨🇦 캐나다 - CAD",
         "🇲🇽 멕시코 - MXN",
         "🇧🇷 브라질 - BRL",
-        "🇬🇧 영국 - GBP",
         "🇵🇱 폴란드 - PLN",
         "🇷🇴 루마니아 - RON",
         "🇮🇸 아이슬란드 - ISK",

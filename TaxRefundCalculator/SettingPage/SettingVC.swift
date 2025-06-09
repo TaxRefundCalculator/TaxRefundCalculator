@@ -11,6 +11,8 @@ import Then
 
 class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
+    private let viewModel = SettingVM.shared // 싱글턴 패턴이기때문에 싱글턴 인스턴스. 새로 생성하면 안됨.
+    
     // MARK: 앱 설정 카드
     private let settingCard = UIView().then {
         $0.backgroundColor = .bgPrimary
@@ -34,7 +36,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         $0.font = .systemFont(ofSize: 17)
     }
     private let nowLanguage = UILabel().then {
-        $0.text = "한국어"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -49,7 +50,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         $0.font = .systemFont(ofSize: 17)
     }
     private let nowBaseCurrency = UILabel().then {
-        $0.text = "KRW"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -64,7 +64,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         $0.font = .systemFont(ofSize: 17)
     }
     private let nowCurreny = UILabel().then {
-        $0.text = "EUR"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -144,10 +143,34 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     }
     
     
+//    // MARK: 네비게이션 바 가리기
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: false)
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        loadFromUserdefaults()
+    }
+    
+    
+    // MARK: UserDefaults에서 값 불러오기
+    private func loadFromUserdefaults() {
+        // 언어 설정
+        if let loadLanguage = viewModel.getSelectedLanguage() {
+            nowLanguage.text = loadLanguage
+        }
+        // 기준화폐 설정
+        if let loadBaseCurrency = viewModel.getBaseCurrency() {
+            nowBaseCurrency.text = loadBaseCurrency
+        }
+        // 여행화폐 설정
+        if let loadTravelCurrency = viewModel.getTravelCurrency() {
+            nowCurreny.text = loadTravelCurrency
+        }
     }
     
     
@@ -367,14 +390,18 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     // 언어 선택 부분
     func didSelectLanguage(_ language: String) {
         nowLanguage.text = language
+        viewModel.saveSelectedLanguage(language) // userDefaults에 저장
+        
     }
     // 화폐 선택 부분들
     func didSelectCountry(_ country: String, forFieldTag tag: Int) {
         switch tag {
         case 0:
             nowBaseCurrency.text = country
+            SettingVM.shared.saveBaseCurrency(country) // userDefaults에 저장 및 Combine
         case 1:
             nowCurreny.text = country
+            SettingVM.shared.saveTravelCurrency(country) // userDefaults에 저장 및 Combine
         default:
             break
         }
