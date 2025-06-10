@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17B952C62DF3035F00487607 /* Fastis in Frameworks */ = {isa = PBXBuildFile; productRef = 17B952C52DF3035F00487607 /* Fastis */; };
 		3B5B837A2DBF4F6000268C99 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3B5B83792DBF4F6000268C99 /* SnapKit */; };
 		3B5B837D2DBF4F7600268C99 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3B5B837C2DBF4F7600268C99 /* Then */; };
 		3B5B83802DBF4FB100268C99 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3B5B837F2DBF4FB100268C99 /* RxCocoa */; };
@@ -47,6 +48,7 @@
 			files = (
 				3B5B83802DBF4FB100268C99 /* RxCocoa in Frameworks */,
 				3B5B83852DBF519400268C99 /* FirebaseCore in Frameworks */,
+				17B952C62DF3035F00487607 /* Fastis in Frameworks */,
 				3B5B837A2DBF4F6000268C99 /* SnapKit in Frameworks */,
 				3B5B83822DBF4FB100268C99 /* RxSwift in Frameworks */,
 				3B5B837D2DBF4F7600268C99 /* Then in Frameworks */,
@@ -99,6 +101,7 @@
 				3B5B83812DBF4FB100268C99 /* RxSwift */,
 				3B5B83842DBF519400268C99 /* FirebaseCore */,
 				3B5B83862DBF519400268C99 /* FirebaseFirestore */,
+				17B952C52DF3035F00487607 /* Fastis */,
 			);
 			productName = TaxRefundCalculator;
 			productReference = 3B5B835D2DBB40C300268C99 /* TaxRefundCalculator.app */;
@@ -133,6 +136,7 @@
 				3B5B837B2DBF4F7600268C99 /* XCRemoteSwiftPackageReference "Then" */,
 				3B5B837E2DBF4FB100268C99 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				3B5B83832DBF519400268C99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				17B952C42DF3035F00487607 /* XCRemoteSwiftPackageReference "Fastis" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3B5B835E2DBB40C300268C99 /* Products */;
@@ -362,6 +366,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		17B952C42DF3035F00487607 /* XCRemoteSwiftPackageReference "Fastis" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simla-tech/Fastis.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.0;
+			};
+		};
 		3B5B83782DBF4F6000268C99 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -397,6 +409,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		17B952C52DF3035F00487607 /* Fastis */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17B952C42DF3035F00487607 /* XCRemoteSwiftPackageReference "Fastis" */;
+			productName = Fastis;
+		};
 		3B5B83792DBF4F6000268C99 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3B5B83782DBF4F6000268C99 /* XCRemoteSwiftPackageReference "SnapKit" */;
