@@ -349,10 +349,11 @@ class CalculateVC: UIViewController {
     }
     
     
-    // MARK: 계산하기 버튼 액션
+    // MARK: 계산하기 버튼 액션 (현재 진입 테스트용 버튼)
     @objc
     private func calculateBtnTapped() {
-        print("클릭됨")
+        UserDefaults.standard.removeObject(forKey: "doneFirstStep")
+        print("삭제완료")
     }
     
 }
