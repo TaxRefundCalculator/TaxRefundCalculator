@@ -36,7 +36,6 @@ final class ExchangeVC: UIViewController {
         super.viewDidLoad()
         setupTableView()
         bindTableView()
-        bindSelection()
         bindRefreshButton()
         bindUpdateDateLabel()
         viewModel.fetchExchangeRates()
@@ -63,30 +62,6 @@ final class ExchangeVC: UIViewController {
         viewModel.latestUpdateDate
             .map { "최근갱신일: \($0)" }
             .bind(to: exchangeView.refreshLabel.rx.text)
-            .disposed(by: disposeBag)
-    }
-    
-    private func bindSelection() {
-        exchangeView.tableView.rx
-            .modelSelected(ExchangeRateModel.self)
-            .bind { [weak self] model in
-                let modalVC = ExchangeModalVC()
-
-                modalVC.modalPresentationStyle = .overFullScreen
-                modalVC.modalTransitionStyle = .crossDissolve
-
-                // 모달에 데이터 적용
-                modalVC.configure(
-                    flag: model.flag,
-                    currencyCode: model.currencyCode,
-                    currencyName: model.currencyName,
-                    currentRate: model.formattedRate,
-                    rateDiff: model.diffPercentage,
-                    isUp: model.isUp
-                )
-
-                self?.present(modalVC, animated: true, completion: nil)
-            }
             .disposed(by: disposeBag)
     }
     

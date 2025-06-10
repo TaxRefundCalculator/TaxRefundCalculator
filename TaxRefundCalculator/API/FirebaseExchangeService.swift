@@ -28,9 +28,7 @@ final class FirebaseExchangeService {
                 "currencyCode": rate.currencyCode,
                 "currencyName": rate.currencyName,
                 "flag": rate.flag,
-                "formattedRate": rate.formattedRate,
-                "diffPercentage": rate.diffPercentage,
-                "isUp": rate.isUp
+                "formattedRate": rate.formattedRate
             ]
             batch.setData(data, forDocument: docRef)
         }

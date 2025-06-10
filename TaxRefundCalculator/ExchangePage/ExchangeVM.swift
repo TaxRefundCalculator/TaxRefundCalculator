@@ -47,9 +47,7 @@ class ExchangeVM {
                     flag: $0.key.flagEmoji,
                     currencyCode: $0.key,
                     currencyName: $0.key.localizedName,
-                    formattedRate: $0.value.roundedString(),
-                    diffPercentage: "-",  /// TODO - 로직, 구현필요
-                    isUp: false
+                    formattedRate: $0.value.roundedString()
                 )
             }
             .sorted {

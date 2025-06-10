@@ -33,26 +33,6 @@ final class ExchangeCell: UITableViewCell {
         $0.font = .systemFont(ofSize: 16, weight: .semibold)
     }
 
-    private let diffLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 14)
-        $0.textAlignment = .right
-        $0.numberOfLines = 0
-    }
-
-    private let upArrow = UIImageView().then {
-        $0.image = UIImage(systemName: "arrow.up")?.withRenderingMode(.alwaysTemplate)
-        $0.tintColor = .upGreen
-        $0.contentMode = .scaleAspectFit
-        $0.isHidden = true
-    }
-
-    private let downArrow = UIImageView().then {
-        $0.image = UIImage(systemName: "arrow.down")?.withRenderingMode(.alwaysTemplate)
-        $0.tintColor = .downRed
-        $0.contentMode = .scaleAspectFit
-        $0.isHidden = true
-    }
-
     // MARK: - Initializers
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -71,7 +51,7 @@ final class ExchangeCell: UITableViewCell {
         contentView.backgroundColor = .bgPrimary
 
         contentView.addSubviews(flagLabel, currencyCodeLabel, currencyNameLabel,
-                             priceLabel, codeLabel, diffLabel, upArrow, downArrow)
+                             priceLabel, codeLabel)
 
         flagLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(16)
@@ -92,30 +72,12 @@ final class ExchangeCell: UITableViewCell {
 
         priceLabel.snp.makeConstraints {
             $0.trailing.equalTo(codeLabel.snp.leading).offset(-4)
-            $0.centerY.equalTo(currencyCodeLabel)
+            $0.centerY.equalToSuperview()
         }
 
         codeLabel.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(16)
-            $0.bottom.equalTo(priceLabel)
-        }
-
-        diffLabel.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(16)
-            $0.centerY.equalTo(currencyNameLabel)
-            $0.bottom.lessThanOrEqualToSuperview().inset(12)
-        }
-
-        upArrow.snp.makeConstraints {
-            $0.trailing.equalTo(diffLabel.snp.leading).offset(-2)
-            $0.centerY.equalTo(diffLabel)
-            $0.width.height.equalTo(10)
-        }
-
-        downArrow.snp.makeConstraints {
-            $0.trailing.equalTo(diffLabel.snp.leading).offset(-2)
-            $0.centerY.equalTo(diffLabel)
-            $0.width.height.equalTo(10)
+            $0.centerY.equalTo(priceLabel)
         }
     }
 
@@ -127,11 +89,5 @@ final class ExchangeCell: UITableViewCell {
         currencyNameLabel.text = model.currencyName
         priceLabel.text = model.formattedRate
         codeLabel.text = model.currencyCode
-        diffLabel.text = model.diffPercentage
-
-        let isUp = model.isUp
-        upArrow.isHidden = !isUp
-        downArrow.isHidden = isUp
-        diffLabel.textColor = isUp ? .upGreen : .downRed
     }
 }

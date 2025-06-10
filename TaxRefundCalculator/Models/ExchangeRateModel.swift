@@ -13,6 +13,4 @@ struct ExchangeRateModel {
     let currencyCode: String     // 통화
     let currencyName: String
     let formattedRate: String
-    let diffPercentage: String
-    let isUp: Bool
 }

@@ -49,6 +49,7 @@ final class ExchangeView: UIView {
         $0.estimatedRowHeight = 60
         $0.layer.cornerRadius = 16
         $0.clipsToBounds = true
+        $0.allowsSelection = false
     }
 
     // MARK: - Init
