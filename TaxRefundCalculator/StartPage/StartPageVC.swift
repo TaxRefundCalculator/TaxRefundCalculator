@@ -18,13 +18,13 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         $0.text = "택스리펀 환급금 예상 계산기"
         $0.textAlignment = .center
         $0.textColor = .primaryText
-        $0.font = UIFont.boldSystemFont(ofSize: 25)
+        $0.font = UIFont.boldSystemFont(ofSize: 27)
     }
     private let subLabel = UILabel().then {
         $0.text = "해외 쇼핑 시 세금 환급 금액을 미리 계산해보세요."
         $0.textAlignment = .center
         $0.textColor = .subText
-        $0.font = UIFont.systemFont(ofSize: 13)
+        $0.font = UIFont.systemFont(ofSize: 15)
     }
     
     
@@ -115,13 +115,13 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     }
     private let exchangeRateTitle = UILabel().then {
         $0.text = "환율 정보"
-        $0.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        $0.font = UIFont.systemFont(ofSize: 17)
         $0.textColor = .primaryText
     }
     private let exchangeRate = UILabel().then {
         $0.text = "1USD = 1400KRW"
-        $0.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        $0.textColor = .primaryText
+        $0.font = UIFont.systemFont(ofSize: 17)
+        $0.textColor = .mainTeal
     }
     
     
@@ -136,13 +136,13 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     }
     private let conditionLabel = UILabel().then {
         $0.text = "환급 조건"
-        $0.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        $0.font = UIFont.systemFont(ofSize: 17)
         $0.textColor = .primaryText
     }
     private let refundCondition = UILabel().then {
         $0.text = "테스트테스트테스트테스트테스트"
-        $0.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        $0.textColor = .primaryText
+        $0.font = UIFont.systemFont(ofSize: 17)
+        $0.textColor = .mainTeal
     }
     
     
