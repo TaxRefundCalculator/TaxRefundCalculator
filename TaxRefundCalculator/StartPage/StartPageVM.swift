@@ -20,8 +20,8 @@ class StartPageVM {
     func saveBaseCurrency(_ baseCurrency: String) {
         saveUserDefaults.saveBaseCurrency(baseCurrency)
     }
-    func saveTravelCurrency(_ travelCurrency: String) {
-        saveUserDefaults.saveTravelCountry(travelCurrency)
+    func saveTravelCountry(_ travelCountry: String) {
+        saveUserDefaults.saveTravelCountry(travelCountry)
     }
     func saveDoneFIrstStep(_ done: Bool) {
         saveUserDefaults.saveIsDoneFirstStep(true)

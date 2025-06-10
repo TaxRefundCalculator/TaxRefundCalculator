@@ -168,8 +168,8 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
             nowBaseCurrency.text = loadBaseCurrency
         }
         // 여행화폐 설정
-        if let loadTravelCurrency = viewModel.getTravelCurrency() {
-            nowCurreny.text = loadTravelCurrency
+        if let loadTravelCountry = viewModel.getTravelCountry() {
+            nowCurreny.text = loadTravelCountry
         }
     }
     
@@ -291,7 +291,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         let baseTap = UITapGestureRecognizer(target: self, action: #selector(didTapBaseCurrencyRow))
         baseCurrencyRow.addGestureRecognizer(baseTap)
         baseCurrencyRow.isUserInteractionEnabled = true
-        let travelTap = UITapGestureRecognizer(target: self, action: #selector(didTapTravelCurrencyRow))
+        let travelTap = UITapGestureRecognizer(target: self, action: #selector(didTapTravelCountryRow))
         currencyRow.addGestureRecognizer(travelTap)
         currencyRow.isUserInteractionEnabled = true
         let langTap = UITapGestureRecognizer(target: self, action: #selector(didTapLanguageRow))
@@ -364,7 +364,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         present(vc, animated: true, completion: nil)
     }
 
-    @objc private func didTapTravelCurrencyRow() {
+    @objc private func didTapTravelCountryRow() {
         let vc = CountryModal()
         vc.delegate = self
         vc.selectedTextFieldTag = currencyRow.tag
@@ -401,7 +401,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
             SettingVM.shared.saveBaseCurrency(country) // userDefaults에 저장 및 Combine
         case 1:
             nowCurreny.text = country
-            SettingVM.shared.saveTravelCurrency(country) // userDefaults에 저장 및 Combine
+            SettingVM.shared.saveTravelCountry(country) // userDefaults에 저장 및 Combine
         default:
             break
         }

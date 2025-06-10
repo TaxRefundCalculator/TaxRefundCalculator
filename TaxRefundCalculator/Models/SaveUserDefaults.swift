@@ -23,8 +23,8 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     func saveBaseCurrency(_ currency: String) { // 기준 통화
         UserDefaults.standard.set(currency, forKey: "baseCurrency")
     }
-    func saveTravelCountry(_ currency: String) { // 여행국가
-        UserDefaults.standard.set(currency, forKey: "travelCurrency")
+    func saveTravelCountry(_ country: String) { // 여행국가
+        UserDefaults.standard.set(country, forKey: "travelCountry")
     }
     func saveIsDoneFirstStep(_ done: Bool) { // 초기설정
         UserDefaults.standard.set(done, forKey: "doneFirstStep")
@@ -38,7 +38,7 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
         return UserDefaults.standard.string(forKey: "baseCurrency")
     }
     func getTravelCountry() -> String? { // 여행국가
-        return UserDefaults.standard.string(forKey: "travelCurrency")
+        return UserDefaults.standard.string(forKey: "travelCountry")
     }
     func getIsDoneFirstStep() -> Bool { // 초기설정
         return UserDefaults.standard.bool(forKey: "doneFirstStep")

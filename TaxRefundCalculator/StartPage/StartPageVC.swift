@@ -347,7 +347,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
             viewModel.saveBaseCurrency(country) // userDefaults에 저장
         case 2:
             travelCountryField.text = country
-            viewModel.saveTravelCurrency(country) // userDefaults에 저장
+            viewModel.saveTravelCountry(country) // userDefaults에 저장
             refundCondition.text = viewModel.refundConditionText(for: country)
         default:
             break

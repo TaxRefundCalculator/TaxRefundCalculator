@@ -33,7 +33,7 @@ class CalculateVC: UIViewController {
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.layer.shadowRadius = 6
     }
-    private let travelCurrency = UILabel().then {
+    private let travelCountry = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 19, weight: .bold)
         $0.textColor = .primaryText
     }
@@ -186,11 +186,11 @@ class CalculateVC: UIViewController {
             .store(in: &cancellables)
         
         // 여행 화폐 값 구독
-        settingVM.$travelCurrency
+        settingVM.$travelCountry
             .sink { [weak self] value in
                 guard !value.isEmpty else { return }
                 // 여행 화폐 관련 Label/필드 모두 업데이트
-                self?.travelCurrency.text = value           // 전체 (예: "🇯🇵 일본 - JPY")
+                self?.travelCountry.text = value           // 전체 (예: "🇯🇵 일본 - JPY")
                 let code = value.suffix(3)
                 self?.currency1.text = " \(code)"           // 환율표시 (예: " JPY")
                 self?.textFieldLabel.text = "\(code)    "   // 텍스트필드 우측 표시
@@ -202,11 +202,11 @@ class CalculateVC: UIViewController {
     // MARK: UserDefaults에서 값 불러오기
     private func loadFromUserdefaults() {
         // 여행국가화폐 불러오기
-        if let savedTravelCurrency = viewModel.getTravelCurrency3() {
-            travelCurrency.text = savedTravelCurrency.full
-            currency1.text = " \(savedTravelCurrency.code)"
-            textFieldLabel.text = "\(savedTravelCurrency.code)    "
-            resultCurrency.text = " \(savedTravelCurrency.code)"
+        if let savedTravelCountry = viewModel.getTravelCountry3() {
+            travelCountry.text = savedTravelCountry.full
+            currency1.text = " \(savedTravelCountry.code)"
+            textFieldLabel.text = "\(savedTravelCountry.code)    "
+            resultCurrency.text = " \(savedTravelCountry.code)"
         }
         
         // 기준화폐 가져오기
@@ -248,10 +248,10 @@ class CalculateVC: UIViewController {
             $0.height.equalTo(90)
         }
         
-        currencyRateCard.addSubview(travelCurrency)
+        currencyRateCard.addSubview(travelCountry)
         currencyRateCard.addSubview(currencyStackView)
         
-        travelCurrency.snp.makeConstraints {
+        travelCountry.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.top.equalToSuperview().offset(16)
         }
