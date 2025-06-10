@@ -140,7 +140,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         $0.textColor = .primaryText
     }
     private let refundCondition = UILabel().then {
-        $0.text = "테스트테스트테스트테스트테스트"
+        $0.text = "여행국가를 선택해주세요."
         $0.font = UIFont.systemFont(ofSize: 17)
         $0.textColor = .mainTeal
     }
@@ -337,7 +337,6 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     func didSelectLanguage(_ language: String) {
         languageField.text = language
         viewModel.saveSelectedLanguage(language) // userDefaults에 저장
-        print("유저디폴트에 \(language)가 선택된 언어로 저장됨")
     }
     
     // 화폐 선택
@@ -349,9 +348,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         case 2:
             travelCurrencytField.text = country
             viewModel.saveTravelCurrency(country) // userDefaults에 저장
-            // 선택된 country에서 환급 정책 출력
-            let policy = viewModel.getRefundPolicy(for: country) // userDefaults에 저장
-            print("📌 환급 정책: \(policy)")
+            refundCondition.text = viewModel.refundConditionText(for: country)
         default:
             break
         }

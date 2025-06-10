@@ -26,16 +26,24 @@ class StartPageVM {
 
     
     // MARK: 국기 인식 및 환급기준 매칭
-    func getRefundPolicy(for text: String) -> VATRefundPolicy? {
-        // 추출 가능한 이모지 범위로 가정: 국기 이모지 유니코드는 대부분 두 글자
+    func getRefundPolicy(for text: String) -> (flag: String, policy: VATRefundPolicy)? {
         let flagEmojis = RefundCondition.flagToPolicyMap.keys
-        
         for flag in flagEmojis {
-            if text.contains(flag) {
-                return RefundCondition.flagToPolicyMap[flag]
+            if text.contains(flag), let policy = RefundCondition.flagToPolicyMap[flag] {
+                return (flag, policy)
             }
         }
         
         return nil
+    }
+    
+    // MARK: 환급 조건 텍스트 불러오기
+    func refundConditionText(for country: String) -> String {
+        if let (_, policy) = getRefundPolicy(for: country) {
+            print("📌 환급 정책: \(policy)")
+            return "최소 \(Int(policy.minimumAmount)) \(policy.currencyCode) 구매 시 \(policy.vatRate)% 환급"
+        } else {
+            return "환급 정책을 찾을 수 없습니다."
+        }
     }
 }
