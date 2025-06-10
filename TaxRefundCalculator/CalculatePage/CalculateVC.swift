@@ -86,7 +86,7 @@ class CalculateVC: UIViewController {
     }
     private lazy var priceTextField = UITextField().then {
         $0.placeholder = "숫자만 입력해주세요."
-        $0.backgroundColor = .white
+        $0.backgroundColor = .subButton
         $0.borderStyle = .none // 기본 테두리를 제거
         $0.layer.borderWidth = 0.7 // 테두리 두께 설정
         $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)

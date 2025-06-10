@@ -17,13 +17,13 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     private let titleLabel = UILabel().then {
         $0.text = "택스리펀 환급금 예상 계산기"
         $0.textAlignment = .center
-        $0.textColor = .black
+        $0.textColor = .primaryText
         $0.font = UIFont.boldSystemFont(ofSize: 25)
     }
     private let subLabel = UILabel().then {
         $0.text = "해외 쇼핑 시 세금 환급 금액을 미리 계산해보세요."
         $0.textAlignment = .center
-        $0.textColor = .systemGray
+        $0.textColor = .subText
         $0.font = UIFont.systemFont(ofSize: 13)
     }
     
@@ -35,7 +35,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     // MARK: 언어 선택 카드
     private let languageCard = UIView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .bgPrimary
         $0.layer.cornerRadius = 15
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -45,12 +45,12 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     private let languageLabel = UILabel().then {
         $0.text = "언어 선택"
         $0.textAlignment = .left
-        $0.textColor = .systemGray
-        $0.font = UIFont.systemFont(ofSize: 16)
+        $0.textColor = .primaryText
+        $0.font = UIFont.systemFont(ofSize: 17)
     }
     private let languageField = UITextField().then {
         $0.placeholder = "언어를 선택하세요."
-        $0.backgroundColor = .white
+        $0.backgroundColor = .subButton
         $0.borderStyle = .none // 기본 테두리를 제거
         $0.layer.borderWidth = 0.7 // 테두리 두께 설정
         $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
@@ -62,7 +62,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     // MARK: 기준 통화 선택, 여행국가 선택 카드
     private let currencyCard = UIView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .bgPrimary
         $0.layer.cornerRadius = 15
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -73,12 +73,12 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     private let baseCurrency = UILabel().then {
         $0.text = "기준 통화 선택"
         $0.textAlignment = .left
-        $0.textColor = .systemGray
-        $0.font = UIFont.systemFont(ofSize: 16)
+        $0.textColor = .primaryText
+        $0.font = UIFont.systemFont(ofSize: 17)
     }
     let baseCurrencyField = UITextField().then {
         $0.placeholder = "기준화폐를 선택하세요."
-        $0.backgroundColor = .white
+        $0.backgroundColor = .subButton
         $0.borderStyle = .none // 기본 테두리를 제거
         $0.layer.borderWidth = 0.7 // 테두리 두께 설정
         $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
@@ -89,12 +89,12 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     private let travelCurrency = UILabel().then {
         $0.text = "여행국가 선택"
         $0.textAlignment = .left
-        $0.textColor = .systemGray
-        $0.font = UIFont.systemFont(ofSize: 16)
+        $0.textColor = .primaryText
+        $0.font = UIFont.systemFont(ofSize: 17)
     }
     private let travelCurrencytField = UITextField().then {
         $0.placeholder = "여행국가를 선택하세요."
-        $0.backgroundColor = .white
+        $0.backgroundColor = .subButton
         $0.borderStyle = .none // 기본 테두리를 제거
         $0.layer.borderWidth = 0.7 // 테두리 두께 설정
         $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
@@ -106,34 +106,45 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     // MARK: 환율 정보 카드
     private let exchangeRateCard = UIView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .bgPrimary
         $0.layer.cornerRadius = 15
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.layer.shadowRadius = 6
     }
-    private let exchangeRateLabel = UILabel().then {
+    private let exchangeRateTitle = UILabel().then {
         $0.text = "환율 정보"
-        $0.font = UIFont.systemFont(ofSize: 17, weight: .ultraLight)
+        $0.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        $0.textColor = .primaryText
     }
-    private let exchangeRateTextField = UITextField().then {
-        $0.backgroundColor = .white
-        $0.borderStyle = .none
-        $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0.0))
-        $0.rightViewMode = .always
+    private let exchangeRate = UILabel().then {
+        $0.text = "1USD = 1400KRW"
+        $0.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        $0.textColor = .primaryText
     }
     
     
     // MARK: 환급 조건 카드
     private let conditionCard = UIView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .bgPrimary
         $0.layer.cornerRadius = 15
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         $0.layer.shadowRadius = 6
     }
+    private let conditionLabel = UILabel().then {
+        $0.text = "환급 조건"
+        $0.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        $0.textColor = .primaryText
+    }
+    private let refundCondition = UILabel().then {
+        $0.text = "테스트테스트테스트테스트테스트"
+        $0.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        $0.textColor = .primaryText
+    }
+    
     
     
     // MARK: 시작버튼
@@ -261,18 +272,17 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
             $0.height.equalTo(65)
         }
         
-        exchangeRateCard.addSubview(exchangeRateLabel)
-        exchangeRateCard.addSubview(exchangeRateTextField)
+        exchangeRateCard.addSubview(exchangeRateTitle)
+        exchangeRateCard.addSubview(exchangeRate)
         
-        exchangeRateLabel.snp.makeConstraints {
+        exchangeRateTitle.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
             $0.centerY.equalToSuperview()
             $0.height.equalTo(40)
         }
-        exchangeRateTextField.snp.makeConstraints {
+        exchangeRate.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.height.equalTo(40)
-            $0.leading.equalTo(exchangeRateLabel.snp.trailing).offset(10)
             $0.trailing.equalToSuperview().inset(20)
         }
         
@@ -286,6 +296,21 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
             $0.height.equalTo(65)
             
         }
+        
+        conditionCard.addSubview(conditionLabel)
+        conditionCard.addSubview(refundCondition)
+        
+        conditionLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(20)
+            $0.centerY.equalToSuperview()
+            $0.height.equalTo(40)
+        }
+        refundCondition.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.height.equalTo(40)
+            $0.trailing.equalToSuperview().inset(20)
+        }
+
 
     }
     
