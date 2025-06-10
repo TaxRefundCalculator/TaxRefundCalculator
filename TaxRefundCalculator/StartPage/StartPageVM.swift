@@ -21,7 +21,10 @@ class StartPageVM {
         saveUserDefaults.saveBaseCurrency(baseCurrency)
     }
     func saveTravelCurrency(_ travelCurrency: String) {
-        saveUserDefaults.saveTravelCurrency(travelCurrency)
+        saveUserDefaults.saveTravelCountry(travelCurrency)
+    }
+    func saveDoneFIrstStep(_ done: Bool) {
+        saveUserDefaults.saveIsDoneFirstStep(true)
     }
 
     
@@ -33,7 +36,6 @@ class StartPageVM {
                 return (flag, policy)
             }
         }
-        
         return nil
     }
     
@@ -46,4 +48,12 @@ class StartPageVM {
             return "환급 정책을 찾을 수 없습니다."
         }
     }
+    
+    // MARK: 텍스트 필드들 빈칸 확인 예외처리
+    func isInputValid(language: String?, baseCurrency: String?, travelCountry: String?) -> Bool {
+        return !(language?.isEmpty ?? true)
+        && !(baseCurrency?.isEmpty ?? true)
+        && !(travelCountry?.isEmpty ?? true)
+    }
+    
 }

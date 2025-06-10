@@ -21,7 +21,7 @@ class CalculateVM {
         return saveUserDefaults.getBaseCurrency()
     }
     func getTravelCurrency() -> String? {
-        return saveUserDefaults.getTravelCurrency()
+        return saveUserDefaults.getTravelCountry()
     }
     func getRefundPolicyByCurrency() -> (flag: String, policy: VATRefundPolicy)? {
         guard let travelCurrency = getTravelCurrency() else { return nil }

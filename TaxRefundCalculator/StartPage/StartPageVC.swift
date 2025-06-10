@@ -86,13 +86,13 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         $0.leftViewMode = .always
         $0.tag = 1
     }
-    private let travelCurrency = UILabel().then {
+    private let travelCountry = UILabel().then {
         $0.text = "여행국가 선택"
         $0.textAlignment = .left
         $0.textColor = .primaryText
         $0.font = UIFont.systemFont(ofSize: 17)
     }
-    private let travelCurrencytField = UITextField().then {
+    private let travelCountryField = UITextField().then {
         $0.placeholder = "여행국가를 선택하세요."
         $0.backgroundColor = .subButton
         $0.borderStyle = .none // 기본 테두리를 제거
@@ -153,7 +153,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         $0.backgroundColor = .mainTeal
         $0.layer.cornerRadius = 15
         
-        $0.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(startBtnTapped), for: .touchUpInside)
     }
     
     
@@ -162,7 +162,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         
         languageField.delegate = self
         baseCurrencyField.delegate = self
-        travelCurrencytField.delegate = self
+        travelCountryField.delegate = self
         
         configureUI()
     }
@@ -241,8 +241,8 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         
         currencyCard.addSubview(baseCurrency)
         currencyCard.addSubview(baseCurrencyField)
-        currencyCard.addSubview(travelCurrency)
-        currencyCard.addSubview(travelCurrencytField)
+        currencyCard.addSubview(travelCountry)
+        currencyCard.addSubview(travelCountryField)
         
         baseCurrency.snp.makeConstraints {
             $0.top.equalToSuperview().inset(20)
@@ -253,12 +253,12 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
             $0.leading.trailing.equalToSuperview().inset(25)
             $0.height.equalTo(55)
         }
-        travelCurrency.snp.makeConstraints {
+        travelCountry.snp.makeConstraints {
             $0.top.equalTo(baseCurrencyField.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(25)
         }
-        travelCurrencytField.snp.makeConstraints {
-            $0.top.equalTo(travelCurrency.snp.bottom).offset(8)
+        travelCountryField.snp.makeConstraints {
+            $0.top.equalTo(travelCountry.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(25)
             $0.height.equalTo(55)
         }
@@ -346,7 +346,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
             baseCurrencyField.text = country
             viewModel.saveBaseCurrency(country) // userDefaults에 저장
         case 2:
-            travelCurrencytField.text = country
+            travelCountryField.text = country
             viewModel.saveTravelCurrency(country) // userDefaults에 저장
             refundCondition.text = viewModel.refundConditionText(for: country)
         default:
@@ -357,16 +357,24 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     // MARK: 시작하기버튼 액션
     @objc
-    private func startButtonTapped() {
-        let tabBar = TabBarController()
-        self.navigationController?.pushViewController(tabBar, animated: true)
+    private func startBtnTapped() {
+        let isValid = viewModel.isInputValid(
+            language: languageField.text,
+            baseCurrency: baseCurrencyField.text,
+            travelCountry: travelCountryField.text
+        )
 
+        if isValid {
+            let tabBar = TabBarController()
+            tabBar.modalPresentationStyle = .fullScreen
+            present(tabBar, animated: true, completion: nil)
+            viewModel.saveDoneFIrstStep(true)
+        } else {
+            let alert = UIAlertController(title: "입력 확인", message: "모든 항목을 선택해주세요.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     
 }
-
-// **TODO**
-// 키보드 내리기 등 설정하기
-// 뷰, 뷰컨 나누기
-
