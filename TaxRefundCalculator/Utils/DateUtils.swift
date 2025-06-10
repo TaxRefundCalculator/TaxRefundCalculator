@@ -8,10 +8,18 @@
 import Foundation
 
 enum DateUtils {
+    // 환율탭
     static func todayString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.timeZone = TimeZone(identifier: "Asia/Seoul")
         return formatter.string(from: Date())
+    }
+    
+    // 기록탭
+    static func toDate(_ dateString: String) -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd"
+        return formatter.date(from: dateString)
     }
 }
