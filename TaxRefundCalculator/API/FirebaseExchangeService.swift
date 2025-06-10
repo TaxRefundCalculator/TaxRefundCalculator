@@ -10,7 +10,6 @@ import FirebaseFirestore
 import RxSwift
 
 /// 파이어베이스 API
-
 final class FirebaseExchangeService {
     private let db: Firestore
     
