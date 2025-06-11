@@ -18,7 +18,7 @@ class SettingVM {
     
     // MARK: Combine - 기존화폐, 여행화폐 변경시 최신화를 위함
     @Published var baseCurrency: String = ""
-    @Published var travelCurrency: String = ""
+    @Published var travelCountry: String = ""
     
     let saveUserDefaults = SaveUserDefaults()
     
@@ -30,9 +30,9 @@ class SettingVM {
         saveUserDefaults.saveBaseCurrency(baseCurrency) // 유저디폴트에 저장
         self.baseCurrency = baseCurrency // @Published 갱신
     }
-    func saveTravelCurrency(_ travelCurrency: String) {
-        saveUserDefaults.saveTravelCurrency(travelCurrency) // 유저디폴트에 저장
-        self.travelCurrency = travelCurrency // @Published 갱신
+    func saveTravelCountry(_ travelCountry: String) {
+        saveUserDefaults.saveTravelCountry(travelCountry) // 유저디폴트에 저장
+        self.travelCountry = travelCountry // @Published 갱신
     }
     
     // MARK: userDefaults 조회 메서드
@@ -42,8 +42,8 @@ class SettingVM {
     func getBaseCurrency() -> String? {
         return saveUserDefaults.getBaseCurrency()
     }
-    func getTravelCurrency() -> String? {
-        return saveUserDefaults.getTravelCurrency()
+    func getTravelCountry() -> String? {
+        return saveUserDefaults.getTravelCountry()
     }
     
     
