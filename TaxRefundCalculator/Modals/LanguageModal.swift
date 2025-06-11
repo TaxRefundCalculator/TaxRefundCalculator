@@ -95,6 +95,7 @@ extension LanguageModal: UITableViewDataSource {
 extension LanguageModal: UITableViewDelegate {
     // 셀 선택 시 행동
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("선택한 언어: \(Languages[indexPath.row])")
         let selectedLanguage = Languages[indexPath.row]
         delegate?.didSelectLanguage(selectedLanguage)
         tableView.deselectRow(at: indexPath, animated: true)
