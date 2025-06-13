@@ -19,9 +19,4 @@ extension String {
         }
         return scalars.map { String($0) }.joined()
     }
-
-    var localizedName: String {
-        let locale = Locale.current
-        return locale.localizedString(forCurrencyCode: self) ?? self
-    }
 }

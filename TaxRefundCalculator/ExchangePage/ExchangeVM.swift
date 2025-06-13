@@ -63,27 +63,27 @@ class ExchangeVM {
     private func applyToRelay(model: ExchangeAPIModel) {
         let priorityCodes = ["USD", "EUR", "JPY", "KRW", "GBP", "AUD", "CAD"]
         let excludedCodes: Set<String> = ["CNY"] // 제외할 통화 걸러내기
-        
-        let models = model.rates
+
+        let models: [ExchangeRateModel] = model.rates
             .filter { !excludedCodes.contains($0.key) }
-            .map { (code, _) in
+            .map { (code, _) -> ExchangeRateModel in
+                let unit = code.displayUnit
                 var value: Double = 0
                 if code == baseCurrency {
-                    value = 1.0
-                } else if let baseToKRW = model.rates[baseCurrency], let baseToCode = model.rates[code] {
-                    value = baseToKRW / baseToCode
+                    value = Double(unit)
+                } else if let baseToBase = model.rates[baseCurrency], let baseToCode = model.rates[code] {
+                    value = baseToBase / baseToCode * Double(unit)
                 }
+                let formatted = (unit > 1 ? "\(unit) \(code)" : "1 \(code)") + " = " + value.roundedString(fractionDigits: 2) + " \(baseCurrency)"
                 return ExchangeRateModel(
                     flag: code.flagEmoji,
                     currencyCode: code,
-                    currencyName: code.localizedName,
-                    formattedRate: value.roundedString(fractionDigits: 2) + " \(baseCurrency)"
+                    formattedRate: formatted
                 )
             }
-            .sorted {
-                // 우선순위 위주로 정렬
-                let idx1 = priorityCodes.firstIndex(of: $0.currencyCode) ?? Int.max
-                let idx2 = priorityCodes.firstIndex(of: $1.currencyCode) ?? Int.max
+            .sorted { (a, b) in
+                let idx1 = priorityCodes.firstIndex(of: a.currencyCode) ?? Int.max
+                let idx2 = priorityCodes.firstIndex(of: b.currencyCode) ?? Int.max
                 return idx1 < idx2
             }
         self.exchangeRates.accept(models)

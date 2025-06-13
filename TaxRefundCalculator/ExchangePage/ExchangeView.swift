@@ -35,8 +35,7 @@ final class ExchangeView: UIView {
         $0.separatorStyle = .singleLine
         $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         $0.backgroundColor = .bgPrimary
-        $0.rowHeight = UITableView.automaticDimension
-        $0.estimatedRowHeight = 60
+        $0.rowHeight = 52
         $0.layer.cornerRadius = 16
         $0.clipsToBounds = true
         $0.allowsSelection = false

@@ -25,7 +25,6 @@ final class FirebaseExchangeService {
             let docRef = db.collection("exchangeRates").document(today).collection("rates").document(rate.currencyCode)
             let data: [String: Any] = [
                 "currencyCode": rate.currencyCode,
-                "currencyName": rate.currencyName,
                 "flag": rate.flag,
                 "formattedRate": rate.formattedRate
             ]
