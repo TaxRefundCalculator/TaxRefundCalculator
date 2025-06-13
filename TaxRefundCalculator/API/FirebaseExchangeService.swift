@@ -10,7 +10,6 @@ import FirebaseFirestore
 import RxSwift
 
 /// 파이어베이스 API
-
 final class FirebaseExchangeService {
     private let db: Firestore
     
@@ -26,11 +25,8 @@ final class FirebaseExchangeService {
             let docRef = db.collection("exchangeRates").document(today).collection("rates").document(rate.currencyCode)
             let data: [String: Any] = [
                 "currencyCode": rate.currencyCode,
-                "currencyName": rate.currencyName,
                 "flag": rate.flag,
-                "formattedRate": rate.formattedRate,
-                "diffPercentage": rate.diffPercentage,
-                "isUp": rate.isUp
+                "formattedRate": rate.formattedRate
             ]
             batch.setData(data, forDocument: docRef)
         }
