@@ -29,10 +29,6 @@ final class ExchangeCell: UITableViewCell {
         $0.numberOfLines = 0
     }
 
-    private let codeLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 16, weight: .semibold)
-    }
-
     // MARK: - Initializers
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -51,7 +47,7 @@ final class ExchangeCell: UITableViewCell {
         contentView.backgroundColor = .bgPrimary
 
         contentView.addSubviews(flagLabel, currencyCodeLabel, currencyNameLabel,
-                             priceLabel, codeLabel)
+                             priceLabel)
 
         flagLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(16)
@@ -71,13 +67,8 @@ final class ExchangeCell: UITableViewCell {
         }
 
         priceLabel.snp.makeConstraints {
-            $0.trailing.equalTo(codeLabel.snp.leading).offset(-4)
-            $0.centerY.equalToSuperview()
-        }
-
-        codeLabel.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(16)
-            $0.centerY.equalTo(priceLabel)
+            $0.centerY.equalToSuperview()
         }
     }
 
@@ -88,6 +79,5 @@ final class ExchangeCell: UITableViewCell {
         currencyCodeLabel.text = model.currencyCode
         currencyNameLabel.text = model.currencyName
         priceLabel.text = model.formattedRate
-        codeLabel.text = model.currencyCode
     }
 }
