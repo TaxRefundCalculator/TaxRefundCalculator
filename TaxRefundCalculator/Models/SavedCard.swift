@@ -7,13 +7,11 @@
 
 import Foundation
 
-struct SavedCard {
-    let flag: String             // 국기
-    let country: String          // 나라이름
-    let date: String             // 날짜
-    let purchaseAmount: String   // 구매 금액
-    let refundAmount: String     // 환금 금액
-    let convertedPurchaseAmount: Int
-    let convertedRefundAmount: Int
-    let convertedCurrency: String
+struct SavedCard: Codable {
+    // 임시로 모든값은 String. 추후 가격, 환급액, 기준화폐로 변환된 환급액 부분은 더블로 변경해야함
+    let country: String
+    let exchangeRate: String
+    let price: Double
+    let refundPrice: Double
+    let convertedRefundPrice: Double
 }
