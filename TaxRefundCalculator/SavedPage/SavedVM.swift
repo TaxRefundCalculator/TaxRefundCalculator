@@ -45,13 +45,13 @@ final class SavedVM {
         selectedDateRangeRelay.accept((start, end))
     }
     
-    func saveMockData() {
-        let mock = [
-            SavedCard(flag: "🇺🇸", country: "미국", date: "2025.05.20", purchaseAmount: "100 USD", refundAmount: "8.33 USD", convertedPurchaseAmount: 1400, convertedRefundAmount: 300, convertedCurrency: "KRW"),
-            SavedCard(flag: "🇩🇪", country: "독일", date: "2025.05.21", purchaseAmount: "400 EUR" , refundAmount: "66.67 EUR", convertedPurchaseAmount: 1400, convertedRefundAmount: 1000, convertedCurrency: "KRW"),
-            SavedCard(flag: "🇺🇸", country: "미국", date: "2025.05.27", purchaseAmount: "200 USD", refundAmount: "16.66 USD", convertedPurchaseAmount: 2800, convertedRefundAmount: 500, convertedCurrency: "KRW"),
-            SavedCard(flag: "🇩🇪", country: "독일", date: "2025.05.28", purchaseAmount: "200 EUR", refundAmount: "33.33 EUR", convertedPurchaseAmount: 2800, convertedRefundAmount: 666, convertedCurrency: "KRW")
-        ]
-        savedCardsRelay.accept(mock)
+    func loadSavedCards() {
+        let grouped = SaveUserDefaults().loadGroupedCards()
+        // 1. 키 기준 최신순 그룹 정렬
+        let sortedGrouped = grouped.sorted { $0.key > $1.key }
+        // 2. 모든 SavedCard 펼치기
+        let allCards = sortedGrouped.flatMap { $0.cards }
+        // 3. 필요하다면, 카드 내부의 날짜 기준으로 한 번 더 정렬
+        savedCardsRelay.accept(allCards)
     }
 }
