@@ -13,16 +13,6 @@ final class ExchangeView: UIView {
 
     // MARK: - UI
 
-    /// 검색 - 네비바 검색으로 변경 예정
-    let searchTextField = UITextField().then {
-        $0.placeholder = "통화명 또는 국가명 검색"
-        $0.borderStyle = .roundedRect
-        $0.backgroundColor = .bgPrimary
-        $0.clearButtonMode = .whileEditing
-        $0.returnKeyType = .done
-        $0.font = .systemFont(ofSize: 15)
-    }
-
     private let titleLabel = UILabel().then {
         $0.text = "실시간 환율정보"
         $0.font = .systemFont(ofSize: 18, weight: .medium)
@@ -45,10 +35,10 @@ final class ExchangeView: UIView {
         $0.separatorStyle = .singleLine
         $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         $0.backgroundColor = .bgPrimary
-        $0.rowHeight = UITableView.automaticDimension
-        $0.estimatedRowHeight = 60
+        $0.rowHeight = 52
         $0.layer.cornerRadius = 16
         $0.clipsToBounds = true
+        $0.allowsSelection = false
     }
 
     // MARK: - Init
@@ -66,16 +56,10 @@ final class ExchangeView: UIView {
 
     private func setupUI() {
         backgroundColor = .subButton
-        addSubviews(searchTextField, titleLabel, refreshLabel, refreshButton, tableView)
-
-        searchTextField.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(16)
-            $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(40)
-        }
+        addSubviews(titleLabel, refreshLabel, refreshButton, tableView)
 
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(searchTextField.snp.bottom).offset(24)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(16)
             $0.leading.equalToSuperview().inset(16)
         }
         
