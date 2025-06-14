@@ -349,6 +349,7 @@ class CalculateVC: UIViewController {
         let card = SavedCard(
             country: country,
             exchangeRate: exchangeRate,
+            date: "123",
             price: price,
             refundPrice: refund,
             convertedRefundPrice: converted
