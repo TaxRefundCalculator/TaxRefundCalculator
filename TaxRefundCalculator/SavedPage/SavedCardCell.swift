@@ -153,12 +153,12 @@ final class SavedRecordCell: UITableViewCell {
     }
     
     func configure(with model: SavedCard) {
-        flagLabel.text = model.flag
-        countryLabel.text = model.country
+        flagLabel.text = model.country
+        countryLabel.text = model.exchangeRate
         dateLabel.text = model.date
-        purchaseAmountLabel.text = model.purchaseAmount
-        convertedPurchaseLabel.text = "\(model.convertedPurchaseAmount) \(model.convertedCurrency)"
-        refundAmountLabel.text = model.refundAmount
-        convertedRefundLabel.text = "\(model.convertedRefundAmount) \(model.convertedCurrency)"
+        purchaseAmountLabel.text = "\(model.price)"
+        convertedPurchaseLabel.text = "\(model.refundPrice)"
+        refundAmountLabel.text = "\(model.refundPrice)"
+        convertedRefundLabel.text = "\(model.convertedRefundPrice)"
     }
 }
