@@ -23,6 +23,8 @@ class CountryModal: UIViewController {
     private let countries = [
         "🇰🇷 대한민국 - KRW",
         "🇯🇵 일본 - JPY",
+        "🇺🇸 미국 - USD",
+        "🇬🇧 영국 - GBP",
         "🇹🇭 태국 - THB",
         "🇲🇾 말레이시아 - MYR",
         "🇸🇬 싱가포르 - SGD",
@@ -119,16 +121,28 @@ extension CountryModal: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate (셀 선택시)
 extension CountryModal: UITableViewDelegate {
-    // 셀 선택 시 행동
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("선택한 국가: \(countries[indexPath.row])")
         let selectedCountry = countries[indexPath.row]
+        print("\(countries[indexPath.row])") // 선택된 국가
+        
         if let tag = selectedTextFieldTag {
+            // tag == 2 (여행국가)에서만 USD/GBP 제한 적용
+            if tag == 2 && (selectedCountry.contains("USD") || selectedCountry.contains("GBP")) {
+                let alert = UIAlertController(
+                    title: "알림",
+                    message: "해당 국가는 택스리펀을 하지 않습니다.",
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+                tableView.deselectRow(at: indexPath, animated: true)
+                return
+            }
             delegate?.didSelectCountry(selectedCountry, forFieldTag: tag)
         }
-        tableView.deselectRow(at: indexPath, animated: true) // 선택 해제
+        tableView.deselectRow(at: indexPath, animated: true)
         dismiss(animated: true)
     }
 }

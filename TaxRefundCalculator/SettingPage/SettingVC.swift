@@ -143,12 +143,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     }
     
     
-//    // MARK: 네비게이션 바 가리기
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(true, animated: false)
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -284,8 +278,8 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         }
         
         // Set tag values for baseCurrencyRow and currencyRow
-        baseCurrencyRow.tag = 0
-        currencyRow.tag = 1
+        baseCurrencyRow.tag = 1 // 시작화면에서 태그 1번으로 처리했기때문에 1번. 0번은 언어
+        currencyRow.tag = 2 // 시작화면에서 태그 2번으로 예외처리했기 때문에 2번으로 할당
 
         //MARK: 각 row 클릭시
         let baseTap = UITapGestureRecognizer(target: self, action: #selector(didTapBaseCurrencyRow))
@@ -396,10 +390,10 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     // 화폐 선택 부분들
     func didSelectCountry(_ country: String, forFieldTag tag: Int) {
         switch tag {
-        case 0:
+        case 1:
             nowBaseCurrency.text = country
             SettingVM.shared.saveBaseCurrency(country) // userDefaults에 저장 및 Combine
-        case 1:
+        case 2:
             nowCurreny.text = country
             SettingVM.shared.saveTravelCountry(country) // userDefaults에 저장 및 Combine
         default:
