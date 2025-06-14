@@ -51,4 +51,14 @@ class CalculateVM {
         return getBaseCurrency().map { String($0.suffix(3)) }
     }
     
+    
+    // MARK: 계산 기록 저장하기
+    func saveCard(_ card: SavedCard) {
+        saveUserDefaults.saveCards([card])
+    }
+    
+    // 디버깅용
+    func loadGroupedCards() -> [(String, [SavedCard])] {
+        return saveUserDefaults.loadGroupedCards()
+    }
 }
