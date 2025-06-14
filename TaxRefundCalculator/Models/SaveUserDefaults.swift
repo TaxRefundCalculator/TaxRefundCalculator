@@ -80,6 +80,7 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
         return result
     }
 
+    // MARK: 키와 날짜로 중복방지
     // 고유 키 생성
     private func makeUniqueKey() -> String {
         let date = currentDateString()
@@ -93,7 +94,8 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
         }
         return key
     }
-
+    
+    // 구분용 날짜
     private func currentDateString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -103,7 +105,5 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     private func loadAllKeys() -> [String] {
         return userDefaults.stringArray(forKey: listKey) ?? []
     }
-    
-    // MARK: 저장 확인용
    
 }

@@ -46,36 +46,6 @@ class CalculateVC: UIViewController {
     private var currency2Num = 999
     private var currency2 = "화폐2"
     
-//    private let currency1Num = UILabel().then {
-//        $0.text = "1"
-//        $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-//        $0.textColor = .subText
-//    }
-//    private let currency1 = UILabel().then {
-//        $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-//        $0.textColor = .subText
-//    }
-//    private let equal = UILabel().then {
-//        $0.text = " = "
-//        $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-//        $0.textColor = .subText
-//    }
-//    private let currency2Num = UILabel().then {
-//        $0.text = "999"
-//        $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-//        $0.textColor = .subText
-//    }
-//    private let currency2 = UILabel().then {
-//        $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-//        $0.textColor = .subText
-//    }
-//    private lazy var currencyStackView = UIStackView(arrangedSubviews: [currency1Num, currency1, equal, currency2Num, currency2]).then {
-//        $0.axis = .horizontal
-//        $0.spacing = 5
-//        $0.distribution = .fillProportionally
-//    }
-    
-    
     // MARK: 구매금액 입력 카드
     private let priceCard = UIView().then {
         $0.backgroundColor = .bgPrimary
@@ -184,30 +154,6 @@ class CalculateVC: UIViewController {
     }
     
     // MARK: Combine으로 기준 화폐, 여행화폐 최신화
-//    private func updateFromSetting() {
-//        // 기준 화폐 값 구독 (SettingVM의 baseCurrency가 바뀌면 이 코드가 실행됨)
-//        settingVM.$baseCurrency
-//            .sink { [weak self] value in
-//                guard !value.isEmpty else { return }
-//                // 기준 화폐 라벨 등 UI 업데이트
-//                let code = value.suffix(3)
-//                self?.currency2.text = "\(code)"
-//            }
-//            .store(in: &cancellables)
-//        
-//        // 여행 화폐 값 구독
-//        settingVM.$travelCountry
-//            .sink { [weak self] value in
-//                guard !value.isEmpty else { return }
-//                // 여행 화폐 관련 Label/필드 모두 업데이트
-//                self?.travelCountry.text = value           // 전체 (예: "🇯🇵 일본 - JPY")
-//                let code = value.suffix(3)
-//                self?.currency1.text = " \(code)"           // 환율표시 (예: " JPY")
-//                self?.textFieldLabel.text = "\(code)    "   // 텍스트필드 우측 표시
-//                self?.resultCurrency.text = " \(code)"      // 예상 환급금액 통화 표시
-//            }
-//            .store(in: &cancellables) // 구독관리로 메모리관리
-//    }
     private func updateFromSetting() {
         // 기준 화폐 값 구독 (SettingVM의 baseCurrency가 바뀌면 이 코드가 실행됨)
         settingVM.$baseCurrency
