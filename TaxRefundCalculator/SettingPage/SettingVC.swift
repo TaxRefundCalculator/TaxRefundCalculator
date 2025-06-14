@@ -11,6 +11,8 @@ import Then
 
 class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
+    private let viewModel = SettingVM.shared // 싱글턴 패턴이기때문에 싱글턴 인스턴스. 새로 생성하면 안됨.
+    
     // MARK: 앱 설정 카드
     private let settingCard = UIView().then {
         $0.backgroundColor = .bgPrimary
@@ -34,7 +36,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         $0.font = .systemFont(ofSize: 17)
     }
     private let nowLanguage = UILabel().then {
-        $0.text = "한국어"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -49,7 +50,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         $0.font = .systemFont(ofSize: 17)
     }
     private let nowBaseCurrency = UILabel().then {
-        $0.text = "KRW"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -64,7 +64,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         $0.font = .systemFont(ofSize: 17)
     }
     private let nowCurreny = UILabel().then {
-        $0.text = "EUR"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -154,6 +153,24 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         super.viewDidLoad()
         
         configureUI()
+        loadFromUserdefaults()
+    }
+    
+    
+    // MARK: UserDefaults에서 값 불러오기
+    private func loadFromUserdefaults() {
+        // 언어 설정
+        if let loadLanguage = viewModel.getSelectedLanguage() {
+            nowLanguage.text = loadLanguage
+        }
+        // 기준화폐 설정
+        if let loadBaseCurrency = viewModel.getBaseCurrency() {
+            nowBaseCurrency.text = loadBaseCurrency
+        }
+        // 여행화폐 설정
+        if let loadTravelCountry = viewModel.getTravelCountry() {
+            nowCurreny.text = loadTravelCountry
+        }
     }
     
     
@@ -274,7 +291,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         let baseTap = UITapGestureRecognizer(target: self, action: #selector(didTapBaseCurrencyRow))
         baseCurrencyRow.addGestureRecognizer(baseTap)
         baseCurrencyRow.isUserInteractionEnabled = true
-        let travelTap = UITapGestureRecognizer(target: self, action: #selector(didTapTravelCurrencyRow))
+        let travelTap = UITapGestureRecognizer(target: self, action: #selector(didTapTravelCountryRow))
         currencyRow.addGestureRecognizer(travelTap)
         currencyRow.isUserInteractionEnabled = true
         let langTap = UITapGestureRecognizer(target: self, action: #selector(didTapLanguageRow))
@@ -347,7 +364,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         present(vc, animated: true, completion: nil)
     }
 
-    @objc private func didTapTravelCurrencyRow() {
+    @objc private func didTapTravelCountryRow() {
         let vc = CountryModal()
         vc.delegate = self
         vc.selectedTextFieldTag = currencyRow.tag
@@ -373,14 +390,18 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     // 언어 선택 부분
     func didSelectLanguage(_ language: String) {
         nowLanguage.text = language
+        viewModel.saveSelectedLanguage(language) // userDefaults에 저장
+        
     }
     // 화폐 선택 부분들
     func didSelectCountry(_ country: String, forFieldTag tag: Int) {
         switch tag {
         case 0:
             nowBaseCurrency.text = country
+            SettingVM.shared.saveBaseCurrency(country) // userDefaults에 저장 및 Combine
         case 1:
             nowCurreny.text = country
+            SettingVM.shared.saveTravelCountry(country) // userDefaults에 저장 및 Combine
         default:
             break
         }

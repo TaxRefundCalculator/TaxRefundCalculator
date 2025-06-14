@@ -20,33 +20,35 @@ class CalculateVM {
     func getBaseCurrency() -> String? {
         return saveUserDefaults.getBaseCurrency()
     }
-    func getTravelCurrency() -> String? {
-        return saveUserDefaults.getTravelCurrency()
+    func getTravelCountry() -> String? {
+        return saveUserDefaults.getTravelCountry()
     }
     func getRefundPolicyByCurrency() -> (flag: String, policy: VATRefundPolicy)? {
-        guard let travelCurrency = getTravelCurrency() else { return nil }
+        guard let travelCountry = getTravelCountry() else { return nil }
         
-        print("유저디폴트에 저장된 국가: \(travelCurrency)")
+        print("유저디폴트에 저장된 국가: \(travelCountry)")
         
-        let flag = travelCurrency.first.map { String($0) } ?? ""
+        let flag = travelCountry.first.map { String($0) } ?? ""
         print("추출된 국기: \(flag)")
         print("flagToPolicyMap keys: \(RefundCondition.flagToPolicyMap.keys)")
         return RefundCondition.flagToPolicyMap[flag].map { (flag, $0) }
     }
     
+    // MARK: 유저디폴트에 있는 화폐들, 부가세 띄우기
+    // 부가세
+    func getVatRate() -> String? {
+        return getRefundPolicyByCurrency().map { "\($0.policy.vatRate)%" }
+    }
     
-    // MARK: 국기 인식 및 환급기준 매칭
-    func getRefundPolicy(for text: String) -> VATRefundPolicy? {
-        // 추출 가능한 이모지 범위로 가정: 국기 이모지 유니코드는 대부분 두 글자
-        let flagEmojis = RefundCondition.flagToPolicyMap.keys
-        
-        for flag in flagEmojis {
-            if text.contains(flag) {
-                return RefundCondition.flagToPolicyMap[flag]
-            }
-        }
-        
-        return nil
+    // 여행국가 통화
+    func getTravelCountry3() -> (full: String, code: String)? {
+        guard let currency = getTravelCountry() else { return nil }
+        return (currency, String(currency.suffix(3))) // 뒤에서 3글자만 추출
+    }
+    
+    // 기준통화
+    func getBaseCurrency3() -> String? {
+        return getBaseCurrency().map { String($0.suffix(3)) }
     }
     
 }
