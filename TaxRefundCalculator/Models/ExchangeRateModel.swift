@@ -8,11 +8,9 @@
 import Foundation
 import UIKit
 
+// 환율탭 UI 표시 모델
 struct ExchangeRateModel {
     let flag: String             // 국기
     let currencyCode: String     // 통화
-    let currencyName: String
     let formattedRate: String
-    let diffPercentage: String
-    let isUp: Bool
 }
