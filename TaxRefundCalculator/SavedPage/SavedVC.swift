@@ -24,7 +24,6 @@ final class SavedVC: UIViewController {
         super.viewDidLoad()
         bindTableView()
         bindTotalAmount()
-        viewModel.saveMockData()
         
         // 선택된 날짜를 dateRangeLabel에 바인딩
         viewModel.selectedDateRange
@@ -46,7 +45,11 @@ final class SavedVC: UIViewController {
                 self?.showDatePicker()
             })
             .disposed(by: disposeBag)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.loadSavedCards() // 기록 새로 불러오기
     }
     
     private func bindTableView() {
@@ -63,9 +66,10 @@ final class SavedVC: UIViewController {
     private func bindTotalAmount() {
         viewModel.filteredCards
             .map { cards in
-                let totalPurchase = cards.reduce(0) { $0 + $1.convertedPurchaseAmount }
-                let totalRefund = cards.reduce(0) { $0 + $1.convertedRefundAmount }
-                let currency = cards.first?.convertedCurrency ?? "KRW"
+                let totalPurchase = cards.reduce(0) { $0 + $1.price }
+                let totalRefund = cards.reduce(0) { $0 + $1.convertedRefundPrice }
+//                let currency = cards.first?.convertedCurrency ?? "KRW"
+                let currency = ""
                 return ("\(totalPurchase) \(currency)", "\(totalRefund) \(currency)")
             }
             .observe(on: MainScheduler.instance)
