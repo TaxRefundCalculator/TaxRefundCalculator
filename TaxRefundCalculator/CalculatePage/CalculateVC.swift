@@ -101,12 +101,39 @@ class CalculateVC: UIViewController {
     private let separator = UIView().then {
         $0.backgroundColor = .placeholder
     }
+  
+    private let boughtPrice = UILabel().then {
+        $0.text = "구매금액"
+        $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+    }
+    private let priceNum = UILabel().then {
+        $0.text = "0"
+        $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+        $0.textColor = .mainTeal
+    }
+    private let priceCurrency = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+        $0.textColor = .mainTeal
+    }
+    private let conversion = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 16.5, weight: .thin)
+    }
+    private lazy var priceStackView = UIStackView(arrangedSubviews: [priceNum, priceCurrency]).then {
+        $0.axis = .horizontal
+        $0.spacing = 5
+        $0.distribution = .fill
+    }
+    
+    private let separator2 = UIView().then {
+        $0.backgroundColor = .placeholder
+    }
+    
     private let expectation = UILabel().then {
         $0.text = "예상 환급 금액"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
     }
     private let resultNum = UILabel().then {
-        $0.text = "10.00"
+        $0.text = "0"
         $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         $0.textColor = .mainTeal
     }
@@ -120,7 +147,6 @@ class CalculateVC: UIViewController {
         $0.distribution = .fill
     }
     private let summaryNum = UILabel().then {
-        $0.text = "약 0 KRW"
         $0.font = UIFont.systemFont(ofSize: 16.5, weight: .thin)
     }
     private let summaryCurrency = UILabel().then {
@@ -162,6 +188,8 @@ class CalculateVC: UIViewController {
                 // 기준 화폐 라벨 등 UI 업데이트
                 let code = value.suffix(3)
                 self?.currency2 = "\(code)"
+                self?.conversion.text = "약 0 \(code)"
+                self?.summaryNum.text = "약 0 \(code)"
                 self?.updateExchangeRateText()
             }
             .store(in: &cancellables)
@@ -175,6 +203,7 @@ class CalculateVC: UIViewController {
                 let code = value.suffix(3)
                 self?.currency1 = " \(code)"           // 환율표시 (예: " JPY")
                 self?.textFieldLabel.text = "\(code)    "   // 텍스트필드 우측 표시
+                self?.priceCurrency.text = " \(code)"      // 구매금액 통화 표시
                 self?.resultCurrency.text = " \(code)"      // 예상 환급금액 통화 표시
                 self?.updateExchangeRateText()
             }
@@ -191,6 +220,7 @@ class CalculateVC: UIViewController {
         // 여행국가화폐 불러오기
         if let savedTravelCountry = viewModel.getTravelCountry3() {
             travelCountry.text = savedTravelCountry.full
+            priceCurrency.text = " \(savedTravelCountry.code)"
             currency1 = " \(savedTravelCountry.code)"
             textFieldLabel.text = "\(savedTravelCountry.code)    "
             resultCurrency.text = " \(savedTravelCountry.code)"
@@ -199,6 +229,8 @@ class CalculateVC: UIViewController {
         // 기준화폐 가져오기
         if let savedBaseCurrency = viewModel.getBaseCurrency3() {
             currency2 = " \(savedBaseCurrency)"
+            conversion.text = "약 0 \(savedBaseCurrency)"
+            summaryNum.text = "약 0 \(savedBaseCurrency)"
         }
         
         // 부가세율 가져오기
@@ -285,13 +317,17 @@ class CalculateVC: UIViewController {
         calculateCard.snp.makeConstraints {
             $0.top.equalTo(priceCard.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(240)
+            $0.height.equalTo(360)
             $0.bottom.equalToSuperview().offset(20)
         }
         
         calculateCard.addSubview(vatLabel)
         calculateCard.addSubview(percent)
         calculateCard.addSubview(separator)
+        calculateCard.addSubview(separator2)
+        calculateCard.addSubview(boughtPrice)
+        calculateCard.addSubview(priceStackView)
+        calculateCard.addSubview(conversion)
         calculateCard.addSubview(expectation)
         calculateCard.addSubview(resultStackView)
         calculateCard.addSubview(summaryNum)
@@ -308,18 +344,35 @@ class CalculateVC: UIViewController {
         separator.snp.makeConstraints  {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.top.equalTo(vatLabel.snp.bottom).offset(12)
+            $0.height.equalTo(2)
+        }
+        boughtPrice.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(20)
+            $0.top.equalTo(separator.snp.bottom).offset(15)
+        }
+        priceStackView.snp.makeConstraints {
+            $0.top.equalTo(boughtPrice.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().inset(20)
+        }
+        conversion.snp.makeConstraints {
+            $0.top.equalTo(priceStackView.snp.bottom).offset(5)
+            $0.leading.equalToSuperview().inset(20)
+        }
+        separator2.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(conversion.snp.bottom).offset(15)
             $0.height.equalTo(1)
         }
         expectation.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
-            $0.bottom.equalTo(resultCurrency.snp.top).offset(-10)
+            $0.top.equalTo(separator2.snp.bottom).offset(15)
         }
         resultStackView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.top.equalTo(expectation.snp.bottom).offset(10)
             $0.leading.equalToSuperview().inset(20)
         }
         summaryNum.snp.makeConstraints {
-            $0.top.equalTo(resultCurrency.snp.bottom).offset(5)
+            $0.top.equalTo(resultStackView.snp.bottom).offset(5)
             $0.leading.equalToSuperview().inset(20)
         }
         btnStackView.snp.makeConstraints {
@@ -349,6 +402,7 @@ class CalculateVC: UIViewController {
         let card = SavedCard(
             country: country,
             exchangeRate: exchangeRate,
+            date: "123",
             price: price,
             refundPrice: refund,
             convertedRefundPrice: converted
