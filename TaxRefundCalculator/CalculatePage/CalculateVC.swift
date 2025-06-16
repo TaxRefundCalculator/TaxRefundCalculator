@@ -206,7 +206,10 @@ class CalculateVC: UIViewController {
             percent.text = vatText
         }
         
-        exchangeRate.text = "\(currency1Num)\(currency1) = \(currency2Num)\(currency2)"
+        let unit = UserDefaults.standard.integer(forKey: "exchangeUnit")
+        let value = UserDefaults.standard.string(forKey: "exchangeValue") ?? ""
+        
+        exchangeRate.text = "\(unit)\(currency1) = \(value)\(currency2)"
 
     }
     
