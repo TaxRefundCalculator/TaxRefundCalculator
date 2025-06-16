@@ -73,6 +73,7 @@ class CalculateVC: UIViewController {
         $0.leftViewMode = .always
         $0.rightView = textFieldLabel
         $0.rightViewMode = .always
+        $0.keyboardType = .decimalPad
     }
     private let calculateBtn = UIButton().then {
         $0.backgroundColor = .mainTeal
@@ -177,6 +178,7 @@ class CalculateVC: UIViewController {
         configureUI()
         updateFromSetting()
         loadFromUserdefaults()
+        keyboardDown()
     }
     
     // MARK: Combine으로 기준 화폐, 여행화폐 최신화
@@ -434,6 +436,18 @@ class CalculateVC: UIViewController {
     private func calculateBtnTapped() {
         UserDefaults.standard.removeObject(forKey: "doneFirstStep")
         print("삭제완료")
+    }
+    
+    
+    // MARK: 키보드 내리기
+    private func keyboardDown() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(keyboardDownAction))
+        tapGesture.cancelsTouchesInView = false // 다른 터치 이벤트도 전달되도록 설정
+        view.addGestureRecognizer(tapGesture)
+    }
+    @objc
+    private func keyboardDownAction() {
+        view.endEditing(true)
     }
     
 }
