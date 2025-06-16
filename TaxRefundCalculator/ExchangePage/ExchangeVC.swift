@@ -36,8 +36,12 @@ final class ExchangeVC: UIViewController {
         super.viewDidLoad()
         setupTableView()
         bindTableView()
-        bindRefreshButton()
         bindUpdateDateLabel()
+        viewModel.fetchExchangeRates()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.fetchExchangeRates()
     }
 
@@ -62,16 +66,6 @@ final class ExchangeVC: UIViewController {
         viewModel.latestUpdateDate
             .map { "최근갱신일: \($0)" }
             .bind(to: exchangeView.refreshLabel.rx.text)
-            .disposed(by: disposeBag)
-    }
-    
-    /// 갱신, 업로드
-    private func bindRefreshButton() {
-        exchangeView.refreshButton.rx.tap
-            .throttle(.seconds(1), scheduler: MainScheduler.instance)
-            .bind { [weak self] in
-                self?.viewModel.uploadRatesToFirebase()
-            }
             .disposed(by: disposeBag)
     }
 }

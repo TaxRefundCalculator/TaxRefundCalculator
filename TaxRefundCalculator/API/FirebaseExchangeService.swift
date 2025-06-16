@@ -61,20 +61,24 @@ final class FirebaseExchangeService {
             return Disposables.create()
         }
     }
-    
-    func uploadRates(from model: ExchangeAPIModel) {
-        let docRef = db.collection("exchangeRates").document(model.date)
-        let data: [String: Any] = [
-            "base": model.base,
-            "date": model.date,
-            "rates": model.rates
-        ]
-        docRef.setData(data) { error in
-            if let error = error {
-                print("❌ Firestore 저장 실패: \(error.localizedDescription)")
-            } else {
-                print("✅ Firestore에 API 모델 저장 완료")
+    /// 파이어베이스에 데이터 업로드
+    func uploadRates(from model: ExchangeAPIModel) -> Completable {
+        return Completable.create { completable in
+            let docRef = self.db.collection("exchangeRates").document(model.date)
+            let data: [String: Any] = [
+                "base": model.base,
+                "date": model.date,
+                "rates": model.rates
+            ]
+            docRef.setData(data) { error in
+                if let error = error {
+                    completable(.error(error))
+                } else {
+                    print("Firestore에 API 모델 저장 완료")
+                    completable(.completed)
+                }
             }
+            return Disposables.create()
         }
     }
     
