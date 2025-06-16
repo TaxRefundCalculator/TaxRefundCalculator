@@ -89,17 +89,4 @@ class ExchangeVM {
         self.exchangeRates.accept(models)
         self.latestUpdateDate.accept(model.date)
     }
-
-    /// 파이어베이스에 데이터 업로드하기
-    func uploadRatesToFirebase() {
-        apiService.fetchRates() // API 요청
-            .subscribe(onSuccess: { [weak self] newRates in
-                guard let self = self else { return }
-                self.firebaseService.uploadRates(from: newRates)
-                self.fetchExchangeRates()
-            }, onFailure: { error in
-                print("❌ API 요청 실패: \(error.localizedDescription)")
-            })
-            .disposed(by: disposeBag)
-    }
 }
