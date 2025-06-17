@@ -434,8 +434,22 @@ class CalculateVC: UIViewController {
     // MARK: 계산하기 버튼 액션 (현재 진입 테스트용 버튼)
     @objc
     private func calculateBtnTapped() {
-        UserDefaults.standard.removeObject(forKey: "doneFirstStep")
-        print("삭제완료")
+        
+        guard let priceText = priceTextField.text else { return }
+        let isValid = viewModel.isValidFloatingPoint(priceText)
+        
+        if !isValid {
+            errorAlert1()
+            return
+        }
+        
+        if priceText.isEmpty {
+            errorAlert2()
+            return
+        }
+        print("\(priceText)")
+        //UserDefaults.standard.removeObject(forKey: "doneFirstStep")
+        //print("삭제완료")
     }
     
     
@@ -450,4 +464,38 @@ class CalculateVC: UIViewController {
         view.endEditing(true)
     }
     
+}
+
+// MARK: 가격 입력 필드 예외처리
+extension CalculateVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let current = textField.text ?? ""
+        let nsCurrent = current as NSString
+        let newValue = nsCurrent.replacingCharacters(in: range, with: string)
+
+        let isValid = viewModel.isValidFloatingPoint(newValue)
+
+        // 부적합 입력시 얼럿 표시
+        if !isValid && !string.isEmpty {
+            errorAlert1()
+        }
+        // 공백 입력 시 얼럿 표시
+        if string.isEmpty {
+            errorAlert2()
+        }
+        return isValid
+    }
+    
+    // 오입력 얼럿
+    private func errorAlert1() {
+        let alert = UIAlertController(title: "입력 오류", message: "숫자와 소수점만, 그리고 소수점은 한 번만 입력할 수 있습니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    // 공백 입력 얼럿
+    private func errorAlert2() {
+        let alert = UIAlertController(title: "입력 오류", message: "공백은 입력할 수 없습니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 }

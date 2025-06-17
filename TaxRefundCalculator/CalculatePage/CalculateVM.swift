@@ -61,4 +61,20 @@ class CalculateVM {
     func loadGroupedCards() -> [(String, [SavedCard])] {
         return saveUserDefaults.loadGroupedCards()
     }
+    
+    // MARK: 구매금액 입력 검증
+    func isValidFloatingPoint(_ value: String) -> Bool {
+        // 입력값이 빈 문자열이면(=삭제 상황) true 반환 → 삭제 허용
+        if value.isEmpty { return true }
+        
+        // 0~9, '.'(dot) 이외의 문자가 포함되면 false 반환 → 입력 거부
+        let allowed = CharacterSet(charactersIn: "0123456789.")
+        if value.rangeOfCharacter(from: allowed.inverted) != nil { return false }
+        
+        // 소수점(.)이 2개 이상 들어가 있으면 false 반환 → 입력 거부
+        if value.filter({ $0 == "." }).count > 1 { return false }
+        
+        // 위 조건을 모두 통과하면 true 반환 → 입력 허용
+        return true
+    }
 }
