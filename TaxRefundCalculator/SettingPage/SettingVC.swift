@@ -165,6 +165,8 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         if let loadTravelCountry = viewModel.getTravelCountry() {
             nowCurreny.text = loadTravelCountry
         }
+        // 다크모드 스위치 활성화 체크
+        darkModeSwitch.isOn = viewModel.getDarkModeEnabled()
     }
     
     
