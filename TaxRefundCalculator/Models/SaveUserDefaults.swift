@@ -64,7 +64,7 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     
     
     // MARK: 기록 초기화
-    func deleteAllrecords() {
+    func deleteAllRecords() {
         userDefaults.removeObject(forKey: "SavedCardList")
     }
     
