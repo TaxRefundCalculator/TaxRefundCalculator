@@ -48,9 +48,23 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     func getIsDoneFirstStep() -> Bool { // 초기설정
         return userDefaults.bool(forKey: "doneFirstStep")
     }
+    
+    
+    // MARK: 다크모드
+    private var darkModeKey: String { "darkModeEnabled" }
+    // 저장
+    func saveDarkModeEnabled(_ enabled: Bool) {
+        userDefaults.set(enabled, forKey: darkModeKey)
+    }
+    
+    // 불러오기
+    func getDarkModeEnabled() -> Bool {
+        userDefaults.bool(forKey: darkModeKey)
+    }
+
 }
 
-/// 설정탭 기록카드 관련
+// MARK: 설정탭 기록카드 관련
 extension SaveUserDefaults {
     /// 모든 SavedCard 배열을 1개 Key("SavedCardList")로 통째로 저장
     func overwriteAllCards(_ cards: [SavedCard]) {

@@ -21,8 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
+        
+        
+        
         //window에게 루트 뷰 컨트롤러 지정.
         let saveUserDefaults = SaveUserDefaults()
+        let isDarkMode = saveUserDefaults.getDarkModeEnabled() // 다크모드
+        window.overrideUserInterfaceStyle = isDarkMode ? .dark : .light // 다크모드
         if saveUserDefaults.getIsDoneFirstStep() == true {
             window.rootViewController = TabBarController()
         } else {

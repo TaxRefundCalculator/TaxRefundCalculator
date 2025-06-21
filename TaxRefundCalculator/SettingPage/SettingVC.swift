@@ -80,7 +80,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     private let darkModeSwitch = UISwitch().then {
         $0.isOn = false
         $0.onTintColor = .mainTeal
-        //$0.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
+        $0.addTarget(self, action: #selector(darkModeSwitchChanged), for: .valueChanged)
     }
     private let darkModeRow = UIView().then {
         $0.backgroundColor = .clear
@@ -402,5 +402,15 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     }
     
     
+    // MARK: 다크모드 토글 스위치 액션
+    @objc
+    private func darkModeSwitchChanged(_ sender: UISwitch) {
+        viewModel.saveUserDefaults.saveDarkModeEnabled(sender.isOn)
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            for window in scene.windows {
+                window.overrideUserInterfaceStyle = sender.isOn ? .dark : .light
+            }
+        }
+    }
 
 }
