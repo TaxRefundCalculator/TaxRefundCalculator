@@ -54,12 +54,7 @@ class CalculateVM {
     
     // MARK: 계산 기록 저장하기
     func saveCard(_ card: SavedCard) {
-        saveUserDefaults.saveCards([card])
-    }
-    
-    // 디버깅용
-    func loadGroupedCards() -> [(String, [SavedCard])] {
-        return saveUserDefaults.loadGroupedCards()
+        saveUserDefaults.addCard(card)
     }
     
     // MARK: 구매금액 입력 검증
