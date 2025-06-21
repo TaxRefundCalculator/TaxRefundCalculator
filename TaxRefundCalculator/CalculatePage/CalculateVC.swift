@@ -389,34 +389,31 @@ class CalculateVC: UIViewController {
               let exchangeRate = exchangeRate.text,
               let priceText = priceTextField.text,
               let refundText = refundNum.text,
+              let convertedPriceText = conversionBoughtPrice.text,
               let convertedText = conversionRefuncPrice.text,
               let price = Double(priceText),
               let refund = Double(refundText.filter { $0.isNumber || $0 == "." }),
-              let converted = Double(convertedText.filter { $0.isNumber || $0 == "." }) else {
+              let convertedPrice = Double(convertedPriceText.filter { $0.isNumber || $0 == "." }),
+              let convertedRefundPrice = Double(convertedText.filter { $0.isNumber || $0 == "." }) else {
             print("❌ 필수 데이터 누락 또는 변환 실패")
             return
         }
 
         let card = SavedCard(
+            id: UUID().uuidString,
             country: country,
+            currencyCode: currency1,
             exchangeRate: exchangeRate,
-            date: "123",
+            date: DateUtils.recordString(),
             price: price,
             refundPrice: refund,
-            convertedRefundPrice: converted
+            convertedPrice: convertedPrice,
+            convertedRefundPrice: convertedRefundPrice,
+            baseCurrencyCode: currency2
         )
 
         viewModel.saveCard(card)
         print("✅ 저장 성공: \(card)")
-        
-        // 디버깅용
-        let savedGroups = viewModel.loadGroupedCards()
-        for (key, cards) in savedGroups {
-            print("📦 저장된 키: \(key)")
-            for card in cards {
-                print("🔹 \(card)")
-            }
-        }
     }
     
     // MARK: 환급조건 보기 버튼 액션

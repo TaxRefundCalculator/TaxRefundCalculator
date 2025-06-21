@@ -75,16 +75,15 @@ final class SavedView: UIView {
     let changeButton = UIButton(type: .system).then {
         var config = UIButton.Configuration.plain()
         config.title = "날짜 변경"
+        config.contentInsets = .zero
         config.baseForegroundColor = .mainTeal
         $0.configuration = config
-        $0.contentHorizontalAlignment = .right
     }
 
     // 기록 리스트
     let tableView = UITableView().then {
         $0.separatorStyle = .none
         $0.backgroundColor = .subButton
-        $0.allowsSelection = false
     }
 
     override init(frame: CGRect) {
@@ -141,7 +140,7 @@ final class SavedView: UIView {
         }
         
         changeButton.snp.makeConstraints {
-            $0.leading.equalTo(dateRangeLabel.snp.trailing).offset(4)
+            $0.trailing.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()
         }
 
