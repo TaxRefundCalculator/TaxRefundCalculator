@@ -22,8 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         
-        
-        
         //window에게 루트 뷰 컨트롤러 지정.
         let saveUserDefaults = SaveUserDefaults()
         let isDarkMode = saveUserDefaults.getDarkModeEnabled() // 다크모드
