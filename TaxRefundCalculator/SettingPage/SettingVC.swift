@@ -369,6 +369,8 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         let alert = UIAlertController(title: "기록 삭제", message: "모든 기록을 삭제하시겠습니까?", preferredStyle: .alert)
             
             let confirmAction = UIAlertAction(title: "예", style: .destructive) { _ in
+                
+                self.viewModel.saveUserDefaults.deleteAllrecords()
                 print("기록 삭제됨")
             }
             let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)

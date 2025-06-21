@@ -61,7 +61,13 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     func getDarkModeEnabled() -> Bool {
         userDefaults.bool(forKey: darkModeKey)
     }
-
+    
+    
+    // MARK: 기록 초기화
+    func deleteAllrecords() {
+        userDefaults.removeObject(forKey: "SavedCardList")
+    }
+    
 }
 
 // MARK: 설정탭 기록카드 관련
