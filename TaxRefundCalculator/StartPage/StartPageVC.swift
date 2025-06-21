@@ -8,10 +8,22 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
 
 class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, LanguageModalDelegate {
     
-    private let viewModel = StartPageVM()
+    private let viewModel : StartPageVM
+    private let disposeBag = DisposeBag()
+    
+    init(viewModel: StartPageVM = StartPageVM(firebaseService: FirebaseExchangeService())) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: 상단 제목 두개
     private let titleLabel = UILabel().then {
@@ -165,6 +177,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         travelCountryField.delegate = self
         
         configureUI()
+        bindExchangeRate()
     }
     
     private func configureUI() {
@@ -344,9 +357,11 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         switch tag {
         case 1:
             baseCurrencyField.text = country
+            baseCurrencyField.sendActions(for: .editingChanged) // 선택이벤트 전달
             viewModel.saveBaseCurrency(country) // userDefaults에 저장
         case 2:
             travelCountryField.text = country
+            travelCountryField.sendActions(for: .editingChanged) // 선택이벤트 전달
             viewModel.saveTravelCountry(country) // userDefaults에 저장
             refundCondition.text = viewModel.refundConditionText(for: country)
         default:
@@ -376,5 +391,27 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         }
     }
     
+    // MARK: 환율정보 바인딩 (Rx) - Na
+    private func bindExchangeRate() {
+        Observable
+            .combineLatest(baseCurrencyField.rx.text.orEmpty, travelCountryField.rx.text.orEmpty)
+            .subscribe(onNext: { [weak self] base, travel in
+                guard let self = self else { return }
+                guard !base.isEmpty, !travel.isEmpty else {
+                    // 환율정보 텍스트에 emit
+                    self.viewModel.exchangeRateText.accept("화폐, 국가 선택이 필요합니다.")
+                    return
+                }
+                // 뷰모델에 환율정보 요청
+                self.viewModel.fetchExchangeText(base: base, travel: travel)
+            })
+            .disposed(by: disposeBag)
+        
+        // Relay를 UI에 바인딩
+        viewModel.exchangeRateText
+            .asDriver()
+            .drive(exchangeRate.rx.text)
+            .disposed(by: disposeBag)
+    }
     
 }
