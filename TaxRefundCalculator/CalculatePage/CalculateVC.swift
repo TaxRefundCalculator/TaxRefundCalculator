@@ -116,8 +116,8 @@ class CalculateVC: UIViewController {
         $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         $0.textColor = .mainTeal
     }
-    private let conversion = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 16.5, weight: .thin)
+    private let conversionBoughtPrice = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 16.5, weight: .regular)
     }
     private lazy var priceStackView = UIStackView(arrangedSubviews: [priceNum, priceCurrency]).then {
         $0.axis = .horizontal
@@ -133,7 +133,7 @@ class CalculateVC: UIViewController {
         $0.text = "예상 환급 금액"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
     }
-    private let resultNum = UILabel().then {
+    private let refundNum = UILabel().then {
         $0.text = "0"
         $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         $0.textColor = .mainTeal
@@ -142,16 +142,13 @@ class CalculateVC: UIViewController {
         $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         $0.textColor = .mainTeal
     }
-    private lazy var resultStackView = UIStackView(arrangedSubviews: [resultNum, resultCurrency]).then {
+    private lazy var resultStackView = UIStackView(arrangedSubviews: [refundNum, resultCurrency]).then {
         $0.axis = .horizontal
         $0.spacing = 5
         $0.distribution = .fill
     }
-    private let summaryNum = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 16.5, weight: .thin)
-    }
-    private let summaryCurrency = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 16.5, weight: .thin)
+    private let conversionRefuncPrice = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 16.5, weight: .regular)
     }
     private lazy var saveBtn = UIButton().then {
         $0.backgroundColor = .mainTeal
@@ -190,8 +187,8 @@ class CalculateVC: UIViewController {
                 // 기준 화폐 라벨 등 UI 업데이트
                 let code = value.suffix(3)
                 self?.currency2 = "\(code)"
-                self?.conversion.text = "약 0 \(code)"
-                self?.summaryNum.text = "약 0 \(code)"
+                self?.conversionBoughtPrice.text = "약 0 \(code)"
+                self?.conversionRefuncPrice.text = "약 0 \(code)"
                 self?.updateExchangeRateText()
             }
             .store(in: &cancellables)
@@ -231,8 +228,8 @@ class CalculateVC: UIViewController {
         // 기준화폐 가져오기
         if let savedBaseCurrency = viewModel.getBaseCurrency3() {
             currency2 = " \(savedBaseCurrency)"
-            conversion.text = "약 0 \(savedBaseCurrency)"
-            summaryNum.text = "약 0 \(savedBaseCurrency)"
+            conversionBoughtPrice.text = "약 0 \(savedBaseCurrency)"
+            conversionRefuncPrice.text = "약 0 \(savedBaseCurrency)"
         }
         
         // 부가세율 가져오기
@@ -240,11 +237,7 @@ class CalculateVC: UIViewController {
             percent.text = vatText
         }
         
-        let unit = UserDefaults.standard.integer(forKey: "exchangeUnit")
-        let value = UserDefaults.standard.string(forKey: "exchangeValue") ?? ""
-        
-        exchangeRate.text = "\(unit)\(currency1) = \(value)\(currency2)"
-
+        exchangeRate.text = "\(viewModel.realTimeTravelCurrency)\(currency1) = \(viewModel.realTimeBaseCurrency)\(currency2)"
     }
     
     
@@ -332,10 +325,10 @@ class CalculateVC: UIViewController {
         calculateCard.addSubview(separator2)
         calculateCard.addSubview(boughtPrice)
         calculateCard.addSubview(priceStackView)
-        calculateCard.addSubview(conversion)
+        calculateCard.addSubview(conversionBoughtPrice)
         calculateCard.addSubview(expectation)
         calculateCard.addSubview(resultStackView)
-        calculateCard.addSubview(summaryNum)
+        calculateCard.addSubview(conversionRefuncPrice)
         calculateCard.addSubview(btnStackView)
         
         vatLabel.snp.makeConstraints {
@@ -359,13 +352,13 @@ class CalculateVC: UIViewController {
             $0.top.equalTo(boughtPrice.snp.bottom).offset(10)
             $0.leading.equalToSuperview().inset(20)
         }
-        conversion.snp.makeConstraints {
+        conversionBoughtPrice.snp.makeConstraints {
             $0.top.equalTo(priceStackView.snp.bottom).offset(5)
             $0.leading.equalToSuperview().inset(20)
         }
         separator2.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(20)
-            $0.top.equalTo(conversion.snp.bottom).offset(15)
+            $0.top.equalTo(conversionBoughtPrice.snp.bottom).offset(15)
             $0.height.equalTo(1)
         }
         expectation.snp.makeConstraints {
@@ -376,7 +369,7 @@ class CalculateVC: UIViewController {
             $0.top.equalTo(expectation.snp.bottom).offset(10)
             $0.leading.equalToSuperview().inset(20)
         }
-        summaryNum.snp.makeConstraints {
+        conversionRefuncPrice.snp.makeConstraints {
             $0.top.equalTo(resultStackView.snp.bottom).offset(5)
             $0.leading.equalToSuperview().inset(20)
         }
@@ -395,8 +388,8 @@ class CalculateVC: UIViewController {
         guard let country = travelCountry.text,
               let exchangeRate = exchangeRate.text,
               let priceText = priceTextField.text,
-              let refundText = resultNum.text,
-              let convertedText = summaryNum.text,
+              let refundText = refundNum.text,
+              let convertedText = conversionRefuncPrice.text,
               let price = Double(priceText),
               let refund = Double(refundText.filter { $0.isNumber || $0 == "." }),
               let converted = Double(convertedText.filter { $0.isNumber || $0 == "." }) else {
@@ -438,6 +431,10 @@ class CalculateVC: UIViewController {
     @objc
     private func calculateBtnTapped() {
         
+        
+        print("exchangeUnit(UserDefaults):", UserDefaults.standard.integer(forKey: "exchangeUnit"))
+        print("exchangeValue(UserDefaults):", UserDefaults.standard.string(forKey: "exchangeValue") ?? "nil")
+        // 구매금액 입력 필드 예외처리
         guard let priceText = priceTextField.text else { return }
         let isValid = viewModel.isValidFloatingPoint(priceText)
         
@@ -450,9 +447,33 @@ class CalculateVC: UIViewController {
             errorAlert2()
             return
         }
-        print("\(priceText)")
-        //UserDefaults.standard.removeObject(forKey: "doneFirstStep")
-        //print("삭제완료")
+        
+        // MARK: 계산 로직
+        // 구매 금액
+        priceNum.text = priceText
+        let currencyCode = viewModel.getBaseCurrency3() ?? ""
+        
+        // 구매금액 기준통화로 변환
+        if let result = viewModel.conversionPrice(priceText: priceText) {
+            conversionBoughtPrice.text = "약 \(String(format: "%.2f", result)) \(currencyCode)"
+        } else {
+            conversionBoughtPrice.text = "입력 오류"
+        }
+        
+        // 환급금액(현지화폐) 계산
+        if let refund = viewModel.calculateVatRefund(priceText: priceNum.text ?? "") {
+            refundNum.text = String(format: "%.2f", refund)
+            // 환급금액을 환율로 변환해서 conversionRefuncPrice에 표시
+            if let refundInBase = viewModel.convertRefundToBaseCurrency(refund: refund) {
+                conversionRefuncPrice.text = "약 \(String(format: "%.2f", refundInBase)) \(currencyCode)"
+            } else {
+                conversionRefuncPrice.text = "환산 오류"
+            }
+        } else {
+            refundNum.text = "계산 오류"
+            conversionRefuncPrice.text = ""
+        }
+
     }
     
     

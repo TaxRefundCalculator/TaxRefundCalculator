@@ -77,4 +77,44 @@ class CalculateVM {
         // 위 조건을 모두 통과하면 true 반환 → 입력 허용
         return true
     }
+    
+    // MARK: 계산 로직
+    let realTimeTravelCurrency = UserDefaults.standard.integer(forKey: "exchangeUnit") // 여행화폐
+    let realTimeBaseCurrency = UserDefaults.standard.string(forKey: "exchangeValue") ?? "" // 기준화폐
+    
+    // 구매금액 변환
+    func conversionPrice(priceText: String) -> Double? {
+        // realTimeTravelCurrency: 단위 (ex. 1, 10, 100, 1000)
+        // realTimeBaseCurrency: 환율값 (String)
+        guard
+            let price = Double(priceText),
+            realTimeTravelCurrency != 0
+        else {
+            return nil
+        }
+        // 콤마 제거
+        let cleanedBaseCurrency = realTimeBaseCurrency.replacingOccurrences(of: ",", with: "")
+        guard let baseRate = Double(cleanedBaseCurrency) else { return nil }
+        // 환산 공식: (구매금액 / 단위) * 환율
+        return price / Double(realTimeTravelCurrency) * baseRate
+    }
+    
+    // 환급금액 계산
+    func calculateVatRefund(priceText: String) -> Double? {
+        guard
+            let price = Double(priceText),
+            let vatString = getVatRate()?.replacingOccurrences(of: "%", with: ""),
+            let vat = Double(vatString)
+        else { return nil }
+        return price * vat / 100
+    }
+
+    // 환급금액 변환
+    func convertRefundToBaseCurrency(refund: Double) -> Double? {
+        let cleanedBaseCurrency = realTimeBaseCurrency.replacingOccurrences(of: ",", with: "")
+        guard let baseRate = Double(cleanedBaseCurrency) else { return nil }
+        // 환산 공식: (환급금액 / 단위) * 환율
+        return refund / Double(realTimeTravelCurrency) * baseRate
+    }
+    
 }
