@@ -391,7 +391,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         }
     }
     
-    /// 환율정보 바인딩 (Rx)
+    // MARK: 환율정보 바인딩 (Rx) - Na
     private func bindExchangeRate() {
         Observable
             .combineLatest(baseCurrencyField.rx.text.orEmpty, travelCountryField.rx.text.orEmpty)
@@ -399,7 +399,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
                 guard let self = self else { return }
                 guard !base.isEmpty, !travel.isEmpty else {
                     // 환율정보 텍스트에 emit
-                    self.viewModel.exchangeRateText.accept("화폐, 국가 선택 필요")
+                    self.viewModel.exchangeRateText.accept("화폐, 국가 선택이 필요합니다.")
                     return
                 }
                 // 뷰모델에 환율정보 요청
