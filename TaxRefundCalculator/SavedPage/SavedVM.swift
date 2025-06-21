@@ -46,12 +46,17 @@ final class SavedVM {
     }
     
     func loadSavedCards() {
-        let grouped = SaveUserDefaults().loadGroupedCards()
-        // 1. 키 기준 최신순 그룹 정렬
-        let sortedGrouped = grouped.sorted { $0.key > $1.key }
-        // 2. 모든 SavedCard 펼치기
-        let allCards = sortedGrouped.flatMap { $0.cards }
-        // 3. 필요하다면, 카드 내부의 날짜 기준으로 한 번 더 정렬
+        let allCards = SaveUserDefaults().loadAllCards()
         savedCardsRelay.accept(allCards)
+    }
+    
+    // 삭제
+    func deleteCard(withId id: String) {
+        var current = savedCardsRelay.value
+        if let idx = current.firstIndex(where: { $0.id == id }) {
+            current.remove(at: idx)
+            savedCardsRelay.accept(current)
+            SaveUserDefaults().overwriteAllCards(current)
+        }
     }
 }

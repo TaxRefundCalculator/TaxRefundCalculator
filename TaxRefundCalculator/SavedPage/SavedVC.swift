@@ -23,6 +23,7 @@ final class SavedVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindTableView()
+        bindSelection()
         bindTotalAmount()
         
         // 선택된 날짜를 dateRangeLabel에 바인딩
@@ -33,7 +34,7 @@ final class SavedVC: UIViewController {
                     formatter.dateFormat = "yyyy.MM.dd"
                     return "\(formatter.string(from: start)) ~ \(formatter.string(from: end))"
                 } else {
-                    return "전체보기"
+                    return "전체"
                 }
             }
             .bind(to: savedView.dateRangeLabel.rx.text)
@@ -53,11 +54,27 @@ final class SavedVC: UIViewController {
     }
     
     private func bindTableView() {
-        savedView.tableView.register(SavedRecordCell.self, forCellReuseIdentifier: SavedRecordCell.id)
+        savedView.tableView.register(SavedCardCell.self, forCellReuseIdentifier: SavedCardCell.id)
         
         viewModel.filteredCards
-            .bind(to: savedView.tableView.rx.items(cellIdentifier: SavedRecordCell.id, cellType: SavedRecordCell.self)) { row, model, cell in
-                cell.configure(with: model)
+            .bind(to: savedView.tableView.rx.items(cellIdentifier: SavedCardCell.id, cellType: SavedCardCell.self)) { [weak self] row, model, cell in
+                cell.configure(with: model) { [weak self] in
+                            self?.showDeleteAlert(for: model)
+                        }
+                    }
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindSelection() {
+        savedView.tableView.rx.modelSelected(SavedCard.self)
+            .bind { [weak self] model in
+                let modalVC = SavedModalVC()
+                modalVC.savedCard = model
+                
+                modalVC.modalPresentationStyle = .overFullScreen
+                modalVC.modalTransitionStyle = .crossDissolve
+                
+                self?.present(modalVC, animated: true)
             }
             .disposed(by: disposeBag)
     }
@@ -66,10 +83,10 @@ final class SavedVC: UIViewController {
     private func bindTotalAmount() {
         viewModel.filteredCards
             .map { cards in
-                let totalPurchase = cards.reduce(0) { $0 + $1.price }
+                let totalPurchase = cards.reduce(0) { $0 + $1.convertedPrice }
                 let totalRefund = cards.reduce(0) { $0 + $1.convertedRefundPrice }
-//                let currency = cards.first?.convertedCurrency ?? "KRW"
-                let currency = ""
+                let currency = cards.first?.baseCurrencyCode ?? ""
+//                let currency = ""
                 return ("\(totalPurchase) \(currency)", "\(totalRefund) \(currency)")
             }
             .observe(on: MainScheduler.instance)
@@ -99,6 +116,20 @@ final class SavedVC: UIViewController {
             }
         }
         fastisController.present(above: self)
+    }
+    
+    // 알럿
+    private func showDeleteAlert(for card: SavedCard) {
+        let alert = UIAlertController(
+            title: "기록 삭제",
+            message: "해당 기록을 삭제하시겠습니까?",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
+            self?.viewModel.deleteCard(withId: card.id)
+        }))
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
 
