@@ -220,14 +220,14 @@ class CalculateVC: UIViewController {
         if let savedTravelCountry = viewModel.getTravelCountry3() {
             travelCountry.text = savedTravelCountry.full
             priceCurrency.text = " \(savedTravelCountry.code)"
-            currency1 = " \(savedTravelCountry.code)"
+            currency1 = "\(savedTravelCountry.code)"
             textFieldLabel.text = "\(savedTravelCountry.code)    "
             resultCurrency.text = " \(savedTravelCountry.code)"
         }
         
         // 기준화폐 가져오기
         if let savedBaseCurrency = viewModel.getBaseCurrency3() {
-            currency2 = " \(savedBaseCurrency)"
+            currency2 = "\(savedBaseCurrency)"
             conversionBoughtPrice.text = "약 0 \(savedBaseCurrency)"
             conversionRefuncPrice.text = "약 0 \(savedBaseCurrency)"
         }
@@ -237,7 +237,7 @@ class CalculateVC: UIViewController {
             percent.text = vatText
         }
         
-        exchangeRate.text = "\(viewModel.realTimeTravelCurrency)\(currency1) = \(viewModel.realTimeBaseCurrency)\(currency2)"
+        exchangeRate.text = "\(viewModel.getTravelCurrencyUnit())\(currency1) = \(viewModel.getExchangeValue())\(currency2)"
     }
     
     
@@ -428,9 +428,6 @@ class CalculateVC: UIViewController {
     @objc
     private func calculateBtnTapped() {
         
-        
-        print("exchangeUnit(UserDefaults):", UserDefaults.standard.integer(forKey: "exchangeUnit"))
-        print("exchangeValue(UserDefaults):", UserDefaults.standard.string(forKey: "exchangeValue") ?? "nil")
         // 구매금액 입력 필드 예외처리
         guard let priceText = priceTextField.text else { return }
         let isValid = viewModel.isValidFloatingPoint(priceText)
@@ -447,22 +444,25 @@ class CalculateVC: UIViewController {
         
         // MARK: 계산 로직
         // 구매 금액
-        priceNum.text = priceText
+        if let priceValue = Double(priceText) {
+                priceNum.text = priceValue.roundedString()
+            }
+        
         let currencyCode = viewModel.getBaseCurrency3() ?? ""
         
         // 구매금액 기준통화로 변환
         if let result = viewModel.conversionPrice(priceText: priceText) {
-            conversionBoughtPrice.text = "약 \(String(format: "%.2f", result)) \(currencyCode)"
+            conversionBoughtPrice.text = "약 \(result.roundedString()) \(currencyCode)"
         } else {
             conversionBoughtPrice.text = "입력 오류"
         }
         
         // 환급금액(현지화폐) 계산
-        if let refund = viewModel.calculateVatRefund(priceText: priceNum.text ?? "") {
-            refundNum.text = String(format: "%.2f", refund)
+        if let refund = viewModel.calculateVatRefund(priceText: priceText) {
+            refundNum.text = refund.roundedString()
             // 환급금액을 환율로 변환해서 conversionRefuncPrice에 표시
             if let refundInBase = viewModel.convertRefundToBaseCurrency(refund: refund) {
-                conversionRefuncPrice.text = "약 \(String(format: "%.2f", refundInBase)) \(currencyCode)"
+                conversionRefuncPrice.text = "약 \(refundInBase.roundedString()) \(currencyCode)"
             } else {
                 conversionRefuncPrice.text = "환산 오류"
             }

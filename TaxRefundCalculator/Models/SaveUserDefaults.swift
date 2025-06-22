@@ -13,6 +13,8 @@ protocol SaveUserDefaultsProtocol { // 캡슐화
     func saveBaseCurrency(_ currency: String)
     func saveTravelCountry(_ currency: String)
     func saveIsDoneFirstStep(_ done: Bool)
+    func saveTravelCurrencyUnit(_ unit: Int)
+    func saveExchangeValue(_ rate: String)
 }
 
 class SaveUserDefaults: SaveUserDefaultsProtocol {
@@ -34,6 +36,12 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     func saveIsDoneFirstStep(_ done: Bool) { // 초기설정
         userDefaults.set(done, forKey: "doneFirstStep")
     }
+    func saveTravelCurrencyUnit(_ unit: Int) {
+        userDefaults.set(unit, forKey: "travelCurrencyUnit")
+    }
+    func saveExchangeValue(_ rate: String) {
+        userDefaults.set(rate, forKey: "exchangeValue")
+    }
     
     // 불러오기
     func getLanguage() -> String? { // 언어
@@ -47,6 +55,12 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     }
     func getIsDoneFirstStep() -> Bool { // 초기설정
         return userDefaults.bool(forKey: "doneFirstStep")
+    }
+    func getTravelCurrencyUnit() -> Int { // 여행화폐단위
+        return userDefaults.integer(forKey: "travelCurrencyUnit")
+    }
+    func getExchangeValue() -> String? { // 기준화폐 환율
+        return userDefaults.string(forKey: "exchangeValue")
     }
 }
 

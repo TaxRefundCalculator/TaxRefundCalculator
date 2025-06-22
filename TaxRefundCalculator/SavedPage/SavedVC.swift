@@ -25,27 +25,8 @@ final class SavedVC: UIViewController {
         bindTableView()
         bindSelection()
         bindTotalAmount()
-        
-        // 선택된 날짜를 dateRangeLabel에 바인딩
-        viewModel.selectedDateRange
-            .map { range in
-                if let start = range.0, let end = range.1 {
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "yyyy.MM.dd"
-                    return "\(formatter.string(from: start)) ~ \(formatter.string(from: end))"
-                } else {
-                    return "전체"
-                }
-            }
-            .bind(to: savedView.dateRangeLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        // 날짜 선택 UI 연결
-        savedView.changeButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.showDatePicker()
-            })
-            .disposed(by: disposeBag)
+        bindDateRangeSelection()
+        bindCurrencyFilter()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,13 +67,35 @@ final class SavedVC: UIViewController {
                 let totalPurchase = cards.reduce(0) { $0 + $1.convertedPrice }
                 let totalRefund = cards.reduce(0) { $0 + $1.convertedRefundPrice }
                 let currency = cards.first?.baseCurrencyCode ?? ""
-//                let currency = ""
-                return ("\(totalPurchase) \(currency)", "\(totalRefund) \(currency)")
+                return ("\(totalPurchase.roundedString()) \(currency)",
+                        "\(totalRefund.roundedString()) \(currency)")
             }
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] purchase, refund in
                 self?.savedView.totalPurchaseAmountLabel.text = purchase
                 self?.savedView.totalRefundAmountLabel.text = refund
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindDateRangeSelection() {
+        // 날짜 선택 바인딩
+        viewModel.selectedDateRange
+            .map { range in
+                if let start = range.0, let end = range.1 {
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yy.MM.dd"
+                    return "\(formatter.string(from: start)) ~ \(formatter.string(from: end))"
+                } else {
+                    return "기간 선택"
+                }
+            }
+            .bind(to: savedView.dateRangeButton.rx.title(for: .normal))
+            .disposed(by: disposeBag)
+        
+        savedView.dateRangeButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.showDatePicker()
             })
             .disposed(by: disposeBag)
     }
@@ -118,6 +121,50 @@ final class SavedVC: UIViewController {
         fastisController.present(above: self)
     }
     
+    private func bindCurrencyFilter() {
+        // 기준통화 필터 상태 바인딩
+        viewModel.savedCards
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] cards in
+                guard let self = self else { return }
+                let currencies = self.viewModel.availableCurrencies
+                if currencies.count == 1 {
+                    let code = currencies.first!
+                    self.savedView.currencyButton.setTitle("\(code)", for: .normal)
+                    self.savedView.currencyButton.isEnabled = false
+                    self.viewModel.setSelectedCurrency(code)
+                } else if currencies.count > 1 {
+                    let code = currencies.first!
+                    self.savedView.currencyButton.setTitle("\(code) ▼", for: .normal)
+                    self.savedView.currencyButton.isEnabled = true
+                    self.viewModel.setSelectedCurrency(code)
+                } else {
+                    self.savedView.currencyButton.setTitle("-", for: .normal)
+                    self.savedView.currencyButton.isEnabled = false
+                    self.viewModel.setSelectedCurrency(nil)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        // 통화 선택 액션시트
+        savedView.currencyButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                let currencies = self.viewModel.availableCurrencies
+                guard currencies.count > 1 else { return }
+                let alert = UIAlertController(title: "기준통화 선택", message: nil, preferredStyle: .actionSheet)
+                for code in currencies {
+                    alert.addAction(UIAlertAction(title: code, style: .default, handler: { _ in
+                        self.savedView.currencyButton.setTitle("\(code) ▼", for: .normal)
+                        self.viewModel.setSelectedCurrency(code)
+                    }))
+                }
+                alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+                self.present(alert, animated: true)
+            })
+            .disposed(by: disposeBag)
+    }
+    
     // 알럿
     private func showDeleteAlert(for card: SavedCard) {
         let alert = UIAlertController(
@@ -131,6 +178,36 @@ final class SavedVC: UIViewController {
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+    
+    private func setupCurrencyFilter() {
+        // 최초로 기록을 불러온 뒤 호출
+        viewModel.savedCards
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] cards in
+                guard let self = self else { return }
+                let currencies = self.viewModel.availableCurrencies
+                if currencies.count == 1 {
+                    // 1개면 자동 선택/버튼 비활성화
+                    let code = currencies.first!
+                    self.savedView.currencyButton.setTitle("\(code)", for: .normal)
+                    self.savedView.currencyButton.isEnabled = false
+                    self.viewModel.setSelectedCurrency(code)
+                } else if currencies.count > 1 {
+                    // 여러개면 제일 처음 저장한 통화를 우선 선택
+                    let code = currencies.first!
+                    self.savedView.currencyButton.setTitle("\(code) ▼", for: .normal)
+                    self.savedView.currencyButton.isEnabled = true
+                    self.viewModel.setSelectedCurrency(code)
+                } else {
+                    // 기록 없을 때
+                    self.savedView.currencyButton.setTitle("-", for: .normal)
+                    self.savedView.currencyButton.isEnabled = false
+                    self.viewModel.setSelectedCurrency(nil)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
 }
 
 /// TODO

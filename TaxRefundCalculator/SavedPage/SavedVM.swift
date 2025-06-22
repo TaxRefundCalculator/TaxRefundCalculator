@@ -30,15 +30,41 @@ final class SavedVM {
         return selectedDateRangeRelay.asObservable()
     }
     
+    private let selectedCurrencyRelay = BehaviorRelay<String?>(value: nil)
+    var selectedCurrency: Observable<String?> { selectedCurrencyRelay.asObservable() }
+    
     var filteredCards: Observable<[SavedCard]> {
-        return Observable.combineLatest(savedCardsRelay, selectedDateRangeRelay)
-            .map { cards, range in
-                guard let start = range.0, let end = range.1 else { return cards }
-                return cards.filter { card in
-                    guard let cardDate = DateUtils.toDate(card.date) else { return false }
-                    return cardDate >= start && cardDate <= end
+        return Observable.combineLatest(savedCardsRelay, selectedDateRangeRelay, selectedCurrencyRelay)
+            .map { cards, range, selectedCurrency in
+                var result = cards
+                // 날짜 필터
+                if let start = range.0, let end = range.1 {
+                    result = result.filter { card in
+                        guard let cardDate = DateUtils.toDate(card.date) else { return false }
+                        return cardDate >= start && cardDate <= end
+                    }
                 }
+                // 통화 필터
+                if let selectedCurrency = selectedCurrency {
+                    result = result.filter { $0.baseCurrencyCode == selectedCurrency }
+                }
+                // if selectedCurrency is nil, do not filter by currency (show all)
+                return result
             }
+    }
+    
+    // 기준통화 필터 관련
+    var availableCurrencies: [String] {
+        let codes = savedCardsRelay.value.map { $0.baseCurrencyCode }
+        let uniqueCodes = Array(Set(codes))
+        // 저장된 순서를 보장하려면 아래처럼
+        var ordered: [String] = []
+        for card in savedCardsRelay.value {
+            if !ordered.contains(card.baseCurrencyCode) {
+                ordered.append(card.baseCurrencyCode)
+            }
+        }
+        return ordered
     }
     
     func setDateRange(start: Date?, end: Date?) {
@@ -48,6 +74,10 @@ final class SavedVM {
     func loadSavedCards() {
         let allCards = SaveUserDefaults().loadAllCards()
         savedCardsRelay.accept(allCards)
+    }
+    
+    func setSelectedCurrency(_ code: String?) {
+        selectedCurrencyRelay.accept(code)
     }
     
     // 삭제

@@ -51,6 +51,16 @@ class CalculateVM {
         return getBaseCurrency().map { String($0.suffix(3)) }
     }
     
+    // 여행국가 단위 (ex: 1, 10, 100, 1000)
+    func getTravelCurrencyUnit() -> Int {
+        saveUserDefaults.getTravelCurrencyUnit()
+    }
+
+    // 기준 환율 값 (String)
+    func getExchangeValue() -> String {
+        saveUserDefaults.getExchangeValue() ?? ""
+    }
+    
     
     // MARK: 계산 기록 저장하기
     func saveCard(_ card: SavedCard) {
@@ -74,24 +84,23 @@ class CalculateVM {
     }
     
     // MARK: 계산 로직
-    let realTimeTravelCurrency = UserDefaults.standard.integer(forKey: "exchangeUnit") // 여행화폐
-    let realTimeBaseCurrency = UserDefaults.standard.string(forKey: "exchangeValue") ?? "" // 기준화폐
-    
     // 구매금액 변환
     func conversionPrice(priceText: String) -> Double? {
-        // realTimeTravelCurrency: 단위 (ex. 1, 10, 100, 1000)
-        // realTimeBaseCurrency: 환율값 (String)
+        // 단위 (ex. 1, 10, 100, 1000)
+        let travelCurrencyUnit = getTravelCurrencyUnit()
+        // 환율값 (String)
+        let baseCurrencyValue = getExchangeValue()
         guard
             let price = Double(priceText),
-            realTimeTravelCurrency != 0
+            travelCurrencyUnit != 0
         else {
             return nil
         }
         // 콤마 제거
-        let cleanedBaseCurrency = realTimeBaseCurrency.replacingOccurrences(of: ",", with: "")
+        let cleanedBaseCurrency = baseCurrencyValue.replacingOccurrences(of: ",", with: "")
         guard let baseRate = Double(cleanedBaseCurrency) else { return nil }
         // 환산 공식: (구매금액 / 단위) * 환율
-        return price / Double(realTimeTravelCurrency) * baseRate
+        return price / Double(travelCurrencyUnit) * baseRate
     }
     
     // 환급금액 계산
@@ -106,10 +115,12 @@ class CalculateVM {
 
     // 환급금액 변환
     func convertRefundToBaseCurrency(refund: Double) -> Double? {
-        let cleanedBaseCurrency = realTimeBaseCurrency.replacingOccurrences(of: ",", with: "")
+        let travelCurrencyUnit = getTravelCurrencyUnit()
+        let baseCurrencyValue = getExchangeValue()
+        let cleanedBaseCurrency = baseCurrencyValue.replacingOccurrences(of: ",", with: "")
         guard let baseRate = Double(cleanedBaseCurrency) else { return nil }
         // 환산 공식: (환급금액 / 단위) * 환율
-        return refund / Double(realTimeTravelCurrency) * baseRate
+        return refund / Double(travelCurrencyUnit) * baseRate
     }
     
 }
