@@ -46,6 +46,19 @@ class SettingVM {
         return saveUserDefaults.getTravelCountry()
     }
     
+    // MARK: 다크모드
+    // 저장
+    func saveDarkModeEnabled(_ enabled: Bool) {
+        saveUserDefaults.saveDarkModeEnabled(enabled)
+    }
+    // 조회
+    func getDarkModeEnabled() -> Bool {
+        saveUserDefaults.getDarkModeEnabled()
+    }
     
-    
+    // MARK: 기록 초기화
+    func deleteAllRecords() {
+        saveUserDefaults.deleteAllRecords()
+    }
+
 }
