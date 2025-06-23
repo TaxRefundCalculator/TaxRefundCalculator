@@ -28,11 +28,11 @@ let koreaPolicy = VATRefundPolicy(
     vatRefund: 0.07,
     minimumAmount: 15000.0,
     refundRateDescription: "구매 금액의 최대 7%",
-    eligibleBuyers: "한국에 6개월 미만 체류한 외국인, 한국에 3개월 미만 체류하며 해외에 2년 이상 거주한 해외 교포",
+    eligibleBuyers: "6개월 미만 체류 외국인, 3개월 미만 체류하며 해외에 2년 이상 거주한 해외 교포",
     eligibleItems: "미개봉 및 미사용 상태의 과세 물품, 구매일로부터 3개월 이내에 출국 시 반출하는 물품",
-    refundMethod: "즉시 환급: 일부 매장에서 구매 시 즉시 세금 차감, 시내 환급: 도심 환급소에서 환급, 공항 환급: 출국 시 공항 환급소 또는 키오스크에서 환급",
+    refundMethod: "즉시 환급, 시내 도심 환급소 환급, 공항 환급",
     refundPlace: "인천국제공항 및 주요 공항의 환급 카운터 또는 키오스크, 서울 등 주요 도시의 시내 환급소",
-    notes: "환급 금액은 구매 금액의 최대 약 7%까지 가능하며, 환급 수수료 및 환율 변동에 따라 실제 환급액은 달라질 수 있습니다. 세관에서 구매 물품에 대한 확인 도장을 받아야 합니다."
+    notes: "세관에서 구매 물품에 대한 확인 도장을 받아야 함."
 )
 
 let japanPolicy = VATRefundPolicy(
