@@ -80,7 +80,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     private let darkModeSwitch = UISwitch().then {
         $0.isOn = false
         $0.onTintColor = .mainTeal
-        //$0.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
+        $0.addTarget(self, action: #selector(darkModeSwitchChanged), for: .valueChanged)
     }
     private let darkModeRow = UIView().then {
         $0.backgroundColor = .clear
@@ -165,6 +165,8 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         if let loadTravelCountry = viewModel.getTravelCountry() {
             nowCurreny.text = loadTravelCountry
         }
+        // 다크모드 스위치 활성화 체크
+        darkModeSwitch.isOn = viewModel.getDarkModeEnabled()
     }
     
     
@@ -344,13 +346,15 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
 
     // MARK: - Tap Actions 클릭시 모달로 출력
-    @objc private func didTapLanguageRow() {
+    @objc
+    private func didTapLanguageRow() {
         let vc = LanguageModal()
         vc.delegate = self
         vc.modalPresentationStyle = .pageSheet
         present(vc, animated: true, completion: nil)
     }
-    @objc private func didTapBaseCurrencyRow() {
+    @objc
+    private func didTapBaseCurrencyRow() {
         let vc = CountryModal()
         vc.delegate = self
         vc.selectedTextFieldTag = baseCurrencyRow.tag
@@ -358,17 +362,21 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         present(vc, animated: true, completion: nil)
     }
 
-    @objc private func didTapTravelCountryRow() {
+    @objc
+    private func didTapTravelCountryRow() {
         let vc = CountryModal()
         vc.delegate = self
         vc.selectedTextFieldTag = currencyRow.tag
         vc.modalPresentationStyle = .pageSheet
         present(vc, animated: true, completion: nil)
     }
-    @objc private func didTapResetRow() {
+    @objc
+    private func didTapResetRow() {
         let alert = UIAlertController(title: "기록 삭제", message: "모든 기록을 삭제하시겠습니까?", preferredStyle: .alert)
             
             let confirmAction = UIAlertAction(title: "예", style: .destructive) { _ in
+                
+                self.viewModel.deleteAllRecords()
                 print("기록 삭제됨")
             }
             let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
@@ -402,5 +410,15 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     }
     
     
+    // MARK: 다크모드 토글 스위치 액션
+    @objc
+    private func darkModeSwitchChanged(_ sender: UISwitch) {
+        viewModel.saveDarkModeEnabled(sender.isOn)
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            for window in scene.windows {
+                window.overrideUserInterfaceStyle = sender.isOn ? .dark : .light
+            }
+        }
+    }
 
 }

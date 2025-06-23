@@ -66,17 +66,22 @@ class StartPageVM {
         }
     }
     
+    
     // MARK: 텍스트 필드들 빈칸 확인 예외처리
     func isInputValid(language: String?, baseCurrency: String?, travelCountry: String?) -> Bool {
         return !(language?.isEmpty ?? true)
         && !(baseCurrency?.isEmpty ?? true)
         && !(travelCountry?.isEmpty ?? true)
     }
-    // 통화코드 추출 메서드
+    
+    
+    // MARK: 통화코드 추출 메서드
     func extractCurrencyCode(_ text: String) -> String {
         return String(text.suffix(3))
     }
     
+    
+    // MARK: 환율정보 띄우기
     func fetchExchangeText(base: String, travel: String) {
         // 텍스트 필드에서 통화코드 추출
         let baseCode = extractCurrencyCode(base)

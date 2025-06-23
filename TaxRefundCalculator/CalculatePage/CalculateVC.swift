@@ -380,6 +380,7 @@ class CalculateVC: UIViewController {
         }
     }
     
+    
     // MARK: 저장하기 버튼 액션
     @objc
     private func saveBtnTapped() {
@@ -414,7 +415,15 @@ class CalculateVC: UIViewController {
 
         viewModel.saveCard(card)
         print("✅ 저장 성공: \(card)")
+        compliteAlert()
     }
+    // 저장 완료 Alert
+    private func compliteAlert() {
+        let alert = UIAlertController(title: "저장 완료", message: "저장이 완료되었습니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
     
     // MARK: 환급조건 보기 버튼 액션
     @objc
