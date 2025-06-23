@@ -231,11 +231,11 @@ final class SavedModalVC: UIViewController {
         
         countryLabel.text = countryName
         dateLabel.text = card.date // 예: "2024-06-15" 등 (모델에 맞게)
-        purchaseAmountLabel.text = "\(card.price)\(currencyCode)" // 예: "100,000 KRW"
-        refundAmountLabel.text = "\(card.refundPrice)\(currencyCode)" // 예: "7,000 KRW"
+        purchaseAmountLabel.text = "\(card.price) \(currencyCode)" // 예: "100,000 KRW"
+        refundAmountLabel.text = "\(card.refundPrice) \(currencyCode)" // 예: "7,000 KRW"
         
-        convertedPurchaseLabel.text = "\(card.convertedRefundPrice)\(card.baseCurrencyCode)" // 예: "75.22 USD"
-        convertedRefundLabel.text = "\(card.convertedRefundPrice)\(card.baseCurrencyCode)" // 예: "5.27 USD"
+        convertedPurchaseLabel.text = "\(card.convertedRefundPrice) \(card.baseCurrencyCode)" // 예: "75.22 USD"
+        convertedRefundLabel.text = "\(card.convertedRefundPrice) \(card.baseCurrencyCode)" // 예: "5.27 USD"
         
         exchangeRateLabel.text = card.exchangeRate
         conditionLabel.text = """

@@ -87,7 +87,7 @@ final class SavedVC: UIViewController {
                     formatter.dateFormat = "yy.MM.dd"
                     return "\(formatter.string(from: start)) ~ \(formatter.string(from: end))"
                 } else {
-                    return "기간 선택"
+                    return "날짜 선택"
                 }
             }
             .bind(to: savedView.dateRangeButton.rx.title(for: .normal))

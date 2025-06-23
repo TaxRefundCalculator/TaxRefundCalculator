@@ -189,7 +189,6 @@ class CalculateVC: UIViewController {
                 self?.currency2 = "\(code)"
                 self?.conversionBoughtPrice.text = "약 0 \(code)"
                 self?.conversionRefuncPrice.text = "약 0 \(code)"
-                self?.updateExchangeRateText()
             }
             .store(in: &cancellables)
         
@@ -204,13 +203,29 @@ class CalculateVC: UIViewController {
                 self?.textFieldLabel.text = "\(code)    "   // 텍스트필드 우측 표시
                 self?.priceCurrency.text = " \(code)"      // 구매금액 통화 표시
                 self?.resultCurrency.text = " \(code)"      // 예상 환급금액 통화 표시
-                self?.updateExchangeRateText()
             }
             .store(in: &cancellables) // 구독관리로 메모리관리
+        
+        // 환율정보 구독
+        settingVM.$exchangeValue
+                    .sink { [weak self] value in
+                        // 환율 UI를 최신값으로 갱신
+                        self?.updateExchangeRateText()
+                    }
+                    .store(in: &cancellables)
+        
+        // 화폐단위 구독
+        settingVM.$travelCurrencyUnit
+                    .sink { [weak self] _ in
+                        // 단위 UI도 필요하다면 갱신
+                        self?.updateExchangeRateText()
+                    }
+                    .store(in: &cancellables)
     }
     
+    // 환율 텍스트 갱신
     private func updateExchangeRateText() {
-        exchangeRate.text = "\(currency1Num)\(currency1) = \(currency2Num)\(currency2)"
+        exchangeRate.text = "\(viewModel.getTravelCurrencyUnit()) \(currency1) = \(viewModel.getExchangeValue()) \(currency2)"
     }
     
     
