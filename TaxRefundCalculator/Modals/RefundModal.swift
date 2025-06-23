@@ -16,7 +16,7 @@ class RefundModal: UIViewController {
     let viewModel = CalculateVM()
     
     private let containerView = UIView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 16
         $0.clipsToBounds = true
     }

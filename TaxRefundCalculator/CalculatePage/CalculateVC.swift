@@ -12,21 +12,21 @@ import Combine
 
 class CalculateVC: UIViewController {
     
-    // MARK: 뷰모델
+    // MARK: - 뷰모델
     private let viewModel = CalculateVM()
     
-    // MARK: 의존성 주입
+    // MARK: - 의존성 주입
     private let settingVM = SettingVM.shared
     private var cancellables = Set<AnyCancellable>() // Combine 구독관리
 
-    // MARK: 사이즈 대응을 위한 스크롤 뷰
+    // MARK: - 사이즈 대응을 위한 스크롤 뷰
     let scrollView = UIScrollView()
     let scrollContentView = UIView()
 
     
-    // MARK: 선택 통화, 환율 카드
+    // MARK: - 선택 통화, 환율 카드
     private let currencyRateCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 12
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -46,9 +46,9 @@ class CalculateVC: UIViewController {
     private var currency2Num = 999
     private var currency2 = "화폐2"
     
-    // MARK: 구매금액 입력 카드
+    // MARK: - 구매금액 입력 카드
     private let priceCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 12
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -82,9 +82,9 @@ class CalculateVC: UIViewController {
         $0.addTarget(self, action: #selector(calculateBtnTapped), for: .touchUpInside)
     }
     
-    // MARK: 계산 카드
+    // MARK: - 계산 카드
     private let calculateCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 12
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -157,7 +157,7 @@ class CalculateVC: UIViewController {
         $0.addTarget(self, action: #selector(saveBtnTapped), for: .touchUpInside)
     }
     private lazy var checkBtn = UIButton().then {
-        $0.backgroundColor = .currency
+        $0.backgroundColor = .grayBtn
         $0.setTitle("환급 조건 보기", for: .normal)
         $0.layer.cornerRadius = 8
         $0.addTarget(self, action: #selector(checkBtnTapped), for: .touchUpInside)
@@ -178,7 +178,7 @@ class CalculateVC: UIViewController {
         keyboardDown()
     }
     
-    // MARK: Combine으로 기준 화폐, 여행화폐 최신화
+    // MARK: - Combine으로 기준 화폐, 여행화폐 최신화
     private func updateFromSetting() {
         // 기준 화폐 값 구독 (SettingVM의 baseCurrency가 바뀌면 이 코드가 실행됨)
         settingVM.$baseCurrency
@@ -214,7 +214,7 @@ class CalculateVC: UIViewController {
     }
     
     
-    // MARK: UserDefaults에서 값 불러오기
+    // MARK: - UserDefaults에서 값 불러오기
     private func loadFromUserdefaults() {
         // 여행국가화폐 불러오기
         if let savedTravelCountry = viewModel.getTravelCountry3() {
@@ -241,9 +241,9 @@ class CalculateVC: UIViewController {
     }
     
     
-    // MARK: UI 구성
+    // MARK: - UI 구성
     private func configureUI() {
-        view.backgroundColor = .bgSecondary
+        view.backgroundColor = .bgPrimary
         
         
         // MARK: 사이즈 대응을 위한 스크롤 뷰

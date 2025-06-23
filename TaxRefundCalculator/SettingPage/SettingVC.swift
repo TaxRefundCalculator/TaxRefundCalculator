@@ -15,7 +15,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
     // MARK: 앱 설정 카드
     private let settingCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 12
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -99,7 +99,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
     // MARK: 앱 정보 카드
     private let infoCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 12
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -171,7 +171,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
     
     private func configureUI() {
-        view.backgroundColor = .bgSecondary
+        view.backgroundColor = .bgPrimary
         
         // MARK: Setting Card
         view.addSubview(settingCard)

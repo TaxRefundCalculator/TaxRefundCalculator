@@ -19,30 +19,30 @@ final class SavedView: UIView {
 
     let totalPurchaseLabel = UILabel().then {
         $0.text = "총 구매 금액"
-        $0.textColor = .bgPrimary
+        $0.textColor = .textForGreen
         $0.font = .systemFont(ofSize: 14)
     }
 
     let totalRefundLabel = UILabel().then {
         $0.text = "총 환급 금액"
-        $0.textColor = .bgPrimary
+        $0.textColor = .textForGreen
         $0.font = .systemFont(ofSize: 14)
     }
 
     let totalPurchaseAmountLabel = UILabel().then {
         $0.text = "0"
-        $0.textColor = .bgPrimary
+        $0.textColor = .textForGreen
         $0.font = .boldSystemFont(ofSize: 20)
     }
 
     let totalRefundAmountLabel = UILabel().then {
         $0.text = "0"
-        $0.textColor = .bgPrimary
+        $0.textColor = .textForGreen
         $0.font = .boldSystemFont(ofSize: 20)
     }
 
     let dividerView = UIView().then {
-        $0.backgroundColor = UIColor.bgPrimary.withAlphaComponent(0.5)
+        $0.backgroundColor = UIColor.textForGreen.withAlphaComponent(0.5)
     }
     
     // 총 구매 금액 스택
@@ -59,7 +59,7 @@ final class SavedView: UIView {
     }
 
     let filterContainer = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 12
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.05
@@ -83,7 +83,7 @@ final class SavedView: UIView {
     // 기록 리스트
     let tableView = UITableView().then {
         $0.separatorStyle = .none
-        $0.backgroundColor = .subButton
+        $0.backgroundColor = .bgPrimary
     }
 
     override init(frame: CGRect) {
@@ -96,7 +96,7 @@ final class SavedView: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = .subButton
+        backgroundColor = .bgPrimary
 
         addSubviews(totalContainer, filterContainer, tableView)
         filterContainer.addSubviews(dateRangeLabel, changeButton)
