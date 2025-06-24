@@ -67,12 +67,23 @@ final class SavedView: UIView {
         $0.layer.shadowRadius = 4
     }
 
-    let dateRangeLabel = UILabel().then {
+    let currencyLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 16, weight: .medium)
+        $0.text = "기준화폐"
+        $0.textColor = .currency
+    }
+    
+    // 기준통화 선택 버튼
+    let currencyButton = UIButton(type: .system).then {
+        var config = UIButton.Configuration.plain()
+        config.title = "▼"
+        config.contentInsets = .zero
+        config.baseForegroundColor = .mainTeal
+        $0.configuration = config
     }
     
     // 날짜 변경 버튼
-    let changeButton = UIButton(type: .system).then {
+    let dateRangeButton = UIButton(type: .system).then {
         var config = UIButton.Configuration.plain()
         config.title = "날짜 변경"
         config.contentInsets = .zero
@@ -99,7 +110,7 @@ final class SavedView: UIView {
         backgroundColor = .bgPrimary
 
         addSubviews(totalContainer, filterContainer, tableView)
-        filterContainer.addSubviews(dateRangeLabel, changeButton)
+        filterContainer.addSubviews(currencyLabel, currencyButton, dateRangeButton)
 
         leftStack.addArrangedSubviews(totalPurchaseLabel, totalPurchaseAmountLabel)
         rightStack.addArrangedSubviews(totalRefundLabel, totalRefundAmountLabel)
@@ -131,17 +142,22 @@ final class SavedView: UIView {
         filterContainer.snp.makeConstraints {
             $0.top.equalTo(totalContainer.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(48)
+            $0.bottom.equalTo(currencyButton.snp.bottom).offset(16) 
         }
 
-        dateRangeLabel.snp.makeConstraints {
+        currencyLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(16)
             $0.leading.equalToSuperview().inset(16)
-            $0.centerY.equalToSuperview()
         }
         
-        changeButton.snp.makeConstraints {
+        currencyButton.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(16)
+            $0.leading.equalTo(currencyLabel.snp.trailing).offset(8)
+        }
+        
+        dateRangeButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(16)
-            $0.centerY.equalToSuperview()
+            $0.centerY.equalTo(currencyButton)
         }
 
         tableView.snp.makeConstraints {
