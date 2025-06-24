@@ -33,6 +33,16 @@ final class ExchangeView: UIView {
         $0.clipsToBounds = true
         $0.allowsSelection = false
     }
+    
+    private let tableContainerView = UIView().then {
+        $0.backgroundColor = .clear
+        $0.layer.cornerRadius = 16
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOpacity = 0.1
+        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+        $0.layer.shadowRadius = 6
+        $0.clipsToBounds = false
+    }
 
     // MARK: - Init
 
@@ -49,7 +59,9 @@ final class ExchangeView: UIView {
 
     private func setupUI() {
         backgroundColor = .bgPrimary
-        addSubviews(titleLabel, refreshLabel, tableView)
+        addSubviews(titleLabel, refreshLabel, tableContainerView)
+        tableContainerView.addSubview(tableView)
+
 
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).inset(16)
@@ -60,11 +72,16 @@ final class ExchangeView: UIView {
             $0.centerY.equalTo(titleLabel)
             $0.trailing.equalToSuperview().inset(16)
         }
-
-        tableView.snp.makeConstraints {
+        
+        tableContainerView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(12)
             $0.horizontalEdges.equalToSuperview().inset(16)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(16)
         }
+        
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
     }
 }

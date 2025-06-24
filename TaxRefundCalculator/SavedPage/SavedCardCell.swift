@@ -23,9 +23,9 @@ final class SavedCardCell: UITableViewCell {
         $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 12
         $0.layer.shadowColor = UIColor.black.cgColor
-        $0.layer.shadowOpacity = 0.05
-        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
-        $0.layer.shadowRadius = 4
+        $0.layer.shadowOpacity = 0.1
+        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+        $0.layer.shadowRadius = 6
     }
     
     // 나라이름

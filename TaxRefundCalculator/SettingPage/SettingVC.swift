@@ -16,7 +16,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     // MARK: 앱 설정 카드
     private let settingCard = UIView().then {
         $0.backgroundColor = .bgSecondary
-        $0.layer.cornerRadius = 12
+        $0.layer.cornerRadius = 16
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -100,7 +100,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     // MARK: 앱 정보 카드
     private let infoCard = UIView().then {
         $0.backgroundColor = .bgSecondary
-        $0.layer.cornerRadius = 12
+        $0.layer.cornerRadius = 16
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -128,16 +128,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     }
     private let updateDay = UILabel().then {
         $0.text = "2025.05.11"
-        $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
-        $0.textColor = .subText
-    }
-    private let developer = UILabel().then {
-        $0.text = "개발자"
-        $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
-        $0.textColor = .subText
-    }
-    private let developerName = UILabel().then {
-        $0.text = "이재건, 나영진"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
         $0.textColor = .subText
     }
@@ -302,7 +292,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         infoCard.snp.makeConstraints {
             $0.top.equalTo(settingCard.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(160)
+            $0.height.equalTo(130)
         }
         
         infoCard.addSubview(infoLabel)
@@ -310,8 +300,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         infoCard.addSubview(versionNumber)
         infoCard.addSubview(update)
         infoCard.addSubview(updateDay)
-        infoCard.addSubview(developer)
-        infoCard.addSubview(developerName)
         
         infoLabel.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(16)
@@ -332,14 +320,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         updateDay.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(16)
             $0.top.equalTo(version.snp.bottom).offset(11)
-        }
-        developer.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(30)
-            $0.top.equalTo(update.snp.bottom).offset(11)
-        }
-        developerName.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(16)
-            $0.top.equalTo(updateDay.snp.bottom).offset(11)
         }
         
     }

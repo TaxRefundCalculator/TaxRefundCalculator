@@ -27,7 +27,7 @@ class CalculateVC: UIViewController {
     // MARK: - 선택 통화, 환율 카드
     private let currencyRateCard = UIView().then {
         $0.backgroundColor = .bgSecondary
-        $0.layer.cornerRadius = 12
+        $0.layer.cornerRadius = 16
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -49,7 +49,7 @@ class CalculateVC: UIViewController {
     // MARK: - 구매금액 입력 카드
     private let priceCard = UIView().then {
         $0.backgroundColor = .bgSecondary
-        $0.layer.cornerRadius = 12
+        $0.layer.cornerRadius = 16
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -68,7 +68,7 @@ class CalculateVC: UIViewController {
         $0.backgroundColor = .subButton
         $0.borderStyle = .none // 기본 테두리를 제거
         $0.layer.borderWidth = 0.7 // 테두리 두께 설정
-        $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
+        $0.layer.cornerRadius = 12 // 둥근 모서리 설정 (선택 사항)
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0.0)) // 왼쪽 여백
         $0.leftViewMode = .always
         $0.rightView = textFieldLabel
@@ -78,14 +78,14 @@ class CalculateVC: UIViewController {
     private let calculateBtn = UIButton().then {
         $0.backgroundColor = .mainTeal
         $0.setTitle("계산하기", for: .normal)
-        $0.layer.cornerRadius = 8
+        $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(calculateBtnTapped), for: .touchUpInside)
     }
     
     // MARK: - 계산 카드
     private let calculateCard = UIView().then {
         $0.backgroundColor = .bgSecondary
-        $0.layer.cornerRadius = 12
+        $0.layer.cornerRadius = 16
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -153,13 +153,13 @@ class CalculateVC: UIViewController {
     private lazy var saveBtn = UIButton().then {
         $0.backgroundColor = .mainTeal
         $0.setTitle("+ 기록 저장", for: .normal)
-        $0.layer.cornerRadius = 8
+        $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(saveBtnTapped), for: .touchUpInside)
     }
     private lazy var checkBtn = UIButton().then {
         $0.backgroundColor = .grayBtn
         $0.setTitle("환급 조건 보기", for: .normal)
-        $0.layer.cornerRadius = 8
+        $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(checkBtnTapped), for: .touchUpInside)
     }
     private lazy var btnStackView = UIStackView(arrangedSubviews: [saveBtn, checkBtn]).then {
@@ -390,7 +390,7 @@ class CalculateVC: UIViewController {
         }
         btnStackView.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(20)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(40)
         }
     }

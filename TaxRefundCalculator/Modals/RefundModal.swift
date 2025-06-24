@@ -31,7 +31,7 @@ class RefundModal: UIViewController {
     private let closeBtn = UIButton().then {
         $0.setTitle("닫기", for: .normal)
         $0.backgroundColor = .mainTeal
-        $0.layer.cornerRadius = 15
+        $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(closeBtnTapped), for: .touchUpInside)
     }
     private let flagLabel = UILabel().then {
@@ -102,7 +102,7 @@ class RefundModal: UIViewController {
         closeBtn.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(30)
             $0.leading.trailing.equalToSuperview().inset(25)
-            $0.height.equalTo(55)
+            $0.height.equalTo(48)
         }
         
         containerView.addSubview(scrollView)
