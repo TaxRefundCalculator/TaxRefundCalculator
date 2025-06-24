@@ -235,14 +235,14 @@ class CalculateVC: UIViewController {
         if let savedTravelCountry = viewModel.getTravelCountry3() {
             travelCountry.text = savedTravelCountry.full
             priceCurrency.text = " \(savedTravelCountry.code)"
-            currency1 = "\(savedTravelCountry.code)"
+            currency1 = " \(savedTravelCountry.code)"
             textFieldLabel.text = "\(savedTravelCountry.code)    "
             resultCurrency.text = " \(savedTravelCountry.code)"
         }
         
         // 기준화폐 가져오기
         if let savedBaseCurrency = viewModel.getBaseCurrency3() {
-            currency2 = "\(savedBaseCurrency)"
+            currency2 = " \(savedBaseCurrency)"
             conversionBoughtPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) 0 \(savedBaseCurrency)"
             conversionRefuncPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) 0 \(savedBaseCurrency)"
         }
