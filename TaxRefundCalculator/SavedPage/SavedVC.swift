@@ -87,7 +87,7 @@ final class SavedVC: UIViewController {
                     formatter.dateFormat = "yy.MM.dd"
                     return "\(formatter.string(from: start)) ~ \(formatter.string(from: end))"
                 } else {
-                    return "날짜 선택"
+                    return NSLocalizedString("Select Date", comment: "")
                 }
             }
             .bind(to: savedView.dateRangeButton.rx.title(for: .normal))
@@ -102,7 +102,7 @@ final class SavedVC: UIViewController {
     
     private func showDatePicker() {
         let fastisController = FastisController(mode: .range)
-        fastisController.title = "날짜 선택"
+        fastisController.title = NSLocalizedString("Select Date", comment: "")
         fastisController.allowToChooseNilDate = true
         fastisController.maximumDate = Date() // 오늘까지 선택 가능
         fastisController.dismissHandler = { [weak self] action in
