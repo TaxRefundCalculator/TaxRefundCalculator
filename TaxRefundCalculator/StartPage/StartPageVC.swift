@@ -8,10 +8,22 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
 
 class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, LanguageModalDelegate {
     
-    private let viewModel = StartPageVM()
+    private let viewModel : StartPageVM
+    private let disposeBag = DisposeBag()
+    
+    init(viewModel: StartPageVM = StartPageVM(firebaseService: FirebaseExchangeService())) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: 상단 제목 두개
     private let titleLabel = UILabel().then {
@@ -35,7 +47,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     // MARK: 언어 선택 카드
     private let languageCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 15
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -50,7 +62,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     }
     private let languageField = UITextField().then {
         $0.placeholder = "언어를 선택하세요."
-        $0.backgroundColor = .subButton
+        $0.backgroundColor = .bgPrimary
         $0.borderStyle = .none // 기본 테두리를 제거
         $0.layer.borderWidth = 0.7 // 테두리 두께 설정
         $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
@@ -62,7 +74,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     // MARK: 기준 통화 선택, 여행국가 선택 카드
     private let currencyCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 15
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -78,7 +90,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     }
     let baseCurrencyField = UITextField().then {
         $0.placeholder = "기준화폐를 선택하세요."
-        $0.backgroundColor = .subButton
+        $0.backgroundColor = .bgPrimary
         $0.borderStyle = .none // 기본 테두리를 제거
         $0.layer.borderWidth = 0.7 // 테두리 두께 설정
         $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
@@ -94,7 +106,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     }
     private let travelCountryField = UITextField().then {
         $0.placeholder = "여행국가를 선택하세요."
-        $0.backgroundColor = .subButton
+        $0.backgroundColor = .bgPrimary
         $0.borderStyle = .none // 기본 테두리를 제거
         $0.layer.borderWidth = 0.7 // 테두리 두께 설정
         $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
@@ -106,7 +118,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     // MARK: 환율 정보 카드
     private let exchangeRateCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 15
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -127,7 +139,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     // MARK: 환급 조건 카드
     private let conditionCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 15
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -165,10 +177,11 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         travelCountryField.delegate = self
         
         configureUI()
+        bindExchangeRate()
     }
     
     private func configureUI() {
-        view.backgroundColor = .bgSecondary
+        view.backgroundColor = .bgPrimary
         
         // MARK: Labels
         view.addSubview(titleLabel) // "택스리펀 환급금 예상 계산기"
@@ -344,9 +357,11 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         switch tag {
         case 1:
             baseCurrencyField.text = country
+            baseCurrencyField.sendActions(for: .editingChanged) // 선택이벤트 전달
             viewModel.saveBaseCurrency(country) // userDefaults에 저장
         case 2:
             travelCountryField.text = country
+            travelCountryField.sendActions(for: .editingChanged) // 선택이벤트 전달
             viewModel.saveTravelCountry(country) // userDefaults에 저장
             refundCondition.text = viewModel.refundConditionText(for: country)
         default:
@@ -376,5 +391,27 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
         }
     }
     
+    // MARK: 환율정보 바인딩 (Rx) - Na
+    private func bindExchangeRate() {
+        Observable
+            .combineLatest(baseCurrencyField.rx.text.orEmpty, travelCountryField.rx.text.orEmpty)
+            .subscribe(onNext: { [weak self] base, travel in
+                guard let self = self else { return }
+                guard !base.isEmpty, !travel.isEmpty else {
+                    // 환율정보 텍스트에 emit
+                    self.viewModel.exchangeRateText.accept("화폐, 국가 선택이 필요합니다.")
+                    return
+                }
+                // 뷰모델에 환율정보 요청
+                self.viewModel.fetchExchangeText(base: base, travel: travel)
+            })
+            .disposed(by: disposeBag)
+        
+        // Relay를 UI에 바인딩
+        viewModel.exchangeRateText
+            .asDriver()
+            .drive(exchangeRate.rx.text)
+            .disposed(by: disposeBag)
+    }
     
 }

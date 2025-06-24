@@ -15,8 +15,8 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
     // MARK: 앱 설정 카드
     private let settingCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
-        $0.layer.cornerRadius = 12
+        $0.backgroundColor = .bgSecondary
+        $0.layer.cornerRadius = 16
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -80,7 +80,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     private let darkModeSwitch = UISwitch().then {
         $0.isOn = false
         $0.onTintColor = .mainTeal
-        //$0.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
+        $0.addTarget(self, action: #selector(darkModeSwitchChanged), for: .valueChanged)
     }
     private let darkModeRow = UIView().then {
         $0.backgroundColor = .clear
@@ -99,8 +99,8 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
     // MARK: 앱 정보 카드
     private let infoCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
-        $0.layer.cornerRadius = 12
+        $0.backgroundColor = .bgSecondary
+        $0.layer.cornerRadius = 16
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -131,16 +131,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
         $0.textColor = .subText
     }
-    private let developer = UILabel().then {
-        $0.text = "개발자"
-        $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
-        $0.textColor = .subText
-    }
-    private let developerName = UILabel().then {
-        $0.text = "이재건, 나영진"
-        $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
-        $0.textColor = .subText
-    }
     
     
     override func viewDidLoad() {
@@ -165,11 +155,13 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         if let loadTravelCountry = viewModel.getTravelCountry() {
             nowCurreny.text = loadTravelCountry
         }
+        // 다크모드 스위치 활성화 체크
+        darkModeSwitch.isOn = viewModel.getDarkModeEnabled()
     }
     
     
     private func configureUI() {
-        view.backgroundColor = .bgSecondary
+        view.backgroundColor = .bgPrimary
         
         // MARK: Setting Card
         view.addSubview(settingCard)
@@ -300,7 +292,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         infoCard.snp.makeConstraints {
             $0.top.equalTo(settingCard.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(160)
+            $0.height.equalTo(130)
         }
         
         infoCard.addSubview(infoLabel)
@@ -308,8 +300,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         infoCard.addSubview(versionNumber)
         infoCard.addSubview(update)
         infoCard.addSubview(updateDay)
-        infoCard.addSubview(developer)
-        infoCard.addSubview(developerName)
         
         infoLabel.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(16)
@@ -331,26 +321,20 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
             $0.trailing.equalToSuperview().inset(16)
             $0.top.equalTo(version.snp.bottom).offset(11)
         }
-        developer.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(30)
-            $0.top.equalTo(update.snp.bottom).offset(11)
-        }
-        developerName.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(16)
-            $0.top.equalTo(updateDay.snp.bottom).offset(11)
-        }
         
     }
     
 
     // MARK: - Tap Actions 클릭시 모달로 출력
-    @objc private func didTapLanguageRow() {
+    @objc
+    private func didTapLanguageRow() {
         let vc = LanguageModal()
         vc.delegate = self
         vc.modalPresentationStyle = .pageSheet
         present(vc, animated: true, completion: nil)
     }
-    @objc private func didTapBaseCurrencyRow() {
+    @objc
+    private func didTapBaseCurrencyRow() {
         let vc = CountryModal()
         vc.delegate = self
         vc.selectedTextFieldTag = baseCurrencyRow.tag
@@ -358,17 +342,21 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         present(vc, animated: true, completion: nil)
     }
 
-    @objc private func didTapTravelCountryRow() {
+    @objc
+    private func didTapTravelCountryRow() {
         let vc = CountryModal()
         vc.delegate = self
         vc.selectedTextFieldTag = currencyRow.tag
         vc.modalPresentationStyle = .pageSheet
         present(vc, animated: true, completion: nil)
     }
-    @objc private func didTapResetRow() {
+    @objc
+    private func didTapResetRow() {
         let alert = UIAlertController(title: "기록 삭제", message: "모든 기록을 삭제하시겠습니까?", preferredStyle: .alert)
             
             let confirmAction = UIAlertAction(title: "예", style: .destructive) { _ in
+                
+                self.viewModel.deleteAllRecords()
                 print("기록 삭제됨")
             }
             let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
@@ -402,5 +390,15 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     }
     
     
+    // MARK: 다크모드 토글 스위치 액션
+    @objc
+    private func darkModeSwitchChanged(_ sender: UISwitch) {
+        viewModel.saveDarkModeEnabled(sender.isOn)
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            for window in scene.windows {
+                window.overrideUserInterfaceStyle = sender.isOn ? .dark : .light
+            }
+        }
+    }
 
 }

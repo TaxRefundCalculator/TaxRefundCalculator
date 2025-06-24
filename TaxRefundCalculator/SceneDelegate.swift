@@ -14,16 +14,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        // 앱 실행 시 파이어베이스 데이터 날짜 싱크 맞추기
+        ExchangeSyncManager.shared.performInitialSyncIfNeeded()
+        
         //UIWindowScene 객체 생성.
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
+        
         //window에게 루트 뷰 컨트롤러 지정.
         let saveUserDefaults = SaveUserDefaults()
+        let isDarkMode = saveUserDefaults.getDarkModeEnabled() // 다크모드
+        window.overrideUserInterfaceStyle = isDarkMode ? .dark : .light // 다크모드
         if saveUserDefaults.getIsDoneFirstStep() == true {
             window.rootViewController = TabBarController()
         } else {
-            window.rootViewController = StartPageVC()
+            let firebaseExchangeService = FirebaseExchangeService()
+            let startPageVM = StartPageVM(firebaseService: firebaseExchangeService)
+            window.rootViewController = StartPageVC(viewModel: startPageVM)
         }
         
 
