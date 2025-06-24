@@ -9,7 +9,6 @@ import Foundation
 
 protocol SaveUserDefaultsProtocol { // 캡슐화
     // 정보 저장용
-    // func saveLanguage(_ language: String)
     func saveBaseCurrency(_ currency: String)
     func saveTravelCountry(_ currency: String)
     func saveIsDoneFirstStep(_ done: Bool)
