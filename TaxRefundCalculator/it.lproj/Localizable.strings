@@ -95,3 +95,44 @@
 "History" = "Storico";
 "Exchange Rate" = "Tasso di cambio";
 "Settings" = "Impostazioni";
+
+
+// MARK: - 지원국가 목록
+"South Korea - KRW" = "Corea del Sud - KRW";
+"Japan - JPY" = "Giappone - JPY";
+"United States - USD" = "Stati Uniti - USD";
+"United Kingdom - GBP" = "Regno Unito - GBP";
+"Thailand - THB" = "Thailandia - THB";
+"Malaysia - MYR" = "Malesia - MYR";
+"Singapore - SGD" = "Singapore - SGD";
+"Indonesia - IDR" = "Indonesia - IDR";
+"Australia - AUD" = "Australia - AUD";
+"Türkiye - TRY" = "Turchia - TRY";
+"South Africa - ZAR" = "Sudafrica - ZAR";
+"Czech Republic - CZK" = "Repubblica Ceca - CZK";
+"Hungary - HUF" = "Ungheria - HUF";
+"Bulgaria - BGN" = "Bulgaria - BGN";
+"Switzerland - CHF" = "Svizzera - CHF";
+"Germany - EUR" = "Germania - EUR";
+"Netherlands - EUR" = "Paesi Bassi - EUR";
+"Belgium - EUR" = "Belgio - EUR";
+"France - EUR" = "Francia - EUR";
+"Spain - EUR" = "Spagna - EUR";
+"Portugal - EUR" = "Portogallo - EUR";
+"Ireland - EUR" = "Irlanda - EUR";
+"Austria - EUR" = "Austria - EUR";
+"Croatia - EUR" = "Croazia - EUR";
+"Italy - EUR" = "Italia - EUR";
+"Greece - EUR" = "Grecia - EUR";
+"Sweden - SEK" = "Svezia - SEK";
+"Denmark - DKK" = "Danimarca - DKK";
+"Norway - NOK" = "Norvegia - NOK";
+"Finland - EUR" = "Finlandia - EUR";
+"Mexico - MXN" = "Messico - MXN";
+"Brazil - BRL" = "Brasile - BRL";
+"Poland - PLN" = "Polonia - PLN";
+"Romania - RON" = "Romania - RON";
+"Iceland - ISK" = "Islanda - ISK";
+"Russia - RUB" = "Russia - RUB";
+"Israel - ILS" = "Israele - ILS";
+"India - INR" = "India - INR";

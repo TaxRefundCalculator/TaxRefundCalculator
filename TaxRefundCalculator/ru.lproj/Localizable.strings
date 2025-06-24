@@ -95,3 +95,44 @@
 "History" = "История";
 "Exchange Rate" = "Курс валют";
 "Settings" = "Настройки";
+
+
+// MARK: - 지원국가 목록
+"South Korea - KRW" = "Южная Корея - KRW";
+"Japan - JPY" = "Япония - JPY";
+"United States - USD" = "США - USD";
+"United Kingdom - GBP" = "Великобритания - GBP";
+"Thailand - THB" = "Таиланд - THB";
+"Malaysia - MYR" = "Малайзия - MYR";
+"Singapore - SGD" = "Сингапур - SGD";
+"Indonesia - IDR" = "Индонезия - IDR";
+"Australia - AUD" = "Австралия - AUD";
+"Türkiye - TRY" = "Турция - TRY";
+"South Africa - ZAR" = "ЮАР - ZAR";
+"Czech Republic - CZK" = "Чехия - CZK";
+"Hungary - HUF" = "Венгрия - HUF";
+"Bulgaria - BGN" = "Болгария - BGN";
+"Switzerland - CHF" = "Швейцария - CHF";
+"Germany - EUR" = "Германия - EUR";
+"Netherlands - EUR" = "Нидерланды - EUR";
+"Belgium - EUR" = "Бельгия - EUR";
+"France - EUR" = "Франция - EUR";
+"Spain - EUR" = "Испания - EUR";
+"Portugal - EUR" = "Португалия - EUR";
+"Ireland - EUR" = "Ирландия - EUR";
+"Austria - EUR" = "Австрия - EUR";
+"Croatia - EUR" = "Хорватия - EUR";
+"Italy - EUR" = "Италия - EUR";
+"Greece - EUR" = "Греция - EUR";
+"Sweden - SEK" = "Швеция - SEK";
+"Denmark - DKK" = "Дания - DKK";
+"Norway - NOK" = "Норвегия - NOK";
+"Finland - EUR" = "Финляндия - EUR";
+"Mexico - MXN" = "Мексика - MXN";
+"Brazil - BRL" = "Бразилия - BRL";
+"Poland - PLN" = "Польша - PLN";
+"Romania - RON" = "Румыния - RON";
+"Iceland - ISK" = "Исландия - ISK";
+"Russia - RUB" = "Россия - RUB";
+"Israel - ILS" = "Израиль - ILS";
+"India - INR" = "Индия - INR";

@@ -96,4 +96,42 @@
 "Settings" = "設定";
 
 
-
+// MARK: - 지원국가 목록
+"South Korea - KRW" = "韓国 - KRW";
+"Japan - JPY" = "日本 - JPY";
+"United States - USD" = "アメリカ合衆国 - USD";
+"United Kingdom - GBP" = "イギリス - GBP";
+"Thailand - THB" = "タイ - THB";
+"Malaysia - MYR" = "マレーシア - MYR";
+"Singapore - SGD" = "シンガポール - SGD";
+"Indonesia - IDR" = "インドネシア - IDR";
+"Australia - AUD" = "オーストラリア - AUD";
+"Türkiye - TRY" = "トルコ - TRY";
+"South Africa - ZAR" = "南アフリカ - ZAR";
+"Czech Republic - CZK" = "チェコ - CZK";
+"Hungary - HUF" = "ハンガリー - HUF";
+"Bulgaria - BGN" = "ブルガリア - BGN";
+"Switzerland - CHF" = "スイス - CHF";
+"Germany - EUR" = "ドイツ - EUR";
+"Netherlands - EUR" = "オランダ - EUR";
+"Belgium - EUR" = "ベルギー - EUR";
+"France - EUR" = "フランス - EUR";
+"Spain - EUR" = "スペイン - EUR";
+"Portugal - EUR" = "ポルトガル - EUR";
+"Ireland - EUR" = "アイルランド - EUR";
+"Austria - EUR" = "オーストリア - EUR";
+"Croatia - EUR" = "クロアチア - EUR";
+"Italy - EUR" = "イタリア - EUR";
+"Greece - EUR" = "ギリシャ - EUR";
+"Sweden - SEK" = "スウェーデン - SEK";
+"Denmark - DKK" = "デンマーク - DKK";
+"Norway - NOK" = "ノルウェー - NOK";
+"Finland - EUR" = "フィンランド - EUR";
+"Mexico - MXN" = "メキシコ - MXN";
+"Brazil - BRL" = "ブラジル - BRL";
+"Poland - PLN" = "ポーランド - PLN";
+"Romania - RON" = "ルーマニア - RON";
+"Iceland - ISK" = "アイスランド - ISK";
+"Russia - RUB" = "ロシア - RUB";
+"Israel - ILS" = "イスラエル - ILS";
+"India - INR" = "インド - INR";
