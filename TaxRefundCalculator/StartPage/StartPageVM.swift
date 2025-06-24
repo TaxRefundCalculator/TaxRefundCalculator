@@ -37,6 +37,12 @@ class StartPageVM {
     func saveDoneFIrstStep(_ done: Bool) {
         saveUserDefaults.saveIsDoneFirstStep(true)
     }
+    func saveTravelCurrencyUnit(_ unit: Int) {
+        saveUserDefaults.saveTravelCurrencyUnit(unit)
+    }
+    func saveExchangeValue(_ rate: String) {
+        saveUserDefaults.saveExchangeValue(rate)
+    }
 
     
     // MARK: 국기 인식 및 환급기준 매칭
@@ -60,17 +66,22 @@ class StartPageVM {
         }
     }
     
+    
     // MARK: 텍스트 필드들 빈칸 확인 예외처리
     func isInputValid(language: String?, baseCurrency: String?, travelCountry: String?) -> Bool {
         return !(language?.isEmpty ?? true)
         && !(baseCurrency?.isEmpty ?? true)
         && !(travelCountry?.isEmpty ?? true)
     }
-    // 통화코드 추출 메서드
+    
+    
+    // MARK: 통화코드 추출 메서드
     func extractCurrencyCode(_ text: String) -> String {
         return String(text.suffix(3))
     }
     
+    
+    // MARK: 환율정보 띄우기
     func fetchExchangeText(base: String, travel: String) {
         // 텍스트 필드에서 통화코드 추출
         let baseCode = extractCurrencyCode(base)
@@ -91,8 +102,8 @@ class StartPageVM {
                     let exchangeValue = (baseRate / travelRate) * Double(travelUnit)
                     let text = "\(travelUnit) \(travelCode) = \(exchangeValue.roundedString(fractionDigits: 2)) \(baseCode)"
                     // UserDefaults에 저장
-                    UserDefaults.standard.set(travelUnit, forKey: "exchangeUnit")
-                    UserDefaults.standard.set(exchangeValue.roundedString(fractionDigits: 2), forKey: "exchangeValue")
+                    self.saveTravelCurrencyUnit(travelUnit)
+                    self.saveExchangeValue(exchangeValue.roundedString(fractionDigits: 2))
                     self.exchangeRateText.accept(text)
                 } else {
                     self.exchangeRateText.accept("환율 정보를 불러올 수 없습니다")

@@ -19,7 +19,14 @@ enum DateUtils {
     // 기록탭
     static func toDate(_ dateString: String) -> Date? {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd"
+        formatter.dateFormat = "yyyy.MM.dd HH:mm"
         return formatter.date(from: dateString)
     }
+    
+    static func recordString() -> String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy.MM.dd HH:mm"
+            formatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+            return formatter.string(from: Date())
+        }
 }

@@ -13,6 +13,8 @@ protocol SaveUserDefaultsProtocol { // 캡슐화
     func saveBaseCurrency(_ currency: String)
     func saveTravelCountry(_ currency: String)
     func saveIsDoneFirstStep(_ done: Bool)
+    func saveTravelCurrencyUnit(_ unit: Int)
+    func saveExchangeValue(_ rate: String)
 }
 
 class SaveUserDefaults: SaveUserDefaultsProtocol {
@@ -34,6 +36,12 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     func saveIsDoneFirstStep(_ done: Bool) { // 초기설정
         userDefaults.set(done, forKey: "doneFirstStep")
     }
+    func saveTravelCurrencyUnit(_ unit: Int) {
+        userDefaults.set(unit, forKey: "travelCurrencyUnit")
+    }
+    func saveExchangeValue(_ rate: String) {
+        userDefaults.set(rate, forKey: "exchangeValue")
+    }
     
     // 불러오기
     func getLanguage() -> String? { // 언어
@@ -48,62 +56,56 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     func getIsDoneFirstStep() -> Bool { // 초기설정
         return userDefaults.bool(forKey: "doneFirstStep")
     }
+    func getTravelCurrencyUnit() -> Int { // 여행화폐단위
+        return userDefaults.integer(forKey: "travelCurrencyUnit")
+    }
+    func getExchangeValue() -> String? { // 기준화폐 환율
+        return userDefaults.string(forKey: "exchangeValue")
+    }
     
     
-    // MARK: 계산 기록 저장용
+    // MARK: 다크모드
+    private var darkModeKey: String { "darkModeEnabled" }
     // 저장
-    func saveCards(_ cards: [SavedCard]) {
-        let newKey = makeUniqueKey()
-        
-        // 1. 저장
-        if let encoded = try? JSONEncoder().encode(cards) {
-            userDefaults.set(encoded, forKey: newKey)
-        }
-        
-        // 2. 키 리스트에 추가
-        var allKeys = loadAllKeys()
-        allKeys.append(newKey)
-        userDefaults.set(allKeys, forKey: listKey)
-    }
-
-    // 불러오기
-    func loadGroupedCards() -> [(key: String, cards: [SavedCard])] {
-        let keys = loadAllKeys()
-        var result: [(String, [SavedCard])] = []
-        
-        for key in keys {
-            if let data = userDefaults.data(forKey: key),
-               let decoded = try? JSONDecoder().decode([SavedCard].self, from: data) {
-                result.append((key, decoded))
-            }
-        }
-        return result
-    }
-
-    // MARK: 키와 날짜로 중복방지
-    // 고유 키 생성
-    private func makeUniqueKey() -> String {
-        let date = currentDateString()
-        var index = 1
-        var key = "\(date)_\(index)"
-        let existingKeys = loadAllKeys()
-        
-        while existingKeys.contains(key) {
-            index += 1
-            key = "\(date)_\(index)"
-        }
-        return key
+    func saveDarkModeEnabled(_ enabled: Bool) {
+        userDefaults.set(enabled, forKey: darkModeKey)
     }
     
-    // 구분용 날짜
-    private func currentDateString() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.string(from: Date())
+    // 불러오기
+    func getDarkModeEnabled() -> Bool {
+        userDefaults.bool(forKey: darkModeKey)
     }
+    
+    
+    // MARK: 기록 초기화
+    func deleteAllRecords() {
+        userDefaults.removeObject(forKey: "SavedCardList")
+    }
+    
+}
 
-    private func loadAllKeys() -> [String] {
-        return userDefaults.stringArray(forKey: listKey) ?? []
+// MARK: 설정탭 기록카드 관련
+extension SaveUserDefaults {
+    /// 모든 SavedCard 배열을 1개 Key("SavedCardList")로 통째로 저장
+    func overwriteAllCards(_ cards: [SavedCard]) {
+        if let encoded = try? JSONEncoder().encode(cards) {
+            userDefaults.set(encoded, forKey: "SavedCardList")
+        }
     }
-   
+    
+    /// 모든 SavedCard를 불러오기
+    func loadAllCards() -> [SavedCard] {
+        if let data = userDefaults.data(forKey: "SavedCardList"),
+           let decoded = try? JSONDecoder().decode([SavedCard].self, from: data) {
+            return decoded
+        }
+        return []
+    }
+    
+    /// 기록 추가
+    func addCard(_ card: SavedCard) {
+        var cards = loadAllCards()
+        cards.append(card)
+        overwriteAllCards(cards)
+    }
 }

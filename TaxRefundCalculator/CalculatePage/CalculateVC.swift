@@ -12,22 +12,22 @@ import Combine
 
 class CalculateVC: UIViewController {
     
-    // MARK: 뷰모델
+    // MARK: - 뷰모델
     private let viewModel = CalculateVM()
     
-    // MARK: 의존성 주입
+    // MARK: - 의존성 주입
     private let settingVM = SettingVM.shared
     private var cancellables = Set<AnyCancellable>() // Combine 구독관리
 
-    // MARK: 사이즈 대응을 위한 스크롤 뷰
+    // MARK: - 사이즈 대응을 위한 스크롤 뷰
     let scrollView = UIScrollView()
     let scrollContentView = UIView()
 
     
-    // MARK: 선택 통화, 환율 카드
+    // MARK: - 선택 통화, 환율 카드
     private let currencyRateCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
-        $0.layer.cornerRadius = 12
+        $0.backgroundColor = .bgSecondary
+        $0.layer.cornerRadius = 16
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -46,10 +46,10 @@ class CalculateVC: UIViewController {
     private var currency2Num = 999
     private var currency2 = "화폐2"
     
-    // MARK: 구매금액 입력 카드
+    // MARK: - 구매금액 입력 카드
     private let priceCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
-        $0.layer.cornerRadius = 12
+        $0.backgroundColor = .bgSecondary
+        $0.layer.cornerRadius = 16
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -68,7 +68,7 @@ class CalculateVC: UIViewController {
         $0.backgroundColor = .subButton
         $0.borderStyle = .none // 기본 테두리를 제거
         $0.layer.borderWidth = 0.7 // 테두리 두께 설정
-        $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
+        $0.layer.cornerRadius = 12 // 둥근 모서리 설정 (선택 사항)
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0.0)) // 왼쪽 여백
         $0.leftViewMode = .always
         $0.rightView = textFieldLabel
@@ -78,14 +78,14 @@ class CalculateVC: UIViewController {
     private let calculateBtn = UIButton().then {
         $0.backgroundColor = .mainTeal
         $0.setTitle("계산하기", for: .normal)
-        $0.layer.cornerRadius = 8
+        $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(calculateBtnTapped), for: .touchUpInside)
     }
     
-    // MARK: 계산 카드
+    // MARK: - 계산 카드
     private let calculateCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
-        $0.layer.cornerRadius = 12
+        $0.backgroundColor = .bgSecondary
+        $0.layer.cornerRadius = 16
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
         $0.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -153,13 +153,13 @@ class CalculateVC: UIViewController {
     private lazy var saveBtn = UIButton().then {
         $0.backgroundColor = .mainTeal
         $0.setTitle("+ 기록 저장", for: .normal)
-        $0.layer.cornerRadius = 8
+        $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(saveBtnTapped), for: .touchUpInside)
     }
     private lazy var checkBtn = UIButton().then {
-        $0.backgroundColor = .currency
+        $0.backgroundColor = .grayBtn
         $0.setTitle("환급 조건 보기", for: .normal)
-        $0.layer.cornerRadius = 8
+        $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(checkBtnTapped), for: .touchUpInside)
     }
     private lazy var btnStackView = UIStackView(arrangedSubviews: [saveBtn, checkBtn]).then {
@@ -178,7 +178,7 @@ class CalculateVC: UIViewController {
         keyboardDown()
     }
     
-    // MARK: Combine으로 기준 화폐, 여행화폐 최신화
+    // MARK: - Combine으로 기준 화폐, 여행화폐 최신화
     private func updateFromSetting() {
         // 기준 화폐 값 구독 (SettingVM의 baseCurrency가 바뀌면 이 코드가 실행됨)
         settingVM.$baseCurrency
@@ -189,7 +189,6 @@ class CalculateVC: UIViewController {
                 self?.currency2 = "\(code)"
                 self?.conversionBoughtPrice.text = "약 0 \(code)"
                 self?.conversionRefuncPrice.text = "약 0 \(code)"
-                self?.updateExchangeRateText()
             }
             .store(in: &cancellables)
         
@@ -204,30 +203,46 @@ class CalculateVC: UIViewController {
                 self?.textFieldLabel.text = "\(code)    "   // 텍스트필드 우측 표시
                 self?.priceCurrency.text = " \(code)"      // 구매금액 통화 표시
                 self?.resultCurrency.text = " \(code)"      // 예상 환급금액 통화 표시
-                self?.updateExchangeRateText()
             }
             .store(in: &cancellables) // 구독관리로 메모리관리
+        
+        // 환율정보 구독
+        settingVM.$exchangeValue
+                    .sink { [weak self] value in
+                        // 환율 UI를 최신값으로 갱신
+                        self?.updateExchangeRateText()
+                    }
+                    .store(in: &cancellables)
+        
+        // 화폐단위 구독
+        settingVM.$travelCurrencyUnit
+                    .sink { [weak self] _ in
+                        // 단위 UI도 필요하다면 갱신
+                        self?.updateExchangeRateText()
+                    }
+                    .store(in: &cancellables)
     }
     
+    // 환율 텍스트 갱신
     private func updateExchangeRateText() {
-        exchangeRate.text = "\(currency1Num)\(currency1) = \(currency2Num)\(currency2)"
+        exchangeRate.text = "\(viewModel.getTravelCurrencyUnit()) \(currency1) = \(viewModel.getExchangeValue()) \(currency2)"
     }
     
     
-    // MARK: UserDefaults에서 값 불러오기
+    // MARK: - UserDefaults에서 값 불러오기
     private func loadFromUserdefaults() {
         // 여행국가화폐 불러오기
         if let savedTravelCountry = viewModel.getTravelCountry3() {
             travelCountry.text = savedTravelCountry.full
             priceCurrency.text = " \(savedTravelCountry.code)"
-            currency1 = " \(savedTravelCountry.code)"
+            currency1 = "\(savedTravelCountry.code)"
             textFieldLabel.text = "\(savedTravelCountry.code)    "
             resultCurrency.text = " \(savedTravelCountry.code)"
         }
         
         // 기준화폐 가져오기
         if let savedBaseCurrency = viewModel.getBaseCurrency3() {
-            currency2 = " \(savedBaseCurrency)"
+            currency2 = "\(savedBaseCurrency)"
             conversionBoughtPrice.text = "약 0 \(savedBaseCurrency)"
             conversionRefuncPrice.text = "약 0 \(savedBaseCurrency)"
         }
@@ -237,13 +252,13 @@ class CalculateVC: UIViewController {
             percent.text = vatText
         }
         
-        exchangeRate.text = "\(viewModel.realTimeTravelCurrency)\(currency1) = \(viewModel.realTimeBaseCurrency)\(currency2)"
+        exchangeRate.text = "\(viewModel.getTravelCurrencyUnit())\(currency1) = \(viewModel.getExchangeValue())\(currency2)"
     }
     
     
-    // MARK: UI 구성
+    // MARK: - UI 구성
     private func configureUI() {
-        view.backgroundColor = .bgSecondary
+        view.backgroundColor = .bgPrimary
         
         
         // MARK: 사이즈 대응을 위한 스크롤 뷰
@@ -375,10 +390,11 @@ class CalculateVC: UIViewController {
         }
         btnStackView.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(20)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(40)
         }
     }
+    
     
     // MARK: 저장하기 버튼 액션
     @objc
@@ -389,35 +405,40 @@ class CalculateVC: UIViewController {
               let exchangeRate = exchangeRate.text,
               let priceText = priceTextField.text,
               let refundText = refundNum.text,
+              let convertedPriceText = conversionBoughtPrice.text,
               let convertedText = conversionRefuncPrice.text,
               let price = Double(priceText),
               let refund = Double(refundText.filter { $0.isNumber || $0 == "." }),
-              let converted = Double(convertedText.filter { $0.isNumber || $0 == "." }) else {
+              let convertedPrice = Double(convertedPriceText.filter { $0.isNumber || $0 == "." }),
+              let convertedRefundPrice = Double(convertedText.filter { $0.isNumber || $0 == "." }) else {
             print("❌ 필수 데이터 누락 또는 변환 실패")
             return
         }
 
         let card = SavedCard(
+            id: UUID().uuidString,
             country: country,
+            currencyCode: currency1,
             exchangeRate: exchangeRate,
-            date: "123",
+            date: DateUtils.recordString(),
             price: price,
             refundPrice: refund,
-            convertedRefundPrice: converted
+            convertedPrice: convertedPrice,
+            convertedRefundPrice: convertedRefundPrice,
+            baseCurrencyCode: currency2
         )
 
         viewModel.saveCard(card)
         print("✅ 저장 성공: \(card)")
-        
-        // 디버깅용
-        let savedGroups = viewModel.loadGroupedCards()
-        for (key, cards) in savedGroups {
-            print("📦 저장된 키: \(key)")
-            for card in cards {
-                print("🔹 \(card)")
-            }
-        }
+        compliteAlert()
     }
+    // 저장 완료 Alert
+    private func compliteAlert() {
+        let alert = UIAlertController(title: "저장 완료", message: "저장이 완료되었습니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
     
     // MARK: 환급조건 보기 버튼 액션
     @objc
@@ -431,9 +452,6 @@ class CalculateVC: UIViewController {
     @objc
     private func calculateBtnTapped() {
         
-        
-        print("exchangeUnit(UserDefaults):", UserDefaults.standard.integer(forKey: "exchangeUnit"))
-        print("exchangeValue(UserDefaults):", UserDefaults.standard.string(forKey: "exchangeValue") ?? "nil")
         // 구매금액 입력 필드 예외처리
         guard let priceText = priceTextField.text else { return }
         let isValid = viewModel.isValidFloatingPoint(priceText)
@@ -450,22 +468,25 @@ class CalculateVC: UIViewController {
         
         // MARK: 계산 로직
         // 구매 금액
-        priceNum.text = priceText
+        if let priceValue = Double(priceText) {
+                priceNum.text = priceValue.roundedString()
+            }
+        
         let currencyCode = viewModel.getBaseCurrency3() ?? ""
         
         // 구매금액 기준통화로 변환
         if let result = viewModel.conversionPrice(priceText: priceText) {
-            conversionBoughtPrice.text = "약 \(String(format: "%.2f", result)) \(currencyCode)"
+            conversionBoughtPrice.text = "약 \(result.roundedString()) \(currencyCode)"
         } else {
             conversionBoughtPrice.text = "입력 오류"
         }
         
         // 환급금액(현지화폐) 계산
-        if let refund = viewModel.calculateVatRefund(priceText: priceNum.text ?? "") {
-            refundNum.text = String(format: "%.2f", refund)
+        if let refund = viewModel.calculateVatRefund(priceText: priceText) {
+            refundNum.text = refund.roundedString()
             // 환급금액을 환율로 변환해서 conversionRefuncPrice에 표시
             if let refundInBase = viewModel.convertRefundToBaseCurrency(refund: refund) {
-                conversionRefuncPrice.text = "약 \(String(format: "%.2f", refundInBase)) \(currencyCode)"
+                conversionRefuncPrice.text = "약 \(refundInBase.roundedString()) \(currencyCode)"
             } else {
                 conversionRefuncPrice.text = "환산 오류"
             }
