@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
+class SettingVC: UIViewController, CountryModalDelegate {
     
     private let viewModel = SettingVM.shared // 싱글턴 패턴이기때문에 싱글턴 인스턴스. 새로 생성하면 안됨.
     
@@ -23,29 +23,15 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         $0.layer.shadowRadius = 6
     }
     private let settingLabel = UILabel().then {
-        $0.text = "🛠️ 앱 설정"
+        $0.text = "🛠️ \(NSLocalizedString("App Settings", comment: ""))"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 20, weight: .bold)
         $0.textAlignment = .left
     }
     
-    // 언어변경 row
-    private let changeLanguage = UILabel().then {
-        $0.text = "🌏 언어 변경"
-        $0.textColor = .primaryText
-        $0.font = .systemFont(ofSize: 17)
-    }
-    private let nowLanguage = UILabel().then {
-        $0.textColor = .primaryText
-        $0.font = .systemFont(ofSize: 17)
-    }
-    private let languageRow = UIView().then {
-        $0.backgroundColor = .clear
-    }
-    
     // 기준 화폐 변경 row
     private let baseCurrencyChange = UILabel().then {
-        $0.text = "💰 기준 화폐 변경"
+        $0.text = "💰 \(NSLocalizedString("Change Base Currency", comment: ""))"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -59,7 +45,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
     // 여행 화폐 변경 row
     private let currencyChange = UILabel().then {
-        $0.text = "🛫 여행 화폐 변경"
+        $0.text = "🛫 \(NSLocalizedString("Change Travel Currency", comment: ""))"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -73,7 +59,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
     // 다크모드 row
     private let darkMode = UILabel().then {
-        $0.text = "🌜 다크 모드"
+        $0.text = "🌜 \(NSLocalizedString("Dark Mode", comment: ""))"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -88,7 +74,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
     // 리셋 row
     private let reset = UILabel().then {
-        $0.text = "🗑️ 기록 초기화"
+        $0.text = "🗑️ \(NSLocalizedString("Reset Records", comment: ""))"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -107,12 +93,12 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         $0.layer.shadowRadius = 6
     }
     private let infoLabel = UILabel().then {
-        $0.text = "🚀 앱 정보"
+        $0.text = "🚀 \(NSLocalizedString("App Info", comment: ""))"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 20, weight: .bold)
     }
     private let version = UILabel().then {
-        $0.text = "버전"
+        $0.text = NSLocalizedString("Version", comment: "")
         $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
         $0.textColor = .subText
     }
@@ -122,7 +108,7 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         $0.textColor = .subText
     }
     private let update = UILabel().then {
-        $0.text = "최종 업데이트"
+        $0.text = NSLocalizedString("Last Updated", comment: "")
         $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
         $0.textColor = .subText
     }
@@ -143,10 +129,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     
     // MARK: UserDefaults에서 값 불러오기
     private func loadFromUserdefaults() {
-        // 언어 설정
-        if let loadLanguage = viewModel.getSelectedLanguage() {
-            nowLanguage.text = loadLanguage
-        }
         // 기준화폐 설정
         if let loadBaseCurrency = viewModel.getBaseCurrency() {
             nowBaseCurrency.text = loadBaseCurrency
@@ -168,15 +150,11 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         settingCard.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(365)
+            $0.height.equalTo(310)
         }
         
         settingCard.addSubview(settingLabel)
-        
-        settingCard.addSubview(languageRow)
-        languageRow.addSubview(changeLanguage)
-        languageRow.addSubview(nowLanguage)
-        
+    
         settingCard.addSubview(baseCurrencyRow)
         baseCurrencyRow.addSubview(baseCurrencyChange)
         baseCurrencyRow.addSubview(nowBaseCurrency)
@@ -197,25 +175,10 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.top.equalToSuperview().inset(16)
         }
-        
-        // Language Row
-        languageRow.snp.makeConstraints {
-            $0.top.equalTo(settingLabel.snp.bottom).offset(20)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(60)
-        }
-        changeLanguage.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(16)
-            $0.centerY.equalToSuperview()
-        }
-        nowLanguage.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(16)
-            $0.centerY.equalToSuperview()
-        }
 
         // Base Currency Row Constraints
         baseCurrencyRow.snp.makeConstraints {
-            $0.top.equalTo(languageRow.snp.bottom)
+            $0.top.equalTo(settingLabel.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(60)
         }
@@ -280,9 +243,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
         let travelTap = UITapGestureRecognizer(target: self, action: #selector(didTapTravelCountryRow))
         currencyRow.addGestureRecognizer(travelTap)
         currencyRow.isUserInteractionEnabled = true
-        let langTap = UITapGestureRecognizer(target: self, action: #selector(didTapLanguageRow))
-        languageRow.addGestureRecognizer(langTap)
-        languageRow.isUserInteractionEnabled = true
         let resetTap = UITapGestureRecognizer(target: self, action: #selector(didTapResetRow))
         resetRow.addGestureRecognizer(resetTap)
         resetRow.isUserInteractionEnabled = true
@@ -327,13 +287,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
 
     // MARK: - Tap Actions 클릭시 모달로 출력
     @objc
-    private func didTapLanguageRow() {
-        let vc = LanguageModal()
-        vc.delegate = self
-        vc.modalPresentationStyle = .pageSheet
-        present(vc, animated: true, completion: nil)
-    }
-    @objc
     private func didTapBaseCurrencyRow() {
         let vc = CountryModal()
         vc.delegate = self
@@ -352,14 +305,14 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
     }
     @objc
     private func didTapResetRow() {
-        let alert = UIAlertController(title: "기록 삭제", message: "모든 기록을 삭제하시겠습니까?", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Delete Records", comment: ""), message: NSLocalizedString("Do you want to delete all records?", comment: ""), preferredStyle: .alert)
             
-            let confirmAction = UIAlertAction(title: "예", style: .destructive) { _ in
+            let confirmAction = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive) { _ in
                 
                 self.viewModel.deleteAllRecords()
                 print("기록 삭제됨")
             }
-            let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil)
             
             alert.addAction(confirmAction)
             alert.addAction(cancelAction)
@@ -369,12 +322,6 @@ class SettingVC: UIViewController, LanguageModalDelegate, CountryModalDelegate {
 
 
     // MARK: - Delegate Methods
-    // 언어 선택 부분
-    func didSelectLanguage(_ language: String) {
-        nowLanguage.text = language
-        viewModel.saveSelectedLanguage(language) // userDefaults에 저장
-        
-    }
     // 화폐 선택 부분들
     func didSelectCountry(_ country: String, forFieldTag tag: Int) {
         switch tag {

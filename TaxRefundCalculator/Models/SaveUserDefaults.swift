@@ -9,7 +9,7 @@ import Foundation
 
 protocol SaveUserDefaultsProtocol { // 캡슐화
     // 정보 저장용
-    func saveLanguage(_ language: String)
+    // func saveLanguage(_ language: String)
     func saveBaseCurrency(_ currency: String)
     func saveTravelCountry(_ currency: String)
     func saveIsDoneFirstStep(_ done: Bool)
@@ -24,9 +24,6 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     
     // MARK: 정보 저장용
     // 저장
-    func saveLanguage(_ language: String) { // 언어
-        userDefaults.set(language, forKey: "selectedLanguage")
-    }
     func saveBaseCurrency(_ currency: String) { // 기준 통화
         userDefaults.set(currency, forKey: "baseCurrency")
     }
@@ -44,9 +41,6 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     }
     
     // 불러오기
-    func getLanguage() -> String? { // 언어
-        return userDefaults.string(forKey: "selectedLanguage")
-    }
     func getBaseCurrency() -> String? { // 기준통화
         return userDefaults.string(forKey: "baseCurrency")
     }

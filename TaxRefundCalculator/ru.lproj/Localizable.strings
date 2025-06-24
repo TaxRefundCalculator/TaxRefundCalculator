@@ -1,11 +1,62 @@
 
+// MARK: - 시작화면
+"Tax Refund Calculator" = "Калькулятор возврата налога";
+"Calculate your tax refund amount in advance." = "Рассчитайте сумму возврата налога заранее.";
+"Select Language" = "Выбрать язык";
+"Please select a language." = "Пожалуйста, выберите язык.";
+"Select Base Currency" = "Выбрать базовую валюту";
+"Please select a base currency." = "Пожалуйста, выберите базовую валюту.";
+"Select Travel Country" = "Выбрать страну поездки";
+"Please select a travel country." = "Пожалуйста, выберите страну поездки.";
+"Exchange Rate Info" = "Информация о курсе валют";
+"Please select a currency and a country." = "Требуется выбрать валюту и страну.";
+"Refund Policy" = "Условия возврата";
+"Please select a travel country." = "Пожалуйста, выберите страну поездки.";
+"Start →" = "Начать →";
+ 
+"Input Confirmation" = "Подтверждение ввода";
+"Please select all items." = "Пожалуйста, выберите все пункты.";
+"OK" = "ОК";
 
 
+// MARK: - 계산화면
+"Enter purchase amount" = "Введите сумму покупки";
+"Please enter numbers only." = "Пожалуйста, введите только цифры.";
+"Calculate" = "Рассчитать";
+"VAT Rate" = "Ставка НДС";
+"Purchase Amount" = "Сумма покупки";
+"Estimated Refund Amount" = "Ожидаемая сумма возврата";
+"Approx. " = "Примерно ";
+"Save Record" = "Сохранить запись";
+"View Refund Policy" = "Посмотреть условия возврата";
+"Calculate" = "Расчет";
+"History" = "История";
+"Exchange Rate" = "Курс валют";
+"Settings" = "Настройки";
+"Close" = "Закрыть";
+
+"Input Error" = "Ошибка ввода";
+"You cannot enter blank spaces." = "Нельзя вводить пробелы.";
+"OK" = "ОК";
+
+"Input Error" = "Ошибка ввода";
+"Only numbers and decimal points are allowed, and the decimal point can be entered only once." = "Разрешены только цифры и одна десятичная точка.";
+"OK" = "ОК";
+
+"Save Complete" = "Сохранение завершено";
+"Saved successfully." = "Сохранение выполнено успешно.";
+"OK" = "ОК";
+
+"VAT Rate:" = "Ставка НДС:";
+"Minimum Purchase Amount:" = "Минимальная сумма покупки:";
+"Refund Method:" = "Способ возврата:";
+"Refund Location:" = "Место возврата:";
+"Notes:" = "Примечания:";
+
+"Close" = "Закрыть";
 
 
-
-// 기록화면
-
+// MARK: - 기록화면
 "Total Purchase Amount" = "Общая сумма покупок";
 "Total Refund Amount" = "Общая сумма возврата";
 "Base Currency" = "Базовая валюта";
@@ -14,3 +65,33 @@
 "Refund Amount" = "Сумма возврата";
 "Applied Exchange Rate" = "Применённый курс валют :";
 "Close" = "Закрыть";
+
+
+// MARK: - 환율화면
+"Real-Time Exchange Rates" = "Информация о курсе валют в реальном времени";
+"Last Updated: %@" = "Последнее обновление: %@";
+
+
+// MARK: - 설정화면
+"App Settings" = "Настройки приложения";
+"Change Language" = "Изменить язык";
+"Change Base Currency" = "Изменить базовую валюту";
+"Change Travel Currency" = "Изменить валюту поездки";
+"Dark Mode" = "Тёмный режим";
+"Reset Records" = "Сбросить записи";
+"App Info" = "Информация о приложении";
+"Version" = "Версия";
+"Last Updated" = "Последнее обновление";
+"Developer" = "Разработчик";
+
+"Delete Records" = "Удалить записи";
+"Do you want to delete all records?" = "Вы хотите удалить все записи?";
+"No" = "Нет";
+"Yes" = "Да";
+
+
+// MARK: - 탭바
+"Calculate" = "Расчет";
+"History" = "История";
+"Exchange Rate" = "Курс валют";
+"Settings" = "Настройки";

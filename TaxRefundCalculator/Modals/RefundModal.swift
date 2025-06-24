@@ -29,7 +29,7 @@ class RefundModal: UIViewController {
     
     // MARK: UI 요소들
     private let closeBtn = UIButton().then {
-        $0.setTitle("닫기", for: .normal)
+        $0.setTitle(NSLocalizedString("Close", comment: ""), for: .normal)
         $0.backgroundColor = .mainTeal
         $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(closeBtnTapped), for: .touchUpInside)
@@ -55,11 +55,11 @@ class RefundModal: UIViewController {
         flagLabel.text = flag
         countryLabel.text = policy.country
         refundInfoLabel.text = """
-        💰 VAT율 :  \(policy.vatRate)%\n
-        💵 최소 구매금액 :  \(Int(policy.minimumAmount)) \(policy.currencyCode)\n
-        🔁 환급 방법 :  \(policy.refundMethod)\n
-        📍 환급 장소 :  \(policy.refundPlace)\n
-        📌 비고 :  \(policy.notes)
+        💰 \(NSLocalizedString("VAT Rate:", comment: "")) :  \(policy.vatRate)%\n
+        💵 \(NSLocalizedString("Minimum Purchase Amount:", comment: "")) :  \(Int(policy.minimumAmount)) \(policy.currencyCode)\n
+        🔁 \(NSLocalizedString("Refund Method:", comment: "")) :  \(policy.refundMethod)\n
+        📍 \(NSLocalizedString("Refund Location:", comment: "")) :  \(policy.refundPlace)\n
+        📌 \(NSLocalizedString("Notes:", comment: "")) :  \(policy.notes)
         """
     }
     

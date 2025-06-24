@@ -1,13 +1,61 @@
 
+// MARK: - 시작화면
+"Tax Refund Calculator" = "免税払い戻し金額計算機";
+"Calculate your tax refund amount in advance." = "海外ショッピングの税金還付額を事前に計算できます。";
+"Select Language" = "言語を選択";
+"Please select a language." = "言語を選択してください。";
+"Select Base Currency" = "基準通貨を選択";
+"Please select a base currency." = "基準通貨を選択してください。";
+"Select Travel Country" = "渡航国を選択";
+"Please select a travel country." = "渡航国を選択してください。";
+"Exchange Rate Info" = "為替情報";
+"Please select a currency and a country." = "通貨と国の選択が必要です。";
+"Refund Policy" = "還付条件";
+"Please select a travel country." = "渡航国を選択してください。";
+"Start →" = "開始する →";
+ 
+"Input Confirmation" = "入力確認";
+"Please select all items." = "すべての項目を選択してください。";
+"OK" = "確認";
+
+// MARK: - 계산화면
+"Enter purchase amount" = "購入金額を入力";
+"Please enter numbers only." = "数字のみ入力してください。";
+"Calculate" = "計算する";
+"VAT Rate" = "消費税率（VAT）";
+"Purchase Amount" = "購入金額";
+"Estimated Refund Amount" = "推定還付金額";
+"Approx. " = "約 ";
+"Save Record" = "記録を保存";
+"View Refund Policy" = "還付条件を見る";
+"Calculate" = "計算";
+"History" = "履歴";
+"Exchange Rate" = "為替";
+"Settings" = "設定";
+"Close" = "閉じる";
+
+"Input Error" = "入力エラー";
+"You cannot enter blank spaces." = "空白は入力できません。";
+"OK" = "確認";
+
+"Input Error" = "入力エラー";
+"Only numbers and decimal points are allowed, and the decimal point can be entered only once." = "数字と小数点のみ入力でき、小数点は一度だけ入力できます。";
+"OK" = "確認";
+
+"Save Complete" = "保存完了";
+"Saved successfully." = "保存が完了しました。";
+"OK" = "確認";
+
+"VAT Rate:" = "消費税率：";
+"Minimum Purchase Amount:" = "最低購入金額：";
+"Refund Method:" = "還付方法：";
+"Refund Location:" = "還付場所：";
+"Notes:" = "備考：";
+
+"Close" = "閉じる";
 
 
-
-
-
-
-
-// 기록화면
-
+// MARK: - 기록화면
 "Total Purchase Amount" = "総購入金額";
 "Total Refund Amount" = "総還付金額";
 "Base Currency" = "基準通貨";
@@ -16,4 +64,36 @@
 "Refund Amount" = "還付金額";
 "Applied Exchange Rate" = "適用為替レート :";
 "Close" = "閉じる";
+
+
+// MARK: - 환율화면
+"Real-Time Exchange Rates" = "リアルタイム為替情報";
+"Last Updated: %@" = "最終更新日: %@";
+
+
+// MARK: - 설정화면
+"App Settings" = "アプリ設定";
+"Change Language" = "言語を変更";
+"Change Base Currency" = "基準通貨を変更";
+"Change Travel Currency" = "旅行通貨を変更";
+"Dark Mode" = "ダークモード";
+"Reset Records" = "記録をリセット";
+"App Info" = "アプリ情報";
+"Version" = "バージョン";
+"Last Updated" = "最終更新";
+"Developer" = "開発者";
+
+"Delete Records" = "記録を削除";
+"Do you want to delete all records?" = "すべての記録を削除しますか？";
+"No" = "いいえ";
+"Yes" = "はい";
+
+
+// MARK: - 탭바
+"Calculate" = "計算";
+"History" = "履歴";
+"Exchange Rate" = "為替";
+"Settings" = "設定";
+
+
 

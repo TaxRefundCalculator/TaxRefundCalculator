@@ -56,7 +56,7 @@ class CalculateVC: UIViewController {
         $0.layer.shadowRadius = 6
     }
     private let priceLabel = UILabel().then {
-        $0.text = "구매 금액 입력"
+        $0.text = NSLocalizedString("Enter purchase amount", comment: "")
         $0.font = UIFont.systemFont(ofSize: 19, weight: .regular)
     }
     private let textFieldLabel = UILabel().then {
@@ -64,7 +64,7 @@ class CalculateVC: UIViewController {
         $0.font = UIFont.systemFont(ofSize: 14, weight: .bold)
     }
     private lazy var priceTextField = UITextField().then {
-        $0.placeholder = "숫자만 입력해주세요."
+        $0.placeholder = NSLocalizedString("Please enter numbers only.", comment: "")
         $0.backgroundColor = .subButton
         $0.borderStyle = .none // 기본 테두리를 제거
         $0.layer.borderWidth = 0.7 // 테두리 두께 설정
@@ -77,7 +77,7 @@ class CalculateVC: UIViewController {
     }
     private let calculateBtn = UIButton().then {
         $0.backgroundColor = .mainTeal
-        $0.setTitle("계산하기", for: .normal)
+        $0.setTitle(NSLocalizedString("Calculate", comment: ""), for: .normal)
         $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(calculateBtnTapped), for: .touchUpInside)
     }
@@ -92,7 +92,7 @@ class CalculateVC: UIViewController {
         $0.layer.shadowRadius = 6
     }
     private let vatLabel = UILabel().then {
-        $0.text = "부가세율(VAT)"
+        $0.text = NSLocalizedString("VAT Rate", comment: "")
         $0.font = UIFont.systemFont(ofSize: 19, weight: .regular)
     }
     private let percent = UILabel().then {
@@ -104,7 +104,7 @@ class CalculateVC: UIViewController {
     }
   
     private let boughtPrice = UILabel().then {
-        $0.text = "구매금액"
+        $0.text = NSLocalizedString("Purchase Amount", comment: "")
         $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
     }
     private let priceNum = UILabel().then {
@@ -130,7 +130,7 @@ class CalculateVC: UIViewController {
     }
     
     private let expectation = UILabel().then {
-        $0.text = "예상 환급 금액"
+        $0.text = NSLocalizedString("Estimated Refund Amount", comment: "")
         $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
     }
     private let refundNum = UILabel().then {
@@ -152,13 +152,13 @@ class CalculateVC: UIViewController {
     }
     private lazy var saveBtn = UIButton().then {
         $0.backgroundColor = .mainTeal
-        $0.setTitle("+ 기록 저장", for: .normal)
+        $0.setTitle(NSLocalizedString("Save Record", comment: ""), for: .normal)
         $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(saveBtnTapped), for: .touchUpInside)
     }
     private lazy var checkBtn = UIButton().then {
         $0.backgroundColor = .grayBtn
-        $0.setTitle("환급 조건 보기", for: .normal)
+        $0.setTitle(NSLocalizedString("View Refund Policy", comment: ""), for: .normal)
         $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(checkBtnTapped), for: .touchUpInside)
     }
@@ -187,8 +187,8 @@ class CalculateVC: UIViewController {
                 // 기준 화폐 라벨 등 UI 업데이트
                 let code = value.suffix(3)
                 self?.currency2 = "\(code)"
-                self?.conversionBoughtPrice.text = "약 0 \(code)"
-                self?.conversionRefuncPrice.text = "약 0 \(code)"
+                self?.conversionBoughtPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) 0 \(code)"
+                self?.conversionRefuncPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) 0 \(code)"
             }
             .store(in: &cancellables)
         
@@ -243,8 +243,8 @@ class CalculateVC: UIViewController {
         // 기준화폐 가져오기
         if let savedBaseCurrency = viewModel.getBaseCurrency3() {
             currency2 = "\(savedBaseCurrency)"
-            conversionBoughtPrice.text = "약 0 \(savedBaseCurrency)"
-            conversionRefuncPrice.text = "약 0 \(savedBaseCurrency)"
+            conversionBoughtPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) 0 \(savedBaseCurrency)"
+            conversionRefuncPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) 0 \(savedBaseCurrency)"
         }
         
         // 부가세율 가져오기
@@ -434,8 +434,8 @@ class CalculateVC: UIViewController {
     }
     // 저장 완료 Alert
     private func compliteAlert() {
-        let alert = UIAlertController(title: "저장 완료", message: "저장이 완료되었습니다.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        let alert = UIAlertController(title: NSLocalizedString("Save Complete", comment: ""), message: NSLocalizedString("Saved successfully.", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
@@ -476,9 +476,9 @@ class CalculateVC: UIViewController {
         
         // 구매금액 기준통화로 변환
         if let result = viewModel.conversionPrice(priceText: priceText) {
-            conversionBoughtPrice.text = "약 \(result.roundedString()) \(currencyCode)"
+            conversionBoughtPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) \(result.roundedString()) \(currencyCode)"
         } else {
-            conversionBoughtPrice.text = "입력 오류"
+            conversionBoughtPrice.text = NSLocalizedString("Input Error", comment: "")
         }
         
         // 환급금액(현지화폐) 계산
@@ -486,12 +486,12 @@ class CalculateVC: UIViewController {
             refundNum.text = refund.roundedString()
             // 환급금액을 환율로 변환해서 conversionRefuncPrice에 표시
             if let refundInBase = viewModel.convertRefundToBaseCurrency(refund: refund) {
-                conversionRefuncPrice.text = "약 \(refundInBase.roundedString()) \(currencyCode)"
+                conversionRefuncPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) \(refundInBase.roundedString()) \(currencyCode)"
             } else {
-                conversionRefuncPrice.text = "환산 오류"
+            conversionRefuncPrice.text = NSLocalizedString("Input Error", comment: "")
             }
         } else {
-            refundNum.text = "계산 오류"
+            refundNum.text = NSLocalizedString("Calculate", comment: "")
             conversionRefuncPrice.text = ""
         }
 
@@ -533,14 +533,14 @@ extension CalculateVC: UITextFieldDelegate {
     
     // 오입력 얼럿
     private func errorAlert1() {
-        let alert = UIAlertController(title: "입력 오류", message: "숫자와 소수점만, 그리고 소수점은 한 번만 입력할 수 있습니다.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        let alert = UIAlertController(title: NSLocalizedString("Input Error", comment: ""), message: NSLocalizedString("Only numbers and decimal points are allowed, and the decimal point can be entered only once.", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     // 공백 입력 얼럿
     private func errorAlert2() {
-        let alert = UIAlertController(title: "입력 오류", message: "공백은 입력할 수 없습니다.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        let alert = UIAlertController(title: NSLocalizedString("Input Error", comment: ""), message: NSLocalizedString("You cannot enter blank spaces.", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 }

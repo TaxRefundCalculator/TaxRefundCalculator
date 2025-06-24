@@ -1,11 +1,62 @@
 
+// MARK: - 시작화면
+"Tax Refund Calculator" = "Steuerrückerstattungsrechner";
+"Calculate your tax refund amount in advance." = "Berechnen Sie den Steuererstattungsbetrag im Voraus.";
+"Select Language" = "Sprache auswählen";
+"Please select a language." = "Bitte wählen Sie eine Sprache aus.";
+"Select Base Currency" = "Basiswährung auswählen";
+"Please select a base currency." = "Bitte wählen Sie eine Basiswährung aus.";
+"Select Travel Country" = "Reiseland auswählen";
+"Please select a travel country." = "Bitte wählen Sie ein Reiseland aus.";
+"Exchange Rate Info" = "Wechselkursinformation";
+"Please select a currency and a country." = "Bitte wählen Sie eine Währung und ein Land aus.";
+"Refund Policy" = "Erstattungsbedingungen";
+"Please select a travel country." = "Bitte wählen Sie ein Reiseland aus.";
+"Start →" = "Starten →";
+
+"Input Confirmation" = "Eingabebestätigung";
+"Please select all items." = "Bitte wählen Sie alle Felder aus.";
+"OK" = "OK";
 
 
+// MARK: - 계산화면
+"Enter purchase amount" = "Kaufbetrag eingeben";
+"Please enter numbers only." = "Bitte nur Zahlen eingeben.";
+"Calculate" = "Berechnen";
+"VAT Rate" = "Mehrwertsteuersatz (MwSt)";
+"Purchase Amount" = "Kaufbetrag";
+"Estimated Refund Amount" = "Geschätzter Rückerstattungsbetrag";
+"Approx. " = "Ca. ";
+"Save Record" = "Eintrag speichern";
+"View Refund Policy" = "Erstattungsbedingungen anzeigen";
+"Calculate" = "Berechnen";
+"History" = "Verlauf";
+"Exchange Rate" = "Wechselkurs";
+"Settings" = "Einstellungen";
+"Close" = "Schließen";
+
+"Input Error" = "Eingabefehler";
+"You cannot enter blank spaces." = "Leerzeichen können nicht eingegeben werden.";
+"OK" = "OK";
+
+"Input Error" = "Eingabefehler";
+"Only numbers and decimal points are allowed, and the decimal point can be entered only once." = "Es sind nur Zahlen und ein Dezimalpunkt erlaubt, und der Dezimalpunkt darf nur einmal eingegeben  werden.";
+"OK" = "OK";
+
+"Save Complete" = "Speicherung abgeschlossen";
+"Saved successfully." = "Erfolgreich gespeichert.";
+"OK" = "OK";
+
+"VAT Rate:" = "Mehrwertsteuersatz (MwSt):";
+"Minimum Purchase Amount:" = "Mindestkaufbetrag:";
+"Refund Method:" = "Erstattungsmethode:";
+"Refund Location:" = "Erstattungsstelle:";
+"Notes:" = "Hinweise:";
+
+"Close" = "Schließen";
 
 
-
-// 기록화면
-
+// MARK: - 기록화면
 "Total Purchase Amount" = "Gesamtkaufbetrag";
 "Total Refund Amount" = "Gesamterstattungsbetrag";
 "Base Currency" = "Basiswährung";
@@ -14,3 +65,33 @@
 "Refund Amount" = "Erstattungsbetrag";
 "Applied Exchange Rate" = "Angewandter Wechselkurs :";
 "Close" = "Schließen";
+
+
+// MARK: - 환율화면
+"Real-Time Exchange Rates" = "Echtzeit-Wechselkursinformation";
+"Last Updated: %@" = "Letzte Aktualisierung: %@";
+
+
+// MARK: - 설정화면
+"App Settings" = "App-Einstellungen";
+"Change Language" = "Sprache ändern";
+"Change Base Currency" = "Basiswährung ändern";
+"Change Travel Currency" = "Reise-Währung ändern";
+"Dark Mode" = "Dunkelmodus";
+"Reset Records" = "Aufzeichnungen zurücksetzen";
+"App Info" = "App-Informationen";
+"Version" = "Version";
+"Last Updated" = "Letztes Update";
+"Developer" = "Entwickler";
+
+"Delete Records" = "Einträge löschen";
+"Do you want to delete all records?" = "Möchten Sie alle Einträge löschen?";
+"No" = "Nein";
+"Yes" = "Ja";
+
+
+// MARK: - 탭바
+"Calculate" = "Berechnen";
+"History" = "Verlauf";
+"Exchange Rate" = "Wechselkurs";
+"Settings" = "Einstellungen";

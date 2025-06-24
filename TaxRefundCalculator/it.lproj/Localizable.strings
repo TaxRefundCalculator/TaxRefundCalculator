@@ -1,10 +1,62 @@
 
+ // MARK: - 시작화면
+"Tax Refund Calculator" = "Calcolatore rimborso fiscale";
+"Calculate your tax refund amount in advance." = "Calcola in anticipo l’importo del rimborso fiscale.";
+"Select Language" = "Seleziona lingua";
+"Please select a language." = "Seleziona una lingua.";
+"Select Base Currency" = "Seleziona valuta di base";
+"Please select a base currency." = "Seleziona una valuta di base.";
+"Select Travel Country" = "Seleziona paese di viaggio";
+"Please select a travel country." = "Seleziona il paese di viaggio.";
+"Exchange Rate Info" = "Informazioni sul tasso di cambio";
+"Please select a currency and a country." = "È necessario selezionare valuta e paese.";
+"Refund Policy" = "Condizioni di rimborso";
+"Please select a travel country." = "Seleziona il paese di viaggio.";
+"Start →" = "Inizia →";
+ 
+"Input Confirmation" = "Conferma inserimento";
+"Please select all items." = "Seleziona tutti gli elementi.";
+"OK" = "OK";
 
 
+// MARK: - 계산화면
+"Enter purchase amount" = "Inserisci l’importo dell’acquisto";
+"Please enter numbers only." = "Inserisci solo numeri, per favore.";
+"Calculate" = "Calcola";
+"VAT Rate" = "Aliquota IVA";
+"Purchase Amount" = "Importo dell’acquisto";
+"Estimated Refund Amount" = "Importo stimato del rimborso";
+"Approx. " = "Circa ";
+"Save Record" = "Salva registrazione";
+"View Refund Policy" = "Visualizza condizioni di rimborso";
+"Calculate" = "Calcola";
+"History" = "Storico";
+"Exchange Rate" = "Tasso di cambio";
+"Settings" = "Impostazioni";
+"Close" = "Chiudi";
+
+"Input Error" = "Errore di inserimento";
+"You cannot enter blank spaces." = "Non è possibile inserire spazi vuoti.";
+"OK" = "OK";
+
+"Input Error" = "Errore di inserimento";
+"Only numbers and decimal points are allowed, and the decimal point can be entered only once." = "Sono consentiti solo numeri e un solo punto decimale.";
+"OK" = "OK";
+
+"Save Complete" = "Salvataggio completato";
+"Saved successfully." = "Il salvataggio è stato completato.";
+"OK" = "OK";
+
+"VAT Rate:" = "Aliquota IVA:";
+"Minimum Purchase Amount:" = "Importo minimo d’acquisto:";
+"Refund Method:" = "Metodo di rimborso:";
+"Refund Location:" = "Luogo di rimborso:";
+"Notes:" = "Note:";
+
+"Close" = "Chiudi";
 
 
-// 기록화면
-
+// MARK: - 기록화면
 "Total Purchase Amount" = "Importo totale degli acquisti";
 "Total Refund Amount" = "Importo totale del rimborso";
 "Base Currency" = "Valuta base";
@@ -13,3 +65,33 @@
 "Refund Amount" = "Importo del rimborso";
 "Applied Exchange Rate" = "Tasso di cambio applicato :";
 "Close" = "Chiudi";
+
+
+// MARK: - 환율화면
+"Real-Time Exchange Rates" = "Informazioni sui tassi di cambio in tempo reale";
+"Last Updated: %@" = "Ultimo aggiornamento: %@";
+
+
+// MARK: - 설정화면
+"App Settings" = "Impostazioni app";
+"Change Language" = "Cambia lingua";
+"Change Base Currency" = "Cambia valuta base";
+"Change Travel Currency" = "Cambia valuta di viaggio";
+"Dark Mode" = "Modalità scura";
+"Reset Records" = "Reimposta registrazioni";
+"App Info" = "Info sull’app";
+"Version" = "Versione";
+"Last Updated" = "Ultimo aggiornamento";
+"Developer" = "Sviluppatore";
+
+"Delete Records" = "Elimina registrazioni";
+"Do you want to delete all records?" = "Vuoi eliminare tutte le registrazioni?";
+"No" = "No";
+"Yes" = "Sì";
+
+
+// MARK: - 탭바
+"Calculate" = "Calcola";
+"History" = "Storico";
+"Exchange Rate" = "Tasso di cambio";
+"Settings" = "Impostazioni";
