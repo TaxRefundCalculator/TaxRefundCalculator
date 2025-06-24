@@ -18,13 +18,13 @@ final class SavedView: UIView {
     }
 
     let totalPurchaseLabel = UILabel().then {
-        $0.text = "총 구매 금액"
+        $0.text = NSLocalizedString("Total Purchase Amount", comment: "")
         $0.textColor = .textForGreen
         $0.font = .systemFont(ofSize: 14)
     }
 
     let totalRefundLabel = UILabel().then {
-        $0.text = "총 환급 금액"
+        $0.text = NSLocalizedString("Total Refund Amount", comment: "")
         $0.textColor = .textForGreen
         $0.font = .systemFont(ofSize: 14)
     }
@@ -69,7 +69,7 @@ final class SavedView: UIView {
 
     let currencyLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 16, weight: .medium)
-        $0.text = "기준화폐"
+        $0.text = NSLocalizedString("Base Currency", comment: "")
         $0.textColor = .currency
     }
     
@@ -85,7 +85,7 @@ final class SavedView: UIView {
     // 날짜 변경 버튼
     let dateRangeButton = UIButton(type: .system).then {
         var config = UIButton.Configuration.plain()
-        config.title = "날짜 변경"
+        config.title = NSLocalizedString("Select Date", comment: "")
         config.contentInsets = .zero
         config.baseForegroundColor = .mainTeal
         $0.configuration = config

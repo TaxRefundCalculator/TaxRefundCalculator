@@ -42,7 +42,7 @@ final class SavedModalVC: UIViewController {
     }
     
     private let purchaseTitleLabel = UILabel().then {
-        $0.text = "구매 금액"
+        $0.text = NSLocalizedString("Purchase Amount", comment: "")
         $0.font = .systemFont(ofSize: 14)
         $0.textColor = .primaryText
     }
@@ -57,7 +57,7 @@ final class SavedModalVC: UIViewController {
     
     private let refundTitleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .medium)
-        $0.text = "환급 금액"
+        $0.text = NSLocalizedString("Refund Amount", comment: "")
         $0.textColor = .primaryText
     }
     
@@ -84,7 +84,7 @@ final class SavedModalVC: UIViewController {
     
     private let rateLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15, weight: .medium)
-        $0.text = "적용된 환율 :"
+        $0.text = NSLocalizedString("Applied Exchange Rate :", comment: "")
         $0.textColor = .primaryText
     }
     
