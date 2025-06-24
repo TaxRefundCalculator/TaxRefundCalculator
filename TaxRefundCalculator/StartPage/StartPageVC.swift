@@ -47,7 +47,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     // MARK: 언어 선택 카드
     private let languageCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 15
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -62,7 +62,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     }
     private let languageField = UITextField().then {
         $0.placeholder = "언어를 선택하세요."
-        $0.backgroundColor = .subButton
+        $0.backgroundColor = .bgPrimary
         $0.borderStyle = .none // 기본 테두리를 제거
         $0.layer.borderWidth = 0.7 // 테두리 두께 설정
         $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
@@ -74,7 +74,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     // MARK: 기준 통화 선택, 여행국가 선택 카드
     private let currencyCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 15
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -90,7 +90,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     }
     let baseCurrencyField = UITextField().then {
         $0.placeholder = "기준화폐를 선택하세요."
-        $0.backgroundColor = .subButton
+        $0.backgroundColor = .bgPrimary
         $0.borderStyle = .none // 기본 테두리를 제거
         $0.layer.borderWidth = 0.7 // 테두리 두께 설정
         $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
@@ -106,7 +106,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     }
     private let travelCountryField = UITextField().then {
         $0.placeholder = "여행국가를 선택하세요."
-        $0.backgroundColor = .subButton
+        $0.backgroundColor = .bgPrimary
         $0.borderStyle = .none // 기본 테두리를 제거
         $0.layer.borderWidth = 0.7 // 테두리 두께 설정
         $0.layer.cornerRadius = 8 // 둥근 모서리 설정 (선택 사항)
@@ -118,7 +118,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     // MARK: 환율 정보 카드
     private let exchangeRateCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 15
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -139,7 +139,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     
     // MARK: 환급 조건 카드
     private let conditionCard = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 15
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.1
@@ -181,7 +181,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate, 
     }
     
     private func configureUI() {
-        view.backgroundColor = .bgSecondary
+        view.backgroundColor = .bgPrimary
         
         // MARK: Labels
         view.addSubview(titleLabel) // "택스리펀 환급금 예상 계산기"

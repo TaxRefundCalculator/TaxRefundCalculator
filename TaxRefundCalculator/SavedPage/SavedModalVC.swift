@@ -23,7 +23,7 @@ final class SavedModalVC: UIViewController {
     // MARK: - UI Components
     
     private let containerView = UIView().then {
-        $0.backgroundColor = .bgPrimary
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 20
     }
     
@@ -38,13 +38,13 @@ final class SavedModalVC: UIViewController {
     // 날짜
     private let dateLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .light)
-        $0.textColor = .currency
+        $0.textColor = .primaryText
     }
     
     private let purchaseTitleLabel = UILabel().then {
         $0.text = "구매 금액"
         $0.font = .systemFont(ofSize: 14)
-        $0.textColor = .currency
+        $0.textColor = .primaryText
     }
     
     private let purchaseAmountLabel = UILabel().then {
@@ -58,7 +58,7 @@ final class SavedModalVC: UIViewController {
     private let refundTitleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .medium)
         $0.text = "환급 금액"
-        $0.textColor = .currency
+        $0.textColor = .primaryText
     }
     
     private let refundAmountLabel = UILabel().then {
@@ -85,12 +85,12 @@ final class SavedModalVC: UIViewController {
     private let rateLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15, weight: .medium)
         $0.text = "적용된 환율 :"
-        $0.textColor = .currency
+        $0.textColor = .primaryText
     }
     
     private let exchangeRateLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15, weight: .medium)
-        $0.textColor = .currency
+        $0.textColor = .primaryText
     }
     
     private let conditionLabel = UILabel().then {
@@ -102,7 +102,7 @@ final class SavedModalVC: UIViewController {
     private let dismissButton = UIButton(type: .system).then {
         $0.setTitle("닫기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.backgroundColor = .currency
+        $0.backgroundColor = .mainTeal
         $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         $0.layer.cornerRadius = 10
     }
