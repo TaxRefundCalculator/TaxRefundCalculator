@@ -37,8 +37,8 @@ final class ExchangeCell: UITableViewCell {
     // MARK: - Layout
     
     private func setupUI() {
-        backgroundColor = .bgPrimary
-        contentView.backgroundColor = .bgPrimary
+        backgroundColor = .bgSecondary
+        contentView.backgroundColor = .bgSecondary
         
         contentView.addSubviews(flagLabel, currencyCodeLabel,
                                 priceLabel)
