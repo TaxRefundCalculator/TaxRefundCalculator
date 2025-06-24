@@ -836,3 +836,15 @@
 //"История"
 //"Курс валют"
 //"Настройки"
+
+
+// 기록화면
+
+"Total Purchase Amount" = "Total Purchase Amount";
+"Total Refund Amount" = "Total Refund Amount";
+"Base Currency" = "Base Currency";
+"Select Date" = "Select Date";
+"Purchase Amount" = "Purchase Amount";
+"Refund Amount" = "Refund Amount";
+"Applied Exchange Rate" = "Applied Exchange Rate";
+"Close" = "Close";

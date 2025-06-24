@@ -51,7 +51,7 @@ final class SavedCardCell: UITableViewCell {
 
     private let purchaseTitleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .medium)
-        $0.text = "구매 금액"
+        $0.text = NSLocalizedString("Purchase Amount", comment: "")
         $0.textColor = .currency
     }
     
@@ -65,7 +65,7 @@ final class SavedCardCell: UITableViewCell {
     
     private let refundTitleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .medium)
-        $0.text = "환급 금액"
+        $0.text = NSLocalizedString("Refund Amount", comment: "")
         $0.textColor = .currency
     }
     
