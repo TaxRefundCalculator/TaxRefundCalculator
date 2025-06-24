@@ -786,3 +786,53 @@
 //"Вы хотите удалить все записи?"
 //"Нет"
 //"Да"
+
+
+// MARK:- 탭바
+//// 영어
+//"Calculate"
+//"History"
+//"Exchange Rate"
+//"Settings"
+//
+//// 한국어
+//"계산"
+//"기록"
+//"환율"
+//"설정"
+//
+//// 일본어
+//"計算"
+//"履歴"
+//"為替"
+//"設定"
+//
+//// 스페인어
+//"Calcular"
+//"Historial"
+//"Tipo de cambio"
+//"Configuración"
+//
+//// 독일어
+//"Berechnen"
+//"Verlauf"
+//"Wechselkurs"
+//"Einstellungen"
+//
+//// 이탈리아어
+//"Calcola"
+//"Storico"
+//"Tasso di cambio"
+//"Impostazioni"
+//
+//// 프랑스어
+//"Calculer"
+//"Historique"
+//"Taux de change"
+//"Paramètres"
+//
+//// 러시아어
+//"Расчет"
+//"История"
+//"Курс валют"
+//"Настройки"
