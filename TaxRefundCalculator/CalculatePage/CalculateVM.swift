@@ -14,9 +14,6 @@ class CalculateVM {
     let saveUserDefaults = SaveUserDefaults()
     
     // MARK: userDefaults 조회 메서드
-    func getSelectedLanguage() -> String? {
-        return saveUserDefaults.getLanguage()
-    }
     func getBaseCurrency() -> String? {
         return saveUserDefaults.getBaseCurrency()
     }
