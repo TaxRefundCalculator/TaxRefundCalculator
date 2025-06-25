@@ -55,11 +55,11 @@ class RefundModal: UIViewController {
         flagLabel.text = flag
         countryLabel.text = policy.country
         refundInfoLabel.text = """
-        💰 \(NSLocalizedString("VAT Rate:", comment: "")) :  \(policy.vatRate)%\n
-        💵 \(NSLocalizedString("Minimum Purchase Amount:", comment: "")) :  \(Int(policy.minimumAmount)) \(policy.currencyCode)\n
-        🔁 \(NSLocalizedString("Refund Method:", comment: "")) :  \(policy.refundMethod)\n
-        📍 \(NSLocalizedString("Refund Location:", comment: "")) :  \(policy.refundPlace)\n
-        📌 \(NSLocalizedString("Notes:", comment: "")) :  \(policy.notes)
+        💰 \(NSLocalizedString("VAT Rate :", comment: ""))  \(policy.vatRate)%\n
+        💵 \(NSLocalizedString("Minimum Purchase Amount :", comment: ""))  \(Int(policy.minimumAmount)) \(policy.currencyCode)\n
+        🔁 \(NSLocalizedString("Refund Method :", comment: ""))  \(policy.refundMethod)\n
+        📍 \(NSLocalizedString("Refund Location :", comment: ""))  \(policy.refundPlace)\n
+        📌 \(NSLocalizedString("Notes :", comment: ""))  \(policy.notes)
         """
     }
     
