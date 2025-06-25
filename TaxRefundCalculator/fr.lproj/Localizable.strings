@@ -18,6 +18,10 @@
 "Please select all items." = "Veuillez sélectionner tous les éléments.";
 "OK" = "OK";
 
+"Notice" = "Avis";
+"This country does not provide tax refund." = "Ce pays ne propose pas de détaxe.";
+"OK" = "OK";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Saisir le montant de l’achat";

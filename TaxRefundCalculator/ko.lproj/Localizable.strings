@@ -18,6 +18,10 @@
 "Please select all items." = "모든 항목을 선택해 주세요.";
 "OK" = "확인";
 
+"Notice" = "알림";
+"This country does not provide tax refund." = "해당 국가는 택스리펀을 하지 않습니다.";
+"OK" = "확인";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "구매 금액 입력";
@@ -28,8 +32,8 @@
 "Estimated Refund Amount" = "예상 환급 금액";
 "Approx. " = "약 ";
 "Save Record" = "기록 저장";
-"View Refund Policy" = "환급 조건 보기";
-"Calculate" = "계산";
+"View Refund Policy" = "환급 조건";
+"Calculate" = "계산하기";
 "History" = "기록";
 "Exchange Rate" = "환율";
 "Settings" = "설정";

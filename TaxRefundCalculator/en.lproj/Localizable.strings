@@ -18,6 +18,10 @@
 "Please select all items." = "Please select all items.";
 "OK" = "OK";
 
+"Notice" = "Notice";
+"This country does not provide tax refund." = "This country does not provide tax refund.";
+"OK" = "OK";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Enter purchase amount";
@@ -29,7 +33,7 @@
 "Estimated Refund Amount" = "Estimated Refund Amount";
 "Approx. 0" = "Approx. 0";
 "Save Record" = "Save Record";
-"View Refund Policy" = "View Refund Policy";
+"View Refund Policy" = "Refund Policy";
 "Calculate" = "Calculate";
 "History" = "History";
 "Exchange Rate" = "Exchange Rate";

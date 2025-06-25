@@ -131,11 +131,11 @@ extension CountryModal: UITableViewDelegate {
             // tag == 1 (여행국가)에서만 USD/GBP 제한 적용
             if tag == 1 && (selectedCountry.contains("USD") || selectedCountry.contains("GBP")) {
                 let alert = UIAlertController(
-                    title: "알림",
-                    message: "해당 국가는 택스리펀을 하지 않습니다.",
+                    title: "\(NSLocalizedString("Notice", comment: ""))",
+                    message: "\(NSLocalizedString("This country does not provide tax refund.", comment: ""))",
                     preferredStyle: .alert
                 )
-                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: .default, handler: nil))
                 present(alert, animated: true, completion: nil)
                 tableView.deselectRow(at: indexPath, animated: true)
                 return

@@ -18,6 +18,10 @@
 "Please select all items." = "Bitte wählen Sie alle Felder aus.";
 "OK" = "OK";
 
+"Notice" = "Hinweis";
+"This country does not provide tax refund." = "In diesem Land gibt es keine Mehrwertsteuerrückerstattung.";
+"OK" = "OK";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Kaufbetrag eingeben";

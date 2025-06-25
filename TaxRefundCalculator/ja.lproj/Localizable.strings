@@ -18,6 +18,11 @@
 "Please select all items." = "すべての項目を選択してください。";
 "OK" = "確認";
 
+"Notice" = "お知らせ";
+"This country does not provide tax refund." = "この国では免税サービスを行っていません。";
+"OK" = "確認";
+
+
 // MARK: - 계산화면
 "Enter purchase amount" = "購入金額を入力";
 "Please enter numbers only." = "数字のみ入力してください。";
