@@ -136,3 +136,327 @@
 "Russia - RUB" = "Rusia - RUB";
 "Israel - ILS" = "Israel - ILS";
 "India - INR" = "India - INR";
+
+// MARK: - 국가별 환급조건
+
+"South Korea" = "Corea del Sur";
+"Up to 7% of purchase amount" = "Hasta el 7% del importe de la compra";
+"Foreign tourists staying less than 6 months; overseas Koreans abroad 2+ years (stay less than 3 months)" = "Turistas extranjeros que permanecen menos de 6 meses; coreanos residentes en el extranjero por más de 2 años y que permanecen en Corea menos de 3 meses";
+"Taxable goods unused/unopened, exported within 3 months of purchase" = "Bienes gravables sin abrir ni usar, bienes exportados dentro de los 3 meses posteriores a la compra";
+"Immediate refund, downtown or airport refund" = "Reembolso inmediato, centro de reembolso en la ciudad, reembolso en el aeropuerto";
+"Refund counter at Incheon airport/major airports or downtown centers" = "Mostradores o quioscos de reembolso en el Aeropuerto Internacional de Incheon y otros aeropuertos principales, centros de reembolso en Seúl y otras ciudades principales";
+"Customs stamp on goods required" = "Se requiere sello de aduana en los bienes comprados.";
+
+
+"Japan" = "Japón";
+"Tax-free at the time of purchase" = "Libre de impuestos en el momento de la compra";
+"Foreign tourists" = "Turistas extranjeros";
+"General goods" = "Bienes generales";
+"Tax-free (immediate at purchase)" = "Libre de impuestos (inmediato en la compra)";
+"Tax-free shops" = "Tiendas libres de impuestos";
+"Refund system to be introduced from 2026 (currently tax-free)." = "Sistema de reembolso previsto a partir de 2026 (actualmente solo libre de impuestos)";
+
+
+"Thailand" = "Tailandia";
+"VAT refund" = "Reembolso del IVA";
+"Foreign tourists" = "Turistas extranjeros";
+"Goods purchased at approved shops, goods exported within 60 days" = "Bienes comprados en tiendas aprobadas, bienes exportados dentro de los 60 días";
+"Airport refund" = "Reembolso en el aeropuerto";
+"VAT refund counter at departure hall" = "Mostrador de reembolso de IVA en la sala de salidas";
+"Purchase at approved shops, depart within 60 days." = "Comprar en tiendas aprobadas, salir dentro de los 60 días";
+
+
+"Malaysia" = "Malasia";
+"VAT refund" = "Reembolso del IVA";
+"Foreign tourists" = "Turistas extranjeros";
+"Goods purchased at approved shops" = "Bienes comprados en tiendas aprobadas";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Airport VAT refund counter" = "Mostrador de reembolso de IVA en el aeropuerto";
+"Only available at shops approved by the Tourism Tax Office." = "Solo disponible en tiendas aprobadas por la Oficina de Impuesto Turístico";
+
+
+"Singapore" = "Singapur";
+"GST refund" = "Reembolso del GST";
+"Foreign tourists" = "Turistas extranjeros";
+"Goods exported when leaving Singapore, some items excluded" = "Bienes exportados al salir de Singapur, algunos artículos excluidos";
+"Electronic refund (eTRS)" = "Reembolso electrónico (eTRS)";
+"Airport eTRS kiosk" = "Quiosco eTRS en el aeropuerto";
+"Passport registration required, some items excluded." = "Registro de pasaporte requerido, algunos artículos excluidos";
+
+
+"Indonesia" = "Indonesia";
+"VAT refund" = "Reembolso del IVA";
+"Foreign tourists (excluding crew, etc.)" = "Turistas extranjeros (excluyendo tripulación, etc.)";
+"Goods exported abroad" = "Bienes exportados al extranjero";
+"Airport refund" = "Reembolso en el aeropuerto";
+"VAT refund office" = "Oficina de reembolso del IVA";
+"Crew, etc. are not eligible for refunds." = "Tripulación y otros no son elegibles para el reembolso";
+
+
+"Australia" = "Australia";
+"GST refund" = "Reembolso del GST";
+"Foreign tourists" = "Turistas extranjeros";
+"Goods purchased within 30 days before departure" = "Bienes comprados dentro de los 30 días previos a la salida";
+"Airport refund (TRS)" = "Reembolso en el aeropuerto (TRS)";
+"TRS counter at departure hall" = "Mostrador TRS en la sala de salidas";
+"Purchase within 30 days before departure, recommend arriving at least 90 minutes early." = "Compra dentro de los 30 días previos a la salida, se recomienda llegar al menos 90 minutos antes";
+
+
+"Turkey" = "Turquía";
+"VAT refund" = "Reembolso del IVA";
+"Foreign tourists" = "Turistas extranjeros";
+"Approved items" = "Artículos aprobados";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Refund counter after customs verification" = "Mostrador de reembolso tras verificación de aduana";
+"Only for approved items." = "Solo para artículos aprobados";
+
+
+"South Africa" = "Sudáfrica";
+"VAT refund" = "Reembolso del IVA";
+"Foreign tourists" = "Turistas extranjeros";
+"Goods exported abroad" = "Bienes exportados al extranjero";
+"Airport refund" = "Reembolso en el aeropuerto";
+"VAT refund office" = "Oficina de reembolso del IVA";
+"Customs verification required." = "Verificación de aduana requerida";
+
+
+"Czech Republic" = "República Checa";
+"VAT refund" = "Reembolso del IVA";
+"Foreign tourists" = "Turistas extranjeros";
+"Goods exported within 90 days" = "Bienes exportados dentro de los 90 días";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Refund counter at departure hall" = "Mostrador de reembolso en la sala de salidas";
+"Customs stamp required, depart within 90 days." = "Sello de aduana requerido, salida dentro de 90 días";
+
+
+"Hungary" = "Hungría";
+"VAT refund" = "Reembolso del IVA";
+"Foreign tourists" = "Turistas extranjeros";
+"Goods exported abroad" = "Bienes exportados al extranjero";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Customs and refund office" = "Oficina de aduanas y reembolso";
+"Receipt required." = "Recibo requerido";
+
+
+"Bulgaria" = "Bulgaria";
+"VAT refund" = "Reembolso del IVA";
+"Foreign tourists" = "Turistas extranjeros";
+"Goods exported abroad" = "Bienes exportados al extranjero";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Refund counter" = "Mostrador de reembolso";
+"Customs verification required." = "Verificación de aduana requerida";
+
+
+"Switzerland" = "Suiza";
+"VAT refund" = "Reembolso del IVA";
+"Non-residents" = "No residentes";
+"Goods exported abroad" = "Bienes exportados al extranjero";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Partner shops or refund offices" = "Tiendas asociadas o oficinas de reembolso";
+"Only for non-EU nationals." = "Solo para ciudadanos no pertenecientes a la UE";
+
+
+"Germany" = "Alemania";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Goods exported outside the EU" = "Bienes exportados fuera de la UE";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Global Blue / Planet refund office" = "Oficina de reembolso Global Blue / Planet";
+"Customs stamp required." = "Sello de aduana requerido";
+
+
+"Netherlands" = "Países Bajos";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Goods exported outside the EU" = "Bienes exportados fuera de la UE";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Refund counter after customs stamp" = "Mostrador de reembolso tras sello de aduana";
+"Difficult to get a refund on the day of departure." = "Difícil conseguir el reembolso el mismo día de salida";
+
+
+"Belgium" = "Bélgica";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Goods purchased at approved shops" = "Bienes comprados en tiendas aprobadas";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Refund office" = "Oficina de reembolso";
+"Only at approved shops, customs verification required." = "Solo en tiendas aprobadas, verificación de aduana requerida";
+
+
+"France" = "Francia";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Goods exported outside the EU" = "Bienes exportados fuera de la UE";
+"PABLO electronic certification or refund office" = "Certificación electrónica PABLO o oficina de reembolso";
+"Airport" = "Aeropuerto";
+"Approx. 12% fee deducted." = "Se descuenta una comisión de aproximadamente el 12%";
+
+
+"Spain" = "España";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Goods exported outside the EU" = "Bienes exportados fuera de la UE";
+"DIVA kiosk" = "Quiosco DIVA";
+"Airport" = "Aeropuerto";
+"Electronic certification required." = "Certificación electrónica requerida";
+
+
+"Portugal" = "Portogal";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Goods exported outside the EU" = "Bienes exportados fuera de la UE";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Refund counter" = "Oficina de reembolso";
+"Depart within 90 days." = "Salida dentro de los 90 días";
+
+
+"Ireland" = "Irlanda";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Bienes para uso personal exportados como equipaje personal al salir de la UE dentro de los 3 meses posteriores a la compra";
+"Retail shop or refund agency" = "Tienda minorista o agencia de reembolso";
+"Dublin, Shannon airports, etc." = "Aeropuertos de Dublín, Shannon, etc.";
+"Only some shops participate; check before purchase." = "Solo algunas tiendas participan, confirmar antes de la compra";
+
+
+"Austria" = "Austria";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Bienes no utilizados para uso personal exportados como equipaje personal al salir de la UE dentro de los 3 meses posteriores a la compra";
+"Airport refund or downtown refund office" = "Reembolso en el aeropuerto o en oficina de la ciudad";
+"Vienna airport, etc." = "Aeropuerto de Viena, etc.";
+"Customs stamp required; present receipt and goods." = "Sello de aduana requerido, mostrar recibo y bienes";
+
+
+"Croatia" = "Croacia";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Bienes no utilizados para uso personal exportados como equipaje personal al salir de la UE dentro de los 3 meses posteriores a la compra";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Zagreb airport, etc." = "Aeropuerto de Zagreb, etc.";
+"Customs stamp required; present receipt and goods." = "Sello de aduana requerido, mostrar recibo y bienes";
+
+
+"Italy" = "Italia";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Bienes no utilizados para uso personal exportados como equipaje personal al salir de la UE dentro de los 3 meses posteriores a la compra";
+"Airport refund or downtown refund office" = "Reembolso en el aeropuerto o en oficina de la ciudad";
+"Rome, Milan airports, etc." = "Aeropuertos de Roma, Milán, etc.";
+"Customs stamp required; present receipt and goods." = "Sello de aduana requerido, mostrar recibo y bienes";
+
+
+"Greece" = "Grecia";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Bienes no utilizados para uso personal exportados como equipaje personal al salir de la UE dentro de los 3 meses posteriores a la compra";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Athens airport, etc." = "Aeropuerto de Atenas, etc.";
+"Customs stamp required; present receipt and goods." = "Sello de aduana requerido, mostrar recibo y bienes";
+
+
+"Sweden" = "Suecia";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Bienes no utilizados para uso personal exportados como equipaje personal al salir de la UE dentro de los 3 meses posteriores a la compra";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Stockholm Arlanda airport, etc." = "Aeropuerto de Estocolmo-Arlanda, etc.";
+"Customs stamp required; present receipt and goods." = "Sello de aduana requerido, mostrar recibo y bienes";
+
+
+"Denmark" = "Dinamarca";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Bienes no utilizados para uso personal exportados como equipaje personal al salir de la UE dentro de los 3 meses posteriores a la compra";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Copenhagen airport, etc." = "Aeropuerto de Copenhague, etc.";
+"Customs stamp required; present receipt and goods." = "Sello de aduana requerido, mostrar recibo y bienes";
+
+
+"Norway" = "Noruega";
+"VAT refund" = "Reembolso del IVA";
+"Residents of countries other than Norway, Sweden, Finland, Denmark" = "Residentes fuera de Noruega, Suecia, Finlandia, Dinamarca";
+"Unused goods for personal use, exported as personal baggage within 1 month of purchase upon leaving Norway" = "Bienes no utilizados para uso personal exportados como equipaje personal al salir de Noruega dentro de 1 mes después de la compra";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Oslo airport, etc." = "Aeropuerto de Oslo, etc.";
+"Customs stamp required; present receipt and goods." = "Sello de aduana requerido, mostrar recibo y bienes";
+
+
+"Finland" = "Finlandia";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Bienes no utilizados para uso personal exportados como equipaje personal al salir de la UE dentro de los 3 meses posteriores a la compra";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Helsinki airport, etc." = "Aeropuerto de Helsinki, etc.";
+"Customs stamp required; present receipt and goods." = "Sello de aduana requerido, mostrar recibo y bienes";
+
+
+"Mexico" = "México";
+"VAT refund" = "Reembolso del IVA";
+"Foreigners staying in Mexico less than 180 days" = "Extranjeros que permanecen menos de 180 días en México";
+"Unused goods for personal use, within 3 months of purchase" = "Bienes no utilizados para uso personal, dentro de los 3 meses posteriores a la compra";
+"Unknown" = "Desconocido";
+"Incomplete information provided." = "La información proporcionada no es completa";
+
+
+"Brazil" = "Brasil";
+"VAT refund" = "Reembolso del IVA";
+"Non-resident foreign tourists" = "Turistas extranjeros no residentes";
+"Goods for personal use (excluding food, hotels, restaurant consumption)" = "Bienes para uso personal (excepto alimentos, hoteles, restaurantes)";
+"Airport refund or designated refund office" = "Reembolso en el aeropuerto o en oficina designada";
+"Rio de Janeiro airport, etc." = "Aeropuerto de Río de Janeiro, etc.";
+"Pilot program in Rio de Janeiro state from 2025, nationwide expansion planned; VAT rate varies by state (e.g., 18% in Rio de Janeiro)" = "En fase piloto desde 2025 en Río de Janeiro, con expansión prevista; el IVA varía según el estado (por ejemplo, 18% en Río)";
+
+
+"Poland" = "Polonia";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Unused goods for personal use" = "Bienes no utilizados para uso personal";
+"Airport refund or downtown refund office" = "Reembolso en el aeropuerto o en oficina de la ciudad";
+"Warsaw airport, etc." = "Aeropuerto de Varsovia, etc.";
+"Goods must be exported outside the EU within 3 months of purchase; customs stamp required" = "Exportar el bien fuera de la UE dentro de los 3 meses posteriores a la compra, sello de aduana requerido";
+
+
+"Romania" = "Rumanía";
+"VAT refund" = "Reembolso del IVA";
+"Non-EU residents" = "Residentes fuera de la UE";
+"Unused goods for personal use" = "Bienes no utilizados para uso personal";
+"Airport refund or downtown refund office" = "Reembolso en el aeropuerto o en oficina de la ciudad";
+"Bucharest airport, etc." = "Aeropuerto de Bucarest, etc.";
+"Goods must be exported outside the EU within 90 days of purchase; customs stamp required" = "Exportar el bien fuera de la UE dentro de los 90 días posteriores a la compra, sello de aduana requerido";
+
+
+"Iceland" = "Islandia";
+"VAT refund" = "Reembolso del IVA";
+"Non-residents of Iceland" = "No residentes en Islandia";
+"Unused goods for personal use" = "Bienes no utilizados para uso personal";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Keflavik airport, etc." = "Aeropuerto de Keflavík, etc.";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "Exportar el bien dentro de los 3 meses posteriores a la compra, sello de aduana requerido";
+
+
+"Russia" = "Rusia";
+"VAT refund" = "Reembolso del IVA";
+"Residents of countries outside the EAEU" = "Residentes de países fuera de la UEEA";
+"Clothing, electronics, jewelry, etc. (excluding alcohol, tobacco)" = "Ropa, electrónica, joyas, etc. (excluyendo alcohol y tabaco)";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Moscow Domodedovo airport, etc." = "Aeropuerto Domodédovo de Moscú, etc.";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "Exportar el bien dentro de los 3 meses posteriores a la compra, sello de aduana requerido";
+
+
+"Israel" = "Israel";
+"VAT refund" = "Reembolso del IVA";
+"Non-residents of Israel" = "No residentes en Israel";
+"Unused goods for personal use" = "Bienes no utilizados para uso personal";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Ben Gurion airport, etc." = "Aeropuerto Ben Gurión, etc.";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "Exportar el bien dentro de los 3 meses posteriores a la compra, sello de aduana requerido";
+
+
+"India" = "India";
+"GST refund" = "Reembolso del GST";
+"Non-residents of India" = "No residentes en India";
+"Unused goods for personal use" = "Bienes no utilizados para uso personal";
+"Airport refund" = "Reembolso en el aeropuerto";
+"Delhi Indira Gandhi International Airport, etc." = "Aeropuerto Internacional Indira Gandhi de Delhi, etc.";
+"GST refund system is in pilot operation, not implemented nationwide" = "El sistema de reembolso del GST está en fase piloto, no implementado a nivel nacional";
