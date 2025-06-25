@@ -14,7 +14,7 @@ final class ExchangeView: UIView {
     // MARK: - UI
 
     private let titleLabel = UILabel().then {
-        $0.text = NSLocalizedString("Real-Time Exchange Rates", comment: "")
+        $0.text = NSLocalizedString("Exchange Rates", comment: "")
         $0.font = .systemFont(ofSize: 18, weight: .medium)
         $0.textColor = .primaryText
     }

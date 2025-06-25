@@ -1,16 +1,138 @@
 
+// MARK: - 시작화면
+"Tax Refund Calculator" = "Simulateur";
+"Calculate your tax refund amount in advance." = "Calculez le remboursement de taxes";
+"Select Base Currency" = "Choisir la devise de base";
+"Please select a base currency." = "Choisissez une devise de base.";
+"Select Travel Country" = "Choisir le pays de destination";
+"Please select a travel country." = "Choisissez le pays de destination.";
+"Exchange Rate Info" = "Informations sur le taux de change";
+"Please select a currency and a country." = "Choisissez une devise et un pays.";
+"Refund Policy" = "Conditions de remboursement";
+"Start →" = "Commencer →";
+ 
+"Input Confirmation" = "Confirmation de saisie";
+"Please select all items." = "Choisissez tous les éléments.";
+"OK" = "OK";
+
+"Notice" = "Avis";
+"This country does not provide tax refund." = "Ce pays ne propose pas de détaxe.";
+"OK" = "OK";
 
 
+// MARK: - 계산화면
+"Enter purchase amount" = "Saisir le montant de l’achat";
+"Please enter numbers only." = "Entrez uniquement des chiffres.";
+"Calculate" = "Calculer";
+"VAT Rate" = "Taux de TVA";
+"Purchase Amount" = "Montant de l’achat";
+"Estimated Refund Amount" = "Montant estimé du remboursement";
+"Approx " = "Env ";
+"Save Record" = "Enregistrer";
+"View Refund Policy" = "Remboursement";
+"Calculate" = "Calculer";
+"History" = "Historique";
+"Exchange Rate" = "Taux de change";
+"Settings" = "Paramètres";
+"Close" = "Fermer";
+
+"Input Error" = "Erreur de saisie";
+"You cannot enter blank spaces." = "Les espaces vides ne peuvent pas être saisis.";
+"OK" = "OK";
+
+"Input Error" = "Erreur de saisie";
+"Only numbers and decimal points are allowed, and the decimal point can be entered only once." = "Seuls les chiffres et un seul point décimal sont autorisés.";
+"OK" = "OK";
+
+"Save Complete" = "Enregistrement terminé";
+"Saved successfully." = "L’enregistrement a été effectué avec succès.";
+"OK" = "OK";
+
+"VAT Rate:" = "Taux de TVA :";
+"Minimum Purchase Amount:" = "Montant d’achat minimum :";
+"Refund Method:" = "Méthode de remboursement :";
+"Refund Location:" = "Lieu de remboursement :";
+"Notes:" = "Remarques :";
+
+"Close" = "Fermer";
 
 
-
-// 기록화면
-
+// MARK: - 기록화면
 "Total Purchase Amount" = "Montant total des achats";
 "Total Refund Amount" = "Montant total du remboursement";
 "Base Currency" = "Devise de base";
-"Select Date" = "Sélectionner une date";
+"Select Date" = "Choisir date";
 "Purchase Amount" = "Montant de l’achat";
 "Refund Amount" = "Montant du remboursement";
 "Applied Exchange Rate" = "Taux de change appliqué :";
 "Close" = "Fermer";
+
+
+// MARK: - 환율화면
+"Exchange Rates" = "Taux de change";
+"Last Updated: %@" = "Dernière mise à jour : %@";
+
+
+// MARK: - 설정화면
+"App Settings" = "Paramètres de l’application";
+"Base Currency" = "Devise de base";
+"Travel Country" = "Pays de voyage";
+"Dark Mode" = "Mode sombre";
+"Reset Records" = "Réinitialiser les enregistrements";
+"App Info" = "Infos sur l’app";
+"Version" = "Version";
+"Last Updated" = "Dernière mise à jour";
+"Developer" = "Développeur";
+
+"Delete Records" = "Supprimer les enregistrements";
+"Do you want to delete all records?" = "Voulez-vous supprimer tous les enregistrements ?";
+"No" = "Non";
+"Yes" = "Oui";
+
+
+// MARK: - 탭바
+"Calculate" = "Calculer";
+"History" = "Historique";
+"Exchange Rate" = "Taux de change";
+"Settings" = "Paramètres";
+
+
+// MARK: - 지원국가 목록
+"South Korea - KRW" = "Corée du Sud - KRW";
+"Japan - JPY" = "Japon - JPY";
+"USA - USD" = "États-Unis - USD";
+"UK - GBP" = "Royaume-Uni - GBP";
+"Thailand - THB" = "Thaïlande - THB";
+"Malaysia - MYR" = "Malaisie - MYR";
+"Singapore - SGD" = "Singapour - SGD";
+"Indonesia - IDR" = "Indonésie - IDR";
+"Australia - AUD" = "Australie - AUD";
+"Türkiye - TRY" = "Turquie - TRY";
+"South Africa - ZAR" = "Afrique du Sud - ZAR";
+"Czech - CZK" = "Tchéquie - CZK";
+"Hungary - HUF" = "Hongrie - HUF";
+"Bulgaria - BGN" = "Bulgarie - BGN";
+"Switzerland - CHF" = "Suisse - CHF";
+"Germany - EUR" = "Allemagne - EUR";
+"Netherlands - EUR" = "Pays-Bas - EUR";
+"Belgium - EUR" = "Belgique - EUR";
+"France - EUR" = "France - EUR";
+"Spain - EUR" = "Espagne - EUR";
+"Portugal - EUR" = "Portugal - EUR";
+"Ireland - EUR" = "Irlande - EUR";
+"Austria - EUR" = "Autriche - EUR";
+"Croatia - EUR" = "Croatie - EUR";
+"Italy - EUR" = "Italie - EUR";
+"Greece - EUR" = "Grèce - EUR";
+"Sweden - SEK" = "Suède - SEK";
+"Denmark - DKK" = "Danemark - DKK";
+"Norway - NOK" = "Norvège - NOK";
+"Finland - EUR" = "Finlande - EUR";
+"Mexico - MXN" = "Mexique - MXN";
+"Brazil - BRL" = "Brésil - BRL";
+"Poland - PLN" = "Pologne - PLN";
+"Romania - RON" = "Roumanie - RON";
+"Iceland - ISK" = "Islande - ISK";
+"Russia - RUB" = "Russie - RUB";
+"Israel - ILS" = "Israël - ILS";
+"India - INR" = "Inde - INR";

@@ -1,13 +1,63 @@
 
+// MARK: - 시작화면
+"Tax Refund Calculator" = "免税払い戻し金額計算機";
+"Calculate your tax refund amount in advance." = "税金還付額を事前に計算しましょう。";
+"Select Base Currency" = "基準通貨を選択";
+"Please select a base currency." = "基準通貨を選択してください。";
+"Select Travel Country" = "渡航国を選択";
+"Please select a travel country." = "渡航国を選択してください。";
+"Exchange Rate Info" = "為替情報";
+"Please select a currency and a country." = "通貨と国の選択が必要です。";
+"Refund Policy" = "還付条件";
+"Start →" = "開始する →";
+ 
+"Input Confirmation" = "入力確認";
+"Please select all items." = "すべての項目を選択してください。";
+"OK" = "確認";
+
+"Notice" = "お知らせ";
+"This country does not provide tax refund." = "この国では免税サービスを行っていません。";
+"OK" = "確認";
 
 
+// MARK: - 계산화면
+"Enter purchase amount" = "購入金額を入力";
+"Please enter numbers only." = "数字のみ入力してください。";
+"Calculate" = "計算する";
+"VAT Rate" = "消費税率（VAT）";
+"Purchase Amount" = "購入金額";
+"Estimated Refund Amount" = "推定還付金額";
+"Approx " = "約 ";
+"Save Record" = "記録を保存";
+"View Refund Policy" = "還付条件を見る";
+"Calculate" = "計算";
+"History" = "履歴";
+"Exchange Rate" = "為替";
+"Settings" = "設定";
+"Close" = "閉じる";
+
+"Input Error" = "入力エラー";
+"You cannot enter blank spaces." = "空白は入力できません。";
+"OK" = "確認";
+
+"Input Error" = "入力エラー";
+"Only numbers and decimal points are allowed, and the decimal point can be entered only once." = "数字と小数点のみ入力でき、小数点は一度だけ入力できます。";
+"OK" = "確認";
+
+"Save Complete" = "保存完了";
+"Saved successfully." = "保存が完了しました。";
+"OK" = "確認";
+
+"VAT Rate:" = "消費税率：";
+"Minimum Purchase Amount:" = "最低購入金額：";
+"Refund Method:" = "還付方法：";
+"Refund Location:" = "還付場所：";
+"Notes:" = "備考：";
+
+"Close" = "閉じる";
 
 
-
-
-
-// 기록화면
-
+// MARK: - 기록화면
 "Total Purchase Amount" = "総購入金額";
 "Total Refund Amount" = "総還付金額";
 "Base Currency" = "基準通貨";
@@ -17,3 +67,72 @@
 "Applied Exchange Rate" = "適用為替レート :";
 "Close" = "閉じる";
 
+
+// MARK: - 환율화면
+"Exchange Rates" = "為替レート";
+"Last Updated: %@" = "最終更新日: %@";
+
+
+// MARK: - 설정화면
+"App Settings" = "アプリ設定";
+"Base Currency" = "基準通貨";
+"Travel Country" = "渡航先の国";
+"Dark Mode" = "ダークモード";
+"Reset Records" = "記録をリセット";
+"App Info" = "アプリ情報";
+"Version" = "バージョン";
+"Last Updated" = "最終更新";
+"Developer" = "開発者";
+
+"Delete Records" = "記録を削除";
+"Do you want to delete all records?" = "すべての記録を削除しますか？";
+"No" = "いいえ";
+"Yes" = "はい";
+
+
+// MARK: - 탭바
+"Calculate" = "計算";
+"History" = "履歴";
+"Exchange Rate" = "為替";
+"Settings" = "設定";
+
+
+// MARK: - 지원국가 목록
+"South Korea - KRW" = "韓国 - KRW";
+"Japan - JPY" = "日本 - JPY";
+"USA - USD" = "アメリカ合衆国 - USD";
+"UK - GBP" = "イギリス - GBP";
+"Thailand - THB" = "タイ - THB";
+"Malaysia - MYR" = "マレーシア - MYR";
+"Singapore - SGD" = "シンガポール - SGD";
+"Indonesia - IDR" = "インドネシア - IDR";
+"Australia - AUD" = "オーストラリア - AUD";
+"Türkiye - TRY" = "トルコ - TRY";
+"South Africa - ZAR" = "南アフリカ - ZAR";
+"Czech - CZK" = "チェコ - CZK";
+"Hungary - HUF" = "ハンガリー - HUF";
+"Bulgaria - BGN" = "ブルガリア - BGN";
+"Switzerland - CHF" = "スイス - CHF";
+"Germany - EUR" = "ドイツ - EUR";
+"Netherlands - EUR" = "オランダ - EUR";
+"Belgium - EUR" = "ベルギー - EUR";
+"France - EUR" = "フランス - EUR";
+"Spain - EUR" = "スペイン - EUR";
+"Portugal - EUR" = "ポルトガル - EUR";
+"Ireland - EUR" = "アイルランド - EUR";
+"Austria - EUR" = "オーストリア - EUR";
+"Croatia - EUR" = "クロアチア - EUR";
+"Italy - EUR" = "イタリア - EUR";
+"Greece - EUR" = "ギリシャ - EUR";
+"Sweden - SEK" = "スウェーデン - SEK";
+"Denmark - DKK" = "デンマーク - DKK";
+"Norway - NOK" = "ノルウェー - NOK";
+"Finland - EUR" = "フィンランド - EUR";
+"Mexico - MXN" = "メキシコ - MXN";
+"Brazil - BRL" = "ブラジル - BRL";
+"Poland - PLN" = "ポーランド - PLN";
+"Romania - RON" = "ルーマニア - RON";
+"Iceland - ISK" = "アイスランド - ISK";
+"Russia - RUB" = "ロシア - RUB";
+"Israel - ILS" = "イスラエル - ILS";
+"India - INR" = "インド - INR";

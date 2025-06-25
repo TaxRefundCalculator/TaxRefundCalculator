@@ -1,11 +1,63 @@
 
+// MARK: - 시작화면
+"Tax Refund Calculator" = "Калькулятор Tax Free";
+"Calculate your tax refund amount in advance." = "Рассчитать возврат налога заранее";
+"Select Base Currency" = "Выбрать базовую валюту";
+"Please select a base currency." = "Выбрать базовую валюту";
+"Select Travel Country" = "Выбрать страну поездки";
+"Please select a travel country." = "Выбрать страну поездки";
+"Exchange Rate Info" = "Информация о курсе валют";
+"Please select a currency and a country." = "Требуется выбрать валюту и страну.";
+"Refund Policy" = "Условия возврата";
+"Start →" = "Начать →";
+ 
+"Input Confirmation" = "Подтверждение ввода";
+"Please select all items." = "Пожалуйста, выберите все пункты.";
+"OK" = "ОК";
+
+"Notice" = "Уведомление";
+"This country does not provide tax refund." = "В этой стране возврат налога не предоставляется.";
+"OK" = "ОК";
 
 
+// MARK: - 계산화면
+"Enter purchase amount" = "Введите сумму покупки";
+"Please enter numbers only." = "Введите только цифры.";
+"Calculate" = "Рассчитать";
+"VAT Rate" = "Ставка НДС";
+"Purchase Amount" = "Сумма покупки";
+"Estimated Refund Amount" = "Ожидаемая сумма возврата";
+"Approx " = "Примерно ";
+"Save Record" = "Сохранить";
+"View Refund Policy" = "условия возврата";
+"Calculate" = "Расчет";
+"History" = "История";
+"Exchange Rate" = "Курс валют";
+"Settings" = "Настройки";
+"Close" = "Закрыть";
+
+"Input Error" = "Ошибка ввода";
+"You cannot enter blank spaces." = "Нельзя вводить пробелы.";
+"OK" = "ОК";
+
+"Input Error" = "Ошибка ввода";
+"Only numbers and decimal points are allowed, and the decimal point can be entered only once." = "Разрешены только цифры и одна десятичная точка.";
+"OK" = "ОК";
+
+"Save Complete" = "Сохранение завершено";
+"Saved successfully." = "Сохранение выполнено успешно.";
+"OK" = "ОК";
+
+"VAT Rate:" = "Ставка НДС:";
+"Minimum Purchase Amount:" = "Минимальная сумма покупки:";
+"Refund Method:" = "Способ возврата:";
+"Refund Location:" = "Место возврата:";
+"Notes:" = "Примечания:";
+
+"Close" = "Закрыть";
 
 
-
-// 기록화면
-
+// MARK: - 기록화면
 "Total Purchase Amount" = "Общая сумма покупок";
 "Total Refund Amount" = "Общая сумма возврата";
 "Base Currency" = "Базовая валюта";
@@ -14,3 +66,73 @@
 "Refund Amount" = "Сумма возврата";
 "Applied Exchange Rate" = "Применённый курс валют :";
 "Close" = "Закрыть";
+
+
+// MARK: - 환율화면
+"Exchange Rates" = "Обменные курсы";
+"Last Updated: %@" = "Последнее обновление: %@";
+
+
+// MARK: - 설정화면
+"App Settings" = "Настройки приложения";
+"Base Currency" = "Валюта";
+"Travel Country" = "Страна";
+"Dark Mode" = "Тёмный режим";
+"Reset Records" = "Сбросить записи";
+"App Info" = "Информация о приложении";
+"Version" = "Версия";
+"Last Updated" = "Последнее обновление";
+"Developer" = "Разработчик";
+
+"Delete Records" = "Удалить записи";
+"Do you want to delete all records?" = "Вы хотите удалить все записи?";
+"No" = "Нет";
+"Yes" = "Да";
+
+
+// MARK: - 탭바
+"Calculate" = "Расчет";
+"History" = "История";
+"Exchange Rate" = "Курс валют";
+"Settings" = "Настройки";
+
+
+// MARK: - 지원국가 목록
+"South Korea - KRW" = "Южная Корея - KRW";
+"Japan - JPY" = "Япония - JPY";
+"USA - USD" = "США - USD";
+"UK - GBP" = "Великобритания - GBP";
+"Thailand - THB" = "Таиланд - THB";
+"Malaysia - MYR" = "Малайзия - MYR";
+"Singapore - SGD" = "Сингапур - SGD";
+"Indonesia - IDR" = "Индонезия - IDR";
+"Australia - AUD" = "Австралия - AUD";
+"Türkiye - TRY" = "Турция - TRY";
+"South Africa - ZAR" = "ЮАР - ZAR";
+"Czech - CZK" = "Чехия - CZK";
+"Hungary - HUF" = "Венгрия - HUF";
+"Bulgaria - BGN" = "Болгария - BGN";
+"Switzerland - CHF" = "Швейцария - CHF";
+"Germany - EUR" = "Германия - EUR";
+"Netherlands - EUR" = "Нидерланды - EUR";
+"Belgium - EUR" = "Бельгия - EUR";
+"France - EUR" = "Франция - EUR";
+"Spain - EUR" = "Испания - EUR";
+"Portugal - EUR" = "Португалия - EUR";
+"Ireland - EUR" = "Ирландия - EUR";
+"Austria - EUR" = "Австрия - EUR";
+"Croatia - EUR" = "Хорватия - EUR";
+"Italy - EUR" = "Италия - EUR";
+"Greece - EUR" = "Греция - EUR";
+"Sweden - SEK" = "Швеция - SEK";
+"Denmark - DKK" = "Дания - DKK";
+"Norway - NOK" = "Норвегия - NOK";
+"Finland - EUR" = "Финляндия - EUR";
+"Mexico - MXN" = "Мексика - MXN";
+"Brazil - BRL" = "Бразилия - BRL";
+"Poland - PLN" = "Польша - PLN";
+"Romania - RON" = "Румыния - RON";
+"Iceland - ISK" = "Исландия - ISK";
+"Russia - RUB" = "Россия - RUB";
+"Israel - ILS" = "Израиль - ILS";
+"India - INR" = "Индия - INR";

@@ -25,9 +25,6 @@ class StartPageVM {
     }
     
     // MARK: userDefaults 저장 메서드
-    func saveSelectedLanguage(_ language: String) {
-        saveUserDefaults.saveLanguage(language)
-    }
     func saveBaseCurrency(_ baseCurrency: String) {
         saveUserDefaults.saveBaseCurrency(baseCurrency)
     }
@@ -68,10 +65,8 @@ class StartPageVM {
     
     
     // MARK: 텍스트 필드들 빈칸 확인 예외처리
-    func isInputValid(language: String?, baseCurrency: String?, travelCountry: String?) -> Bool {
-        return !(language?.isEmpty ?? true)
-        && !(baseCurrency?.isEmpty ?? true)
-        && !(travelCountry?.isEmpty ?? true)
+    func isInputValid(baseCurrency: String?, travelCountry: String?) -> Bool {
+        return !(baseCurrency?.isEmpty ?? true) && !(travelCountry?.isEmpty ?? true)
     }
     
     
