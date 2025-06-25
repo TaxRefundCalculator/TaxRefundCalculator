@@ -331,7 +331,7 @@ class CalculateVC: UIViewController {
             $0.top.equalTo(priceCard.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(360)
-            $0.bottom.equalToSuperview().offset(20)
+            $0.bottom.equalToSuperview().inset(20)
         }
         
         calculateCard.addSubview(vatLabel)
