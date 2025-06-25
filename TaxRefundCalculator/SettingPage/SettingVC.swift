@@ -233,8 +233,8 @@ class SettingVC: UIViewController, CountryModalDelegate {
         }
         
         // Set tag values for baseCurrencyRow and currencyRow
-        baseCurrencyRow.tag = 1 // 시작화면에서 태그 1번으로 처리했기때문에 1번. 0번은 언어
-        currencyRow.tag = 2 // 시작화면에서 태그 2번으로 예외처리했기 때문에 2번으로 할당
+        baseCurrencyRow.tag = 0
+        currencyRow.tag = 1
 
         //MARK: 각 row 클릭시
         let baseTap = UITapGestureRecognizer(target: self, action: #selector(didTapBaseCurrencyRow))
