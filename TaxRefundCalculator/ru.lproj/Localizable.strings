@@ -1,17 +1,14 @@
 
 // MARK: - 시작화면
-"Tax Refund Calculator" = "Калькулятор возврата налога";
-"Calculate your tax refund amount in advance." = "Рассчитайте сумму возврата налога заранее.";
-"Select Language" = "Выбрать язык";
-"Please select a language." = "Пожалуйста, выберите язык.";
+"Tax Refund Calculator" = "Калькулятор Tax Free";
+"Calculate your tax refund amount in advance." = "Рассчитать возврат налога заранее";
 "Select Base Currency" = "Выбрать базовую валюту";
-"Please select a base currency." = "Пожалуйста, выберите базовую валюту.";
+"Please select a base currency." = "Выбрать базовую валюту";
 "Select Travel Country" = "Выбрать страну поездки";
-"Please select a travel country." = "Пожалуйста, выберите страну поездки.";
+"Please select a travel country." = "Выбрать страну поездки";
 "Exchange Rate Info" = "Информация о курсе валют";
 "Please select a currency and a country." = "Требуется выбрать валюту и страну.";
 "Refund Policy" = "Условия возврата";
-"Please select a travel country." = "Пожалуйста, выберите страну поездки.";
 "Start →" = "Начать →";
  
 "Input Confirmation" = "Подтверждение ввода";
@@ -25,14 +22,14 @@
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Введите сумму покупки";
-"Please enter numbers only." = "Пожалуйста, введите только цифры.";
+"Please enter numbers only." = "Введите только цифры.";
 "Calculate" = "Рассчитать";
 "VAT Rate" = "Ставка НДС";
 "Purchase Amount" = "Сумма покупки";
 "Estimated Refund Amount" = "Ожидаемая сумма возврата";
-"Approx. " = "Примерно ";
-"Save Record" = "Сохранить запись";
-"View Refund Policy" = "Посмотреть условия возврата";
+"Approx " = "Примерно ";
+"Save Record" = "Сохранить";
+"View Refund Policy" = "условия возврата";
 "Calculate" = "Расчет";
 "History" = "История";
 "Exchange Rate" = "Курс валют";
@@ -72,15 +69,14 @@
 
 
 // MARK: - 환율화면
-"Real-Time Exchange Rates" = "Информация о курсе валют в реальном времени";
+"Exchange Rates" = "Обменные курсы";
 "Last Updated: %@" = "Последнее обновление: %@";
 
 
 // MARK: - 설정화면
 "App Settings" = "Настройки приложения";
-"Change Language" = "Изменить язык";
-"Change Base Currency" = "Изменить базовую валюту";
-"Change Travel Currency" = "Изменить валюту поездки";
+"Base Currency" = "Валюта";
+"Travel Country" = "Страна";
 "Dark Mode" = "Тёмный режим";
 "Reset Records" = "Сбросить записи";
 "App Info" = "Информация о приложении";
@@ -104,8 +100,8 @@
 // MARK: - 지원국가 목록
 "South Korea - KRW" = "Южная Корея - KRW";
 "Japan - JPY" = "Япония - JPY";
-"United States - USD" = "США - USD";
-"United Kingdom - GBP" = "Великобритания - GBP";
+"USA - USD" = "США - USD";
+"UK - GBP" = "Великобритания - GBP";
 "Thailand - THB" = "Таиланд - THB";
 "Malaysia - MYR" = "Малайзия - MYR";
 "Singapore - SGD" = "Сингапур - SGD";
@@ -113,7 +109,7 @@
 "Australia - AUD" = "Австралия - AUD";
 "Türkiye - TRY" = "Турция - TRY";
 "South Africa - ZAR" = "ЮАР - ZAR";
-"Czech Republic - CZK" = "Чехия - CZK";
+"Czech - CZK" = "Чехия - CZK";
 "Hungary - HUF" = "Венгрия - HUF";
 "Bulgaria - BGN" = "Болгария - BGN";
 "Switzerland - CHF" = "Швейцария - CHF";

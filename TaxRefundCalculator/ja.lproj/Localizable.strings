@@ -1,9 +1,7 @@
 
 // MARK: - 시작화면
 "Tax Refund Calculator" = "免税払い戻し金額計算機";
-"Calculate your tax refund amount in advance." = "海外ショッピングの税金還付額を事前に計算できます。";
-"Select Language" = "言語を選択";
-"Please select a language." = "言語を選択してください。";
+"Calculate your tax refund amount in advance." = "税金還付額を事前に計算しましょう。";
 "Select Base Currency" = "基準通貨を選択";
 "Please select a base currency." = "基準通貨を選択してください。";
 "Select Travel Country" = "渡航国を選択";
@@ -11,7 +9,6 @@
 "Exchange Rate Info" = "為替情報";
 "Please select a currency and a country." = "通貨と国の選択が必要です。";
 "Refund Policy" = "還付条件";
-"Please select a travel country." = "渡航国を選択してください。";
 "Start →" = "開始する →";
  
 "Input Confirmation" = "入力確認";
@@ -30,7 +27,7 @@
 "VAT Rate" = "消費税率（VAT）";
 "Purchase Amount" = "購入金額";
 "Estimated Refund Amount" = "推定還付金額";
-"Approx. " = "約 ";
+"Approx " = "約 ";
 "Save Record" = "記録を保存";
 "View Refund Policy" = "還付条件を見る";
 "Calculate" = "計算";
@@ -72,15 +69,14 @@
 
 
 // MARK: - 환율화면
-"Real-Time Exchange Rates" = "リアルタイム為替情報";
+"Exchange Rates" = "為替レート";
 "Last Updated: %@" = "最終更新日: %@";
 
 
 // MARK: - 설정화면
 "App Settings" = "アプリ設定";
-"Change Language" = "言語を変更";
-"Change Base Currency" = "基準通貨を変更";
-"Change Travel Currency" = "旅行通貨を変更";
+"Base Currency" = "基準通貨";
+"Travel Country" = "渡航先の国";
 "Dark Mode" = "ダークモード";
 "Reset Records" = "記録をリセット";
 "App Info" = "アプリ情報";
@@ -104,8 +100,8 @@
 // MARK: - 지원국가 목록
 "South Korea - KRW" = "韓国 - KRW";
 "Japan - JPY" = "日本 - JPY";
-"United States - USD" = "アメリカ合衆国 - USD";
-"United Kingdom - GBP" = "イギリス - GBP";
+"USA - USD" = "アメリカ合衆国 - USD";
+"UK - GBP" = "イギリス - GBP";
 "Thailand - THB" = "タイ - THB";
 "Malaysia - MYR" = "マレーシア - MYR";
 "Singapore - SGD" = "シンガポール - SGD";
@@ -113,7 +109,7 @@
 "Australia - AUD" = "オーストラリア - AUD";
 "Türkiye - TRY" = "トルコ - TRY";
 "South Africa - ZAR" = "南アフリカ - ZAR";
-"Czech Republic - CZK" = "チェコ - CZK";
+"Czech - CZK" = "チェコ - CZK";
 "Hungary - HUF" = "ハンガリー - HUF";
 "Bulgaria - BGN" = "ブルガリア - BGN";
 "Switzerland - CHF" = "スイス - CHF";

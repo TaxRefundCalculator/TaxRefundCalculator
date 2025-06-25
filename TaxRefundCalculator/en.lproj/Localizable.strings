@@ -2,8 +2,6 @@
 // MARK: - 시작화면
 "Tax Refund Calculator" = "Tax Refund Calculator";
 "Calculate your tax refund amount in advance." = "Calculate your tax refund amount in advance.";
-"Select Language" = "Select Language";
-"Please select a language." = "Please select a language.";
 "Select Base Currency" = "Select Base Currency";
 "Please select a base currency." = "Please select a base currency.";
 "Select Travel Country" = "Select Travel Country";
@@ -11,7 +9,6 @@
 "Exchange Rate Info" = "Exchange Rate Info";
 "Please select a currency and a country." = "Please select a currency and a country.";
 "Refund Policy" = "Refund Policy";
-"Please select a travel country." = "Please select a travel country.";
 "Start →" = "Start →";
  
 "Input Confirmation" = "Input Confirmation";
@@ -29,9 +26,8 @@
 "Calculate" = "Calculate";
 "VAT Rate" = "VAT Rate";
 "Purchase Amount" = "Purchase Amount";
-"Approx. 0" = "Approx. 0";
+"Approx " = "Approx ";
 "Estimated Refund Amount" = "Estimated Refund Amount";
-"Approx. 0" = "Approx. 0";
 "Save Record" = "Save Record";
 "View Refund Policy" = "Refund Policy";
 "Calculate" = "Calculate";
@@ -73,15 +69,14 @@
 
 
 // MARK: - 환율
-"Real-Time Exchange Rates" = "Real-Time Exchange Rates";
+"Exchange Rates" = "Exchange Rates";
 "Last Updated: %@" = "Last Updated: %@";
 
 
 // MARK: - 설정화면
 "App Settings" = "App Settings";
-"Change Language" = "Change Language";
-"Change Base Currency" = "Change Base Currency";
-"Change Travel Currency" = "Change Travel Currency";
+"Base Currency" = "Base Currency";
+"Travel Country" = "Travel Country";
 "Dark Mode" = "Dark Mode";
 "Reset Records" = "Reset Records";
 "App Info" = "App Info";
@@ -105,8 +100,8 @@
 // MARK: - 지원국가 목록
 "South Korea - KRW" = "South Korea - KRW";
 "Japan - JPY" = "Japan - JPY";
-"United States - USD" = "United States - USD";
-"United Kingdom - GBP" = "United Kingdom - GBP";
+"USA - USD" = "USA - USD";
+"UK - GBP" = "UK - GBP";
 "Thailand - THB" = "Thailand - THB";
 "Malaysia - MYR" = "Malaysia - MYR";
 "Singapore - SGD" = "Singapore - SGD";
@@ -114,7 +109,7 @@
 "Australia - AUD" = "Australia - AUD";
 "Türkiye - TRY" = "Türkiye - TRY";
 "South Africa - ZAR" = "South Africa - ZAR";
-"Czech Republic - CZK" = "Czech Republic - CZK";
+"Czech - CZK" = "Czech - CZK";
 "Hungary - HUF" = "Hungary - HUF";
 "Bulgaria - BGN" = "Bulgaria - BGN";
 "Switzerland - CHF" = "Switzerland - CHF";

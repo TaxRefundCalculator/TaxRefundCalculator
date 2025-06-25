@@ -1,17 +1,14 @@
 
 // MARK: - 시작화면
-"Tax Refund Calculator" = "Calculadora de devolución de impuestos";
-"Calculate your tax refund amount in advance." = "Calcula el importe de tu reembolso de impuestos por adelantado.";
-"Select Language" = "Seleccionar idioma";
-"Please select a language." = "Por favor, selecciona un idioma.";
+"Tax Refund Calculator" = "Calculadora Tax Refund";
+"Calculate your tax refund amount in advance." = "Calcula tu reembolso de impuestos antes.";
 "Select Base Currency" = "Seleccionar moneda base";
-"Please select a base currency." = "Por favor, selecciona una moneda base.";
+"Please select a base currency." = "Selecciona una moneda base.";
 "Select Travel Country" = "Seleccionar país de destino";
-"Please select a travel country." = "Por favor, selecciona el país de destino.";
+"Please select a travel country." = "Selecciona el país de destino.";
 "Exchange Rate Info" = "Información sobre el tipo de cambio";
-"Please select a currency and a country." = "Es necesario seleccionar la moneda y el país.";
+"Please select a currency and a country." = "Debe seleccionar una moneda y un país.";
 "Refund Policy" = "Condiciones de devolución";
-"Please select a travel country." = "Por favor, selecciona el país de destino.";
 "Start →" = "Empezar →";
 
 "Input Confirmation" = "Confirmación de entrada";
@@ -30,9 +27,9 @@
 "VAT Rate" = "Tasa de IVA";
 "Purchase Amount" = "Importe de la compra";
 "Estimated Refund Amount" = "Importe estimado del reembolso";
-"Approx. " = "Aproximadamente ";
+"Approx " = "Aproximadamente ";
 "Save Record" = "Guardar registro";
-"View Refund Policy" = "Ver condiciones de reembolso";
+"View Refund Policy" = "Reembolso";
 "Calculate" = "Calcular";
 "History" = "Historial";
 "Exchange Rate" = "Tipo de cambio";
@@ -72,15 +69,14 @@
 
 
 // MARK: - 환율화면
-"Real-Time Exchange Rates" = "Información de tipo de cambio en tiempo real";
+"Exchange Rates" = "Tipos de cambio";
 "Last Updated: %@" = "Última actualización: %@";
 
 
 // MARK: - 설정화면
 "App Settings" = "Configuración de la app";
-"Change Language" = "Cambiar idioma";
-"Change Base Currency" = "Cambiar moneda base";
-"Change Travel Currency" = "Cambiar moneda de viaje";
+"Base Currency" = "Moneda base";
+"Travel Country" = "País de viaje";
 "Dark Mode" = "Modo oscuro";
 "Reset Records" = "Restablecer registros";
 "App Info" = "Información de la app";
@@ -104,8 +100,8 @@
 // MARK: - 지원국가 목록
 "South Korea - KRW" = "Corea del Sur - KRW";
 "Japan - JPY" = "Japón - JPY";
-"United States - USD" = "Estados Unidos - USD";
-"United Kingdom - GBP" = "Reino Unido - GBP";
+"USA - USD" = "EE. UU. - USD";
+"UK - GBP" = "Reino Unido - GBP";
 "Thailand - THB" = "Tailandia - THB";
 "Malaysia - MYR" = "Malasia - MYR";
 "Singapore - SGD" = "Singapur - SGD";
@@ -113,7 +109,7 @@
 "Australia - AUD" = "Australia - AUD";
 "Türkiye - TRY" = "Turquía - TRY";
 "South Africa - ZAR" = "Sudáfrica - ZAR";
-"Czech Republic - CZK" = "República Checa - CZK";
+"Czech - CZK" = "Chequia - CZK";
 "Hungary - HUF" = "Hungría - HUF";
 "Bulgaria - BGN" = "Bulgaria - BGN";
 "Switzerland - CHF" = "Suiza - CHF";

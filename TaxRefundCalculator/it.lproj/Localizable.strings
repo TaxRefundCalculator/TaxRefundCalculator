@@ -1,9 +1,7 @@
 
  // MARK: - 시작화면
-"Tax Refund Calculator" = "Calcolatore rimborso fiscale";
-"Calculate your tax refund amount in advance." = "Calcola in anticipo l’importo del rimborso fiscale.";
-"Select Language" = "Seleziona lingua";
-"Please select a language." = "Seleziona una lingua.";
+"Tax Refund Calculator" = "Calcolatore rimborso";
+"Calculate your tax refund amount in advance." = "Calcola il rimborso fiscale in anticipo.";
 "Select Base Currency" = "Seleziona valuta di base";
 "Please select a base currency." = "Seleziona una valuta di base.";
 "Select Travel Country" = "Seleziona paese di viaggio";
@@ -11,7 +9,6 @@
 "Exchange Rate Info" = "Informazioni sul tasso di cambio";
 "Please select a currency and a country." = "È necessario selezionare valuta e paese.";
 "Refund Policy" = "Condizioni di rimborso";
-"Please select a travel country." = "Seleziona il paese di viaggio.";
 "Start →" = "Inizia →";
  
 "Input Confirmation" = "Conferma inserimento";
@@ -30,9 +27,9 @@
 "VAT Rate" = "Aliquota IVA";
 "Purchase Amount" = "Importo dell’acquisto";
 "Estimated Refund Amount" = "Importo stimato del rimborso";
-"Approx. " = "Circa ";
-"Save Record" = "Salva registrazione";
-"View Refund Policy" = "Visualizza condizioni di rimborso";
+"Approx " = "Circa ";
+"Save Record" = "Salva";
+"View Refund Policy" = "Rimborso";
 "Calculate" = "Calcola";
 "History" = "Storico";
 "Exchange Rate" = "Tasso di cambio";
@@ -72,15 +69,14 @@
 
 
 // MARK: - 환율화면
-"Real-Time Exchange Rates" = "Informazioni sui tassi di cambio in tempo reale";
+"Exchange Rates" = "Tassi di cambio";
 "Last Updated: %@" = "Ultimo aggiornamento: %@";
 
 
 // MARK: - 설정화면
 "App Settings" = "Impostazioni app";
-"Change Language" = "Cambia lingua";
-"Change Base Currency" = "Cambia valuta base";
-"Change Travel Currency" = "Cambia valuta di viaggio";
+"Base Currency" = "Valuta di base";
+"Travel Country" = "Paese di viaggio";
 "Dark Mode" = "Modalità scura";
 "Reset Records" = "Reimposta registrazioni";
 "App Info" = "Info sull’app";
@@ -104,8 +100,8 @@
 // MARK: - 지원국가 목록
 "South Korea - KRW" = "Corea del Sud - KRW";
 "Japan - JPY" = "Giappone - JPY";
-"United States - USD" = "Stati Uniti - USD";
-"United Kingdom - GBP" = "Regno Unito - GBP";
+"USA - USD" = "Stati Uniti - USD";
+"UK - GBP" = "Regno Unito - GBP";
 "Thailand - THB" = "Thailandia - THB";
 "Malaysia - MYR" = "Malesia - MYR";
 "Singapore - SGD" = "Singapore - SGD";
@@ -113,7 +109,7 @@
 "Australia - AUD" = "Australia - AUD";
 "Türkiye - TRY" = "Turchia - TRY";
 "South Africa - ZAR" = "Sudafrica - ZAR";
-"Czech Republic - CZK" = "Repubblica Ceca - CZK";
+"Czech - CZK" = "Cechia - CZK";
 "Hungary - HUF" = "Ungheria - HUF";
 "Bulgaria - BGN" = "Bulgaria - BGN";
 "Switzerland - CHF" = "Svizzera - CHF";

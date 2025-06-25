@@ -243,8 +243,8 @@ class CalculateVC: UIViewController {
         // 기준화폐 가져오기
         if let savedBaseCurrency = viewModel.getBaseCurrency3() {
             currency2 = " \(savedBaseCurrency)"
-            conversionBoughtPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) 0 \(savedBaseCurrency)"
-            conversionRefuncPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) 0 \(savedBaseCurrency)"
+            conversionBoughtPrice.text = "\(NSLocalizedString("Approx ", comment: "")) 0 \(savedBaseCurrency)"
+            conversionRefuncPrice.text = "\(NSLocalizedString("Approx ", comment: "")) 0 \(savedBaseCurrency)"
         }
         
         // 부가세율 가져오기
@@ -476,19 +476,18 @@ class CalculateVC: UIViewController {
         
         // 구매금액 기준통화로 변환
         if let result = viewModel.conversionPrice(priceText: priceText) {
-            conversionBoughtPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) \(result.roundedString()) \(currencyCode)"
+            conversionBoughtPrice.text = "\(NSLocalizedString("Approx ", comment: "")) \(result.roundedString()) \(currencyCode)"
         } else {
             conversionBoughtPrice.text = NSLocalizedString("Input Error", comment: "")
         }
-        
         // 환급금액(현지화폐) 계산
         if let refund = viewModel.calculateVatRefund(priceText: priceText) {
             refundNum.text = refund.roundedString()
             // 환급금액을 환율로 변환해서 conversionRefuncPrice에 표시
             if let refundInBase = viewModel.convertRefundToBaseCurrency(refund: refund) {
-                conversionRefuncPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) \(refundInBase.roundedString()) \(currencyCode)"
+                conversionRefuncPrice.text = "\(NSLocalizedString("Approx ", comment: "")) \(refundInBase.roundedString()) \(currencyCode)"
             } else {
-            conversionRefuncPrice.text = NSLocalizedString("Input Error", comment: "")
+                conversionRefuncPrice.text = NSLocalizedString("Input Error", comment: "")
             }
         } else {
             refundNum.text = NSLocalizedString("Calculate", comment: "")
