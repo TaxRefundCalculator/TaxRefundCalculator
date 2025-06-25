@@ -31,7 +31,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
     
     // 기준 화폐 변경 row
     private let baseCurrencyChange = UILabel().then {
-        $0.text = "💰 \(NSLocalizedString("Change Base Currency", comment: ""))"
+        $0.text = "💰 \(NSLocalizedString("Base Currency", comment: ""))"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -45,7 +45,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
     
     // 여행 화폐 변경 row
     private let currencyChange = UILabel().then {
-        $0.text = "🛫 \(NSLocalizedString("Change Travel Currency", comment: ""))"
+        $0.text = "🛫 \(NSLocalizedString("Travel Country", comment: ""))"
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -325,10 +325,10 @@ class SettingVC: UIViewController, CountryModalDelegate {
     // 화폐 선택 부분들
     func didSelectCountry(_ country: String, forFieldTag tag: Int) {
         switch tag {
-        case 1:
+        case 0:
             nowBaseCurrency.text = country
             SettingVM.shared.saveBaseCurrency(country) // userDefaults에 저장 및 Combine
-        case 2:
+        case 1:
             nowCurreny.text = country
             SettingVM.shared.saveTravelCountry(country) // userDefaults에 저장 및 Combine
         default:
