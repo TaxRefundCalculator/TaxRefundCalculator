@@ -19,6 +19,10 @@
 "This country does not provide tax refund." = "This country does not provide tax refund.";
 "OK" = "OK";
 
+"Unable to load exchange rate information" = "Unable to load exchange rate information";
+"Refund Policy:" = "Refund Policy:";
+"Refund format" = "At least %2$d %1$@ purchase, %3$.0f%% refund";
+"Refund policy not found" = "Refund policy not found";
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Enter purchase amount";

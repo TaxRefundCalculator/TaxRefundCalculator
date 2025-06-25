@@ -19,6 +19,11 @@
 "This country does not provide tax refund." = "この国では免税サービスを行っていません。";
 "OK" = "確認";
 
+"Unable to load exchange rate information" = "為替レート情報を読み込めません";
+"Refund Policy:" = "払い戻しポリシー:";
+"Refund format" = "最低%2$d%1$@の購入で%3$.0f%%還付";
+"Refund policy not found" = "還付ポリシーが見つかりませんでした";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "購入金額を入力";

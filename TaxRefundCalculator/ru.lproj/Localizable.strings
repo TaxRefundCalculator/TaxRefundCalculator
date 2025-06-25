@@ -19,6 +19,11 @@
 "This country does not provide tax refund." = "В этой стране возврат налога не предоставляется.";
 "OK" = "ОК";
 
+"Unable to load exchange rate information" = "Hе удалось загрузить информацию о курсе валют";
+"Refund Policy:" = "Политика возврата налога:";
+"Refund format" = "Возврат НДС %3$.0f%% при покупке от %2$d %1$@";
+"Refund policy not found" = "Политика возврата не найдена";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Введите сумму покупки";

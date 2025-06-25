@@ -252,11 +252,11 @@ final class SavedModalVC: UIViewController {
         
         exchangeRateLabel.text = card.exchangeRate
         conditionLabel.text = """
-        💰 VAT율 :  \(policy.vatRate)%\n
-        💵 최소 구매금액 :  \(Int(policy.minimumAmount)) \(policy.currencyCode)\n
-        🔁 환급 방법 :  \(policy.refundMethod)\n
-        📍 환급 장소 :  \(policy.refundPlace)\n
-        📌 비고 :  \(policy.notes)
+        💰 \(NSLocalizedString("VAT Rate:", comment: ""))  \(policy.vatRate)%\n
+        💵 \(NSLocalizedString("Minimum Purchase Amount:", comment: ""))  \(Int(policy.minimumAmount)) \(policy.currencyCode)\n
+        🔁 \(NSLocalizedString("Refund Method:", comment: ""))  \(NSLocalizedString(policy.refundMethod, comment: ""))\n
+        📍 \(NSLocalizedString("Refund Location:", comment: ""))  \(NSLocalizedString(policy.refundPlace, comment: ""))\n
+        📌 \(NSLocalizedString("Notes:", comment: ""))  \(NSLocalizedString(policy.notes, comment: ""))
         """
     }
 }

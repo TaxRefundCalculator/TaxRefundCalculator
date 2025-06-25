@@ -19,6 +19,11 @@
 "This country does not provide tax refund." = "Este país no ofrece devolución de impuestos.";
 "OK" = "Aceptar";
 
+"Unable to load exchange rate information" = "No se puede cargar la información de tipo de cambio";
+"Refund Policy:" = "Política de reembolso:";
+"Refund format" = "Devolución del %3$.0f%% para una compra mínima de %2$d %1$@";
+"Refund policy not found" = "No se ha encontrado la política de reembolso";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Introduce el importe de la compra";

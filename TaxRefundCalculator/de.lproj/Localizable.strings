@@ -19,6 +19,11 @@
 "This country does not provide tax refund." = "In diesem Land gibt es keine Mehrwertsteuerrückerstattung.";
 "OK" = "OK";
 
+"Unable to load exchange rate information" = "Wechselkursinformationen können nicht geladen werden";
+"Refund Policy:" = "Rückerstattungsrichtlinie:";
+"Refund format" = "Mindestens %2$d %1$@ Einkauf, %3$.0f%% Rückerstattung";
+"Refund policy not found" = "Erstattungsrichtlinie nicht gefunden";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Kaufbetrag eingeben";
