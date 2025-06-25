@@ -208,20 +208,20 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         
         baseCurrency.snp.makeConstraints {
             $0.top.equalToSuperview().inset(20)
-            $0.leading.trailing.equalToSuperview().inset(25)
+            $0.leading.trailing.equalToSuperview().inset(16)
         }
         baseCurrencyField.snp.makeConstraints {
             $0.top.equalTo(baseCurrency.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(25)
+            $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(55)
         }
         travelCountry.snp.makeConstraints {
             $0.top.equalTo(baseCurrencyField.snp.bottom).offset(16)
-            $0.leading.trailing.equalToSuperview().inset(25)
+            $0.leading.trailing.equalToSuperview().inset(16)
         }
         travelCountryField.snp.makeConstraints {
             $0.top.equalTo(travelCountry.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(25)
+            $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(55)
         }
         
@@ -231,21 +231,19 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         exchangeRateCard.snp.makeConstraints {
             $0.top.equalTo(currencyCard.snp.bottom).offset(15)
             $0.leading.trailing.equalToSuperview().inset(25)
-            $0.height.equalTo(65)
+            $0.height.equalTo(80)
         }
         
         exchangeRateCard.addSubview(exchangeRateTitle)
         exchangeRateCard.addSubview(exchangeRate)
         
         exchangeRateTitle.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(20)
-            $0.centerY.equalToSuperview()
-            $0.height.equalTo(40)
+            $0.top.equalToSuperview().offset(16)
+            $0.leading.equalToSuperview().inset(16)
         }
         exchangeRate.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.height.equalTo(40)
-            $0.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(16)
+            $0.leading.equalToSuperview().inset(16)
         }
         
         
@@ -255,22 +253,19 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
             $0.top.equalTo(exchangeRateCard.snp.bottom).offset(15)
             $0.bottom.equalToSuperview().inset(20)
             $0.leading.trailing.equalToSuperview().inset(25)
-            $0.height.equalTo(65)
-            
+            $0.height.equalTo(80)
         }
         
         conditionCard.addSubview(conditionLabel)
         conditionCard.addSubview(refundCondition)
         
         conditionLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(20)
-            $0.centerY.equalToSuperview()
-            $0.height.equalTo(40)
+            $0.top.equalToSuperview().offset(16)
+            $0.leading.equalToSuperview().inset(16)
         }
         refundCondition.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.height.equalTo(40)
-            $0.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(16)
+            $0.leading.equalToSuperview().inset(16)
         }
 
 
