@@ -64,13 +64,13 @@
 "Select Date" = "Выбрать дату";
 "Purchase Amount" = "Сумма покупки";
 "Refund Amount" = "Сумма возврата";
-"Applied Exchange Rate" = "Применённый курс валют :";
+"Applied Exchange Rate" = "Применённый курс валют";
 "Close" = "Закрыть";
 
 
 // MARK: - 환율화면
 "Exchange Rates" = "Обменные курсы";
-"Last Updated: %@" = "Последнее обновление: %@";
+"Last Updated" = "Последнее обновление";
 
 
 // MARK: - 설정화면
@@ -153,7 +153,7 @@
 "Tax-free at the time of purchase" = "Освобождение от налога при покупке";
 "Foreign tourists" = "Иностранные туристы";
 "General goods" = "Обычные товары";
-"Tax-free (immediate at purchase)" = "Безналоговая продажа (освобождение от налога при покупке)"
+"Tax-free (immediate at purchase)" = "Безналоговая продажа (освобождение от налога при покупке)";
 "Tax-free shops" = "Дьюти-фри магазины";
 "Refund system to be introduced from 2026 (currently tax-free)." = "С 2026 года планируется ввести систему возврата (в настоящее время только освобождение от налога)";
 

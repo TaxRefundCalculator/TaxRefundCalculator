@@ -64,13 +64,13 @@
 "Select Date" = "Choisir date";
 "Purchase Amount" = "Montant de l’achat";
 "Refund Amount" = "Montant du remboursement";
-"Applied Exchange Rate" = "Taux de change appliqué :";
+"Applied Exchange Rate" = "Taux de change appliqué";
 "Close" = "Fermer";
 
 
 // MARK: - 환율화면
 "Exchange Rates" = "Taux de change";
-"Last Updated: %@" = "Dernière mise à jour : %@";
+"Last Updated" = "Dernière mise à jour";
 
 
 // MARK: - 설정화면

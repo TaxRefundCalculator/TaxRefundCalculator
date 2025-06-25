@@ -64,13 +64,13 @@
 "Select Date" = "日付を選択";
 "Purchase Amount" = "購入金額";
 "Refund Amount" = "還付金額";
-"Applied Exchange Rate" = "適用為替レート :";
+"Applied Exchange Rate" = "適用為替レート";
 "Close" = "閉じる";
 
 
 // MARK: - 환율화면
 "Exchange Rates" = "為替レート";
-"Last Updated: %@" = "最終更新日: %@";
+"Last Updated" = "最終更新日";
 
 
 // MARK: - 설정화면

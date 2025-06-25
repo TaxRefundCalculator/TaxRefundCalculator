@@ -70,7 +70,7 @@
 
 // MARK: - 환율
 "Exchange Rates" = "Exchange Rates";
-"Last Updated: %@" = "Last Updated: %@";
+"Last Updated" = "Last Updated";
 
 
 // MARK: - 설정화면
