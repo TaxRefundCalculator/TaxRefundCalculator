@@ -433,6 +433,9 @@ class CalculateVC: UIViewController {
         compliteAlert()
     }
     
+    /// 문자열에서 숫자, 소수점, 콤마만 추출하는 유틸리티 함수
+    /// - "약 1,234.56 USD" → "1,234.56"
+    /// - "Approx. 12.000,00 EUR" → "12.000,00"
     func extractNumberString(_ string: String) -> String {
         return string.components(separatedBy: CharacterSet(charactersIn: "0123456789.,").inverted).joined()
     }
