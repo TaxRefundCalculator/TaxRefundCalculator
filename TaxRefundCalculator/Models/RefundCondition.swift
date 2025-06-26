@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - 환급 정책 목록 구조체
 struct VATRefundPolicy: Codable {
     let country: String
     let currencyCode: String
@@ -21,6 +22,7 @@ struct VATRefundPolicy: Codable {
     let notes: String
 }
 
+// MARK: - 환급 정책 목록
 let koreaPolicy = VATRefundPolicy(
     country: "South Korea",
     currencyCode: "KRW",
@@ -30,9 +32,9 @@ let koreaPolicy = VATRefundPolicy(
     refundRateDescription: "Up to 7% of purchase amount",
     eligibleBuyers: "Foreign tourists staying less than 6 months, overseas Koreans staying less than 3 months and living abroad for over 2 years",
     eligibleItems: "Taxable goods in unopened and unused condition, goods exported within 3 months of purchase",
-    refundMethod: "Immediate refund, downtown refund center, airport refund",
-    refundPlace: "Refund counters or kiosks at Incheon International Airport and major airports, downtown refund centers in Seoul and other major cities",
-    notes: "Customs stamp on purchased goods required."
+    refundMethod: "Immediate refund, downtown or airport refund",
+    refundPlace: "Refund counter at Incheon airport/major airports or downtown centers",
+    notes: "Customs stamp on goods required"
 )
 
 let japanPolicy = VATRefundPolicy(
@@ -525,6 +527,7 @@ let indiaPolicy = VATRefundPolicy(
     notes: "GST refund system is in pilot operation, not implemented nationwide"
 )
 
+// MARK: - 국기를 트리거로 정책 매칭
 struct RefundCondition {
     static let flagToPolicyMap: [String: VATRefundPolicy] = [
         "🇯🇵": japanPolicy,

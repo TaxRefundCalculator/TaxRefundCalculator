@@ -13,7 +13,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
     
     private let viewModel = SettingVM.shared // 싱글턴 패턴이기때문에 싱글턴 인스턴스. 새로 생성하면 안됨.
     
-    // MARK: 앱 설정 카드
+    // MARK: - 앱 설정 카드
     private let settingCard = UIView().then {
         $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 16
@@ -83,7 +83,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
     }
     
     
-    // MARK: 앱 정보 카드
+    // MARK: - 앱 정보 카드
     private let infoCard = UIView().then {
         $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 16
@@ -119,6 +119,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
     }
     
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -127,7 +128,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
     }
     
     
-    // MARK: UserDefaults에서 값 불러오기
+    // MARK: - UserDefaults에서 값 불러오기
     private func loadFromUserdefaults() {
         // 기준화폐 설정
         if let loadBaseCurrency = viewModel.getBaseCurrency() {
@@ -142,6 +143,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
     }
     
     
+    // MARK: - AutoLayout 정의
     private func configureUI() {
         view.backgroundColor = .bgPrimary
         
@@ -236,7 +238,8 @@ class SettingVC: UIViewController, CountryModalDelegate {
         baseCurrencyRow.tag = 0
         currencyRow.tag = 1
 
-        //MARK: 각 row 클릭시
+        
+        //MARK: - 각 row 클릭시
         let baseTap = UITapGestureRecognizer(target: self, action: #selector(didTapBaseCurrencyRow))
         baseCurrencyRow.addGestureRecognizer(baseTap)
         baseCurrencyRow.isUserInteractionEnabled = true
@@ -247,7 +250,8 @@ class SettingVC: UIViewController, CountryModalDelegate {
         resetRow.addGestureRecognizer(resetTap)
         resetRow.isUserInteractionEnabled = true
         
-        // MARK: Info Card
+        
+        // MARK: - Info Card
         view.addSubview(infoCard)
         infoCard.snp.makeConstraints {
             $0.top.equalTo(settingCard.snp.bottom).offset(16)
@@ -337,7 +341,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
     }
     
     
-    // MARK: 다크모드 토글 스위치 액션
+    // MARK: - 다크모드 토글 스위치 액션
     @objc
     private func darkModeSwitchChanged(_ sender: UISwitch) {
         viewModel.saveDarkModeEnabled(sender.isOn)
