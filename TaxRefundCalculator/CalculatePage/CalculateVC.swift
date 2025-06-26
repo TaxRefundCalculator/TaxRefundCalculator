@@ -496,39 +496,7 @@ class CalculateVC: UIViewController {
     }
     
     
-    // MARK: 키보드 내리기
-    private func keyboardDown() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(keyboardDownAction))
-        tapGesture.cancelsTouchesInView = false // 다른 터치 이벤트도 전달되도록 설정
-        view.addGestureRecognizer(tapGesture)
-    }
-    @objc
-    private func keyboardDownAction() {
-        view.endEditing(true)
-    }
-    
-}
-
-// MARK: 가격 입력 필드 예외처리
-extension CalculateVC: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let current = textField.text ?? ""
-        let nsCurrent = current as NSString
-        let newValue = nsCurrent.replacingCharacters(in: range, with: string)
-
-        let isValid = viewModel.isValidFloatingPoint(newValue)
-
-        // 부적합 입력시 얼럿 표시
-        if !isValid && !string.isEmpty {
-            errorAlert1()
-        }
-        // 공백 입력 시 얼럿 표시
-        if string.isEmpty {
-            errorAlert2()
-        }
-        return isValid
-    }
-    
+    // MARK: - 예외처리용 얼럿
     // 오입력 얼럿
     private func errorAlert1() {
         let alert = UIAlertController(title: NSLocalizedString("Input Error", comment: ""), message: NSLocalizedString("Only numbers and decimal points are allowed, and the decimal point can be entered only once.", comment: ""), preferredStyle: .alert)
@@ -541,4 +509,17 @@ extension CalculateVC: UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+    
+    
+    // MARK: - 키보드 내리기
+    private func keyboardDown() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(keyboardDownAction))
+        tapGesture.cancelsTouchesInView = false // 다른 터치 이벤트도 전달되도록 설정
+        view.addGestureRecognizer(tapGesture)
+    }
+    @objc
+    private func keyboardDownAction() {
+        view.endEditing(true)
+    }
+    
 }
