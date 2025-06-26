@@ -19,6 +19,11 @@
 "This country does not provide tax refund." = "В этой стране возврат налога не предоставляется.";
 "OK" = "ОК";
 
+"Unable to load exchange rate information" = "Hе удалось загрузить информацию о курсе валют";
+"Refund Policy:" = "Политика возврата налога:";
+"Refund format" = "Возврат НДС %3$.0f%% при покупке от %2$d %1$@";
+"Refund policy not found" = "Политика возврата не найдена";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Введите сумму покупки";
@@ -64,13 +69,13 @@
 "Select Date" = "Выбрать дату";
 "Purchase Amount" = "Сумма покупки";
 "Refund Amount" = "Сумма возврата";
-"Applied Exchange Rate" = "Применённый курс валют :";
+"Applied Exchange Rate" = "Применённый курс валют";
 "Close" = "Закрыть";
 
 
 // MARK: - 환율화면
 "Exchange Rates" = "Обменные курсы";
-"Last Updated: %@" = "Последнее обновление: %@";
+"Last Updated" = "Последнее обновление";
 
 
 // MARK: - 설정화면
@@ -136,3 +141,322 @@
 "Russia - RUB" = "Россия - RUB";
 "Israel - ILS" = "Израиль - ILS";
 "India - INR" = "Индия - INR";
+
+
+// MARK: - 국가별 환급조건
+
+"South Korea" = "Южная Корея";
+"Up to 7% of purchase amount" = "До 7% от суммы покупки";
+"Foreign tourists staying less than 6 months, overseas Koreans abroad 2+ years (stay less than 3 months)" = "Иностранные туристы, пребывающие менее 6 месяцев, этнические корейцы, проживающие за границей более 2 лет и находящиеся в Корее менее 3 месяцев";
+"Taxable goods unused/unopened, exported within 3 months of purchase" = "Облагаемые налогом товары в нераспечатанном и неиспользованном состоянии, товары, вывозимые в течение 3 месяцев после покупки";
+"Immediate refund, downtown or airport refund" = "Мгновенный возврат, возврат в городском центре, возврат в аэропорту";
+"Refund counter at Incheon airport/major airports or downtown centers" = "Пункты возврата или киоски в международном аэропорту Инчхон и других крупных аэропортах, городские пункты возврата в Сеуле и других крупных городах";
+"Customs stamp on goods required" = "Необходимо получить таможенную печать на купленные товары.";
+
+
+"Japan" = "Япония";
+"Tax-free at the time of purchase" = "Освобождение от налога при покупке";
+"Foreign tourists" = "Иностранные туристы";
+"General goods" = "Обычные товары";
+"Tax-free (immediate at purchase)" = "Безналоговая продажа (освобождение от налога при покупке)";
+"Tax-free shops" = "Дьюти-фри магазины";
+"Refund system to be introduced from 2026 (currently tax-free)." = "С 2026 года планируется ввести систему возврата (в настоящее время только освобождение от налога)";
+
+
+"Thailand" = "Таиланд";
+"VAT refund" = "Возврат НДС";
+"Foreign tourists" = "Иностранные туристы";
+"Goods purchased at approved shops, goods exported within 60 days" = "Товары, купленные в одобренных магазинах, товары, вывозимые в течение 60 дней";
+"Airport refund" = "Возврат в аэропорту";
+"VAT refund counter at departure hall" = "Стойка возврата НДС в зале вылета";
+"Purchase at approved shops, depart within 60 days." = "Покупайте в одобренных магазинах, вывозите в течение 60 дней";
+
+
+"Malaysia" = "Малайзия";
+"VAT refund" = "Возврат НДС";
+"Foreign tourists" = "Иностранные туристы";
+"Goods purchased at approved shops" = "Товары, купленные в одобренных магазинах";
+"Airport refund" = "Возврат в аэропорту";
+"Airport VAT refund counter" = "Стойка возврата НДС в аэропорту";
+"Only available at shops approved by the Tourism Tax Office." = "Доступно только в магазинах, одобренных туристическим налоговым управлением";
+
+
+"Singapore" = "Сингапур";
+"GST refund" = "Возврат GST";
+"Foreign tourists" = "Иностранные туристы";
+"Goods exported when leaving Singapore, some items excluded" = "Товары, вывозимые при выезде из Сингапура, некоторые товары исключены";
+"Electronic refund (eTRS)" = "Электронный возврат (eTRS)";
+"Airport eTRS kiosk" = "Киоск eTRS в аэропорту";
+"Passport registration required, some items excluded." = "Требуется регистрация паспорта, некоторые товары исключены";
+
+
+"Indonesia" = "Индонезия";
+"VAT refund" = "Возврат НДС";
+"Foreign tourists (excluding crew, etc.)" = "Иностранные туристы (за исключением экипажа и т.д.)";
+"Goods exported abroad" = "Товары, вывозимые за границу";
+"Airport refund" = "Возврат в аэропорту";
+"VAT refund office" = "Офис возврата НДС";
+"Crew, etc. are not eligible for refunds." = "Экипаж и т.д. не имеют права на возврат";
+
+
+"Australia" = "Австралия";
+"GST refund" = "Возврат GST";
+"Foreign tourists" = "Иностранные туристы";
+"Goods purchased within 30 days before departure" = "Товары, купленные в течение 30 дней до вылета";
+"Airport refund (TRS)" = "Возврат в аэропорту (TRS)";
+"TRS counter at departure hall" = "Стойка TRS в зале вылета";
+"Purchase within 30 days before departure, recommend arriving at least 90 minutes early." = "Покупка в течение 30 дней до вылета, рекомендуется прибыть минимум за 90 минут";
+
+
+"Turkey" = "Турция";
+"VAT refund" = "Возврат НДС";
+"Foreign tourists" = "Иностранные туристы";
+"Approved items" = "Одобренные товары";
+"Airport refund" = "Возврат в аэропорту";
+"Refund counter after customs verification" = "Пункт возврата после таможенного контроля";
+"Only for approved items." = "Только для одобренных товаров";
+
+
+"South Africa" = "Южная Африка";
+"VAT refund" = "Возврат НДС";
+"Foreign tourists" = "Иностранные туристы";
+"Goods exported abroad" = "Товары, вывозимые за границу";
+"Airport refund" = "Возврат в аэропорту";
+"VAT refund office" = "Пункт возврата НДС";
+"Customs verification required." = "Требуется таможенная проверка";
+
+
+"Czech Republic" = "Чехия";
+"VAT refund" = "Возврат НДС";
+"Foreign tourists" = "Иностранные туристы";
+"Goods exported within 90 days" = "Товары, вывозимые в течение 90 дней";
+"Airport refund" = "Возврат в аэропорту";
+"Refund counter at departure hall" = "Пункт возврата в зале вылета";
+"Customs stamp required, depart within 90 days." = "Требуется таможенная печать, выезд в течение 90 дней";
+
+
+"Hungary" = "Венгрия";
+"VAT refund" = "Возврат НДС"; "Foreign tourists" = "Иностранные туристы";
+"Goods exported abroad" = "Товары, вывозимые за границу";
+"Airport refund" = "Возврат в аэропорту";
+"Customs and refund office" = "Таможня и пункт возврата";
+"Receipt required." = "Необходим чек";
+
+"Bulgaria" = "Болгария";
+"VAT refund" = "Возврат НДС";
+"Foreign tourists" = "Иностранные туристы";
+"Goods exported abroad" = "Товары, вывозимые за границу";
+"Airport refund" = "Возврат в аэропорту";
+"Refund counter" = "Пункт возврата";
+"Customs verification required." = "Требуется таможенная проверка";
+
+
+"Switzerland" = "Швейцария";
+"VAT refund" = "Возврат НДС";
+"Non-residents" = "Нерезиденты";
+"Goods exported abroad" = "Товары, вывозимые за границу";
+"Airport refund" = "Возврат в аэропорту";
+"Partner shops or refund offices" = "Партнерские магазины или пункты возврата";
+"Only for non-EU nationals." = "Только для граждан, не входящих в ЕС";
+
+
+"Germany" = "Германия";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Goods exported outside the EU" = "Товары, вывозимые за пределы ЕС";
+"Airport refund" = "Возврат в аэропорту";
+"Global Blue / Planet refund office" = "Пункт возврата Global Blue / Planet";
+"Customs stamp required." = "Требуется таможенная печать";
+
+
+"Netherlands" = "Нидерланды";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Goods exported outside the EU" = "Товары, вывозимые за пределы ЕС";
+"Airport refund" = "Возврат в аэропорту";
+"Refund counter after customs stamp" = "Пункт возврата после таможенной печати";
+"Difficult to get a refund on the day of departure." = "Сложно получить возврат в день вылета";
+
+
+"Belgium" = "Бельгия";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Goods purchased at approved shops" = "Товары, купленные в одобренных магазинах";
+"Airport refund" = "Возврат в аэропорту";
+"Refund office" = "Пункт возврата";
+"Only at approved shops, customs verification required." = "Только в одобренных магазинах, требуется таможенная проверка";
+
+
+"France" = "Франция";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Goods exported outside the EU" = "Товары, вывозимые за пределы ЕС";
+"PABLO electronic certification or refund office" = "Электронная система PABLO или пункт возврата";
+"Airport" = "Аэропорт";
+"Approx. 12% fee deducted." = "Вычитается комиссия около 12%";
+
+
+"Spain" = "Испания";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Goods exported outside the EU" = "Товары, вывозимые за пределы ЕС";
+"DIVA kiosk" = "Киоск DIVA";
+"Airport" = "Аэропорт";
+"Electronic certification required." = "Требуется электронная сертификация";
+
+
+"Portugal" = "Португалия";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Goods exported outside the EU" = "Товары, вывозимые за пределы ЕС";
+"Airport refund" = "Возврат в аэропорту"; "Refund counter" = "Пункт возврата";
+"Depart within 90 days." = "Выезд в течение 90 дней";
+
+
+"Ireland" = "Ирландия";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Товары для личного пользования, вывозимые в личном багаже в течение 3 месяцев после покупки при выезде из ЕС";
+"Retail shop or refund agency" = "Розничный магазин или агентство возврата";
+"Dublin, Shannon airports, etc." = "Аэропорты Дублин, Шаннон и др.";
+"Only some shops participate; check before purchase." = "Только некоторые магазины участвуют, уточняйте перед покупкой";
+
+
+"Austria" = "Австрия";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Неиспользованные товары для личного пользования, вывозимые в личном багаже в течение 3 месяцев после покупки при выезде из ЕС";
+"Airport refund or downtown refund office" = "Возврат в аэропорту или городском пункте возврата";
+"Vienna airport, etc." = "Аэропорт Вена и др.";
+"Customs stamp required; present receipt and goods." = "Требуется таможенная печать, предоставьте чек и товар";
+
+
+"Croatia" = "Хорватия";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Неиспользованные товары для личного пользования, вывозимые в личном багаже в течение 3 месяцев после покупки при выезде из ЕС";
+"Airport refund" = "Возврат в аэропорту";
+"Zagreb airport, etc." = "Аэропорт Загреб и др.";
+"Customs stamp required; present receipt and goods." = "Требуется таможенная печать, предоставьте чек и товар";
+
+
+"Italy" = "Италия";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Неиспользованные товары для личного пользования, вывозимые в личном багаже в течение 3 месяцев после покупки при выезде из ЕС";
+"Airport refund or downtown refund office" = "Возврат в аэропорту или городском пункте возврата"; "Rome, Milan airports, etc." = "Аэропорты Рим, Милан и др.";
+"Customs stamp required; present receipt and goods." = "Требуется таможенная печать, предоставьте чек и товар";
+
+
+"Greece" = "Греция";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Неиспользованные товары для личного пользования, вывозимые в личном багаже в течение 3 месяцев после покупки при выезде из ЕС";
+"Airport refund" = "Возврат в аэропорту";
+"Athens airport, etc." = "Аэропорт Афины и др."; "Customs stamp required; present receipt and goods." = "Требуется таможенная печать, предоставьте чек и товар";
+
+
+"Sweden" = "Швеция";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Неиспользованные товары для личного пользования, вывозимые в личном багаже в течение 3 месяцев после покупки при выезде из ЕС";
+"Airport refund" = "Возврат в аэропорту";
+"Stockholm Arlanda airport, etc." = "Аэропорт Стокгольм Арланда и др.";
+"Customs stamp required; present receipt and goods." = "Требуется таможенная печать, предоставьте чек и товар";
+
+
+"Denmark" = "Дания";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Неиспользованные товары для личного пользования, вывозимые в личном багаже в течение 3 месяцев после покупки при выезде из ЕС";
+"Airport refund" = "Возврат в аэропорту";
+"Copenhagen airport, etc." = "Аэропорт Копенгаген и др.";
+"Customs stamp required; present receipt and goods." = "Требуется таможенная печать, предоставьте чек и товар";
+
+
+"Norway" = "Норвегия";
+"VAT refund" = "Возврат НДС";
+"Residents of countries other than Norway, Sweden, Finland, Denmark" = "Жители стран, кроме Норвегии, Швеции, Финляндии, Дании";
+"Unused goods for personal use, exported as personal baggage within 1 month of purchase upon leaving Norway" = "Неиспользованные товары для личного пользования, вывозимые в личном багаже в течение 1 месяца после покупки при выезде из Норвегии";
+"Airport refund" = "Возврат в аэропорту";
+"Oslo airport, etc." = "Аэропорт Осло и др.";
+"Customs stamp required; present receipt and goods." = "Требуется таможенная печать, предоставьте чек и товар";
+
+
+"Finland" = "Финляндия";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Неиспользованные товары для личного пользования, вывозимые в личном багаже в течение 3 месяцев после покупки при выезде из ЕС";
+"Airport refund" = "Возврат в аэропорту";
+"Helsinki airport, etc." = "Аэропорт Хельсинки и др.";
+"Customs stamp required; present receipt and goods." = "Требуется таможенная печать, предоставьте чек и товар";
+
+
+"Mexico" = "Мексика";
+"VAT refund" = "Возврат НДС";
+"Foreigners staying in Mexico less than 180 days" = "Иностранцы, находящиеся в Мексике менее 180 дней";
+"Unused goods for personal use, within 3 months of purchase" = "Неиспользованные товары для личного пользования, в течение 3 месяцев после покупки";
+"Unknown" = "Неизвестно";
+"Incomplete information provided." = "Информация предоставлена не полностью";
+
+
+"Brazil" = "Бразилия";
+"VAT refund" = "Возврат НДС";
+"Non-resident foreign tourists" = "Иностранные туристы-нерезиденты";
+"Goods for personal use (excluding food, hotels, restaurant consumption)" = "Товары для личного пользования (исключая продукты питания, отели, рестораны)";
+"Airport refund or designated refund office" = "Возврат в аэропорту или в специально назначенном пункте"; "Rio de Janeiro airport, etc." = "Аэропорт Рио-де-Жанейро и др.";
+"Pilot program in Rio de Janeiro state from 2025, nationwide expansion planned; VAT rate varies by state (e.g., 18% in Rio de Janeiro)" = "С 2025 года пилотный проект в штате Рио-де-Жанейро, в будущем планируется распространение по всей стране; ставка НДС зависит от штата (например, Рио-де-Жанейро — 18%)";
+
+
+"Poland" = "Польша";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Unused goods for personal use" = "Неиспользованные товары для личного пользования";
+"Airport refund or downtown refund office" = "Возврат в аэропорту или городском пункте возврата";
+"Warsaw airport, etc." = "Аэропорт Варшава и др.";
+"Goods must be exported outside the EU within 3 months of purchase; customs stamp required" = "Товар должен быть вывезен за пределы ЕС в течение 3 месяцев после покупки; требуется таможенная печать";
+
+
+"Romania" = "Румыния";
+"VAT refund" = "Возврат НДС";
+"Non-EU residents" = "Нерезиденты ЕС";
+"Unused goods for personal use" = "Неиспользованные товары для личного пользования";
+"Airport refund or downtown refund office" = "Возврат в аэропорту или городском пункте возврата";
+"Bucharest airport, etc." = "Аэропорт Бухарест и др.";
+"Goods must be exported outside the EU within 90 days of purchase; customs stamp required" = "Товар должен быть вывезен за пределы ЕС в течение 90 дней после покупки; требуется таможенная печать";
+
+
+"Iceland" = "Исландия";
+"VAT refund" = "Возврат НДС";
+"Non-residents of Iceland" = "Нерезиденты Исландии";
+"Unused goods for personal use" = "Неиспользованные товары для личного пользования";
+"Airport refund" = "Возврат в аэропорту";
+"Keflavik airport, etc." = "Аэропорт Кефлавик и др.";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "Товар должен быть вывезен в течение 3 месяцев после покупки; требуется таможенная печать";
+
+
+"Russia" = "Россия";
+"VAT refund" = "Возврат НДС";
+"Residents of countries outside the EAEU" = "Жители стран вне ЕАЭС";
+"Clothing, electronics, jewelry, etc. (excluding alcohol, tobacco)" = "Одежда, электроника, ювелирные изделия и др. (алкоголь и табак исключены)";
+"Airport refund" = "Возврат в аэропорту";
+"Moscow Domodedovo airport, etc." = "Аэропорт Домодедово, Москва и др.";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "Товар должен быть вывезен в течение 3 месяцев после покупки; требуется таможенная печать";
+
+
+"Israel" = "Израиль";
+"VAT refund" = "Возврат НДС";
+"Non-residents of Israel" = "Нерезиденты Израиля";
+"Unused goods for personal use" = "Неиспользованные товары для личного пользования";
+"Airport refund" = "Возврат в аэропорту";
+"Ben Gurion airport, etc." = "Аэропорт Бен-Гурион и др.";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "Товар должен быть вывезен в течение 3 месяцев после покупки; требуется таможенная печать";
+
+
+"India" = "Индия";
+"GST refund" = "Возврат GST";
+"Non-residents of India" = "Нерезиденты Индии";
+"Unused goods for personal use" = "Неиспользованные товары для личного пользования";
+"Airport refund" = "Возврат в аэропорту";
+"Delhi Indira Gandhi International Airport, etc." = "Международный аэропорт имени Индира Ганди, Дели и др.";
+"GST refund system is in pilot operation, not implemented nationwide" = "Система возврата GST работает в тестовом режиме, не внедрена по всей стране";

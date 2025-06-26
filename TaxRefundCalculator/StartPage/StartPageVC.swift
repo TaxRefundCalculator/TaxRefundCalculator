@@ -128,6 +128,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         $0.text = NSLocalizedString("Please select a travel country.", comment: "")
         $0.font = UIFont.systemFont(ofSize: 17)
         $0.textColor = .mainTeal
+        $0.numberOfLines = 0  // 줄수 제약 x
     }
     
     
@@ -253,7 +254,6 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
             $0.top.equalTo(exchangeRateCard.snp.bottom).offset(15)
             $0.bottom.equalToSuperview().inset(20)
             $0.leading.trailing.equalToSuperview().inset(25)
-            $0.height.equalTo(80)
         }
         
         conditionCard.addSubview(conditionLabel)
@@ -264,8 +264,9 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
             $0.leading.equalToSuperview().inset(16)
         }
         refundCondition.snp.makeConstraints {
+            $0.top.equalTo(conditionLabel.snp.bottom).offset(8)
             $0.bottom.equalToSuperview().inset(16)
-            $0.leading.equalToSuperview().inset(16)
+            $0.horizontalEdges.equalToSuperview().inset(16) // 리딩, 트레일링 동시
         }
 
 

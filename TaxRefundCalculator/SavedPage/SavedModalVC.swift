@@ -31,10 +31,6 @@ final class SavedModalVC: UIViewController {
         $0.font = .systemFont(ofSize: 20)
     }
     
-    private let vatLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 20)
-    }
-    
     // 날짜
     private let dateLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .light)
@@ -43,32 +39,44 @@ final class SavedModalVC: UIViewController {
     
     private let purchaseTitleLabel = UILabel().then {
         $0.text = NSLocalizedString("Purchase Amount", comment: "")
-        $0.font = .systemFont(ofSize: 14)
+        $0.font = .systemFont(ofSize: 14, weight: .medium)
         $0.textColor = .primaryText
+        $0.textAlignment = .left
+        $0.numberOfLines = 0
     }
     
     private let purchaseAmountLabel = UILabel().then {
-        $0.font = .boldSystemFont(ofSize: 20)
+        $0.font = .systemFont(ofSize: 15, weight: .semibold)
+        $0.textAlignment = .left
+        $0.numberOfLines = 0
     }
     
     private let convertedPurchaseLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15, weight: .semibold)
+        $0.textAlignment = .left
+        $0.numberOfLines = 0
     }
     
     private let refundTitleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .medium)
         $0.text = NSLocalizedString("Refund Amount", comment: "")
         $0.textColor = .primaryText
+        $0.numberOfLines = 0
+        $0.textAlignment = .right
     }
     
     private let refundAmountLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 15, weight: .medium)
+        $0.font = .systemFont(ofSize: 15, weight: .semibold)
         $0.textColor = .mainTeal
+        $0.textAlignment = .right
+        $0.numberOfLines = 0
     }
     
     private let convertedRefundLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15, weight: .semibold)
         $0.textColor = .mainTeal
+        $0.textAlignment = .right
+        $0.numberOfLines = 0
     }
     
     // 구분선
@@ -83,8 +91,8 @@ final class SavedModalVC: UIViewController {
     }
     
     private let rateLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 15, weight: .medium)
-        $0.text = NSLocalizedString("Applied Exchange Rate :", comment: "")
+        $0.font = .systemFont(ofSize: 15, weight: .semibold)
+        $0.text = NSLocalizedString("Applied Exchange Rate", comment: "")
         $0.textColor = .primaryText
     }
     
@@ -121,7 +129,7 @@ final class SavedModalVC: UIViewController {
         refundConditionView.addSubviews(rateLabel, exchangeRateLabel, conditionLabel)
         
         containerView.addSubviews(
-            countryLabel, vatLabel, dateLabel,
+            countryLabel, dateLabel,
             purchaseTitleLabel, purchaseAmountLabel,
             refundTitleLabel, refundAmountLabel,
             dividerView,
@@ -145,28 +153,30 @@ final class SavedModalVC: UIViewController {
             $0.centerY.equalTo(countryLabel)
         }
         
-        vatLabel.snp.makeConstraints {
-            $0.top.equalTo(countryLabel.snp.bottom).offset(8)
-            $0.leading.equalToSuperview().inset(24)
-        }
-        
         // 구매/환급 타이틀
         purchaseTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(vatLabel.snp.bottom).offset(16)
+            $0.top.equalTo(countryLabel.snp.bottom).offset(16)
             $0.leading.equalToSuperview().inset(24)
+            $0.trailing.equalTo(containerView.snp.centerX).offset(-4)
         }
+        
         refundTitleLabel.snp.makeConstraints {
+            $0.leading.equalTo(containerView.snp.centerX).offset(4)
             $0.top.equalTo(purchaseTitleLabel)
             $0.trailing.equalToSuperview().inset(24)
         }
         
         // 구매/환급 금액
         purchaseAmountLabel.snp.makeConstraints {
-            $0.top.equalTo(purchaseTitleLabel.snp.bottom).offset(4)
+            $0.top.equalTo(purchaseTitleLabel.snp.bottom).offset(8)
             $0.leading.equalTo(purchaseTitleLabel)
+            $0.trailing.equalTo(containerView.snp.centerX).offset(-4)
+            $0.firstBaseline.equalTo(refundAmountLabel.snp.firstBaseline)
         }
+        
         refundAmountLabel.snp.makeConstraints {
-            $0.top.equalTo(refundTitleLabel.snp.bottom).offset(4)
+            $0.top.equalTo(refundTitleLabel.snp.bottom).offset(8)
+            $0.leading.equalTo(containerView.snp.centerX).offset(4)
             $0.trailing.equalTo(refundTitleLabel)
         }
         
@@ -181,8 +191,11 @@ final class SavedModalVC: UIViewController {
         convertedPurchaseLabel.snp.makeConstraints {
             $0.top.equalTo(dividerView.snp.bottom).offset(8)
             $0.leading.equalTo(purchaseTitleLabel)
+            $0.trailing.equalTo(containerView.snp.centerX).offset(-4)
         }
+        
         convertedRefundLabel.snp.makeConstraints {
+            $0.leading.equalTo(containerView.snp.centerX).offset(4)
             $0.top.equalTo(dividerView.snp.bottom).offset(8)
             $0.trailing.equalTo(refundTitleLabel)
         }
@@ -197,12 +210,12 @@ final class SavedModalVC: UIViewController {
         }
         
         exchangeRateLabel.snp.makeConstraints {
-            $0.leading.equalTo(rateLabel.snp.trailing).offset(8)
-            $0.centerY.equalTo(rateLabel)
+            $0.top.equalTo(rateLabel.snp.bottom).offset(8)
+            $0.horizontalEdges.equalToSuperview().inset(16)
         }
         
         conditionLabel.snp.makeConstraints {
-            $0.top.equalTo(rateLabel.snp.bottom).offset(12)
+            $0.top.equalTo(exchangeRateLabel.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview().inset(8)
         }
@@ -239,11 +252,11 @@ final class SavedModalVC: UIViewController {
         
         exchangeRateLabel.text = card.exchangeRate
         conditionLabel.text = """
-        💰 VAT율 :  \(policy.vatRate)%\n
-        💵 최소 구매금액 :  \(Int(policy.minimumAmount)) \(policy.currencyCode)\n
-        🔁 환급 방법 :  \(policy.refundMethod)\n
-        📍 환급 장소 :  \(policy.refundPlace)\n
-        📌 비고 :  \(policy.notes)
+        💰 \(NSLocalizedString("VAT Rate:", comment: ""))  \(policy.vatRate)%\n
+        💵 \(NSLocalizedString("Minimum Purchase Amount:", comment: ""))  \(Int(policy.minimumAmount)) \(policy.currencyCode)\n
+        🔁 \(NSLocalizedString("Refund Method:", comment: ""))  \(NSLocalizedString(policy.refundMethod, comment: ""))\n
+        📍 \(NSLocalizedString("Refund Location:", comment: ""))  \(NSLocalizedString(policy.refundPlace, comment: ""))\n
+        📌 \(NSLocalizedString("Notes:", comment: ""))  \(NSLocalizedString(policy.notes, comment: ""))
         """
     }
 }

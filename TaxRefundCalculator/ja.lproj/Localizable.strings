@@ -19,6 +19,11 @@
 "This country does not provide tax refund." = "この国では免税サービスを行っていません。";
 "OK" = "確認";
 
+"Unable to load exchange rate information" = "為替レート情報を読み込めません";
+"Refund Policy:" = "払い戻しポリシー:";
+"Refund format" = "最低%2$d%1$@の購入で%3$.0f%%還付";
+"Refund policy not found" = "還付ポリシーが見つかりませんでした";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "購入金額を入力";
@@ -64,13 +69,13 @@
 "Select Date" = "日付を選択";
 "Purchase Amount" = "購入金額";
 "Refund Amount" = "還付金額";
-"Applied Exchange Rate" = "適用為替レート :";
+"Applied Exchange Rate" = "適用為替レート";
 "Close" = "閉じる";
 
 
 // MARK: - 환율화면
 "Exchange Rates" = "為替レート";
-"Last Updated: %@" = "最終更新日: %@";
+"Last Updated" = "最終更新日";
 
 
 // MARK: - 설정화면
@@ -136,3 +141,327 @@
 "Russia - RUB" = "ロシア - RUB";
 "Israel - ILS" = "イスラエル - ILS";
 "India - INR" = "インド - INR";
+
+
+// MARK: - 국가별 환급조건
+
+"South Korea" = "韓国";
+"Up to 7% of purchase amount" = "購入金額の最大7％まで";
+"Foreign tourists staying less than 6 months, overseas Koreans abroad 2+ years (stay less than 3 months)" = "6ヶ月未満滞在の外国人観光客、海外に2年以上居住し韓国に3ヶ月未満滞在の在外韓国人";
+"Taxable goods unused/unopened, exported within 3 months of purchase" = "未開封・未使用の課税商品、購入日から3ヶ月以内に輸出される商品";
+"Immediate refund, downtown or airport refund" = "即時払い戻し、ダウンタウン払い戻しセンター、空港払い戻し";
+"Refund counter at Incheon airport/major airports or downtown centers" = "仁川国際空港および主要空港の払い戻しカウンターやキオスク、ソウルなど主要都市の市内払い戻しセンター";
+"Customs stamp on goods required" = "購入品には税関のスタンプが必要です。";
+
+
+"Japan" = "日本";
+"Tax-free at the time of purchase" = "購入時に免税";
+"Foreign tourists" = "外国人観光客";
+"General goods" = "一般商品";
+"Tax-free (immediate at purchase)" = "免税（購入時即時）";
+"Tax-free shops" = "免税店";
+"Refund system to be introduced from 2026 (currently tax-free)." = "2026年より払い戻し制度導入予定（現在は免税のみ）";
+
+
+"Thailand" = "タイ";
+"VAT refund" = "VAT払い戻し";
+"Goods purchased at approved shops, goods exported within 60 days" = "認定店舗で購入された商品、60日以内に輸出される商品";
+"Airport refund" = "空港払い戻し";
+"VAT refund counter at departure hall" = "出国ロビーVAT払い戻しカウンター";
+"Purchase at approved shops, depart within 60 days." = "認定店舗で購入、60日以内に出国";
+
+
+"Malaysia" = "マレーシア";
+"VAT refund" = "VAT払い戻し";
+"Foreign tourists" = "外国人観光客";
+"Goods purchased at approved shops" = "認定店舗で購入された商品";
+"Airport refund" = "空港払い戻し";
+"Airport VAT refund counter" = "空港VAT払い戻しカウンター";
+"Only available at shops approved by the Tourism Tax Office." = "観光税局認定店舗のみ利用可能";
+
+
+"Singapore" = "シンガポール";
+"GST refund" = "GST払い戻し";
+"Foreign tourists" = "外国人観光客";
+"Goods exported when leaving Singapore, some items excluded" = "シンガポール出国時に輸出する商品（一部除外あり）";
+"Electronic refund (eTRS)" = "電子払い戻し（eTRS）";
+"Airport eTRS kiosk" = "空港eTRSキオスク";
+"Passport registration required, some items excluded." = "パスポート登録必須、一部商品は対象外";
+
+
+"Indonesia" = "インドネシア";
+"VAT refund" = "VAT払い戻し";
+"Foreign tourists (excluding crew, etc.)" = "外国人観光客（クルー等除く）";
+"Goods exported abroad" = "国外に輸出される商品";
+"Airport refund" = "空港払い戻し";
+"VAT refund office" = "VAT払い戻しオフィス";
+"Crew, etc. are not eligible for refunds." = "クルーなどは払い戻し対象外";
+
+
+"Australia" = "オーストラリア";
+"GST refund" = "GST払い戻し";
+"Foreign tourists" = "外国人観光客";
+"Goods purchased within 30 days before departure" = "出国30日以内に購入した商品";
+"Airport refund (TRS)" = "空港払い戻し（TRS）";
+"TRS counter at departure hall" = "出国ロビーTRSカウンター";
+"Purchase within 30 days before departure, recommend arriving at least 90 minutes early." = "出国30日以内に購入、出発90分前の到着を推奨";
+
+
+"Turkey" = "トルコ";
+"VAT refund" = "VAT払い戻し";
+"Foreign tourists" = "外国人観光客";
+"Approved items" = "認定商品";
+"Airport refund" = "空港払い戻し";
+"Refund counter after customs verification" = "税関認証後の払い戻しカウンター";
+"Only for approved items." = "認定商品のみ対象";
+
+
+"South Africa" = "南アフリカ";
+"VAT refund" = "VAT払い戻し";
+"Foreign tourists" = "外国人観光客";
+"Goods exported abroad" = "国外へ輸出される商品";
+"Airport refund" = "空港払い戻し";
+"VAT refund office" = "VAT払い戻しカウンター";
+"Customs verification required." = "税関確認が必要";
+
+
+"Czech Republic" = "チェコ";
+"VAT refund" = "VAT払い戻し";
+"Foreign tourists" = "外国人観光客";
+"Goods exported within 90 days" = "90日以内に輸出される商品";
+"Airport refund" = "空港払い戻し";
+"Refund counter at departure hall" = "出国ロビーの払い戻しカウンター";
+"Customs stamp required, depart within 90 days." = "税関スタンプ必須、90日以内に出国";
+
+
+"Hungary" = "ハンガリー";
+"VAT refund" = "VAT払い戻し";
+"Foreign tourists" = "外国人観光客";
+"Goods exported abroad" = "国外へ輸出される商品";
+"Airport refund" = "空港払い戻し";
+"Customs and refund office" = "税関・払い戻しカウンター";
+"Receipt required." = "レシート持参必須";
+
+
+"Bulgaria" = "ブルガリア";
+"VAT refund" = "VAT払い戻し";
+"Foreign tourists" = "外国人観光客";
+"Goods exported abroad" = "国外へ輸出される商品";
+"Airport refund" = "空港払い戻し";
+"Refund counter" = "払い戻しカウンター";
+"Customs verification required." = "税関確認が必要";
+
+
+"Switzerland" = "スイス";
+"VAT refund" = "VAT払い戻し";
+"Non-residents" = "非居住者";
+"Goods exported abroad" = "国外へ輸出される商品";
+"Airport refund" = "空港払い戻し";
+"Partner shops or refund offices" = "提携店または払い戻しカウンター";
+"Only for non-EU nationals." = "EU以外の国籍のみ対象";
+
+
+"Germany" = "ドイツ";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Goods exported outside the EU" = "EU外へ輸出される商品";
+"Airport refund" = "空港払い戻し";
+"Global Blue / Planet refund office" = "Global Blue / Planet払い戻しカウンター";
+"Customs stamp required." = "税関スタンプ必須";
+
+
+"Netherlands" = "オランダ";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Goods exported outside the EU" = "EU外へ輸出される商品";
+"Airport refund" = "空港払い戻し";
+"Refund counter after customs stamp" = "税関スタンプ後の払い戻しカウンター";
+"Difficult to get a refund on the day of departure." = "当日出国の場合は払い戻しが難しい";
+
+
+"Belgium" = "ベルギー";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Goods purchased at approved shops" = "認定店舗で購入した商品";
+"Airport refund" = "空港払い戻し";
+"Refund office" = "払い戻しカウンター";
+"Only at approved shops, customs verification required." = "認定店舗のみ・税関確認が必要";
+
+
+"France" = "フランス";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Goods exported outside the EU" = "EU外へ輸出される商品";
+"PABLO electronic certification or refund office" = "PABLO電子認証または払い戻しカウンター";
+"Airport" = "空港";
+"Approx. 12% fee deducted." = "約12%の手数料差引";
+
+
+"Spain" = "スペイン";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Goods exported outside the EU" = "EU外へ輸出される商品";
+"DIVA kiosk" = "DIVAキオスク";
+"Airport" = "空港";
+"Electronic certification required." = "電子認証必須";
+
+
+"Portugal" = "ポルトガル";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Goods exported outside the EU" = "EU外へ輸出される商品";
+"Airport refund" = "空港払い戻し";
+"Refund counter" = "払い戻しカウンター";
+"90日以内に出国" = "90日以内に出国";
+
+
+"Ireland" = "アイルランド";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "個人使用目的の商品、購入日から3ヶ月以内にEU出国時に個人手荷物として輸出される商品";
+"Retail shop or refund agency" = "小売店または払い戻し代理店";
+"Dublin, Shannon airports, etc." = "ダブリン、シャノン空港など";
+"Only some shops participate; check before purchase." = "一部店舗のみ対応・事前確認必須";
+
+
+"Austria" = "オーストリア";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "個人使用の未使用商品、購入日から3ヶ月以内にEU出国時に個人手荷物として輸出される商品";
+"Airport refund or downtown refund office" = "空港または市内払い戻しカウンター";
+"Vienna airport, etc." = "ウィーン空港など";
+"Customs stamp required; present receipt and goods." = "税関スタンプ必須、レシートと商品提示";
+
+
+"Croatia" = "クロアチア";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "個人使用の未使用商品、購入日から3ヶ月以内にEU出国時に個人手荷物として輸出される商品";
+"Airport refund" = "空港払い戻し";
+"Zagreb airport, etc." = "ザグレブ空港など";
+"Customs stamp required; present receipt and goods." = "税関スタンプ必須、レシートと商品提示";
+
+
+"Italy" = "イタリア";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "個人使用の未使用商品、購入日から3ヶ月以内にEU出国時に個人手荷物として輸出される商品";
+"Airport refund or downtown refund office" = "空港または市内払い戻しカウンター";
+"Rome, Milan airports, etc." = "ローマ・ミラノ空港など";
+"Customs stamp required; present receipt and goods." = "税関スタンプ必須、レシートと商品提示";
+
+
+"Greece" = "ギリシャ";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "個人使用の未使用商品、購入日から3ヶ月以内にEU出国時に個人手荷物として輸出される商品";
+"Airport refund" = "空港払い戻し";
+"Athens airport, etc." = "アテネ空港など";
+"Customs stamp required; present receipt and goods." = "税関スタンプ必須、レシートと商品提示";
+
+
+"Sweden" = "スウェーデン";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "個人使用の未使用商品、購入日から3ヶ月以内にEU出国時に個人手荷物として輸出される商品";
+"Airport refund" = "空港払い戻し";
+"Stockholm Arlanda airport, etc." = "ストックホルム・アーランダ空港など";
+"Customs stamp required; present receipt and goods." = "税関スタンプ必須、レシートと商品提示";
+
+
+"Denmark" = "デンマーク";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "個人使用の未使用商品、購入日から3ヶ月以内にEU出国時に個人手荷物として輸出される商品";
+"Airport refund" = "空港払い戻し";
+"Copenhagen airport, etc." = "コペンハーゲン空港など";
+"Customs stamp required; present receipt and goods." = "税関スタンプ必須、レシートと商品提示";
+
+
+"Norway" = "ノルウェー";
+"VAT refund" = "VAT払い戻し";
+"Residents of countries other than Norway, Sweden, Finland, Denmark" = "ノルウェー・スウェーデン・フィンランド・デンマーク以外の居住者";
+"Unused goods for personal use, exported as personal baggage within 1 month of purchase upon leaving Norway" = "個人使用の未使用商品、購入日から1ヶ月以内にノルウェー出国時に個人手荷物として輸出される商品";
+"Airport refund" = "空港払い戻し";
+"Oslo airport, etc." = "オスロ空港など";
+"Customs stamp required; present receipt and goods." = "税関スタンプ必須、レシートと商品提示";
+
+
+"Finland" = "フィンランド";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "個人使用の未使用商品、購入日から3ヶ月以内にEU出国時に個人手荷物として輸出される商品";
+"Airport refund" = "空港払い戻し";
+"Helsinki airport, etc." = "ヘルシンキ空港など";
+"Customs stamp required; present receipt and goods." = "税関スタンプ必須、レシートと商品提示";
+
+
+"Mexico" = "メキシコ";
+"VAT refund" = "VAT払い戻し";
+"Foreigners staying in Mexico less than 180 days" = "メキシコに180日未満滞在する外国人";
+"Unused goods for personal use, within 3 months of purchase" = "個人使用の未使用商品、購入日から3ヶ月以内";
+"Unknown" = "不明";
+"Incomplete information provided." = "情報が不完全";
+
+
+"Brazil" = "ブラジル";
+"VAT refund" = "VAT払い戻し";
+"Non-resident foreign tourists" = "非居住の外国人観光客";
+"Goods for personal use (excluding food, hotels, restaurant consumption)" = "個人使用目的の商品（飲食、ホテル、レストラン消費は除外）";
+"Airport refund or designated refund office" = "空港または指定払い戻しカウンター";
+"Rio de Janeiro airport, etc." = "リオデジャネイロ空港など";
+"Pilot program in Rio de Janeiro state from 2025, nationwide expansion planned; VAT rate varies by state (e.g., 18% in Rio de Janeiro)" = "2025年よりリオデジャネイロ州で試験運用中、今後全国展開予定。VAT率は州により異なる（例: リオデジャネイロ18％）";
+
+
+"Poland" = "ポーランド";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Unused goods for personal use" = "個人使用の未使用商品";
+"Airport refund or downtown refund office" = "空港または市内払い戻しカウンター";
+"Warsaw airport, etc." = "ワルシャワ空港など";
+"Goods must be exported outside the EU within 3 months of purchase; customs stamp required" = "購入日から3ヶ月以内に商品をEU域外に持ち出し、税関スタンプ必須";
+
+
+"Romania" = "ルーマニア";
+"VAT refund" = "VAT払い戻し";
+"Non-EU residents" = "EU外居住者";
+"Unused goods for personal use" = "個人使用の未使用商品";
+"Airport refund or downtown refund office" = "空港または市内払い戻しカウンター";
+"Bucharest airport, etc." = "ブカレスト空港など";
+"Goods must be exported outside the EU within 90 days of purchase; customs stamp required" = "購入日から90日以内に商品をEU域外に持ち出し、税関スタンプ必須";
+
+
+"Iceland" = "アイスランド";
+"VAT refund" = "VAT払い戻し";
+"Non-residents of Iceland" = "アイスランド非居住者";
+"Unused goods for personal use" = "個人使用の未使用商品";
+"Airport refund" = "空港払い戻し";
+"Keflavik airport, etc." = "ケプラヴィーク空港など";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "購入日から3ヶ月以内に商品を持ち出し、税関スタンプ必須";
+
+
+"Russia" = "ロシア";
+"VAT refund" = "VAT払い戻し";
+"Residents of countries outside the EAEU" = "EAEU以外の国の居住者";
+"Clothing, electronics, jewelry, etc. (excluding alcohol, tobacco)" = "衣類、電子機器、宝石など（酒類・タバコ除く）";
+"Airport refund" = "空港払い戻し";
+"Moscow Domodedovo airport, etc." = "モスクワ・ドモジェドボ空港など";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "購入日から3ヶ月以内に商品を持ち出し、税関スタンプ必須";
+
+
+"Israel" = "イスラエル";
+"VAT refund" = "VAT払い戻し";
+"Non-residents of Israel" = "イスラエル非居住者";
+"Unused goods for personal use" = "個人使用の未使用商品";
+"Airport refund" = "空港払い戻し";
+"Ben Gurion airport, etc." = "ベングリオン空港など";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "購入日から3ヶ月以内に商品を持ち出し、税関スタンプ必須";
+
+
+"India" = "インド";
+"GST refund" = "GST払い戻し";
+"Non-residents of India" = "インド非居住者";
+"Unused goods for personal use" = "個人使用の未使用商品";
+"Airport refund" = "空港払い戻し";
+"Delhi Indira Gandhi International Airport, etc." = "デリー・インディラガンディー国際空港など";
+"GST refund system is in pilot operation, not implemented nationwide" = "GST払い戻し制度は試験運用中、全国導入は未定";

@@ -53,30 +53,45 @@ final class SavedCardCell: UITableViewCell {
         $0.font = .systemFont(ofSize: 14, weight: .medium)
         $0.text = NSLocalizedString("Purchase Amount", comment: "")
         $0.textColor = .currency
+        $0.numberOfLines = 0
     }
     
+    // 구매금액
     private let purchaseAmountLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15, weight: .medium)
+        $0.textAlignment = .left
+        $0.numberOfLines = 0
     }
     
+    // 구매금액 변환
     private let convertedPurchaseLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15, weight: .semibold)
+        $0.textAlignment = .left
+        $0.numberOfLines = 0
     }
     
     private let refundTitleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .medium)
         $0.text = NSLocalizedString("Refund Amount", comment: "")
         $0.textColor = .currency
+        $0.numberOfLines = 0
+        $0.textAlignment = .right
     }
     
+    // 환급금액
     private let refundAmountLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15, weight: .medium)
         $0.textColor = .mainTeal
+        $0.textAlignment = .right
+        $0.numberOfLines = 0
     }
     
+    // 환급금액 변환
     private let convertedRefundLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15, weight: .semibold)
         $0.textColor = .mainTeal
+        $0.textAlignment = .right
+        $0.numberOfLines = 0
     }
     
     // 구분선
@@ -146,9 +161,11 @@ final class SavedCardCell: UITableViewCell {
         purchaseTitleLabel.snp.makeConstraints {
             $0.top.equalTo(countryLabel.snp.bottom).offset(16)
             $0.leading.equalToSuperview().inset(16)
+            $0.trailing.equalTo(cardView.snp.centerX).offset(-4)
         }
         // 환급 금액 타이틀 우측 상단
         refundTitleLabel.snp.makeConstraints {
+            $0.leading.equalTo(cardView.snp.centerX).offset(4)
             $0.top.equalTo(purchaseTitleLabel)
             $0.trailing.equalToSuperview().inset(16)
         }
@@ -157,16 +174,19 @@ final class SavedCardCell: UITableViewCell {
         purchaseAmountLabel.snp.makeConstraints {
             $0.top.equalTo(purchaseTitleLabel.snp.bottom).offset(4)
             $0.leading.equalTo(purchaseTitleLabel)
+            $0.trailing.equalTo(cardView.snp.centerX).offset(-4)
+            $0.firstBaseline.equalTo(refundAmountLabel.snp.firstBaseline)
         }
         // 환급 금액 라벨 우측
         refundAmountLabel.snp.makeConstraints {
+            $0.leading.equalTo(cardView.snp.centerX).offset(4)
             $0.top.equalTo(refundTitleLabel.snp.bottom).offset(4)
             $0.trailing.equalTo(refundTitleLabel)
         }
         
         // 구분선은 두 금액 라벨 아래 가로로 길게
         dividerView.snp.makeConstraints {
-            $0.top.equalTo(purchaseAmountLabel.snp.bottom).offset(8)
+            $0.top.equalTo(refundAmountLabel.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(1)
         }
@@ -176,8 +196,10 @@ final class SavedCardCell: UITableViewCell {
             $0.top.equalTo(dividerView.snp.bottom).offset(8)
             $0.leading.equalTo(purchaseTitleLabel)
             $0.bottom.equalToSuperview().inset(16)
+            $0.trailing.equalTo(cardView.snp.centerX).offset(-4)
         }
         convertedRefundLabel.snp.makeConstraints {
+            $0.leading.equalTo(cardView.snp.centerX).offset(4)
             $0.top.equalTo(dividerView.snp.bottom).offset(8)
             $0.trailing.equalTo(refundTitleLabel)
             $0.bottom.equalToSuperview().inset(16)
