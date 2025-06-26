@@ -19,7 +19,7 @@ class CountryModal: UIViewController {
     var selectedTextFieldTag: Int?
     
     
-    // MARK: 지원국가 목록 배열
+    // MARK: - 지원국가 목록 배열
     private let countries = [
         "🇰🇷 \(NSLocalizedString("South Korea - KRW", comment: ""))",
         "🇯🇵 \(NSLocalizedString("Japan - JPY", comment: ""))",
@@ -61,10 +61,7 @@ class CountryModal: UIViewController {
         "🇿🇦 \(NSLocalizedString("South Africa - ZAR", comment: ""))"
     ]
     
-    private let tableView = UITableView().then {
-        $0.backgroundColor = .systemBackground
-    }
-    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -83,6 +80,11 @@ class CountryModal: UIViewController {
         }
     }
     
+    // MARK: - 테이블 뷰 속성
+    private let tableView = UITableView().then {
+        $0.backgroundColor = .systemBackground
+    }
+    // MARK: - 테이블 뷰 UI
     private func setupTableView() {
         // 테이블뷰를 뷰에 추가
         view.addSubview(tableView)

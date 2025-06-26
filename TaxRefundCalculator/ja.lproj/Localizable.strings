@@ -144,7 +144,6 @@
 
 
 // MARK: - 국가별 환급조건
-
 "South Korea" = "韓国";
 "Up to 7% of purchase amount" = "購入金額の最大7％まで";
 "Foreign tourists staying less than 6 months, overseas Koreans abroad 2+ years (stay less than 3 months)" = "6ヶ月未満滞在の外国人観光客、海外に2年以上居住し韓国に3ヶ月未満滞在の在外韓国人";
