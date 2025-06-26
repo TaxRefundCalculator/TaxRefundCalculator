@@ -19,6 +19,8 @@ final class SavedCardCell: UITableViewCell {
     let deleteButtonTapped = PublishRelay<Void>()
     private var deleteHandler: (() -> Void)?
     
+    // MARK: - UI Components
+    
     private let cardView = UIView().then {
         $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 12
@@ -100,6 +102,8 @@ final class SavedCardCell: UITableViewCell {
         $0.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
+    // MARK: - Initializers
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -122,6 +126,8 @@ final class SavedCardCell: UITableViewCell {
             .bind(to: deleteButtonTapped)
             .disposed(by: disposeBag)
     }
+    
+    // MARK: - Layout
     
     private func setupUI() {
         selectionStyle = .none

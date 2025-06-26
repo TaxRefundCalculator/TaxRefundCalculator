@@ -30,9 +30,9 @@ let koreaPolicy = VATRefundPolicy(
     refundRateDescription: "Up to 7% of purchase amount",
     eligibleBuyers: "Foreign tourists staying less than 6 months, overseas Koreans staying less than 3 months and living abroad for over 2 years",
     eligibleItems: "Taxable goods in unopened and unused condition, goods exported within 3 months of purchase",
-    refundMethod: "Immediate refund, downtown refund center, airport refund",
-    refundPlace: "Refund counters or kiosks at Incheon International Airport and major airports, downtown refund centers in Seoul and other major cities",
-    notes: "Customs stamp on purchased goods required."
+    refundMethod: "Immediate refund, downtown or airport refund",
+    refundPlace: "Refund counter at Incheon airport/major airports or downtown centers",
+    notes: "Customs stamp on goods required"
 )
 
 let japanPolicy = VATRefundPolicy(
