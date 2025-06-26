@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 import RxSwift
 
-/// 파이어베이스 API
+// MARK: - 파이어베이스 API
 final class FirebaseExchangeService {
     private let db: Firestore
     
@@ -17,6 +17,7 @@ final class FirebaseExchangeService {
         self.db = db
     }
     
+    /// 환율 업로드
     func uploadRates(_ rates: [ExchangeRateModel]) {
         let today = DateUtils.todayString()
         let batch = db.batch()
@@ -61,6 +62,7 @@ final class FirebaseExchangeService {
             return Disposables.create()
         }
     }
+    
     /// 파이어베이스에 데이터 업로드
     func uploadRates(from model: ExchangeAPIModel) -> Completable {
         return Completable.create { completable in

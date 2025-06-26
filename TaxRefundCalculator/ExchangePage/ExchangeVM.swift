@@ -74,6 +74,8 @@ class ExchangeVM {
                 } else if let baseToBase = model.rates[baseCurrency], let baseToCode = model.rates[code] {
                     value = baseToBase / baseToCode * Double(unit)
                 }
+                
+                /// 환율 표시 ex) 1 USD = 123.45 KRW
                 let formatted = (unit > 1 ? "\(unit) \(code)" : "1 \(code)") + " = " + value.roundedString(fractionDigits: 2) + " \(baseCurrency)"
                 return ExchangeRateModel(
                     flag: code.flagEmoji,
@@ -81,7 +83,7 @@ class ExchangeVM {
                     formattedRate: formatted
                 )
             }
-            .sorted { (a, b) in
+            .sorted { (a, b) in  /// 우선순위 정렬
                 let idx1 = priorityCodes.firstIndex(of: a.currencyCode) ?? Int.max
                 let idx2 = priorityCodes.firstIndex(of: b.currencyCode) ?? Int.max
                 return idx1 < idx2
