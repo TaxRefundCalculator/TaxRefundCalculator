@@ -418,14 +418,14 @@ class CalculateVC: UIViewController {
         let card = SavedCard(
             id: UUID().uuidString,
             country: country,
-            currencyCode: currency1,
+            currencyCode: currency1.trimmingCharacters(in: .whitespaces),
             exchangeRate: exchangeRate,
             date: DateUtils.recordString(),
             price: price,
             refundPrice: refund,
             convertedPrice: convertedPrice,
             convertedRefundPrice: convertedRefundPrice,
-            baseCurrencyCode: currency2
+            baseCurrencyCode: currency2.trimmingCharacters(in: .whitespaces)
         )
 
         viewModel.saveCard(card)
