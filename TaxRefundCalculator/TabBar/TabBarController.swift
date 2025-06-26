@@ -16,7 +16,8 @@ class TabBarController: UITabBarController {
 
     private func setupTabBar() {
         let calculateVC = CalculateVC()
-        let savedVC = SavedVC()
+        let savedVM = SavedVM()
+        let savedVC = SavedVC(viewModel: savedVM)
 
         let exchangeService = ExchangeRateAPIService()
         let firebaseExchangeService = FirebaseExchangeService()
