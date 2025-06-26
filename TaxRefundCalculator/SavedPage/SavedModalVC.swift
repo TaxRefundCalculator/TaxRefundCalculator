@@ -13,11 +13,7 @@ import RxSwift
 
 final class SavedModalVC: UIViewController {
     
-    var savedCard: SavedCard?
-    
-    // 뷰모델 선언
-    let viewModel = CalculateVM()
-    
+    private let viewModel : SavedModalVM
     private let disposeBag = DisposeBag()
     
     // MARK: - UI Components
@@ -115,12 +111,22 @@ final class SavedModalVC: UIViewController {
         $0.layer.cornerRadius = 10
     }
     
+    // MARK: - Initialize
+    
+    init(viewModel: SavedModalVM) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        configure()
+        bindViewModel()
     }
     
     private func setupUI() {
@@ -234,29 +240,15 @@ final class SavedModalVC: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func configure() {
-        guard let card = savedCard, let (_, policy) = viewModel.getRefundPolicyByCurrency() else { return }
-        
-        let countryWithCurrency = card.country
-        let parts = countryWithCurrency.components(separatedBy: " - ")
-        let countryName = parts.first ?? ""    // "태국"
-        let currencyCode = parts.last ?? ""    // "THB"
-        
-        countryLabel.text = countryName
-        dateLabel.text = card.date // 예: "2024-06-15" 등 (모델에 맞게)
-        purchaseAmountLabel.text = "\(card.price) \(currencyCode)" // 예: "100,000 KRW"
-        refundAmountLabel.text = "\(card.refundPrice) \(currencyCode)" // 예: "7,000 KRW"
-        
-        convertedPurchaseLabel.text = "\(card.convertedRefundPrice) \(card.baseCurrencyCode)" // 예: "75.22 USD"
-        convertedRefundLabel.text = "\(card.convertedRefundPrice) \(card.baseCurrencyCode)" // 예: "5.27 USD"
-        
-        exchangeRateLabel.text = card.exchangeRate
-        conditionLabel.text = """
-        💰 \(NSLocalizedString("VAT Rate:", comment: ""))  \(policy.vatRate)%\n
-        💵 \(NSLocalizedString("Minimum Purchase Amount:", comment: ""))  \(Int(policy.minimumAmount)) \(policy.currencyCode)\n
-        🔁 \(NSLocalizedString("Refund Method:", comment: ""))  \(NSLocalizedString(policy.refundMethod, comment: ""))\n
-        📍 \(NSLocalizedString("Refund Location:", comment: ""))  \(NSLocalizedString(policy.refundPlace, comment: ""))\n
-        📌 \(NSLocalizedString("Notes:", comment: ""))  \(NSLocalizedString(policy.notes, comment: ""))
-        """
+    func bindViewModel() {
+        viewModel.country.drive(countryLabel.rx.text).disposed(by: disposeBag)
+        viewModel.date.drive(dateLabel.rx.text).disposed(by: disposeBag)
+        viewModel.purchaseAmount.drive(purchaseAmountLabel.rx.text).disposed(by: disposeBag)
+        viewModel.refundAmount.drive(refundAmountLabel.rx.text).disposed(by: disposeBag)
+        viewModel.convertedPurchase.drive(convertedPurchaseLabel.rx.text).disposed(by: disposeBag)
+        viewModel.convertedRefund.drive(convertedRefundLabel.rx.text).disposed(by: disposeBag)
+        viewModel.exchangeRate.drive(exchangeRateLabel.rx.text).disposed(by: disposeBag)
+        viewModel.conditionText.drive(conditionLabel.rx.text).disposed(by: disposeBag)
     }
 }
+
