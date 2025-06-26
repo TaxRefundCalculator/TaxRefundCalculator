@@ -18,13 +18,13 @@ final class SavedView: UIView {
     }
 
     let totalPurchaseLabel = UILabel().then {
-        $0.text = "총 구매 금액"
+        $0.text = NSLocalizedString("Total Purchase Amount", comment: "")
         $0.textColor = .textForGreen
         $0.font = .systemFont(ofSize: 14)
     }
 
     let totalRefundLabel = UILabel().then {
-        $0.text = "총 환급 금액"
+        $0.text = NSLocalizedString("Total Refund Amount", comment: "")
         $0.textColor = .textForGreen
         $0.font = .systemFont(ofSize: 14)
     }
@@ -33,12 +33,14 @@ final class SavedView: UIView {
         $0.text = "0"
         $0.textColor = .textForGreen
         $0.font = .boldSystemFont(ofSize: 20)
+        $0.numberOfLines = 0
     }
 
     let totalRefundAmountLabel = UILabel().then {
         $0.text = "0"
         $0.textColor = .textForGreen
         $0.font = .boldSystemFont(ofSize: 20)
+        $0.numberOfLines = 0
     }
 
     let dividerView = UIView().then {
@@ -46,16 +48,15 @@ final class SavedView: UIView {
     }
     
     // 총 구매 금액 스택
-    private let leftStack = UIStackView().then {
+    private let topStack = UIStackView().then {
         $0.axis = .vertical
         $0.spacing = 4
     }
 
     // 총 환급 금액 스택
-    private let rightStack = UIStackView().then {
+    private let bottomStack = UIStackView().then {
         $0.axis = .vertical
         $0.spacing = 4
-        $0.alignment = .trailing
     }
 
     let filterContainer = UIView().then {
@@ -69,7 +70,7 @@ final class SavedView: UIView {
 
     let currencyLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 16, weight: .medium)
-        $0.text = "기준화폐"
+        $0.text = NSLocalizedString("Base Currency", comment: "")
         $0.textColor = .currency
     }
     
@@ -85,7 +86,7 @@ final class SavedView: UIView {
     // 날짜 변경 버튼
     let dateRangeButton = UIButton(type: .system).then {
         var config = UIButton.Configuration.plain()
-        config.title = "날짜 변경"
+        config.title = NSLocalizedString("Select Date", comment: "")
         config.contentInsets = .zero
         config.baseForegroundColor = .mainTeal
         $0.configuration = config
@@ -112,31 +113,32 @@ final class SavedView: UIView {
         addSubviews(totalContainer, filterContainer, tableView)
         filterContainer.addSubviews(currencyLabel, currencyButton, dateRangeButton)
 
-        leftStack.addArrangedSubviews(totalPurchaseLabel, totalPurchaseAmountLabel)
-        rightStack.addArrangedSubviews(totalRefundLabel, totalRefundAmountLabel)
+        topStack.addArrangedSubviews(totalPurchaseLabel, totalPurchaseAmountLabel)
+        bottomStack.addArrangedSubviews(totalRefundLabel, totalRefundAmountLabel)
 
-        totalContainer.addSubviews(leftStack, dividerView, rightStack)
+        totalContainer.addSubviews(topStack, dividerView, bottomStack)
 
-        leftStack.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(16)
-            $0.centerY.equalToSuperview()
+        topStack.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(16)
+            $0.horizontalEdges.equalToSuperview().inset(16)
         }
 
         dividerView.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.width.equalTo(1)
-            $0.height.equalTo(40)
+            $0.top.equalTo(topStack.snp.bottom).offset(8)
+            $0.centerX.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(1)
         }
 
-        rightStack.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(16)
-            $0.centerY.equalToSuperview()
+        bottomStack.snp.makeConstraints {
+            $0.top.equalTo(dividerView.snp.bottom).offset(8)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(16)
         }
 
         totalContainer.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(80)
         }
 
         filterContainer.snp.makeConstraints {
@@ -152,12 +154,13 @@ final class SavedView: UIView {
         
         currencyButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(16)
-            $0.leading.equalTo(currencyLabel.snp.trailing).offset(8)
+            $0.leading.equalTo(currencyLabel.snp.trailing).offset(4)
         }
         
         dateRangeButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(16)
             $0.centerY.equalTo(currencyButton)
+            $0.leading.greaterThanOrEqualTo(currencyButton.snp.trailing).offset(8)
         }
 
         tableView.snp.makeConstraints {

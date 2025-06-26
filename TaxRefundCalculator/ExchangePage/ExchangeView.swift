@@ -14,12 +14,19 @@ final class ExchangeView: UIView {
     // MARK: - UI
 
     private let titleLabel = UILabel().then {
-        $0.text = "실시간 환율정보"
+        $0.text = NSLocalizedString("Exchange Rates", comment: "")
         $0.font = .systemFont(ofSize: 18, weight: .medium)
         $0.textColor = .primaryText
+        $0.numberOfLines = 0
     }
     
     let refreshLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 16)
+        $0.text = NSLocalizedString("Last Updated", comment: "")
+        $0.textColor = .currency
+    }
+    
+    let dateLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 16)
         $0.textColor = .currency
     }
@@ -59,24 +66,30 @@ final class ExchangeView: UIView {
 
     private func setupUI() {
         backgroundColor = .bgPrimary
-        addSubviews(titleLabel, refreshLabel, tableContainerView)
+        addSubviews(titleLabel, refreshLabel, dateLabel, tableContainerView)
         tableContainerView.addSubview(tableView)
 
 
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(16)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(20)
             $0.leading.equalToSuperview().inset(16)
+            $0.trailing.equalTo(safeAreaLayoutGuide.snp.centerX)
         }
         
         refreshLabel.snp.makeConstraints {
-            $0.centerY.equalTo(titleLabel)
+            $0.top.equalTo(titleLabel.snp.top)
+            $0.trailing.equalToSuperview().inset(16)
+        }
+        
+        dateLabel.snp.makeConstraints {
+            $0.top.equalTo(refreshLabel.snp.bottom).offset(4)
             $0.trailing.equalToSuperview().inset(16)
         }
         
         tableContainerView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(12)
+            $0.top.equalTo(dateLabel.snp.bottom).offset(16)
             $0.horizontalEdges.equalToSuperview().inset(16)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(16)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
         }
         
         tableView.snp.makeConstraints {

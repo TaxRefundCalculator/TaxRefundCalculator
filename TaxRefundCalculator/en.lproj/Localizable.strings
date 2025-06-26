@@ -1,838 +1,465 @@
-///* 
-//  Localizable.strings
-//  TaxRefundCalculator
-//
-//  Created by 이재건 on 6/23/25.
-//  
-//*/
-//
-//// MARK: 시작화면
-//// 영어
-//"Tax Refund Calculator"
-//"Calculate your tax refund amount in advance."
-//"Select Language"
-//"Please select a language."
-//"Select Base Currency"
-//"Please select a base currency."
-//"Select Travel Country"
-//"Please select a travel country."
-//"Exchange Rate Info"
-//"Please select a currency and a country."
-//"Refund Policy"
-//"Please select a travel country."
-//"Start →"
-//// 모달
-//"Input Confirmation"
-//"Please select all items."
-//"OK"
-//
-//
-//// 한국어
-//"택스리펀 환급금 예상 계산기"
-//"해외 쇼핑 시 세금 환급 금액을 미리 계산해보세요."
-//"언어 선택"
-//"언어를 선택하세요."
-//"기준 통화 선택"
-//"기준화폐를 선택하세요."
-//"여행국가 선택"
-//"여행국가를 선택하세요."
-//"환율 정보"
-//"화폐, 국가 선택이 필요합니다."
-//"환급 조건"
-//"여행국가를 선택해 주세요."
-//"시작하기 →"
-//// 모달
-//"입력 확인"
-//"모든 항목을 선택해 주세요."
-//"확인"
-//
-//
-//// 일본어
-//"免税払い戻し金額計算機"
-//"海外ショッピングの税金還付額を事前に計算できます。"
-//"言語を選択"
-//"言語を選択してください。"
-//"基準通貨を選択"
-//"基準通貨を選択してください。"
-//"渡航国を選択"
-//"渡航国を選択してください。"
-//"為替情報"
-//"通貨と国の選択が必要です。"
-//"還付条件"
-//"渡航国を選択してください。"
-//"開始する →"
-//// 모달
-//"入力確認"
-//"すべての項目を選択してください。"
-//"確認"
-//
-//
-//// 스페인어
-//"Calculadora de devolución de impuestos"
-//"Calcula por adelantado el importe de tu reembolso de impuestos por compras en el extranjero."
-//"Seleccionar idioma"
-//"Por favor, selecciona un idioma."
-//"Seleccionar moneda base"
-//"Por favor, selecciona una moneda base."
-//"Seleccionar país de destino"
-//"Por favor, selecciona el país de destino."
-//"Información sobre el tipo de cambio"
-//"Es necesario seleccionar la moneda y el país."
-//"Condiciones de devolución"
-//"Por favor, selecciona el país de destino."
-//"Empezar →"
-//// 모달
-//"Confirmación de entrada"
-//"Por favor, selecciona todos los elementos."
-//"Aceptar"
-//
-//
-//// 프랑스어
-//"Calculateur de remboursement de taxes"
-//"Calculez à l’avance le montant de votre remboursement de taxes pour les achats à l’étranger."
-//"Choisir la langue"
-//"Veuillez choisir une langue."
-//"Choisir la devise de base"
-//"Veuillez choisir une devise de base."
-//"Choisir le pays de destination"
-//"Veuillez choisir le pays de destination."
-//"Informations sur le taux de change"
-//"Veuillez choisir une devise et un pays."
-//"Conditions de remboursement"
-//"Veuillez choisir le pays de destination."
-//"Commencer →"
-//// 모달
-//"Confirmation de saisie"
-//"Veuillez sélectionner tous les éléments."
-//"OK"
-//
-//
-//// 독일어
-//"Steuerrückerstattungsrechner"
-//"Berechnen Sie im Voraus Ihren Steuererstattungsbetrag für Einkäufe im Ausland."
-//"Sprache auswählen"
-//"Bitte wählen Sie eine Sprache aus."
-//"Basiswährung auswählen"
-//"Bitte wählen Sie eine Basiswährung aus."
-//"Reiseland auswählen"
-//"Bitte wählen Sie ein Reiseland aus."
-//"Wechselkursinformation"
-//"Bitte wählen Sie eine Währung und ein Land aus."
-//"Erstattungsbedingungen"
-//"Bitte wählen Sie ein Reiseland aus."
-//"Starten →"
-//// 모달
-//"Eingabebestätigung"
-//"Bitte wählen Sie alle Felder aus."
-//"OK"
-//
-//
-//// 이탈리아
-//"Calcolatore rimborso fiscale"
-//"Calcola in anticipo l’importo del rimborso fiscale per acquisti all’estero."
-//"Seleziona lingua"
-//"Seleziona una lingua."
-//"Seleziona valuta di base"
-//"Seleziona una valuta di base."
-//"Seleziona paese di viaggio"
-//"Seleziona il paese di viaggio."
-//"Informazioni sul tasso di cambio"
-//"È necessario selezionare valuta e paese."
-//"Condizioni di rimborso"
-//"Seleziona il paese di viaggio."
-//"Inizia →"
-//// 모달
-//"Conferma inserimento"
-//"Seleziona tutti gli elementi."
-//"OK"
-//
-//
-//// 러시아어
-//"Калькулятор возврата налога"
-//"Рассчитайте сумму возврата налога при покупках за границей заранее."
-//"Выбрать язык"
-//"Пожалуйста, выберите язык."
-//"Выбрать базовую валюту"
-//"Пожалуйста, выберите базовую валюту."
-//"Выбрать страну поездки"
-//"Пожалуйста, выберите страну поездки."
-//"Информация о курсе валют"
-//"Требуется выбрать валюту и страну."
-//"Условия возврата"
-//"Пожалуйста, выберите страну поездки."
-//"Начать →"
-//// 모달
-//"Подтверждение ввода"
-//"Пожалуйста, выберите все пункты."
-//"ОК"
-//
-//
-//// MARK: 계산화면
-//// 영어
-//"Enter purchase amount"
-//"Please enter numbers only."
-//"Calculate"
-//"VAT Rate"
-//"Purchase Amount"
-//"Approx. 0"
-//"Estimated Refund Amount"
-//"Approx. 0"
-//"Save Record"
-//"View Refund Policy"
-//"Calculate"
-//"History"
-//"Exchange Rate"
-//"Settings"
-//"Close"
-//
-//// 한국어
-//"구매 금액 입력"
-//"숫자만 입력해주세요."
-//"계산하기"
-//"부가세율(VAT)"
-//"구매금액"
-//"약 0 KRW"
-//"예상 환급 금액"
-//"약 0 KRW"
-//"기록 저장"
-//"환급 조건 보기"
-//"계산"
-//"기록"
-//"환율"
-//"설정"
-//"닫기"
-//
-//// 일본어
-//"購入金額を入力"
-//"数字のみ入力してください。"
-//"計算する"
-//"消費税率（VAT）"
-//"購入金額"
-//"約 0"
-//"推定還付金額"
-//"約 0"
-//"記録を保存"
-//"還付条件を見る"
-//"計算"
-//"履歴"
-//"為替"
-//"設定"
-//"閉じる"
-//
-//// 스페인어
-//"Introduce el importe de la compra"
-//"Por favor, introduce solo números."
-//"Calcular"
-//"Tasa de IVA"
-//"Importe de la compra"
-//"Aproximadamente 0"
-//"Importe estimado del reembolso"
-//"Aproximadamente 0"
-//"Guardar registro"
-//"Ver condiciones de reembolso"
-//"Calcular"
-//"Historial"
-//"Tipo de cambio"
-//"Configuración"
-//"Cerrar"
-//
-//// 독일어
-//"Kaufbetrag eingeben"
-//"Bitte nur Zahlen eingeben."
-//"Berechnen"
-//"Mehrwertsteuersatz (MwSt)"
-//"Kaufbetrag"
-//"Ca. 0"
-//"Geschätzter Rückerstattungsbetrag"
-//"Ca. 0"
-//"Eintrag speichern"
-//"Erstattungsbedingungen anzeigen"
-//"Berechnen"
-//"Verlauf"
-//"Wechselkurs"
-//"Einstellungen"
-//"Schließen"
-//
-//// 이탈리아어
-//"Inserisci l’importo dell’acquisto"
-//"Inserisci solo numeri, per favore."
-//"Calcola"
-//"Aliquota IVA"
-//"Importo dell’acquisto"
-//"Circa 0"
-//"Importo stimato del rimborso"
-//"Circa 0"
-//"Salva registrazione"
-//"Visualizza condizioni di rimborso"
-//"Calcola"
-//"Storico"
-//"Tasso di cambio"
-//"Impostazioni"
-//"Chiudi"
-//
-//// 프랑스어
-//"Saisir le montant de l’achat"
-//"Veuillez entrer uniquement des chiffres."
-//"Calculer"
-//"Taux de TVA"
-//"Montant de l’achat"
-//"Env. 0"
-//"Montant estimé du remboursement"
-//"Env. 0"
-//"Enregistrer"
-//"Voir les conditions de remboursement"
-//"Calculer"
-//"Historique"
-//"Taux de change"
-//"Paramètres"
-//"Fermer"
-//
-//// 러시아어
-//"Введите сумму покупки"
-//"Пожалуйста, введите только цифры."
-//"Рассчитать"
-//"Ставка НДС"
-//"Сумма покупки"
-//"Примерно 0"
-//"Ожидаемая сумма возврата"
-//"Примерно 0"
-//"Сохранить запись"
-//"Посмотреть условия возврата"
-//"Расчет"
-//"История"
-//"Курс валют"
-//"Настройки"
-//"Закрыть"
-//
-//// 영어
-//"Input Error"
-//"You cannot enter blank spaces."
-//"OK"
-//
-//// 한국어
-//"입력 오류"
-//"공백은 입력할 수 없습니다."
-//"확인"
-//
-//// 일본어
-//"入力エラー"
-//"空白は入力できません。"
-//"確認"
-//
-//// 스페인어
-//"Error de entrada"
-//"No se pueden introducir espacios en blanco."
-//"Aceptar"
-//
-//// 독일어
-//"Eingabefehler"
-//"Leerzeichen können nicht eingegeben werden."
-//"OK"
-//
-//// 이탈리아어
-//"Errore di inserimento"
-//"Non è possibile inserire spazi vuoti."
-//"OK"
-//
-//// 프랑스어
-//"Erreur de saisie"
-//"Les espaces vides ne peuvent pas être saisis."
-//"OK"
-//
-//// 러시아어
-//"Ошибка ввода"
-//"Нельзя вводить пробелы."
-//"ОК"
-//
-//
-//// 영어
-//"Input Error"
-//"Only numbers and decimal points are allowed, and the decimal point can be entered only once."
-//"OK"
-//
-//// 한국어
-//"입력 오류"
-//"숫자와 소수점만, 그리고 소수점은 한 번만 입력할 수 있습니다."
-//"확인"
-//
-//// 일본어
-//"入力エラー"
-//"数字と小数点のみ入力でき、小数点は一度だけ入力できます。"
-//"確認"
-//
-//// 스페인어
-//"Error de entrada"
-//"Solo se permiten números y un solo punto decimal."
-//"Aceptar"
-//
-//// 독일어
-//"Eingabefehler"
-//"Es sind nur Zahlen und ein Dezimalpunkt erlaubt, und der Dezimalpunkt darf nur einmal eingegeben werden."
-//"OK"
-//
-//// 이탈리아어
-//"Errore di inserimento"
-//"Sono consentiti solo numeri e un solo punto decimale."
-//"OK"
-//
-//// 프랑스어
-//"Erreur de saisie"
-//"Seuls les chiffres et un seul point décimal sont autorisés."
-//"OK"
-//
-//// 러시아어
-//"Ошибка ввода"
-//"Разрешены только цифры и одна десятичная точка."
-//"ОК"
-//
-//
-//// 영어
-//"Save Complete"
-//"Saved successfully."
-//"OK"
-//
-//// 한국어
-//"저장 완료"
-//"저장이 완료되었습니다."
-//"확인"
-//
-//// 일본어
-//"保存完了"
-//"保存が完了しました。"
-//"確認"
-//
-//// 스페인어
-//"Guardado completado"
-//"Se ha guardado correctamente."
-//"Aceptar"
-//
-//// 독일어
-//"Speicherung abgeschlossen"
-//"Die Speicherung wurde abgeschlossen."
-//"OK"
-//
-//// 이탈리아어
-//"Salvataggio completato"
-//"Il salvataggio è stato completato."
-//"OK"
-//
-//// 프랑스어
-//"Enregistrement terminé"
-//"L’enregistrement a été effectué avec succès."
-//"OK"
-//
-//// 러시아어
-//"Сохранение завершено"
-//"Сохранение выполнено успешно."
-//"ОК"
-//
-//
-//// 영어
-//"VAT Rate:"
-//"Minimum Purchase Amount:"
-//"Refund Method:"
-//"Refund Location:"
-//"Notes:"
-//
-//// 한국어
-//"부가세율:"
-//"최소 구매금액:"
-//"환급 방법:"
-//"환급장소:"
-//"비고:"
-//
-//// 일본어
-//"消費税率："
-//"最低購入金額："
-//"還付方法："
-//"還付場所："
-//"備考："
-//
-//// 스페인어
-//"Tasa de IVA:"
-//"Importe mínimo de compra:"
-//"Método de reembolso:"
-//"Lugar de reembolso:"
-//"Notas:"
-//
-//// 독일어
-//"Mehrwertsteuersatz (MwSt):"
-//"Mindestkaufbetrag:"
-//"Erstattungsmethode:"
-//"Erstattungsstelle:"
-//"Hinweise:"
-//
-//// 이탈리아어
-//"Aliquota IVA:"
-//"Importo minimo d’acquisto:"
-//"Metodo di rimborso:"
-//"Luogo di rimborso:"
-//"Note:"
-//
-//// 프랑스어
-//"Taux de TVA :"
-//"Montant d’achat minimum :"
-//"Méthode de remboursement :"
-//"Lieu de remboursement :"
-//"Remarques :"
-//
-//// 러시아어
-//"Ставка НДС:"
-//"Минимальная сумма покупки:"
-//"Способ возврата:"
-//"Место возврата:"
-//"Примечания:"
-//
-//
-//// 영어
-//"Close"
-//
-//// 한국어
-//"닫기"
-//
-//// 일본어
-//"閉じる"
-//
-//// 스페인어
-//"Cerrar"
-//
-//// 독일어
-//"Schließen"
-//
-//// 이탈리아어
-//"Chiudi"
-//
-//// 프랑스어
-//"Fermer"
-//
-//// 러시아어
-//"Закрыть"
-//
-//
-//// MARK: 기록화면
-//// 영어
-//"Total Purchase Amount"
-//"Total Refund Amount"
-//"Base Currency"
-//"Select Date"
-//"Purchase Amount"
-//"Refund Amount"
-//"Applied Exchange Rate"
-//"Select Date"
-//"Close"
-//
-//
-//// 한국어
-//"총 구매 금액"
-//"총 환급 금액"
-//"기준화폐"
-//"날짜 선택"
-//"구매 금액"
-//"환급 금액"
-//"적용된 환율"
-//"날짜 선택"
-//"닫기"
-//
-//
-//// 일본어
-//"総購入金額"
-//"総還付金額"
-//"基準通貨"
-//"日付を選択"
-//"購入金額"
-//"還付金額"
-//"適用為替レート"
-//"日付を選択"
-//"閉じる"
-//
-//
-//// 스페인어
-//"Importe total de la compra"
-//"Importe total del reembolso"
-//"Moneda base"
-//"Seleccionar fecha"
-//"Importe de la compra"
-//"Importe del reembolso"
-//"Tipo de cambio aplicado"
-//"Seleccionar fecha"
-//"Cerrar"
-//
-//
-//// 프랑스어
-//"Montant total des achats"
-//"Montant total du remboursement"
-//"Devise de base"
-//"Sélectionner une date"
-//"Montant de l’achat"
-//"Montant du remboursement"
-//"Taux de change appliqué"
-//"Sélectionner une date"
-//"Fermer"
-//
-//
-//// 독일어
-//"Gesamtkaufbetrag"
-//"Gesamterstattungsbetrag"
-//"Basiswährung"
-//"Datum auswählen"
-//"Kaufbetrag"
-//"Erstattungsbetrag"
-//"Angewandter Wechselkurs"
-//"Datum auswählen"
-//"Schließen"
-//
-//
-//// 이탈리아어
-//"Importo totale degli acquisti"
-//"Importo totale del rimborso"
-//"Valuta base"
-//"Seleziona data"
-//"Importo dell’acquisto"
-//"Importo del rimborso"
-//"Tasso di cambio applicato"
-//"Seleziona data"
-//"Chiudi"
-//
-//
-//// 러시아어
-//"Общая сумма покупок"
-//"Общая сумма возврата"
-//"Базовая валюта"
-//"Выбрать дату"
-//"Сумма покупки"
-//"Сумма возврата"
-//"Применённый курс валют"
-//"Выбрать дату"
-//"Закрыть"
-//
-//
-//
-//// MARK: 실시간 환율 화면
-//// 영어
-//"Real-Time Exchange Rates"
-//"Last Updated"
-//
-//// 한국어
-//"실시간 환율정보"
-//"최근갱신일"
-//
-//// 일본어
-//"リアルタイム為替情報"
-//"最終更新日"
-//
-//// 스페인어
-//"Información de tipo de cambio en tiempo real"
-//"Última actualización"
-//
-//// 독일어
-//"Echtzeit-Wechselkursinformation"
-//"Letzte Aktualisierung"
-//
-//// 이탈리아어
-//"Informazioni sui tassi di cambio in tempo reale"
-//"Ultimo aggiornamento"
-//
-//// 프랑스어
-//"Informations sur les taux de change en temps réel"
-//"Dernière mise à jour"
-//
-//// 러시아어
-//"Информация о курсе валют в реальном времени"
-//"Последнее обновление"
-//
-//
-//// MARK: 설정화면
-//// 영어
-//"App Settings"
-//"Change Language"
-//"Change Base Currency"
-//"Change Travel Currency"
-//"Dark Mode"
-//"Reset Records"
-//"App Info"
-//"Version"
-//"Last Updated"
-//"Developer"
-//
-//// 한국어
-//"앱 설정"
-//"언어 변경"
-//"기준 화폐 변경"
-//"여행 화폐 변경"
-//"다크 모드"
-//"기록 초기화"
-//"앱 정보"
-//"버전"
-//"최종 업데이트"
-//"개발자"
-//
-//// 일본어
-//"アプリ設定"
-//"言語を変更"
-//"基準通貨を変更"
-//"旅行通貨を変更"
-//"ダークモード"
-//"記録をリセット"
-//"アプリ情報"
-//"バージョン"
-//"最終更新"
-//"開発者"
-//
-//// 스페인어
-//"Configuración de la app"
-//"Cambiar idioma"
-//"Cambiar moneda base"
-//"Cambiar moneda de viaje"
-//"Modo oscuro"
-//"Restablecer registros"
-//"Información de la app"
-//"Versión"
-//"Última actualización"
-//"Desarrollador"
-//
-//// 독일어
-//"App-Einstellungen"
-//"Sprache ändern"
-//"Basiswährung ändern"
-//"Reise-Währung ändern"
-//"Dunkelmodus"
-//"Aufzeichnungen zurücksetzen"
-//"App-Informationen"
-//"Version"
-//"Letztes Update"
-//"Entwickler"
-//
-//// 이탈리아어
-//"Impostazioni app"
-//"Cambia lingua"
-//"Cambia valuta base"
-//"Cambia valuta di viaggio"
-//"Modalità scura"
-//"Reimposta registrazioni"
-//"Info sull’app"
-//"Versione"
-//"Ultimo aggiornamento"
-//"Sviluppatore"
-//
-//// 프랑스어
-//"Paramètres de l’application"
-//"Changer la langue"
-//"Changer la devise de base"
-//"Changer la devise de voyage"
-//"Mode sombre"
-//"Réinitialiser les enregistrements"
-//"Infos sur l’app"
-//"Version"
-//"Dernière mise à jour"
-//"Développeur"
-//
-//// 러시아어
-//"Настройки приложения"
-//"Изменить язык"
-//"Изменить базовую валюту"
-//"Изменить валюту поездки"
-//"Тёмный режим"
-//"Сбросить записи"
-//"Информация о приложении"
-//"Версия"
-//"Последнее обновление"
-//"Разработчик"
-//
-//
-//// 영어
-//"Delete Records"
-//"Do you want to delete all records?"
-//"No"
-//"Yes"
-//
-//// 한국어
-//"기록 삭제"
-//"모든 기록을 삭제하시겠습니까?"
-//"아니오"
-//"예"
-//
-//// 일본어
-//"記録を削除"
-//"すべての記録を削除しますか？"
-//"いいえ"
-//"はい"
-//
-//// 스페인어
-//"Eliminar registros"
-//"¿Deseas eliminar todos los registros?"
-//"No"
-//"Sí"
-//
-//// 독일어
-//"Einträge löschen"
-//"Möchten Sie alle Einträge löschen?"
-//"Nein"
-//"Ja"
-//
-//// 이탈리아어
-//"Elimina registrazioni"
-//"Vuoi eliminare tutte le registrazioni?"
-//"No"
-//"Sì"
-//
-//// 프랑스어
-//"Supprimer les enregistrements"
-//"Voulez-vous supprimer tous les enregistrements ?"
-//"Non"
-//"Oui"
-//
-//// 러시아어
-//"Удалить записи"
-//"Вы хотите удалить все записи?"
-//"Нет"
-//"Да"
+
+// MARK: - 시작화면
+"Tax Refund Calculator" = "Tax Refund Calculator";
+"Calculate your tax refund amount in advance." = "Calculate your tax refund amount in advance.";
+"Select Base Currency" = "Select Base Currency";
+"Please select a base currency." = "Please select a base currency.";
+"Select Travel Country" = "Select Travel Country";
+"Please select a travel country." = "Please select a travel country.";
+"Exchange Rate Info" = "Exchange Rate Info";
+"Please select a currency and a country." = "Please select a currency and a country.";
+"Refund Policy" = "Refund Policy";
+"Start →" = "Start →";
+ 
+"Input Confirmation" = "Input Confirmation";
+"Please select all items." = "Please select all items.";
+"OK" = "OK";
+
+"Notice" = "Notice";
+"This country does not provide tax refund." = "This country does not provide tax refund.";
+"OK" = "OK";
+
+"Unable to load exchange rate information" = "Unable to load exchange rate information";
+"Refund Policy:" = "Refund Policy:";
+"Refund format" = "At least %2$d %1$@ purchase, %3$.0f%% refund";
+"Refund policy not found" = "Refund policy not found";
+
+// MARK: - 계산화면
+"Enter purchase amount" = "Enter purchase amount";
+"Please enter numbers only." = "Please enter numbers only.";
+"Calculate" = "Calculate";
+"VAT Rate" = "VAT Rate";
+"Purchase Amount" = "Purchase Amount";
+"Approx " = "Approx ";
+"Estimated Refund Amount" = "Estimated Refund Amount";
+"Save Record" = "Save Record";
+"View Refund Policy" = "Refund Policy";
+"Calculate" = "Calculate";
+"History" = "History";
+"Exchange Rate" = "Exchange Rate";
+"Settings" = "Settings";
+"Close" = "Close";
+ 
+"Input Error" = "Input Error";
+"You cannot enter blank spaces." = "You cannot enter blank spaces.";
+"OK" = "OK";
+
+"Input Error" = "Input Error";
+"Only numbers and decimal points are allowed, and the decimal point can be entered only once." = "Only numbers and decimal points are allowed, and the decimal point can be entered only once.";
+"OK" = "OK";
+
+"Save Complete" = "Save Complete";
+"Saved successfully." = "Saved successfully.";
+"OK" = "OK";
+
+"VAT Rate:" = "VAT Rate:";
+"Minimum Purchase Amount:" = "Minimum Purchase Amount:";
+"Refund Method:" = "Refund Method:";
+"Refund Location:" = "Refund Location:";
+"Notes:" = "Notes:";
+
+"Close" = "Close";
 
 
-// MARK:- 탭바
-//// 영어
-//"Calculate"
-//"History"
-//"Exchange Rate"
-//"Settings"
-//
-//// 한국어
-//"계산"
-//"기록"
-//"환율"
-//"설정"
-//
-//// 일본어
-//"計算"
-//"履歴"
-//"為替"
-//"設定"
-//
-//// 스페인어
-//"Calcular"
-//"Historial"
-//"Tipo de cambio"
-//"Configuración"
-//
-//// 독일어
-//"Berechnen"
-//"Verlauf"
-//"Wechselkurs"
-//"Einstellungen"
-//
-//// 이탈리아어
-//"Calcola"
-//"Storico"
-//"Tasso di cambio"
-//"Impostazioni"
-//
-//// 프랑스어
-//"Calculer"
-//"Historique"
-//"Taux de change"
-//"Paramètres"
-//
-//// 러시아어
-//"Расчет"
-//"История"
-//"Курс валют"
-//"Настройки"
+// MARK: - 기록화면
+"Total Purchase Amount" = "Total Purchase Amount";
+"Total Refund Amount" = "Total Refund Amount";
+"Base Currency" = "Base Currency";
+"Select Date" = "Select Date";
+"Purchase Amount" = "Purchase Amount";
+"Refund Amount" = "Refund Amount";
+"Applied Exchange Rate" = "Applied Exchange Rate";
+"Close" = "Close";
+
+
+// MARK: - 환율
+"Exchange Rates" = "Exchange Rates";
+"Last Updated" = "Last Updated";
+
+
+// MARK: - 설정화면
+"App Settings" = "App Settings";
+"Base Currency" = "Base Currency";
+"Travel Country" = "Travel Country";
+"Dark Mode" = "Dark Mode";
+"Reset Records" = "Reset Records";
+"App Info" = "App Info";
+"Version" = "Version";
+"Last Updated" = "Last Updated";
+"Developer" = "Developer";
+
+"Delete Records" = "Delete Records";
+"Do you want to delete all records?" = "Do you want to delete all records?";
+"No" = "No";
+"Yes" = "Yes";
+
+
+// MARK: - 탭바
+"Calculate" = "Calculate";
+"History" = "History";
+"Exchange Rate" = "Exchange Rate";
+"Settings" = "Settings";
+
+
+// MARK: - 지원국가 목록
+"South Korea - KRW" = "South Korea - KRW";
+"Japan - JPY" = "Japan - JPY";
+"USA - USD" = "USA - USD";
+"UK - GBP" = "UK - GBP";
+"Thailand - THB" = "Thailand - THB";
+"Malaysia - MYR" = "Malaysia - MYR";
+"Singapore - SGD" = "Singapore - SGD";
+"Indonesia - IDR" = "Indonesia - IDR";
+"Australia - AUD" = "Australia - AUD";
+"Türkiye - TRY" = "Türkiye - TRY";
+"South Africa - ZAR" = "South Africa - ZAR";
+"Czech - CZK" = "Czech - CZK";
+"Hungary - HUF" = "Hungary - HUF";
+"Bulgaria - BGN" = "Bulgaria - BGN";
+"Switzerland - CHF" = "Switzerland - CHF";
+"Germany - EUR" = "Germany - EUR";
+"Netherlands - EUR" = "Netherlands - EUR";
+"Belgium - EUR" = "Belgium - EUR";
+"France - EUR" = "France - EUR";
+"Spain - EUR" = "Spain - EUR";
+"Portugal - EUR" = "Portugal - EUR";
+"Ireland - EUR" = "Ireland - EUR";
+"Austria - EUR" = "Austria - EUR";
+"Croatia - EUR" = "Croatia - EUR";
+"Italy - EUR" = "Italy - EUR";
+"Greece - EUR" = "Greece - EUR";
+"Sweden - SEK" = "Sweden - SEK";
+"Denmark - DKK" = "Denmark - DKK";
+"Norway - NOK" = "Norway - NOK";
+"Finland - EUR" = "Finland - EUR";
+"Mexico - MXN" = "Mexico - MXN";
+"Brazil - BRL" = "Brazil - BRL";
+"Poland - PLN" = "Poland - PLN";
+"Romania - RON" = "Romania - RON";
+"Iceland - ISK" = "Iceland - ISK";
+"Russia - RUB" = "Russia - RUB";
+"Israel - ILS" = "Israel - ILS";
+"India - INR" = "India - INR";
+
+// MARK: - 국가별 환급조건
+
+"South Korea" = "South Korea";
+"Up to 7% of purchase amount" = "Up to 7% of purchase amount";
+"Foreign tourists staying less than 6 months, overseas Koreans abroad 2+ years (stay less than 3 months)" = "Foreign tourists staying less than 6 months, overseas Koreans abroad 2+ years (stay less than 3 months)";
+"Taxable goods unused/unopened, exported within 3 months of purchase" = "Taxable goods unused/unopened, exported within 3 months of purchase";
+"Immediate refund, downtown or airport refund" = "Immediate refund, downtown or airport refund";
+"Refund counter at Incheon airport/major airports or downtown centers" = "Refund counter at Incheon airport/major airports or downtown centers";
+"Customs stamp on goods required" = "Customs stamp on goods required";
+
+
+"Japan" = "Japan";
+"Tax-free at the time of purchase" = "Tax-free at the time of purchase";
+"Foreign tourists" = "Foreign tourists";
+"General goods" = "General goods";
+"Tax-free (immediate at purchase)" = "Tax-free (immediate at purchase)";
+"Tax-free shops" = "Tax-free shops";
+"Refund system to be introduced from 2026 (currently tax-free)." = "Refund system to be introduced from 2026 (currently tax-free).";
+
+
+"Thailand" = "Thailand";
+"VAT refund" = "VAT refund";
+"Goods purchased at approved shops, goods exported within 60 days" = "Goods purchased at approved shops, goods exported within 60 days";
+"Airport refund" = "Airport refund";
+"VAT refund counter at departure hall" = "VAT refund counter at departure hall";
+"Purchase at approved shops, depart within 60 days." = "Purchase at approved shops, depart within 60 days.";
+
+
+"Malaysia" = "Malaysia";
+"VAT refund" = "VAT refund";
+"Foreign tourists" = "Foreign tourists";
+"Goods purchased at approved shops" = "Goods purchased at approved shops";
+"Airport refund" = "Airport refund";
+"Airport VAT refund counter" = "Airport VAT refund counter";
+"Only available at shops approved by the Tourism Tax Office." = "Only available at shops approved by the Tourism Tax Office.";
+
+
+"Singapore" = "Singapore";
+"GST refund" = "GST refund";
+"Foreign tourists" = "Foreign tourists";
+"Goods exported when leaving Singapore, some items excluded" = "Goods exported when leaving Singapore, some items excluded";
+"Electronic refund (eTRS)" = "Electronic refund (eTRS)";
+"Airport eTRS kiosk" = "Airport eTRS kiosk";
+"Passport registration required, some items excluded." = "Passport registration required, some items excluded.";
+
+
+"Indonesia" = "Indonesia";
+"VAT refund" = "VAT refund";
+"Foreign tourists (excluding crew, etc.)" = "Foreign tourists (excluding crew, etc.)";
+"Goods exported abroad" = "Goods exported abroad";
+"Airport refund" = "Airport refund";
+"VAT refund office" = "VAT refund office";
+"Crew, etc. are not eligible for refunds." = "Crew, etc. are not eligible for refunds.";
+
+
+"Australia" = "Australia";
+"GST refund" = "GST refund";
+"Foreign tourists" = "Foreign tourists";
+"Goods purchased within 30 days before departure" = "Goods purchased within 30 days before departure";
+"Airport refund (TRS)" = "Airport refund (TRS)";
+"TRS counter at departure hall" = "TRS counter at departure hall";
+"Purchase within 30 days before departure, recommend arriving at least 90 minutes early." = "Purchase within 30 days before departure, recommend arriving at least 90 minutes early.";
+
+
+"Turkey" = "Turkey";
+"VAT refund" = "VAT refund";
+"Foreign tourists" = "Foreign tourists";
+"Approved items" = "Approved items";
+"Airport refund" = "Airport refund";
+"Refund counter after customs verification" = "Refund counter after customs verification";
+"Only for approved items." = "Only for approved items.";
+
+
+"South Africa" = "South Africa";
+"VAT refund" = "VAT refund";
+"Foreign tourists" = "Foreign tourists";
+"Goods exported abroad" = "Goods exported abroad";
+"Airport refund" = "Airport refund";
+"VAT refund office" = "VAT refund office";
+"Customs verification required." = "Customs verification required.";
+
+
+"Czech Republic" = "Czech Republic";
+"VAT refund" = "VAT refund";
+"Foreign tourists" = "Foreign tourists";
+"Goods exported within 90 days" = "Goods exported within 90 days";
+"Airport refund" = "Airport refund";
+"Refund counter at departure hall" = "Refund counter at departure hall";
+"Customs stamp required, depart within 90 days." = "Customs stamp required, depart within 90 days.";
+
+
+"Hungary" = "Hungary";
+"VAT refund" = "VAT refund";
+"Foreign tourists" = "Foreign tourists";
+"Goods exported abroad" = "Goods exported abroad";
+"Airport refund" = "Airport refund";
+"Customs and refund office" = "Customs and refund office";
+"Receipt required." = "Receipt required.";
+
+
+"Bulgaria" = "Bulgaria";
+"VAT refund" = "VAT refund";
+"Foreign tourists" = "Foreign tourists";
+"Goods exported abroad" = "Goods exported abroad";
+"Airport refund" = "Airport refund";
+"Refund counter" = "Refund counter";
+"Customs verification required." = "Customs verification required.";
+
+
+"Switzerland" = "Switzerland";
+"VAT refund" = "VAT refund";
+"Non-residents" = "Non-residents";
+"Goods exported abroad" = "Goods exported abroad";
+"Airport refund" = "Airport refund";
+"Partner shops or refund offices" = "Partner shops or refund offices";
+"Only for non-EU nationals." = "Only for non-EU nationals.";
+
+
+"Germany" = "Germany";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Goods exported outside the EU" = "Goods exported outside the EU";
+"Airport refund" = "Airport refund";
+"Global Blue / Planet refund office" = "Global Blue / Planet refund office";
+"Customs stamp required." = "Customs stamp required.";
+
+
+"Netherlands" = "Netherlands";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Goods exported outside the EU" = "Goods exported outside the EU";
+"Airport refund" = "Airport refund";
+"Refund counter after customs stamp" = "Refund counter after customs stamp";
+"Difficult to get a refund on the day of departure." = "Difficult to get a refund on the day of departure.";
+
+
+"Belgium" = "Belgium";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Goods purchased at approved shops" = "Goods purchased at approved shops";
+"Airport refund" = "Airport refund";
+"Refund office" = "Refund office";
+"Only at approved shops, customs verification required." = "Only at approved shops, customs verification required.";
+
+
+"France" = "France";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Goods exported outside the EU" = "Goods exported outside the EU";
+"PABLO electronic certification or refund office" = "PABLO electronic certification or refund office";
+"Airport" = "Airport";
+"Approx. 12% fee deducted." = "Approx. 12% fee deducted.";
+
+
+"Spain" = "Spain";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Goods exported outside the EU" = "Goods exported outside the EU";
+"DIVA kiosk" = "DIVA kiosk";
+"Airport" = "Airport";
+"Electronic certification required." = "Electronic certification required.";
+
+
+"Portugal" = "Portugal";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Goods exported outside the EU" = "Goods exported outside the EU";
+"Airport refund" = "Airport refund";
+"Refund counter" = "Refund counter";
+"Depart within 90 days." = "Depart within 90 days.";
+
+
+"Ireland" = "Ireland";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU";
+"Retail shop or refund agency" = "Retail shop or refund agency";
+"Dublin, Shannon airports, etc." = "Dublin, Shannon airports, etc.";
+"Only some shops participate; check before purchase." = "Only some shops participate; check before purchase.";
+
+
+"Austria" = "Austria";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU";
+"Airport refund or downtown refund office" = "Airport refund or downtown refund office";
+"Vienna airport, etc." = "Vienna airport, etc.";
+"Customs stamp required; present receipt and goods." = "Customs stamp required; present receipt and goods.";
+
+
+"Croatia" = "Croatia";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU";
+"Airport refund" = "Airport refund";
+"Zagreb airport, etc." = "Zagreb airport, etc.";
+"Customs stamp required; present receipt and goods." = "Customs stamp required; present receipt and goods.";
+
+
+"Italy" = "Italy";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU";
+"Airport refund or downtown refund office" = "Airport refund or downtown refund office";
+"Rome, Milan airports, etc." = "Rome, Milan airports, etc.";
+"Customs stamp required; present receipt and goods." = "Customs stamp required; present receipt and goods.";
+
+
+"Greece" = "Greece";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU";
+"Airport refund" = "Airport refund";
+"Athens airport, etc." = "Athens airport, etc.";
+"Customs stamp required; present receipt and goods." = "Customs stamp required; present receipt and goods.";
+
+
+"Sweden" = "Sweden";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU";
+"Airport refund" = "Airport refund";
+"Stockholm Arlanda airport, etc." = "Stockholm Arlanda airport, etc.";
+"Customs stamp required; present receipt and goods." = "Customs stamp required; present receipt and goods.";
+
+
+"Denmark" = "Denmark";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU";
+"Airport refund" = "Airport refund";
+"Copenhagen airport, etc." = "Copenhagen airport, etc.";
+"Customs stamp required; present receipt and goods." = "Customs stamp required; present receipt and goods.";
+
+
+"Norway" = "Norway";
+"VAT refund" = "VAT refund";
+"Residents of countries other than Norway, Sweden, Finland, Denmark" = "Residents of countries other than Norway, Sweden, Finland, Denmark";
+"Unused goods for personal use, exported as personal baggage within 1 month of purchase upon leaving Norway" = "Unused goods for personal use, exported as personal baggage within 1 month of purchase upon leaving Norway";
+"Airport refund" = "Airport refund";
+"Oslo airport, etc." = "Oslo airport, etc.";
+"Customs stamp required; present receipt and goods." = "Customs stamp required; present receipt and goods.";
+
+
+"Finland" = "Finland";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU";
+"Airport refund" = "Airport refund";
+"Helsinki airport, etc." = "Helsinki airport, etc.";
+"Customs stamp required; present receipt and goods." = "Customs stamp required; present receipt and goods.";
+
+
+"Mexico" = "Mexico";
+"VAT refund" = "VAT refund";
+"Foreigners staying in Mexico less than 180 days" = "Foreigners staying in Mexico less than 180 days";
+"Unused goods for personal use, within 3 months of purchase" = "Unused goods for personal use, within 3 months of purchase";
+"Unknown" = "Unknown";
+"Incomplete information provided." = "Incomplete information provided.";
+
+
+"Brazil" = "Brazil";
+"VAT refund" = "VAT refund";
+"Non-resident foreign tourists" = "Non-resident foreign tourists";
+"Goods for personal use (excluding food, hotels, restaurant consumption)" = "Goods for personal use (excluding food, hotels, restaurant consumption)";
+"Airport refund or designated refund office" = "Airport refund or designated refund office";
+"Rio de Janeiro airport, etc." = "Rio de Janeiro airport, etc.";
+"Pilot program in Rio de Janeiro state from 2025, nationwide expansion planned; VAT rate varies by state (e.g., 18% in Rio de Janeiro)" = "Pilot program in Rio de Janeiro state from 2025, nationwide expansion planned; VAT rate varies by state (e.g., 18% in Rio de Janeiro)";
+
+
+"Poland" = "Poland";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Unused goods for personal use" = "Unused goods for personal use";
+"Airport refund or downtown refund office" = "Airport refund or downtown refund office";
+"Warsaw airport, etc." = "Warsaw airport, etc.";
+"Goods must be exported outside the EU within 3 months of purchase; customs stamp required" = "Goods must be exported outside the EU within 3 months of purchase; customs stamp required";
+
+
+"Romania" = "Romania";
+"VAT refund" = "VAT refund";
+"Non-EU residents" = "Non-EU residents";
+"Unused goods for personal use" = "Unused goods for personal use";
+"Airport refund or downtown refund office" = "Airport refund or downtown refund office";
+"Bucharest airport, etc." = "Bucharest airport, etc.";
+"Goods must be exported outside the EU within 90 days of purchase; customs stamp required" = "Goods must be exported outside the EU within 90 days of purchase; customs stamp required";
+
+
+"Iceland" = "Iceland";
+"VAT refund" = "VAT refund";
+"Non-residents of Iceland" = "Non-residents of Iceland";
+"Unused goods for personal use" = "Unused goods for personal use";
+"Airport refund" = "Airport refund";
+"Keflavik airport, etc." = "Keflavik airport, etc.";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "Goods must be exported within 3 months of purchase; customs stamp required";
+
+
+"Russia" = "Russia";
+"VAT refund" = "VAT refund";
+"Residents of countries outside the EAEU" = "Residents of countries outside the EAEU";
+"Clothing, electronics, jewelry, etc. (excluding alcohol, tobacco)" = "Clothing, electronics, jewelry, etc. (excluding alcohol, tobacco)";
+"Airport refund" = "Airport refund";
+"Moscow Domodedovo airport, etc." = "Moscow Domodedovo airport, etc.";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "Goods must be exported within 3 months of purchase; customs stamp required";
+
+
+"Israel" = "Israel";
+"VAT refund" = "VAT refund";
+"Non-residents of Israel" = "Non-residents of Israel";
+"Unused goods for personal use" = "Unused goods for personal use";
+"Airport refund" = "Airport refund";
+"Ben Gurion airport, etc." = "Ben Gurion airport, etc.";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "Goods must be exported within 3 months of purchase; customs stamp required";
+
+
+"India" = "India";
+"GST refund" = "GST refund";
+"Non-residents of India" = "Non-residents of India";
+"Unused goods for personal use" = "Unused goods for personal use";
+"Airport refund" = "Airport refund";
+"Delhi Indira Gandhi International Airport, etc." = "Delhi Indira Gandhi International Airport, etc.";
+"GST refund system is in pilot operation, not implemented nationwide" = "GST refund system is in pilot operation, not implemented nationwide";

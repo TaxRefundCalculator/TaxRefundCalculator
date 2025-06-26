@@ -18,16 +18,13 @@ class StartPageVM {
     private let firebaseService: FirebaseExchangeService
     private let disposeBag = DisposeBag()
     
-    let exchangeRateText = BehaviorRelay<String>(value: "환율 정보를 불러올 수 없습니다")
+    let exchangeRateText = BehaviorRelay<String>(value: NSLocalizedString("Unable to load exchange rate information", comment: "환율 정보를 불러올 수 없습니다"))
     
     init(firebaseService: FirebaseExchangeService) {
         self.firebaseService = firebaseService
     }
     
     // MARK: userDefaults 저장 메서드
-    func saveSelectedLanguage(_ language: String) {
-        saveUserDefaults.saveLanguage(language)
-    }
     func saveBaseCurrency(_ baseCurrency: String) {
         saveUserDefaults.saveBaseCurrency(baseCurrency)
     }
@@ -60,18 +57,17 @@ class StartPageVM {
     func refundConditionText(for country: String) -> String {
         if let (_, policy) = getRefundPolicy(for: country) {
             print("📌 환급 정책: \(policy)")
-            return "최소 \(Int(policy.minimumAmount)) \(policy.currencyCode) 구매 시 \(policy.vatRate)% 환급"
+            let format = NSLocalizedString("Refund format", comment: "최소 금액, 통화, 환급율 표시")
+            return String(format: format, policy.currencyCode, Int(policy.minimumAmount), policy.vatRate)
         } else {
-            return "환급 정책을 찾을 수 없습니다."
+            return NSLocalizedString("Refund policy not found", comment: "환급 정책을 찾을 수 없습니다")
         }
     }
     
     
     // MARK: 텍스트 필드들 빈칸 확인 예외처리
-    func isInputValid(language: String?, baseCurrency: String?, travelCountry: String?) -> Bool {
-        return !(language?.isEmpty ?? true)
-        && !(baseCurrency?.isEmpty ?? true)
-        && !(travelCountry?.isEmpty ?? true)
+    func isInputValid(baseCurrency: String?, travelCountry: String?) -> Bool {
+        return !(baseCurrency?.isEmpty ?? true) && !(travelCountry?.isEmpty ?? true)
     }
     
     
@@ -106,10 +102,10 @@ class StartPageVM {
                     self.saveExchangeValue(exchangeValue.roundedString(fractionDigits: 2))
                     self.exchangeRateText.accept(text)
                 } else {
-                    self.exchangeRateText.accept("환율 정보를 불러올 수 없습니다")
+                    self.exchangeRateText.accept(NSLocalizedString("Unable to load exchange rate information", comment: "환율 정보를 불러올 수 없습니다"))
                 }
             }, onFailure: { [weak self] _ in
-                self?.exchangeRateText.accept("환율 정보를 불러올 수 없습니다")
+                self?.exchangeRateText.accept(NSLocalizedString("Unable to load exchange rate information", comment: "환율 정보를 불러올 수 없습니다"))
             })
             .disposed(by: disposeBag)
     }

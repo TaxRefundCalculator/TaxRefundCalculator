@@ -14,9 +14,6 @@ class CalculateVM {
     let saveUserDefaults = SaveUserDefaults()
     
     // MARK: userDefaults 조회 메서드
-    func getSelectedLanguage() -> String? {
-        return saveUserDefaults.getLanguage()
-    }
     func getBaseCurrency() -> String? {
         return saveUserDefaults.getBaseCurrency()
     }
@@ -61,6 +58,19 @@ class CalculateVM {
         saveUserDefaults.getExchangeValue() ?? ""
     }
     
+    // MARK: Helper to parse localized number strings
+    func parseLocalizedNumber(_ string: String) -> Double? {
+        let locales = [Locale.current, Locale(identifier: "en_US"), Locale(identifier: "fr_FR"), Locale(identifier: "de_DE"), Locale(identifier: "it_IT"), Locale(identifier: "es_ES")]
+        for locale in locales {
+            let formatter = NumberFormatter()
+            formatter.locale = locale
+            formatter.numberStyle = .decimal
+            if let number = formatter.number(from: string) {
+                return number.doubleValue
+            }
+        }
+        return nil
+    }
     
     // MARK: 계산 기록 저장하기
     func saveCard(_ card: SavedCard) {
@@ -91,14 +101,12 @@ class CalculateVM {
         // 환율값 (String)
         let baseCurrencyValue = getExchangeValue()
         guard
-            let price = Double(priceText),
-            travelCurrencyUnit != 0
+            let price = parseLocalizedNumber(priceText),
+            travelCurrencyUnit != 0,
+            let baseRate = parseLocalizedNumber(baseCurrencyValue)
         else {
             return nil
         }
-        // 콤마 제거
-        let cleanedBaseCurrency = baseCurrencyValue.replacingOccurrences(of: ",", with: "")
-        guard let baseRate = Double(cleanedBaseCurrency) else { return nil }
         // 환산 공식: (구매금액 / 단위) * 환율
         return price / Double(travelCurrencyUnit) * baseRate
     }
@@ -106,7 +114,7 @@ class CalculateVM {
     // 환급금액 계산
     func calculateVatRefund(priceText: String) -> Double? {
         guard
-            let price = Double(priceText),
+            let price = parseLocalizedNumber(priceText),
             let vatString = getVatRate()?.replacingOccurrences(of: "%", with: ""),
             let vat = Double(vatString)
         else { return nil }
@@ -117,8 +125,7 @@ class CalculateVM {
     func convertRefundToBaseCurrency(refund: Double) -> Double? {
         let travelCurrencyUnit = getTravelCurrencyUnit()
         let baseCurrencyValue = getExchangeValue()
-        let cleanedBaseCurrency = baseCurrencyValue.replacingOccurrences(of: ",", with: "")
-        guard let baseRate = Double(cleanedBaseCurrency) else { return nil }
+        guard let baseRate = parseLocalizedNumber(baseCurrencyValue) else { return nil }
         // 환산 공식: (환급금액 / 단위) * 환율
         return refund / Double(travelCurrencyUnit) * baseRate
     }
