@@ -37,9 +37,9 @@ class SettingVM {
     let saveUserDefaults = SaveUserDefaults()
     
     // MARK: userDefaults 저장 메서드
-    func saveSelectedLanguage(_ language: String) {
-        saveUserDefaults.saveLanguage(language)
-    }
+//    func saveSelectedLanguage(_ language: String) {
+//        saveUserDefaults.saveLanguage(language)
+//    }
     func saveBaseCurrency(_ baseCurrency: String) {
         saveUserDefaults.saveBaseCurrency(baseCurrency) // 유저디폴트에 저장
         self.baseCurrency = baseCurrency // @Published 갱신
@@ -58,9 +58,9 @@ class SettingVM {
     }
     
     // MARK: userDefaults 조회 메서드
-    func getSelectedLanguage() -> String? {
-        return saveUserDefaults.getLanguage()
-    }
+//    func getSelectedLanguage() -> String? {
+//        return saveUserDefaults.getLanguage()
+//    }
     func getBaseCurrency() -> String? {
         return saveUserDefaults.getBaseCurrency()
     }
