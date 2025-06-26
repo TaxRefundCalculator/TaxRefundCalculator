@@ -12,9 +12,19 @@ import Fastis
 
 final class SavedVC: UIViewController {
     
-    private let savedView = SavedView()
+    private let savedView: SavedView
+    private let viewModel: SavedVM
     private let disposeBag = DisposeBag()
-    private let viewModel = SavedVM()
+    
+    init(viewModel: SavedVM, savedView: SavedView = SavedView()) {
+            self.viewModel = viewModel
+            self.savedView = savedView
+            super.init(nibName: nil, bundle: nil)
+        }
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+    
     
     override func loadView() {
         view = savedView
@@ -40,22 +50,27 @@ final class SavedVC: UIViewController {
         viewModel.filteredCards
             .bind(to: savedView.tableView.rx.items(cellIdentifier: SavedCardCell.id, cellType: SavedCardCell.self)) { [weak self] row, model, cell in
                 cell.configure(with: model) { [weak self] in
-                            self?.showDeleteAlert(for: model)
-                        }
-                    }
+                    self?.showDeleteAlert(for: model)
+                }
+            }
             .disposed(by: disposeBag)
     }
     
     private func bindSelection() {
         savedView.tableView.rx.modelSelected(SavedCard.self)
             .bind { [weak self] model in
-                let modalVC = SavedModalVC()
-                modalVC.savedCard = model
+                guard let self = self else { return }
                 
+                let flag = model.country // 예: "🇯🇵"
+                let policy = RefundCondition.flagToPolicyMap[flag] ?? koreaPolicy // 혹시 모를 nil 대비
+                
+                let modalVM = SavedModalVM(savedCard: model, policy: policy)
+                
+                let modalVC = SavedModalVC(viewModel: modalVM)
                 modalVC.modalPresentationStyle = .overFullScreen
                 modalVC.modalTransitionStyle = .crossDissolve
                 
-                self?.present(modalVC, animated: true)
+                self.present(modalVC, animated: true)
             }
             .disposed(by: disposeBag)
     }
@@ -209,8 +224,3 @@ final class SavedVC: UIViewController {
     }
     
 }
-
-/// TODO
-/// 셀 선택 or 꾹 누를 시 편집
-/// 슬라이드 삭제
-///
