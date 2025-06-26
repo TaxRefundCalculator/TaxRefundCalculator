@@ -15,6 +15,7 @@ class RefundModal: UIViewController {
     // 뷰모델 선언
     let viewModel = CalculateVM()
     
+    // MARK: - 모달 형태
     private let containerView = UIView().then {
         $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 16
@@ -22,12 +23,12 @@ class RefundModal: UIViewController {
     }
     
     
-    // MARK: 스크롤뷰
+    // MARK: - 스크롤뷰
     let scrollView = UIScrollView()
     let scrollContentView = UIView()
     
     
-    // MARK: UI 요소들
+    // MARK: - UI 요소들
     private let closeBtn = UIButton().then {
         $0.setTitle(NSLocalizedString("Close", comment: ""), for: .normal)
         $0.backgroundColor = .mainTeal
@@ -45,7 +46,7 @@ class RefundModal: UIViewController {
     }
     
     
-    // MARK: 각 Label에 환급 조건 출력
+    // MARK: - 각 Label에 환급 조건 출력
     // userDefaults에 저장되어있는 국기 대조 후 출력
     private func loadRefundPolicy() {
         guard let (flag, policy) = viewModel.getRefundPolicyByCurrency() else {
@@ -64,7 +65,7 @@ class RefundModal: UIViewController {
     }
     
     
-    // MARK: 초기화
+    // MARK: - 초기화
     init() {
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overCurrentContext
@@ -88,7 +89,7 @@ class RefundModal: UIViewController {
     }
     
     
-    // MARK: AutoLayout 정의
+    // MARK: - AutoLayout 정의
     private func configureUI() {
         
         view.addSubview(containerView)
@@ -139,7 +140,7 @@ class RefundModal: UIViewController {
         }
     }
         
-    // MARK: 닫기 버튼 액션
+    // MARK: - 닫기 버튼 액션
     @objc
     private func closeBtnTapped() {
         dismiss(animated: true, completion: nil)
