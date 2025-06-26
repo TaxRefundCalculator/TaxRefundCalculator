@@ -16,7 +16,7 @@ class RefundModal: UIViewController {
     let viewModel = CalculateVM()
     
     private let containerView = UIView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 16
         $0.clipsToBounds = true
     }
@@ -29,9 +29,9 @@ class RefundModal: UIViewController {
     
     // MARK: UI 요소들
     private let closeBtn = UIButton().then {
-        $0.setTitle("닫기", for: .normal)
+        $0.setTitle(NSLocalizedString("Close", comment: ""), for: .normal)
         $0.backgroundColor = .mainTeal
-        $0.layer.cornerRadius = 15
+        $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(closeBtnTapped), for: .touchUpInside)
     }
     private let flagLabel = UILabel().then {
@@ -53,13 +53,13 @@ class RefundModal: UIViewController {
             return
         }
         flagLabel.text = flag
-        countryLabel.text = policy.country
+        countryLabel.text = "\(NSLocalizedString(policy.country, comment: ""))"
         refundInfoLabel.text = """
-        💰 VAT율 :  \(policy.vatRate)%\n
-        💵 최소 구매금액 :  \(Int(policy.minimumAmount)) \(policy.currencyCode)\n
-        🔁 환급 방법 :  \(policy.refundMethod)\n
-        📍 환급 장소 :  \(policy.refundPlace)\n
-        📌 비고 :  \(policy.notes)
+        💰 \(NSLocalizedString("VAT Rate:", comment: ""))  \(policy.vatRate)%\n
+        💵 \(NSLocalizedString("Minimum Purchase Amount:", comment: ""))  \(Int(policy.minimumAmount)) \(policy.currencyCode)\n
+        🔁 \(NSLocalizedString("Refund Method:", comment: ""))  \(NSLocalizedString(policy.refundMethod, comment: ""))\n
+        📍 \(NSLocalizedString("Refund Location:", comment: ""))  \(NSLocalizedString(policy.refundPlace, comment: ""))\n
+        📌 \(NSLocalizedString("Notes:", comment: ""))  \(NSLocalizedString(policy.notes, comment: ""))
         """
     }
     
@@ -102,7 +102,7 @@ class RefundModal: UIViewController {
         closeBtn.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(30)
             $0.leading.trailing.equalToSuperview().inset(25)
-            $0.height.equalTo(55)
+            $0.height.equalTo(48)
         }
         
         containerView.addSubview(scrollView)

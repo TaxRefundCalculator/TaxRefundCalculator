@@ -1,0 +1,468 @@
+
+// MARK: - 시작화면
+"Tax Refund Calculator" = "택스리펀 환급금 예상 계산기";
+"Calculate your tax refund amount in advance." = "해외 쇼핑 시 세금 환급 금액을 미리 계산해보세요.";
+"Select Base Currency" = "기준 통화 선택";
+"Please select a base currency." = "기준화폐를 선택하세요.";
+"Select Travel Country" = "여행국가 선택";
+"Please select a travel country." = "여행국가를 선택하세요.";
+"Exchange Rate Info" = "환율 정보";
+"Please select a currency and a country." = "화폐, 국가 선택이 필요합니다.";
+"Refund Policy" = "환급 조건";
+"Start →" = "시작하기 →";
+ 
+"Input Confirmation" = "입력 확인";
+"Please select all items." = "모든 항목을 선택해 주세요.";
+"OK" = "확인";
+
+"Notice" = "알림";
+"This country does not provide tax refund." = "해당 국가는 택스리펀을 하지 않습니다.";
+"OK" = "확인";
+
+"Unable to load exchange rate information" = "환율 정보를 불러올 수 없습니다";
+"Refund Policy:" = "환급 정책:";
+"Refund format" = "최소 %2$d %1$@ 구매 시 %3$.0f%% 환급";
+"Refund policy not found" = "환급 정책을 찾을 수 없습니다";
+
+
+// MARK: - 계산화면
+"Enter purchase amount" = "구매 금액 입력";
+"Please enter numbers only." = "숫자만 입력해주세요.";
+"Calculate" = "계산하기";
+"VAT Rate" = "부가세율(VAT)";
+"Purchase Amount" = "구매금액";
+"Estimated Refund Amount" = "예상 환급 금액";
+"Approx " = "약 ";
+"Save Record" = "기록 저장";
+"View Refund Policy" = "환급 조건";
+"Calculate" = "계산하기";
+"History" = "기록";
+"Exchange Rate" = "환율";
+"Settings" = "설정";
+"Close" = "닫기";
+
+"Input Error" = "입력 오류";
+"You cannot enter blank spaces." = "공백은 입력할 수 없습니다.";
+"OK" = "확인";
+
+"Input Error" = "입력 오류";
+"Only numbers and decimal points are allowed, and the decimal point can be entered only once." = "숫자와 소수점만, 그리고 소수점은 한 번만 입력할 수 있습니다.";
+"OK" = "확인";
+
+"Save Complete" = "저장 완료";
+"Saved successfully." = "저장이 완료되었습니다.";
+"OK" = "확인";
+
+"VAT Rate:" = "부가세율:";
+"Minimum Purchase Amount:" = "최소 구매금액:";
+"Refund Method:" = "환급 방법:";
+"Refund Location:" = "환급장소:";
+"Notes:" = "비고:";
+
+"Close" = "닫기";
+
+
+// MARK: - 기록화면
+"Total Purchase Amount" = "총 구매 금액";
+"Total Refund Amount" = "총 환급 금액";
+"Base Currency" = "기준화폐";
+"Select Date" = "날짜 선택";
+"Purchase Amount" = "구매 금액";
+"Refund Amount" = "환급 금액";
+"Applied Exchange Rate" = "적용된 환율";
+"Close" = "닫기";
+
+
+// MARK: - 환율화면
+"Exchange Rates" = "실시간 환율정보";
+"Last Updated" = "최근 갱신일";
+
+
+// MARK: - 설정화면
+"App Settings" = "앱 설정";
+"Base Currency" = "기준 화폐 변경";
+"Travel Country" = "여행 국가 변경";
+"Dark Mode" = "다크 모드";
+"Reset Records" = "기록 초기화";
+"App Info" = "앱 정보";
+"Version" = "버전";
+"Last Updated" = "최종 업데이트";
+"Developer" = "개발자";
+
+"Delete Records" = "기록 삭제";
+"Do you want to delete all records?" = "모든 기록을 삭제하시겠습니까?";
+"No" = "아니오";
+"Yes" = "예";
+
+
+// MARK: - 탭바
+"Calculate" = "계산";
+"History" = "기록";
+"Exchange Rate" = "환율";
+"Settings" = "설정";
+
+
+// MARK: - 지원국가 목록
+"South Korea - KRW" = "대한민국 - KRW";
+"Japan - JPY" = "일본 - JPY";
+"United States - USD" = "미국 - USD";
+"United Kingdom - GBP" = "영국 - GBP";
+"Thailand - THB" = "태국 - THB";
+"Malaysia - MYR" = "말레이시아 - MYR";
+"Singapore - SGD" = "싱가포르 - SGD";
+"Indonesia - IDR" = "인도네시아 - IDR";
+"Australia - AUD" = "호주 - AUD";
+"Türkiye - TRY" = "튀르키예 - TRY";
+"South Africa - ZAR" = "남아프리카공화국 - ZAR";
+"Czech Republic - CZK" = "체코 - CZK";
+"Hungary - HUF" = "헝가리 - HUF";
+"Bulgaria - BGN" = "불가리아 - BGN";
+"Switzerland - CHF" = "스위스 - CHF";
+"Germany - EUR" = "독일 - EUR";
+"Netherlands - EUR" = "네덜란드 - EUR";
+"Belgium - EUR" = "벨기에 - EUR";
+"France - EUR" = "프랑스 - EUR";
+"Spain - EUR" = "스페인 - EUR";
+"Portugal - EUR" = "포르투갈 - EUR";
+"Ireland - EUR" = "아일랜드 - EUR";
+"Austria - EUR" = "오스트리아 - EUR";
+"Croatia - EUR" = "크로아티아 - EUR";
+"Italy - EUR" = "이탈리아 - EUR";
+"Greece - EUR" = "그리스 - EUR";
+"Sweden - SEK" = "스웨덴 - SEK";
+"Denmark - DKK" = "덴마크 - DKK";
+"Norway - NOK" = "노르웨이 - NOK";
+"Finland - EUR" = "핀란드 - EUR";
+"Mexico - MXN" = "멕시코 - MXN";
+"Brazil - BRL" = "브라질 - BRL";
+"Poland - PLN" = "폴란드 - PLN";
+"Romania - RON" = "루마니아 - RON";
+"Iceland - ISK" = "아이슬란드 - ISK";
+"Russia - RUB" = "러시아 - RUB";
+"Israel - ILS" = "이스라엘 - ILS";
+"India - INR" = "인도 - INR";
+
+
+// MARK: - 국가별 환급조건
+
+"South Korea" = "대한민국";
+"Up to 7% of purchase amount" = "구매 금액의 최대 7%";
+"Foreign tourists staying less than 6 months, overseas Koreans abroad 2+ years (stay less than 3 months)" = "6개월 미만 체류 외국인, 3개월 미만 체류하며 해외에 2년 이상 거주한 해외 교포";
+"Taxable goods unused/unopened, exported within 3 months of purchase" = "미개봉 및 미사용 상태의 과세 물품, 구매일로부터 3개월 이내에 출국 시 반출하는 물품";
+"Immediate refund, downtown or airport refund" = "즉시 환급, 시내 도심 환급소 환급, 공항 환급";
+"Refund counter at Incheon airport/major airports or downtown centers" = "인천국제공항 및 주요 공항의 환급 카운터 또는 키오스크, 서울 등 주요 도시의 시내 환급소";
+"Customs stamp on goods required" = "세관에서 구매 물품에 대한 확인 도장을 받아야 함.";
+
+
+"Japan" = "일본";
+"Tax-free at the time of purchase" = "구매 시 즉시 면세";
+"Foreign tourists" = "외국인 관광객";
+"General goods" = "일반 상품";
+"Tax-free (immediate at purchase)" = "면세 (구매 시 즉시)";
+"Tax-free shops" = "면세점";
+"Refund system to be introduced from 2026 (currently tax-free)." = "2026년부터 환급 제도 도입 예정 (현재는 면세)";
+
+
+"Thailand" = "태국";
+"VAT refund" = "VAT 환급";
+"Foreign tourists" = "외국인 관광객";
+"Goods purchased at approved shops, goods exported within 60 days" = "승인된 매장에서 구매한 물품, 60일 이내 출국 시 반출하는 물품";
+"Airport refund" = "공항 환급";
+"VAT refund counter at departure hall" = "출국장 VAT 환급 창구";
+"Purchase at approved shops, depart within 60 days." = "승인된 매장에서 구매, 60일 이내 출국";
+
+
+"Malaysia" = "말레이시아";
+"VAT refund" = "VAT 환급";
+"Foreign tourists" = "외국인 관광객";
+"Goods purchased at approved shops" = "승인된 매장에서 구매한 물품";
+"Airport refund" = "공항 환급";
+"Airport VAT refund counter" = "공항 VAT 환급 카운터";
+"Only available at shops approved by the Tourism Tax Office." = "관광세청 승인 매장에서만 가능";
+
+
+"Singapore" = "싱가포르";
+"GST refund" = "GST 환급";
+"Foreign tourists" = "외국인 관광객";
+"Goods exported when leaving Singapore, some items excluded" = "싱가포르를 떠날 때 반출하는 물품, 일부 품목 제외";
+"Electronic refund (eTRS)" = "전자환급 (eTRS)";
+"Airport eTRS kiosk" = "공항 eTRS 키오스크";
+"Passport registration required, some items excluded." = "여권 등록 필수, 일부 품목 제외";
+
+
+"Indonesia" = "인도네시아";
+"VAT refund" = "VAT 환급";
+"Foreign tourists (excluding crew, etc.)" = "외국인 관광객, 승무원 등 제외";
+"Goods exported abroad" = "국외로 반출하는 물품";
+"Airport refund" = "공항 환급";
+"VAT refund office" = "VAT 환급 오피스";
+"Crew, etc. are not eligible for refunds." = "승무원 등은 환급 불가";
+
+
+"Australia" = "호주";
+"GST refund" = "GST 환급";
+"Foreign tourists" = "외국인 관광객";
+"Goods purchased within 30 days before departure" = "출국 30일 이내 구매한 물품";
+"Airport refund (TRS)" = "공항 환급 (TRS)";
+"TRS counter at departure hall" = "출국장 TRS 카운터";
+"Purchase within 30 days before departure, recommend arriving at least 90 minutes early." = "출국 30일 이내 구매, 최소 90분 전 도착 권장";
+
+
+"Turkey" = "튀르키예";
+"VAT refund" = "VAT 환급";
+"Foreign tourists" = "외국인 관광객";
+"Approved items" = "승인된 품목";
+"Airport refund" = "공항 환급";
+"Refund counter after customs verification" = "세관 인증 후 환급 창구";
+"Only for approved items." = "승인된 품목에 한함";
+
+
+"South Africa" = "남아프리카공화국";
+"VAT refund" = "VAT 환급";
+"Foreign tourists" = "외국인 관광객";
+"Goods exported abroad" = "국외로 반출하는 물품";
+"Airport refund" = "공항 환급";
+"VAT refund office" = "VAT 환급소";
+"Customs verification required." = "세관 확인 필요";
+
+
+"Czech Republic" = "체코";
+"VAT refund" = "VAT 환급";
+"Foreign tourists" = "외국인 관광객";
+"Goods exported within 90 days" = "90일 이내 출국 시 반출하는 물품";
+"Airport refund" = "공항 환급";
+"Refund counter at departure hall" = "출국장 환급 창구";
+"Customs stamp required, depart within 90 days." = "세관 도장 필수, 90일 이내 출국";
+
+
+"Hungary" = "헝가리";
+"VAT refund" = "VAT 환급";
+"Foreign tourists" = "외국인 관광객";
+"Goods exported abroad" = "국외로 반출하는 물품";
+"Airport refund" = "공항 환급";
+"Customs and refund office" = "세관 및 환급소";
+"Receipt required." = "영수증 지참 필수";
+
+
+"Bulgaria" = "불가리아";
+"VAT refund" = "VAT 환급";
+"Foreign tourists" = "외국인 관광객";
+"Goods exported abroad" = "국외로 반출하는 물품";
+"Airport refund" = "공항 환급";
+"Refund counter" = "환급 창구";
+"Customs verification required." = "세관 확인 필요";
+
+
+"Switzerland" = "스위스";
+"VAT refund" = "VAT 환급";
+"Non-residents" = "비거주자";
+"Goods exported abroad" = "국외로 반출하는 물품";
+"Airport refund" = "공항 환급";
+"Partner shops or refund offices" = "제휴업체 또는 환급소";
+"Only for non-EU nationals." = "비EU 국적자만 가능";
+
+
+"Germany" = "독일";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Goods exported outside the EU" = "EU 외 지역으로 반출하는 물품";
+"Airport refund" = "공항 환급";
+"Global Blue / Planet refund office" = "Global Blue / Planet 환급소";
+"Customs stamp required." = "세관 도장 필수";
+
+
+"Netherlands" = "네덜란드";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Goods exported outside the EU" = "EU 외 지역으로 반출하는 물품";
+"Airport refund" = "공항 환급";
+"Refund counter after customs stamp" = "세관 도장 후 환급 창구";
+"Difficult to get a refund on the day of departure." = "당일 출국 시 환급 어려움";
+
+
+"Belgium" = "벨기에";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Goods purchased at approved shops" = "승인된 매장에서 구매한 물품";
+"Airport refund" = "공항 환급";
+"Refund office" = "환급소";
+"Only at approved shops, customs verification required." = "승인된 매장, 세관 확인 필요";
+
+
+"France" = "프랑스";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Goods exported outside the EU" = "EU 외 지역으로 반출하는 물품";
+"PABLO electronic certification or refund office" = "PABLO 전자 인증 또는 환급소";
+"Airport" = "공항";
+"Approx. 12% fee deducted." = "수수료 약 12% 차감";
+
+
+"Spain" = "스페인";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Goods exported outside the EU" = "EU 외 지역으로 반출하는 물품";
+"DIVA kiosk" = "DIVA 키오스크";
+"Airport" = "공항";
+"Electronic certification required." = "전자 인증 필수";
+
+
+"Portugal" = "포르투갈";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Goods exported outside the EU" = "EU 외 지역으로 반출하는 물품";
+"Airport refund" = "공항 환급";
+"Refund counter" = "환급 창구";
+"Depart within 90 days." = "90일 이내 출국";
+
+
+"Ireland" = "아일랜드";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "개인 사용을 위한 물품, 구매일로부터 3개월 이내에 EU를 떠날 때 개인 수하물로 반출되는 상품";
+"Retail shop or refund agency" = "소매점 또는 환급 대행사";
+"Dublin, Shannon airports, etc." = "더블린, 섀넌 공항 등";
+"Only some shops participate; check before purchase." = "일부 상점만 참여, 구매 전 확인 필요";
+
+
+"Austria" = "오스트리아";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "개인 사용을 위한 미사용 상품, 구매일로부터 3개월 이내에 EU를 떠날 때 개인 수하물로 반출되는 상품";
+"Airport refund or downtown refund office" = "공항 환급 또는 시내 환급소";
+"Vienna airport, etc." = "비엔나 공항 등";
+"Customs stamp required; present receipt and goods." = "세관 도장 필수, 영수증 및 상품 제시";
+
+
+"Croatia" = "크로아티아";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "개인 사용을 위한 미사용 상품, 구매일로부터 3개월 이내에 EU를 떠날 때 개인 수하물로 반출되는 상품";
+"Airport refund" = "공항 환급";
+"Zagreb airport, etc." = "자그레브 공항 등";
+"Customs stamp required; present receipt and goods." = "세관 도장 필수, 영수증 및 상품 제시";
+
+
+"Italy" = "이탈리아";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "개인 사용을 위한 미사용 상품, 구매일로부터 3개월 이내에 EU를 떠날 때 개인 수하물로 반출되는 상품";
+"Airport refund or downtown refund office" = "공항 환급 또는 시내 환급소";
+"Rome, Milan airports, etc." = "로마, 밀라노 공항 등";
+"Customs stamp required; present receipt and goods." = "세관 도장 필수, 영수증 및 상품 제시";
+
+
+"Greece" = "그리스";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "개인 사용을 위한 미사용 상품, 구매일로부터 3개월 이내에 EU를 떠날 때 개인 수하물로 반출되는 상품";
+"Airport refund" = "공항 환급";
+"Athens airport, etc." = "아테네 공항 등";
+"Customs stamp required; present receipt and goods." = "세관 도장 필수, 영수증 및 상품 제시";
+
+
+"Sweden" = "스웨덴";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "개인 사용을 위한 미사용 상품, 구매일로부터 3개월 이내에 EU를 떠날 때 개인 수하물로 반출되는 상품";
+"Airport refund" = "공항 환급";
+"Stockholm Arlanda airport, etc." = "스톡홀름 아를란다 공항 등";
+"Customs stamp required; present receipt and goods." = "세관 도장 필수, 영수증 및 상품 제시";
+
+
+"Denmark" = "덴마크";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "개인 사용을 위한 미사용 상품, 구매일로부터 3개월 이내에 EU를 떠날 때 개인 수하물로 반출되는 상품";
+"Airport refund" = "공항 환급";
+"Copenhagen airport, etc." = "코펜하겐 공항 등";
+"Customs stamp required; present receipt and goods." = "세관 도장 필수, 영수증 및 상품 제시";
+
+
+"Norway" = "노르웨이";
+"VAT refund" = "VAT 환급";
+"Residents of countries other than Norway, Sweden, Finland, Denmark" = "노르웨이, 스웨덴, 핀란드, 덴마크 외 국가 거주자";
+"Unused goods for personal use, exported as personal baggage within 1 month of purchase upon leaving Norway" = "개인 사용을 위한 미사용 상품, 구매일로부터 1개월 이내에 노르웨이를 떠날 때 개인 수하물로 반출되는 상품";
+"Airport refund" = "공항 환급";
+"Oslo airport, etc." = "오슬로 공항 등";
+"Customs stamp required; present receipt and goods." = "세관 도장 필수, 영수증 및 상품 제시";
+
+
+"Finland" = "핀란드";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Unused goods for personal use, exported as personal baggage within 3 months of purchase upon leaving the EU" = "개인 사용을 위한 미사용 상품, 구매일로부터 3개월 이내에 EU를 떠날 때 개인 수하물로 반출되는 상품";
+"Airport refund" = "공항 환급";
+"Helsinki airport, etc." = "헬싱키 공항 등";
+"Customs stamp required; present receipt and goods." = "세관 도장 필수, 영수증 및 상품 제시";
+
+
+"Mexico" = "멕시코";
+"VAT refund" = "VAT 환급";
+"Foreigners staying in Mexico less than 180 days" = "멕시코에 180일 미만 체류한 외국인";
+"Unused goods for personal use, within 3 months of purchase" = "개인 사용을 위한 미사용 상품, 구매일로부터 3개월 이내";
+"Unknown" = "불명";
+"Incomplete information provided." = "제공된 정보 불완전";
+
+
+"Brazil" = "브라질";
+"VAT refund" = "VAT 환급";
+"Non-resident foreign tourists" = "비거주 외국인 관광객";
+"Goods for personal use (excluding food, hotels, restaurant consumption)" = "개인 사용을 위한 상품 (음식, 호텔, 레스토랑 소비 제외)";
+"Airport refund or designated refund office" = "공항 환급 또는 지정된 환급소";
+"Rio de Janeiro airport, etc." = "리우데자네이루 공항 등";
+"Pilot program in Rio de Janeiro state from 2025, nationwide expansion planned; VAT rate varies by state (e.g., 18% in Rio de Janeiro)" = "2025년부터 리우데자네이루 주에서 시범 운영 중, 향후 전국 확대 예정; VAT는 주별로 상이 (예: 리우데자네이루 18%)";
+
+
+"Poland" = "폴란드";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Unused goods for personal use" = "개인 사용을 위한 미사용 상품";
+"Airport refund or downtown refund office" = "공항 환급 또는 시내 환급소";
+"Warsaw airport, etc." = "바르샤바 공항 등";
+"Goods must be exported outside the EU within 3 months of purchase; customs stamp required" = "구매일로부터 3개월 이내에 물품을 EU 외 지역으로 반출, 세관 도장 필수";
+
+
+"Romania" = "루마니아";
+"VAT refund" = "VAT 환급";
+"Non-EU residents" = "비EU 거주자";
+"Unused goods for personal use" = "개인 사용을 위한 미사용 상품";
+"Airport refund or downtown refund office" = "공항 환급 또는 시내 환급소";
+"Bucharest airport, etc." = "부쿠레슈티 공항 등";
+"Goods must be exported outside the EU within 90 days of purchase; customs stamp required" = "구매일로부터 90일 이내에 물품을 EU 외 지역으로 반출, 세관 도장 필수";
+
+
+"Iceland" = "아이슬란드";
+"VAT refund" = "VAT 환급";
+"Non-residents of Iceland" = "아이슬란드 비거주자";
+"Unused goods for personal use" = "개인 사용을 위한 미사용 상품";
+"Airport refund" = "공항 환급";
+"Keflavik airport, etc." = "케플라비크 공항 등";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "구매일로부터 3개월 이내에 물품을 반출, 세관 도장 필수";
+
+
+"Russia" = "러시아";
+"VAT refund" = "VAT 환급";
+"Residents of countries outside the EAEU" = "EAEU 외 국가 거주자";
+"Clothing, electronics, jewelry, etc. (excluding alcohol, tobacco)" = "의류, 전자제품, 보석 등 (주류, 담배 제외)";
+"Airport refund" = "공항 환급";
+"Moscow Domodedovo airport, etc." = "모스크바 도모데도보 공항 등";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "구매일로부터 3개월 이내에 물품을 반출, 세관 도장 필수";
+
+
+"Israel" = "이스라엘";
+"VAT refund" = "VAT 환급";
+"Non-residents of Israel" = "이스라엘 비거주자";
+"Unused goods for personal use" = "개인 사용을 위한 미사용 상품";
+"Airport refund" = "공항 환급";
+"Ben Gurion airport, etc." = "벤구리온 공항 등";
+"Goods must be exported within 3 months of purchase; customs stamp required" = "구매일로부터 3개월 이내에 물품을 반출, 세관 도장 필수";
+
+
+"India" = "인도";
+"GST refund" = "GST 환급";
+"Non-residents of India" = "인도 비거주자";
+"Unused goods for personal use" = "개인 사용을 위한 미사용 상품";
+"Airport refund" = "공항 환급";
+"Delhi Indira Gandhi International Airport, etc." = "델리 인디라 간디 국제공항 등";
+"GST refund system is in pilot operation, not implemented nationwide" = "GST 환급 제도 시범 운영 중, 전국적으로 시행되지 않음";

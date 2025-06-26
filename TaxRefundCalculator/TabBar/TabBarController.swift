@@ -22,13 +22,15 @@ class TabBarController: UITabBarController {
         let firebaseExchangeService = FirebaseExchangeService()
         let exchangeVM = ExchangeVM(apiService: exchangeService, firebaseService: firebaseExchangeService)
         let exchangeVC = ExchangeVC(viewModel: exchangeVM)
+        
+        SettingVM.shared.firebaseService = firebaseExchangeService
 
         let settingVC = SettingVC()
 
-        calculateVC.tabBarItem = UITabBarItem(title: "계산", image: UIImage(systemName: "plus.slash.minus"), tag: 0)
-        savedVC.tabBarItem = UITabBarItem(title: "기록", image: UIImage(systemName: "clock"), tag: 1)
-        exchangeVC.tabBarItem = UITabBarItem(title: "환율", image: UIImage(systemName: "chart.bar.xaxis"), tag: 2)
-        settingVC.tabBarItem = UITabBarItem(title: "설정", image: UIImage(systemName: "gearshape"), tag: 3)
+        calculateVC.tabBarItem = UITabBarItem(title: NSLocalizedString("Calculate", comment: ""), image: UIImage(systemName: "plus.slash.minus"), tag: 0)
+        savedVC.tabBarItem = UITabBarItem(title: NSLocalizedString("History", comment: ""), image: UIImage(systemName: "clock"), tag: 1)
+        exchangeVC.tabBarItem = UITabBarItem(title: NSLocalizedString("Exchange Rate", comment: ""), image: UIImage(systemName: "chart.bar.xaxis"), tag: 2)
+        settingVC.tabBarItem = UITabBarItem(title: NSLocalizedString("Settings", comment: ""), image: UIImage(systemName: "gearshape"), tag: 3)
 
         viewControllers = [calculateVC, savedVC, exchangeVC, settingVC]
 

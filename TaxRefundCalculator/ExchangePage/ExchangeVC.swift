@@ -64,8 +64,8 @@ final class ExchangeVC: UIViewController {
     
     private func bindUpdateDateLabel() {
         viewModel.latestUpdateDate
-            .map { "최근갱신일: \($0)" }
-            .bind(to: exchangeView.refreshLabel.rx.text)
+            .map { $0 }
+            .bind(to: exchangeView.dateLabel.rx.text)
             .disposed(by: disposeBag)
     }
 }

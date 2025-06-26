@@ -21,44 +21,44 @@ class CountryModal: UIViewController {
     
     // MARK: 지원국가 목록 배열
     private let countries = [
-        "🇰🇷 대한민국 - KRW",
-        "🇯🇵 일본 - JPY",
-        "🇺🇸 미국 - USD",
-        "🇬🇧 영국 - GBP",
-        "🇹🇭 태국 - THB",
-        "🇲🇾 말레이시아 - MYR",
-        "🇸🇬 싱가포르 - SGD",
-        "🇮🇩 인도네시아 - IDR",
-        "🇦🇺 호주 - AUD",
-        "🇹🇷 튀르키예 - TRY",
-        "🇿🇦 남아프리카공화국 - ZAR",
-        "🇨🇿 체코 - CZK",
-        "🇭🇺 헝가리 - HUF",
-        "🇧🇬 불가리아 - BGN",
-        "🇨🇭 스위스 - CHF",
-        "🇩🇪 독일 - EUR",
-        "🇳🇱 네덜란드 - EUR",
-        "🇧🇪 벨기에 - EUR",
-        "🇫🇷 프랑스 - EUR",
-        "🇪🇸 스페인 - EUR",
-        "🇵🇹 포르투갈 - EUR",
-        "🇮🇪 아일랜드 - EUR",
-        "🇦🇹 오스트리아 - EUR",
-        "🇭🇷 크로아티아 - EUR",
-        "🇮🇹 이탈리아 - EUR",
-        "🇬🇷 그리스 - EUR",
-        "🇸🇪 스웨덴 - SEK",
-        "🇩🇰 덴마크 - DKK",
-        "🇳🇴 노르웨이 - NOK",
-        "🇫🇮 핀란드 - EUR",
-        "🇲🇽 멕시코 - MXN",
-        "🇧🇷 브라질 - BRL",
-        "🇵🇱 폴란드 - PLN",
-        "🇷🇴 루마니아 - RON",
-        "🇮🇸 아이슬란드 - ISK",
-        "🇷🇺 러시아 - RUB",
-        "🇮🇱 이스라엘 - ILS",
-        "🇮🇳 인도 - INR"
+        "🇰🇷 \(NSLocalizedString("South Korea - KRW", comment: ""))",
+        "🇯🇵 \(NSLocalizedString("Japan - JPY", comment: ""))",
+        "🇺🇸 \(NSLocalizedString("USA - USD", comment: ""))",
+        "🇬🇧 \(NSLocalizedString("UK - GBP", comment: ""))",
+        "🇦🇺 \(NSLocalizedString("Australia - AUD", comment: ""))",
+        "🇩🇪 \(NSLocalizedString("Germany - EUR", comment: ""))",
+        "🇳🇱 \(NSLocalizedString("Netherlands - EUR", comment: ""))",
+        "🇧🇪 \(NSLocalizedString("Belgium - EUR", comment: ""))",
+        "🇫🇷 \(NSLocalizedString("France - EUR", comment: ""))",
+        "🇪🇸 \(NSLocalizedString("Spain - EUR", comment: ""))",
+        "🇵🇹 \(NSLocalizedString("Portugal - EUR", comment: ""))",
+        "🇮🇪 \(NSLocalizedString("Ireland - EUR", comment: ""))",
+        "🇦🇹 \(NSLocalizedString("Austria - EUR", comment: ""))",
+        "🇭🇷 \(NSLocalizedString("Croatia - EUR", comment: ""))",
+        "🇮🇹 \(NSLocalizedString("Italy - EUR", comment: ""))",
+        "🇬🇷 \(NSLocalizedString("Greece - EUR", comment: ""))",
+        "🇸🇪 \(NSLocalizedString("Sweden - SEK", comment: ""))",
+        "🇩🇰 \(NSLocalizedString("Denmark - DKK", comment: ""))",
+        "🇳🇴 \(NSLocalizedString("Norway - NOK", comment: ""))",
+        "🇫🇮 \(NSLocalizedString("Finland - EUR", comment: ""))",
+        "🇮🇸 \(NSLocalizedString("Iceland - ISK", comment: ""))",
+        "🇨🇭 \(NSLocalizedString("Switzerland - CHF", comment: ""))",
+        "🇨🇿 \(NSLocalizedString("Czech - CZK", comment: ""))",
+        "🇭🇺 \(NSLocalizedString("Hungary - HUF", comment: ""))",
+        "🇧🇬 \(NSLocalizedString("Bulgaria - BGN", comment: ""))",
+        "🇵🇱 \(NSLocalizedString("Poland - PLN", comment: ""))",
+        "🇷🇴 \(NSLocalizedString("Romania - RON", comment: ""))",
+        "🇹🇷 \(NSLocalizedString("Türkiye - TRY", comment: ""))",
+        "🇷🇺 \(NSLocalizedString("Russia - RUB", comment: ""))",
+        "🇹🇭 \(NSLocalizedString("Thailand - THB", comment: ""))",
+        "🇲🇾 \(NSLocalizedString("Malaysia - MYR", comment: ""))",
+        "🇸🇬 \(NSLocalizedString("Singapore - SGD", comment: ""))",
+        "🇮🇩 \(NSLocalizedString("Indonesia - IDR", comment: ""))",
+        "🇮🇳 \(NSLocalizedString("India - INR", comment: ""))",
+        "🇮🇱 \(NSLocalizedString("Israel - ILS", comment: ""))",
+        "🇲🇽 \(NSLocalizedString("Mexico - MXN", comment: ""))",
+        "🇧🇷 \(NSLocalizedString("Brazil - BRL", comment: ""))",
+        "🇿🇦 \(NSLocalizedString("South Africa - ZAR", comment: ""))"
     ]
     
     private let tableView = UITableView().then {
@@ -128,14 +128,14 @@ extension CountryModal: UITableViewDelegate {
         print("\(countries[indexPath.row])") // 선택된 국가
         
         if let tag = selectedTextFieldTag {
-            // tag == 2 (여행국가)에서만 USD/GBP 제한 적용
-            if tag == 2 && (selectedCountry.contains("USD") || selectedCountry.contains("GBP")) {
+            // tag == 1 (여행국가)에서만 USD/GBP 제한 적용
+            if tag == 1 && (selectedCountry.contains("USD") || selectedCountry.contains("GBP")) {
                 let alert = UIAlertController(
-                    title: "알림",
-                    message: "해당 국가는 택스리펀을 하지 않습니다.",
+                    title: "\(NSLocalizedString("Notice", comment: ""))",
+                    message: "\(NSLocalizedString("This country does not provide tax refund.", comment: ""))",
                     preferredStyle: .alert
                 )
-                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: .default, handler: nil))
                 present(alert, animated: true, completion: nil)
                 tableView.deselectRow(at: indexPath, animated: true)
                 return
