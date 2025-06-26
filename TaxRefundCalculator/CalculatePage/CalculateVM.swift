@@ -13,7 +13,7 @@ class CalculateVM {
     
     let saveUserDefaults = SaveUserDefaults()
     
-    // MARK: userDefaults 조회 메서드
+    // MARK: - userDefaults 조회 메서드
     func getBaseCurrency() -> String? {
         return saveUserDefaults.getBaseCurrency()
     }
@@ -31,7 +31,7 @@ class CalculateVM {
         return RefundCondition.flagToPolicyMap[flag].map { (flag, $0) }
     }
     
-    // MARK: 유저디폴트에 있는 화폐들, 부가세 띄우기
+    // MARK: - 유저디폴트에 있는 화폐들, 부가세 띄우기
     // 부가세
     func getVatRate() -> String? {
         return getRefundPolicyByCurrency().map { "\($0.policy.vatRate)%" }
@@ -58,7 +58,7 @@ class CalculateVM {
         saveUserDefaults.getExchangeValue() ?? ""
     }
     
-    // MARK: Helper to parse localized number strings
+    // MARK: - 숫자 출력 방식 보정
     func parseLocalizedNumber(_ string: String) -> Double? {
         let locales = [Locale.current, Locale(identifier: "en_US"), Locale(identifier: "fr_FR"), Locale(identifier: "de_DE"), Locale(identifier: "it_IT"), Locale(identifier: "es_ES")]
         for locale in locales {
@@ -93,7 +93,7 @@ class CalculateVM {
         return true
     }
     
-    // MARK: 계산 로직
+    // MARK: - 계산 로직
     // 구매금액 변환
     func conversionPrice(priceText: String) -> Double? {
         // 단위 (ex. 1, 10, 100, 1000)
