@@ -407,10 +407,10 @@ class CalculateVC: UIViewController {
               let refundText = refundNum.text,
               let convertedPriceText = conversionBoughtPrice.text,
               let convertedText = conversionRefuncPrice.text,
-              let price = Double(priceText),
-              let refund = Double(refundText.filter { $0.isNumber || $0 == "." }),
-              let convertedPrice = Double(convertedPriceText.filter { $0.isNumber || $0 == "." }),
-              let convertedRefundPrice = Double(convertedText.filter { $0.isNumber || $0 == "." }) else {
+              let price = viewModel.parseLocalizedNumber(priceText),
+              let refund = viewModel.parseLocalizedNumber(refundText),
+              let convertedPrice = viewModel.parseLocalizedNumber(extractNumberString(convertedPriceText)),
+              let convertedRefundPrice = viewModel.parseLocalizedNumber(extractNumberString(convertedText)) else {
             print("❌ 필수 데이터 누락 또는 변환 실패")
             return
         }
@@ -432,6 +432,11 @@ class CalculateVC: UIViewController {
         print("✅ 저장 성공: \(card)")
         compliteAlert()
     }
+    
+    func extractNumberString(_ string: String) -> String {
+        return string.components(separatedBy: CharacterSet(charactersIn: "0123456789.,").inverted).joined()
+    }
+    
     // 저장 완료 Alert
     private func compliteAlert() {
         let alert = UIAlertController(title: NSLocalizedString("Save Complete", comment: ""), message: NSLocalizedString("Saved successfully.", comment: ""), preferredStyle: .alert)
