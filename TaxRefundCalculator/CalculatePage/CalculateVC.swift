@@ -168,7 +168,7 @@ class CalculateVC: UIViewController {
         $0.distribution = .fillEqually
     }
     
-    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -256,7 +256,7 @@ class CalculateVC: UIViewController {
     }
     
     
-    // MARK: - UI 구성
+    // MARK: - AutoLayout 정의
     private func configureUI() {
         view.backgroundColor = .bgPrimary
         
@@ -396,7 +396,7 @@ class CalculateVC: UIViewController {
     }
     
     
-    // MARK: 저장하기 버튼 액션
+    // MARK: - 저장하기 버튼 액션
     @objc
     private func saveBtnTapped() {
         print("saveBtnTapped")
@@ -448,7 +448,7 @@ class CalculateVC: UIViewController {
     }
     
     
-    // MARK: 계산하기 버튼 액션 (현재 진입 테스트용 버튼)
+    // MARK: 계산하기 버튼 액션
     @objc
     private func calculateBtnTapped() {
         
@@ -460,7 +460,6 @@ class CalculateVC: UIViewController {
             errorAlert1()
             return
         }
-        
         if priceText.isEmpty {
             errorAlert2()
             return
