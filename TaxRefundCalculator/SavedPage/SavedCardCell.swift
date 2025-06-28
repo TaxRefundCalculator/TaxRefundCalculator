@@ -50,7 +50,7 @@ final class SavedCardCell: UITableViewCell {
         $0.contentHorizontalAlignment = .fill
         $0.contentVerticalAlignment = .fill
     }
-
+    
     private let purchaseTitleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .medium)
         $0.text = NSLocalizedString("Purchase Amount", comment: "")
@@ -219,20 +219,22 @@ final class SavedCardCell: UITableViewCell {
         let currencyCode = parts.last ?? ""    // "THB"
         countryLabel.text = countryName
         dateLabel.text = model.date
-        purchaseAmountLabel.text = "\(model.price.roundedString()) \(currencyCode)"
-        convertedPurchaseLabel.text = "\(model.convertedPrice.roundedString()) \(model.baseCurrencyCode)"
-        refundAmountLabel.text = "\(model.refundPrice.roundedString()) \(model.country.suffix(3))"
-        convertedRefundLabel.text = "\(model.convertedRefundPrice.roundedString()) \(model.baseCurrencyCode)"
+        
+        purchaseAmountLabel.text = "\(model.price.roundedString()) \(model.currencyCode)"
+            convertedPurchaseLabel.text = "\(model.convertedPrice.roundedString()) \(model.baseCurrencyCode)"
+            refundAmountLabel.text = "\(model.refundPrice.roundedString()) \(model.currencyCode)"
+            convertedRefundLabel.text = "\(model.convertedRefundPrice.roundedString()) \(model.baseCurrencyCode)"
+        
         // 삭제 핸들러
         self.deleteHandler = onDelete
         bindDeleteButton()
     }
     
     private func bindDeleteButton() {
-            deleteButton.rx.tap
-                .subscribe(onNext: { [weak self] in
-                    self?.deleteHandler?()
-                })
-                .disposed(by: disposeBag)
-        }
+        deleteButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.deleteHandler?()
+            })
+            .disposed(by: disposeBag)
+    }
 }

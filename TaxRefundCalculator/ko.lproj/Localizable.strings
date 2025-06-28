@@ -105,8 +105,8 @@
 // MARK: - 지원국가 목록
 "South Korea - KRW" = "대한민국 - KRW";
 "Japan - JPY" = "일본 - JPY";
-"United States - USD" = "미국 - USD";
-"United Kingdom - GBP" = "영국 - GBP";
+"USA - USD" = "미국 - USD";
+"UK - GBP" = "영국 - GBP";
 "Thailand - THB" = "태국 - THB";
 "Malaysia - MYR" = "말레이시아 - MYR";
 "Singapore - SGD" = "싱가포르 - SGD";

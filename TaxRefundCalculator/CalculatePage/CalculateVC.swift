@@ -407,10 +407,10 @@ class CalculateVC: UIViewController {
               let refundText = refundNum.text,
               let convertedPriceText = conversionBoughtPrice.text,
               let convertedText = conversionRefuncPrice.text,
-              let price = Double(priceText),
-              let refund = Double(refundText.filter { $0.isNumber || $0 == "." }),
-              let convertedPrice = Double(convertedPriceText.filter { $0.isNumber || $0 == "." }),
-              let convertedRefundPrice = Double(convertedText.filter { $0.isNumber || $0 == "." }) else {
+              let price = viewModel.parseLocalizedNumber(priceText),
+              let refund = viewModel.parseLocalizedNumber(refundText),
+              let convertedPrice = viewModel.parseLocalizedNumber(extractNumberString(convertedPriceText)),
+              let convertedRefundPrice = viewModel.parseLocalizedNumber(extractNumberString(convertedText)) else {
             print("❌ 필수 데이터 누락 또는 변환 실패")
             return
         }
@@ -418,20 +418,28 @@ class CalculateVC: UIViewController {
         let card = SavedCard(
             id: UUID().uuidString,
             country: country,
-            currencyCode: currency1,
+            currencyCode: currency1.trimmingCharacters(in: .whitespaces),
             exchangeRate: exchangeRate,
             date: DateUtils.recordString(),
             price: price,
             refundPrice: refund,
             convertedPrice: convertedPrice,
             convertedRefundPrice: convertedRefundPrice,
-            baseCurrencyCode: currency2
+            baseCurrencyCode: currency2.trimmingCharacters(in: .whitespaces)
         )
 
         viewModel.saveCard(card)
         print("✅ 저장 성공: \(card)")
         compliteAlert()
     }
+    
+    /// 문자열에서 숫자, 소수점, 콤마만 추출하는 유틸리티 함수
+    /// - "약 1,234.56 USD" → "1,234.56"
+    /// - "Approx. 12.000,00 EUR" → "12.000,00"
+    func extractNumberString(_ string: String) -> String {
+        return string.components(separatedBy: CharacterSet(charactersIn: "0123456789.,").inverted).joined()
+    }
+    
     // 저장 완료 Alert
     private func compliteAlert() {
         let alert = UIAlertController(title: NSLocalizedString("Save Complete", comment: ""), message: NSLocalizedString("Saved successfully.", comment: ""), preferredStyle: .alert)
