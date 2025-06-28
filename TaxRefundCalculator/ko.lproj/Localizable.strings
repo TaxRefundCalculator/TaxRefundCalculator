@@ -24,6 +24,10 @@
 "Refund format" = "최소 %2$d %1$@ 구매 시 %3$.0f%% 환급";
 "Refund policy not found" = "환급 정책을 찾을 수 없습니다";
 
+"Notice" = "알림";
+"CurrencyCountryDuplicateError" = "기준 통화와 여행 국가는 중복될 수 없습니다.";
+"OK" = "확인";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "구매 금액 입력";

@@ -24,6 +24,10 @@
 "Refund format" = "最低%2$d%1$@の購入で%3$.0f%%還付";
 "Refund policy not found" = "還付ポリシーが見つかりませんでした";
 
+"Notice" = "お知らせ";
+"CurrencyCountryDuplicateError" = "基準通貨と旅行先の国は重複できません。";
+"OK" = "確認";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "購入金額を入力";
