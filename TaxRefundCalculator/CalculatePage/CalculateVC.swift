@@ -142,13 +142,13 @@ class CalculateVC: UIViewController {
         $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         $0.textColor = .mainTeal
     }
+    private let conversionRefuncPrice = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 16.5, weight: .regular)
+    }
     private lazy var resultStackView = UIStackView(arrangedSubviews: [refundNum, resultCurrency]).then {
         $0.axis = .horizontal
         $0.spacing = 5
         $0.distribution = .fill
-    }
-    private let conversionRefuncPrice = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 16.5, weight: .regular)
     }
     private lazy var saveBtn = UIButton().then {
         $0.backgroundColor = .mainTeal
@@ -396,44 +396,7 @@ class CalculateVC: UIViewController {
     }
     
     
-    // MARK: - 저장하기 버튼 액션
-    @objc
-    private func saveBtnTapped() {
-        print("saveBtnTapped")
-
-        guard let country = travelCountry.text,
-              let exchangeRate = exchangeRate.text,
-              let priceText = priceTextField.text,
-              let refundText = refundNum.text,
-              let convertedPriceText = conversionBoughtPrice.text,
-              let convertedText = conversionRefuncPrice.text,
-              let price = viewModel.parseLocalizedNumber(priceText),
-              let refund = viewModel.parseLocalizedNumber(refundText),
-              let convertedPrice = viewModel.parseLocalizedNumber(extractNumberString(convertedPriceText)),
-              let convertedRefundPrice = viewModel.parseLocalizedNumber(extractNumberString(convertedText)) else {
-            print("❌ 필수 데이터 누락 또는 변환 실패")
-            return
-        }
-
-        let card = SavedCard(
-            id: UUID().uuidString,
-            country: country,
-            currencyCode: currency1.trimmingCharacters(in: .whitespaces),
-            exchangeRate: exchangeRate,
-            date: DateUtils.recordString(),
-            price: price,
-            refundPrice: refund,
-            convertedPrice: convertedPrice,
-            convertedRefundPrice: convertedRefundPrice,
-            baseCurrencyCode: currency2.trimmingCharacters(in: .whitespaces)
-        )
-
-        viewModel.saveCard(card)
-        print("✅ 저장 성공: \(card)")
-        compliteAlert()
-    }
-    
-    /// 문자열에서 숫자, 소수점, 콤마만 추출하는 유틸리티 함수
+    // MARK: - 문자열에서 숫자, 소수점, 콤마만 추출하는 유틸리티 함수
     /// - "약 1,234.56 USD" → "1,234.56"
     /// - "Approx. 12.000,00 EUR" → "12.000,00"
     func extractNumberString(_ string: String) -> String {
@@ -460,7 +423,7 @@ class CalculateVC: UIViewController {
     @objc
     private func calculateBtnTapped() {
         
-        // 구매금액 입력 필드 예외처리
+        // MARK: 구매금액 입력 필드 예외처리
         guard let priceText = priceTextField.text else { return }
         let isValid = viewModel.isValidFloatingPoint(priceText)
         
@@ -503,8 +466,7 @@ class CalculateVC: UIViewController {
 
     }
     
-    
-    // MARK: - 예외처리용 얼럿
+    // MARK: 계산버튼 예외처리용 얼럿
     // 오입력 얼럿
     private func errorAlert1() {
         let alert = UIAlertController(title: NSLocalizedString("Input Error", comment: ""), message: NSLocalizedString("Only numbers and decimal points are allowed, and the decimal point can be entered only once.", comment: ""), preferredStyle: .alert)
@@ -516,6 +478,58 @@ class CalculateVC: UIViewController {
         let alert = UIAlertController(title: NSLocalizedString("Input Error", comment: ""), message: NSLocalizedString("You cannot enter blank spaces.", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - 저장하기 버튼 액션
+    @objc
+    private func saveBtnTapped() {
+        print("saveBtnTapped")
+
+        guard let country = travelCountry.text,
+              let exchangeRate = exchangeRate.text,
+              let priceText = priceTextField.text,
+              let refundText = refundNum.text,
+              let convertedPriceText = conversionBoughtPrice.text,
+              let convertedText = conversionRefuncPrice.text,
+              let price = viewModel.parseLocalizedNumber(priceText),
+              let refund = viewModel.parseLocalizedNumber(refundText),
+              let convertedPrice = viewModel.parseLocalizedNumber(extractNumberString(convertedPriceText)),
+              let convertedRefundPrice = viewModel.parseLocalizedNumber(extractNumberString(convertedText)) else {
+            print("❌ 필수 데이터 누락 또는 변환 실패")
+            return
+        }
+
+        let card = SavedCard(
+            id: UUID().uuidString,
+            country: country,
+            currencyCode: currency1.trimmingCharacters(in: .whitespaces),
+            exchangeRate: exchangeRate,
+            date: DateUtils.recordString(),
+            price: price,
+            refundPrice: refund,
+            convertedPrice: convertedPrice,
+            convertedRefundPrice: convertedRefundPrice,
+            baseCurrencyCode: currency2.trimmingCharacters(in: .whitespaces)
+        )
+
+        viewModel.saveCard(card)
+        print("✅ 저장 성공: \(card)")
+        resetValues()
+        compliteAlert()
+    }
+    
+    // 기록하기 버튼 클릭시 계산결과 값들 0으로 변경
+    func resetValues() {
+        // 구매금액 입력 필드 공백으로 변경
+        priceTextField.text = ""
+        // 계산결과 카드 값들 0으로 변경
+        if let baseCurrency = viewModel.getBaseCurrency3() {
+            priceNum.text = "0"
+            conversionBoughtPrice.text = "\(NSLocalizedString("Approx ", comment: "")) 0 \(baseCurrency)"
+            refundNum.text = "0"
+            conversionRefuncPrice.text = "\(NSLocalizedString("Approx ", comment: "")) 0 \(baseCurrency)"
+        }
     }
     
     
