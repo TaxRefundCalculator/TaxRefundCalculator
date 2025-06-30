@@ -22,7 +22,11 @@ final class SavedModalVM {
     let convertedPurchase: Driver<String>
     let convertedRefund: Driver<String>
     let exchangeRate: Driver<String>
-    let conditionText: Driver<String>
+    let vatRateText: Driver<String>
+    let minimumAmountText: Driver<String>
+    let refundMethodText: Driver<String>
+    let refundPlaceText: Driver<String>
+    let notesText: Driver<String>
     
     init(savedCard: SavedCard, policy: VATRefundPolicy) {
         self.savedCard = savedCard
@@ -35,12 +39,10 @@ final class SavedModalVM {
         self.convertedPurchase = Driver.just("\(savedCard.convertedPrice) \(savedCard.baseCurrencyCode)")
         self.convertedRefund = Driver.just("\(savedCard.convertedRefundPrice) \(savedCard.baseCurrencyCode)")
         self.exchangeRate = Driver.just(savedCard.exchangeRate)
-        self.conditionText = Driver.just("""
-        💰 \(NSLocalizedString("VAT Rate:", comment: ""))  \(policy.vatRate)%\n
-        💵 \(NSLocalizedString("Minimum Purchase Amount:", comment: ""))  \(Int(policy.minimumAmount)) \(policy.currencyCode)\n
-        🔁 \(NSLocalizedString("Refund Method:", comment: ""))  \(NSLocalizedString(policy.refundMethod, comment: ""))\n
-        📍 \(NSLocalizedString("Refund Location:", comment: ""))  \(NSLocalizedString(policy.refundPlace, comment: ""))\n
-        📌 \(NSLocalizedString("Notes:", comment: ""))  \(NSLocalizedString(policy.notes, comment: ""))
-        """)
+        self.vatRateText = Driver.just("💰 \(NSLocalizedString("VAT Rate:", comment: "")) \(policy.vatRate)%")
+        self.minimumAmountText = Driver.just("💵 \(NSLocalizedString("Minimum Purchase Amount:", comment: "")) \(Int(policy.minimumAmount)) \(policy.currencyCode)")
+        self.refundMethodText = Driver.just("🔁 \(NSLocalizedString("Refund Method:", comment: "")) \(NSLocalizedString(policy.refundMethod, comment: ""))")
+        self.refundPlaceText = Driver.just("📍 \(NSLocalizedString("Refund Location:", comment: "")) \(NSLocalizedString(policy.refundPlace, comment: ""))")
+        self.notesText = Driver.just("📌 \(NSLocalizedString("Notes:", comment: "")) \(NSLocalizedString(policy.notes, comment: ""))")
     }
 }
