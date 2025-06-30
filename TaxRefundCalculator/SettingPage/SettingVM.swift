@@ -22,6 +22,7 @@ class SettingVM {
         setupCombineBindings()
     }
     
+    
     // MARK: - Combine 환율 정보, 환폐단위 최신화
     @Published var exchangeValue: String = ""
     @Published var travelCurrencyUnit: Int = 1
@@ -36,6 +37,7 @@ class SettingVM {
     private var cancellables = Set<AnyCancellable>()
     
     let saveUserDefaults = SaveUserDefaults()
+    
     
     // MARK: - userDefaults 저장 메서드
     func saveBaseCurrency(_ baseCurrency: String) {
@@ -55,6 +57,7 @@ class SettingVM {
         self.exchangeValue = exchangeValue
     }
     
+    
     // MARK: - userDefaults 조회 메서드
     func getBaseCurrency() -> String? {
         return saveUserDefaults.getBaseCurrency()
@@ -73,11 +76,14 @@ class SettingVM {
         saveUserDefaults.getDarkModeEnabled()
     }
     
+    
     // MARK: - 기록 초기화
     func deleteAllRecords() {
         saveUserDefaults.deleteAllRecords()
     }
     
+    
+    // MARK: - 컴바인
     private func setupCombineBindings() {
         // 기준 화폐가 변경되었을 때
         $baseCurrency
@@ -86,7 +92,7 @@ class SettingVM {
                 self?.updateExchangeInfoAfterCurrencyChange()
             }
             .store(in: &cancellables)
-        // 여행 화폐도 동일하게 바인딩 (필요 시)
+        // 여행 화폐도 동일하게 바인딩
         $travelCountry
             .dropFirst()
             .sink { [weak self] _ in
