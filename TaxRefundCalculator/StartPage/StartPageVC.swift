@@ -310,22 +310,32 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
     // MARK: - 시작하기버튼 액션
     @objc
     private func startBtnTapped() {
-        let isValid = viewModel.isInputValid(
+        // 모두 선택되었는지 검증
+        let validation = viewModel.validateInput(
             baseCurrency: baseCurrencyField.text,
             travelCountry: travelCountryField.text
         )
-
-        if isValid {
+        
+        switch validation {
+        case .valid:
             let tabBar = TabBarController()
             tabBar.modalPresentationStyle = .fullScreen
             present(tabBar, animated: true, completion: nil)
             viewModel.saveDoneFIrstStep(true)
-        } else {
+        case .empty:
             let alert = UIAlertController(title: NSLocalizedString("Input Confirmation", comment: ""), message: NSLocalizedString("Please select all items.", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        case .duplicated:
+            let alert = UIAlertController(
+                title: NSLocalizedString("Notice", comment: ""),
+                message: NSLocalizedString("CurrencyCountryDuplicateError", comment: ""),
+                preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
     }
+
     
     // MARK: - 환율정보 바인딩 (Rx) - Na
     private func bindExchangeRate() {
