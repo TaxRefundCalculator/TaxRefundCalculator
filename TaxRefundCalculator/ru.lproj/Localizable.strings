@@ -24,6 +24,10 @@
 "Refund format" = "Возврат НДС %3$.0f%% при покупке от %2$d %1$@";
 "Refund policy not found" = "Политика возврата не найдена";
 
+"Notice" = "Уведомление";
+"CurrencyCountryDuplicateError" = "Базовая валюта и страна поездки не могут совпадать.";
+"OK" = "ОК";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Введите сумму покупки";

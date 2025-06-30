@@ -24,6 +24,10 @@
 "Refund format" = "Mindestens %2$d %1$@ Einkauf, %3$.0f%% Rückerstattung";
 "Refund policy not found" = "Erstattungsrichtlinie nicht gefunden";
 
+"Notice" = "Hinweis";
+"CurrencyCountryDuplicateError" = "Basiswährung und Reiseland dürfen nicht identisch sein.";
+"OK" = "OK";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Kaufbetrag eingeben";
