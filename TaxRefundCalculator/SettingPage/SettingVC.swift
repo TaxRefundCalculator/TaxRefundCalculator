@@ -49,7 +49,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
-    private let nowCurreny = UILabel().then {
+    private let nowCurrency = UILabel().then {
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -103,7 +103,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
         $0.textColor = .subText
     }
     private let versionNumber = UILabel().then {
-        $0.text = "1.0.0"
+        $0.text = "1.0.1"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
         $0.textColor = .subText
     }
@@ -113,7 +113,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
         $0.textColor = .subText
     }
     private let updateDay = UILabel().then {
-        $0.text = "2025.06.27"
+        $0.text = "2025.07.02"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
         $0.textColor = .subText
     }
@@ -136,7 +136,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
         }
         // 여행화폐 설정
         if let loadTravelCountry = viewModel.getTravelCountry() {
-            nowCurreny.text = loadTravelCountry
+            nowCurrency.text = loadTravelCountry
         }
         // 다크모드 스위치 활성화 체크
         darkModeSwitch.isOn = viewModel.getDarkModeEnabled()
@@ -163,7 +163,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
         
         settingCard.addSubview(currencyRow)
         currencyRow.addSubview(currencyChange)
-        currencyRow.addSubview(nowCurreny)
+        currencyRow.addSubview(nowCurrency)
         
         settingCard.addSubview(darkModeRow)
         darkModeRow.addSubview(darkMode)
@@ -203,7 +203,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
             $0.leading.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()
         }
-        nowCurreny.snp.makeConstraints {
+        nowCurrency.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()
         }
@@ -292,20 +292,23 @@ class SettingVC: UIViewController, CountryModalDelegate {
     // MARK: - Tap Actions 클릭시 모달로 출력
     @objc
     private func didTapBaseCurrencyRow() {
-        let vc = CountryModal()
-        vc.delegate = self
-        vc.selectedTextFieldTag = baseCurrencyRow.tag
-        vc.modalPresentationStyle = .pageSheet
-        present(vc, animated: true, completion: nil)
+        let modal = CountryModal()
+        modal.delegate = self
+        modal.selectedTextFieldTag = baseCurrencyRow.tag
+        modal.currentBaseCurrency = nowBaseCurrency.text
+        modal.currentTravelCurrency = nowCurrency.text
+        modal.modalPresentationStyle = .pageSheet
+        present(modal, animated: true, completion: nil)
     }
-
     @objc
     private func didTapTravelCountryRow() {
-        let vc = CountryModal()
-        vc.delegate = self
-        vc.selectedTextFieldTag = currencyRow.tag
-        vc.modalPresentationStyle = .pageSheet
-        present(vc, animated: true, completion: nil)
+        let modal = CountryModal()
+        modal.delegate = self
+        modal.selectedTextFieldTag = currencyRow.tag
+        modal.currentBaseCurrency = nowBaseCurrency.text
+        modal.currentTravelCurrency = nowCurrency.text
+        modal.modalPresentationStyle = .pageSheet
+        present(modal, animated: true, completion: nil)
     }
     @objc
     private func didTapResetRow() {
@@ -331,9 +334,9 @@ class SettingVC: UIViewController, CountryModalDelegate {
         switch tag {
         case 0:
             nowBaseCurrency.text = country
-            SettingVM.shared.saveBaseCurrency(country) // userDefaults에 저장 및 Combine
+            SettingVM.shared.saveBaseCurrency(country)
         case 1:
-            nowCurreny.text = country
+            nowCurrency.text = country
             SettingVM.shared.saveTravelCountry(country) // userDefaults에 저장 및 Combine
         default:
             break
