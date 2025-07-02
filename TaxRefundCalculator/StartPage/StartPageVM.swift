@@ -66,9 +66,17 @@ class StartPageVM {
     }
     
     
-    // MARK: - 텍스트 필드들 빈칸 확인 예외처리
-    func isInputValid(baseCurrency: String?, travelCountry: String?) -> Bool {
-        return !(baseCurrency?.isEmpty ?? true) && !(travelCountry?.isEmpty ?? true)
+    // MARK: - 시작하기 버튼 예외처리 로직 (빈칸, 중복 방지)
+    enum StartBtnLogic {
+        case valid // 문제없음
+        case empty // 공백 확인
+    }
+    func validateInput(baseCurrency: String?, travelCountry: String?) -> StartBtnLogic {
+        guard let base = baseCurrency, !base.isEmpty,
+              let travel = travelCountry, !travel.isEmpty else {
+            return .empty
+        }
+        return .valid
     }
     
     

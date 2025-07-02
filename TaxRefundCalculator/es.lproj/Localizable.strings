@@ -24,6 +24,10 @@
 "Refund format" = "Devolución del %3$.0f%% para una compra mínima de %2$d %1$@";
 "Refund policy not found" = "No se ha encontrado la política de reembolso";
 
+"Notice" = "Aviso";
+"CurrencyCountryDuplicateError" = "La moneda base y el país de viaje no pueden ser iguales.";
+"OK" = "Aceptar";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Introduce el importe de la compra";
