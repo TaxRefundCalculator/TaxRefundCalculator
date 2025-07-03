@@ -65,6 +65,10 @@
 
 "Close" = "닫기";
 
+"Error" = "에러";
+"PleaseCalculateFirst" = "계산을 먼저 진행해주십시오.";
+"OK" = "확인";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "총 구매 금액";

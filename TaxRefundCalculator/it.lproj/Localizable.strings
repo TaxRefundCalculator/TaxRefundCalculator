@@ -65,6 +65,10 @@
 
 "Close" = "Chiudi";
 
+"Error" = "Errore";
+"PleaseCalculateFirst" = "Si prega di effettuare prima il calcolo.";
+"OK" = "OK";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "Importo totale degli acquisti";

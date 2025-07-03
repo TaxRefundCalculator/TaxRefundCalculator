@@ -28,6 +28,10 @@
 "CurrencyCountryDuplicateError" = "Basiswährung und Reiseland dürfen nicht identisch sein.";
 "OK" = "OK";
 
+"Error" = "Fehler";
+"PleaseCalculateFirst" = "Bitte führen Sie zuerst die Berechnung durch.";
+"OK" = "OK";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Kaufbetrag eingeben";

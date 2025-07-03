@@ -65,6 +65,10 @@
 
 "Close" = "閉じる";
 
+"Error" = "エラー";
+"PleaseCalculateFirst" = "先に計算を行ってください。";
+"OK" = "確認";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "総購入金額";

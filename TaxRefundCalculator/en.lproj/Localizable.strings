@@ -64,6 +64,10 @@
 
 "Close" = "Close";
 
+"Error" = "Error";
+"PleaseCalculateFirst" = "Please calculate first.";
+"OK" = "OK";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "Total Purchase Amount";

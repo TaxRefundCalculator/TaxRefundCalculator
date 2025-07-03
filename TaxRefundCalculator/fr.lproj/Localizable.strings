@@ -65,6 +65,10 @@
 
 "Close" = "Fermer";
 
+"Error" = "Erreur";
+"PleaseCalculateFirst" = "Veuillez effectuer le calcul d'abord.";
+"OK" = "OK";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "Montant total des achats";

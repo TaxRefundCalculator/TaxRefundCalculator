@@ -65,6 +65,10 @@
 
 "Close" = "Закрыть";
 
+"Error" = "Ошибка";
+"PleaseCalculateFirst" = "Сначала выполните расчет.";
+"OK" = "ОК";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "Общая сумма покупок";

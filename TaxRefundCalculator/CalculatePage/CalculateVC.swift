@@ -481,11 +481,27 @@ class CalculateVC: UIViewController {
     }
     
     
+    // MARK: - UILabel이 비어있는지 판단(기록 저장 검증용)
+    private func isLabelEmpty(_ label: UILabel) -> Bool {
+        let text = label.text ?? ""
+        return text.isEmpty || text == "0"
+    }
+
+    
     // MARK: - 저장하기 버튼 액션
     @objc
     private func saveBtnTapped() {
         print("saveBtnTapped")
-
+        
+        // 계산을 먼저 진행했는지(계산 카드의 값들이 빈값이 아닌지) 검증
+        if isLabelEmpty(priceNum) || isLabelEmpty(refundNum) {
+            let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("PleaseCalculateFirst", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        // 데이터들이 nil이거나 변환에 실패하지 않았는지 검증
         guard let country = travelCountry.text,
               let exchangeRate = exchangeRate.text,
               let priceText = priceTextField.text,
@@ -500,6 +516,7 @@ class CalculateVC: UIViewController {
             return
         }
 
+        // SavedCard 구조체 인스턴스 생성
         let card = SavedCard(
             id: UUID().uuidString,
             country: country,
@@ -513,6 +530,7 @@ class CalculateVC: UIViewController {
             baseCurrencyCode: currency2.trimmingCharacters(in: .whitespaces)
         )
 
+        // 저장
         viewModel.saveCard(card)
         print("✅ 저장 성공: \(card)")
         resetValues()
