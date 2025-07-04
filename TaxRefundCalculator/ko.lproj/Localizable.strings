@@ -102,6 +102,9 @@
 "No" = "아니오";
 "Yes" = "예";
 
+"Reset Complete" = "초기화 완료";
+"The reset has been completed." = "초기화가 완료되었습니다.";
+
 
 // MARK: - 탭바
 "Calculate" = "계산";

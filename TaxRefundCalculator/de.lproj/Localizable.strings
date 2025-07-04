@@ -102,6 +102,9 @@
 "No" = "Nein";
 "Yes" = "Ja";
 
+"Reset Complete" = "Zurücksetzen abgeschlossen";
+"The reset has been completed." = "Das Zurücksetzen wurde abgeschlossen.";
+
 
 // MARK: - 탭바
 "Calculate" = "Berechnen";

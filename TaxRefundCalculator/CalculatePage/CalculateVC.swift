@@ -405,9 +405,10 @@ class CalculateVC: UIViewController {
     
     // 저장 완료 Alert
     private func compliteAlert() {
-        let alert = UIAlertController(title: NSLocalizedString("Save Complete", comment: ""), message: NSLocalizedString("Saved successfully.", comment: ""), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+        alert(
+            title: NSLocalizedString("Save Complete", comment: ""),
+            message: NSLocalizedString("Saved successfully.", comment: "")
+        )
     }
     
     
@@ -469,15 +470,17 @@ class CalculateVC: UIViewController {
     // MARK: 계산버튼 예외처리용 얼럿
     // 오입력 얼럿
     private func errorAlert1() {
-        let alert = UIAlertController(title: NSLocalizedString("Input Error", comment: ""), message: NSLocalizedString("Only numbers and decimal points are allowed, and the decimal point can be entered only once.", comment: ""), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+        alert(
+            title: NSLocalizedString("Input Error", comment: ""),
+            message: NSLocalizedString("Only numbers and decimal points are allowed, and the decimal point can be entered only once.", comment: "")
+        )
     }
     // 공백 입력 얼럿
     private func errorAlert2() {
-        let alert = UIAlertController(title: NSLocalizedString("Input Error", comment: ""), message: NSLocalizedString("You cannot enter blank spaces.", comment: ""), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+        alert(
+            title: NSLocalizedString("Input Error", comment: ""),
+            message: NSLocalizedString("You cannot enter blank spaces.", comment: "")
+        )
     }
     
     
@@ -495,9 +498,10 @@ class CalculateVC: UIViewController {
         
         // 계산을 먼저 진행했는지(계산 카드의 값들이 빈값이 아닌지) 검증
         if isLabelEmpty(priceNum) || isLabelEmpty(refundNum) {
-            let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("PleaseCalculateFirst", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
+            alert(
+                title: NSLocalizedString("Error", comment: ""),
+                message: NSLocalizedString("PleaseCalculateFirst", comment: "")
+            )
             return
         }
         

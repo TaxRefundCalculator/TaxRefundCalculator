@@ -101,6 +101,9 @@
 "No" = "No";
 "Yes" = "Yes";
 
+"Reset Complete" = "Reset Complete";
+"The reset has been completed." = "The reset has been completed.";
+
 
 // MARK: - 탭바
 "Calculate" = "Calculate";

@@ -102,6 +102,9 @@
 "No" = "Нет";
 "Yes" = "Да";
 
+"Reset Complete" = "Сброс завершён";
+"The reset has been completed." = "Сброс успешно завершён.";
+
 
 // MARK: - 탭바
 "Calculate" = "Расчет";

@@ -102,6 +102,9 @@
 "No" = "No";
 "Yes" = "Sì";
 
+"Reset Complete" = "Ripristino completato";
+"The reset has been completed." = "Il ripristino è stato completato.";
+
 
 // MARK: - 탭바
 "Calculate" = "Calcola";

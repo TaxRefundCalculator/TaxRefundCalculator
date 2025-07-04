@@ -102,6 +102,9 @@
 "No" = "いいえ";
 "Yes" = "はい";
 
+"Reset Complete" = "初期化完了";
+"The reset has been completed." = "初期化が完了しました。";
+
 
 // MARK: - 탭바
 "Calculate" = "計算";
