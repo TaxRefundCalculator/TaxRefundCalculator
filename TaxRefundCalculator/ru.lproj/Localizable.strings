@@ -65,6 +65,10 @@
 
 "Close" = "Закрыть";
 
+"Error" = "Ошибка";
+"PleaseCalculateFirst" = "Сначала выполните расчет.";
+"OK" = "ОК";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "Общая сумма покупок";
@@ -97,6 +101,9 @@
 "Do you want to delete all records?" = "Вы хотите удалить все записи?";
 "No" = "Нет";
 "Yes" = "Да";
+
+"Reset Complete" = "Сброс завершён";
+"The reset has been completed." = "Сброс успешно завершён.";
 
 
 // MARK: - 탭바

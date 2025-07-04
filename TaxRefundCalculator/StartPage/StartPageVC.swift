@@ -325,9 +325,10 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
             present(tabBar, animated: true, completion: nil)
             viewModel.saveDoneFIrstStep(true)
         case .empty:
-            let alert = UIAlertController(title: NSLocalizedString("Input Confirmation", comment: ""), message: NSLocalizedString("Please select all items.", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
+            alert(
+                title: NSLocalizedString("Input Confirmation", comment: ""),
+                message: NSLocalizedString("Please select all items.", comment: "")
+            )
         }
     }
 
