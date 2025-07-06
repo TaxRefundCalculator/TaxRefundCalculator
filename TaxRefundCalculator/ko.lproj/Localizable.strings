@@ -57,11 +57,11 @@
 "Saved successfully." = "저장이 완료되었습니다.";
 "OK" = "확인";
 
-"VAT Rate:" = "부가세율:";
-"Minimum Purchase Amount:" = "최소 구매금액:";
-"Refund Method:" = "환급 방법:";
-"Refund Location:" = "환급장소:";
-"Notes:" = "비고:";
+"VAT Rate" = "부가세율";
+"Minimum Purchase Amount" = "최소 구매금액";
+"Refund Method" = "환급 방법";
+"Refund Location" = "환급장소";
+"Notes" = "비고";
 
 "Close" = "닫기";
 
