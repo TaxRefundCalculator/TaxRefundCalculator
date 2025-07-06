@@ -21,7 +21,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		3B5B83722DBB40C500268C99 /* Exceptions for "TaxRefundCalculator" folder in "TaxRefundCalculator" target */ = {
+		3B6E6D522E1AE5D3006894BE /* Exceptions for "TaxRefundCalculator" folder in "TaxRefundCalculator" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				SupportingFiles/Info.plist,
@@ -34,7 +34,7 @@
 		3B5B835F2DBB40C300268C99 /* TaxRefundCalculator */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				3B5B83722DBB40C500268C99 /* Exceptions for "TaxRefundCalculator" folder in "TaxRefundCalculator" target */,
+				3B6E6D522E1AE5D3006894BE /* Exceptions for "TaxRefundCalculator" folder in "TaxRefundCalculator" target */,
 			);
 			path = TaxRefundCalculator;
 			sourceTree = "<group>";
