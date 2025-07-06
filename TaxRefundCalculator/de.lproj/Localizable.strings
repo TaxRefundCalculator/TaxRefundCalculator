@@ -32,6 +32,10 @@
 "PleaseCalculateFirst" = "Bitte führen Sie zuerst die Berechnung durch.";
 "OK" = "OK";
 
+// 데이터 미연결시
+"Network Required" = "Netzwerk erforderlich";
+"Data connection is required to proceed" = "Eine Datenverbindung ist erforderlich, um fortzufahren";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Kaufbetrag eingeben";

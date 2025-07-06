@@ -28,6 +28,9 @@
 "CurrencyCountryDuplicateError" = "Базовая валюта и страна поездки не могут совпадать.";
 "OK" = "ОК";
 
+// 데이터 미연결시
+"Network Required" = "Требуется сеть";
+"Data connection is required to proceed" = "Для продолжения требуется подключение к данным";
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Введите сумму покупки";

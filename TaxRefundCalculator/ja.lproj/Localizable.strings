@@ -28,6 +28,9 @@
 "CurrencyCountryDuplicateError" = "基準通貨と旅行先の国は重複できません。";
 "OK" = "確認";
 
+// 데이터 미연결시
+"Network Required" = "ネットワークが必要です";
+"Data connection is required to proceed" = "続行するにはデータ接続が必要です";
 
 // MARK: - 계산화면
 "Enter purchase amount" = "購入金額を入力";

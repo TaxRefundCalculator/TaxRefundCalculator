@@ -28,6 +28,10 @@
 "CurrencyCountryDuplicateError" = "Base currency and travel country cannot be the same.";
 "OK" = "OK";
 
+// 데이터 미연결시
+"Network Required" = "Network Required";
+"Data connection is required to proceed" = "Data connection is required to proceed";
+
 // MARK: - 계산화면
 "Enter purchase amount" = "Enter purchase amount";
 "Please enter numbers only." = "Please enter numbers only.";

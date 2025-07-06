@@ -28,6 +28,9 @@
 "CurrencyCountryDuplicateError" = "La valuta di base e il paese di viaggio non possono coincidere.";
 "OK" = "OK";
 
+// 데이터 미연결시
+"Network Required" = "Rete richiesta";
+"Data connection is required to proceed" = "È necessaria una connessione dati per continuare";
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Inserisci l’importo dell’acquisto";
