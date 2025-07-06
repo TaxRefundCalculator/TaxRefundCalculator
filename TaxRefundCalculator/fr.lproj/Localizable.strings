@@ -28,6 +28,9 @@
 "CurrencyCountryDuplicateError" = "La devise de base et le pays de voyage ne peuvent pas être identiques.";
 "OK" = "OK";
 
+// 데이터 미연결시
+"Network Required" = "Réseau requis";
+"Data connection is required to proceed" = "Une connexion de données est requise pour continuer";
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Saisir le montant de l’achat";
@@ -57,11 +60,11 @@
 "Saved successfully." = "L’enregistrement a été effectué avec succès.";
 "OK" = "OK";
 
-"VAT Rate:" = "Taux de TVA :";
-"Minimum Purchase Amount:" = "Montant d’achat minimum :";
-"Refund Method:" = "Méthode de remboursement :";
-"Refund Location:" = "Lieu de remboursement :";
-"Notes:" = "Remarques :";
+"VAT Rate" = "Taux de TVA";
+"Minimum Purchase Amount:" = "Montant d’achat minimum";
+"Refund Method" = "Méthode de remboursement";
+"Refund Location" = "Lieu de remboursement";
+"Notes" = "Remarques";
 
 "Close" = "Fermer";
 

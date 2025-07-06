@@ -28,6 +28,9 @@
 "CurrencyCountryDuplicateError" = "기준 통화와 여행 국가는 중복될 수 없습니다.";
 "OK" = "확인";
 
+// 데이터 미연결시
+"Network Required" = "네트워크 필요";
+"Data connection is required to proceed" = "진행하려면 데이터 연결이 필요합니다";
 
 // MARK: - 계산화면
 "Enter purchase amount" = "구매 금액 입력";
@@ -57,11 +60,11 @@
 "Saved successfully." = "저장이 완료되었습니다.";
 "OK" = "확인";
 
-"VAT Rate:" = "부가세율:";
-"Minimum Purchase Amount:" = "최소 구매금액:";
-"Refund Method:" = "환급 방법:";
-"Refund Location:" = "환급장소:";
-"Notes:" = "비고:";
+"VAT Rate" = "부가세율";
+"Minimum Purchase Amount" = "최소 구매금액";
+"Refund Method" = "환급 방법";
+"Refund Location" = "환급장소";
+"Notes" = "비고";
 
 "Close" = "닫기";
 
@@ -125,7 +128,7 @@
 "Australia - AUD" = "호주 - AUD";
 "Türkiye - TRY" = "튀르키예 - TRY";
 "South Africa - ZAR" = "남아프리카공화국 - ZAR";
-"Czech Republic - CZK" = "체코 - CZK";
+"Czech - CZK" = "체코 - CZK";
 "Hungary - HUF" = "헝가리 - HUF";
 "Bulgaria - BGN" = "불가리아 - BGN";
 "Switzerland - CHF" = "스위스 - CHF";

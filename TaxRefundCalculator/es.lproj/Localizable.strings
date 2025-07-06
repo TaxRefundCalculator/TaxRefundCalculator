@@ -28,6 +28,9 @@
 "CurrencyCountryDuplicateError" = "La moneda base y el país de viaje no pueden ser iguales.";
 "OK" = "Aceptar";
 
+// 데이터 미연결시
+"Network Required" = "Se requiere red";
+"Data connection is required to proceed" = "Se requiere una conexión de datos para continuar";
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Introduce el importe de la compra";
@@ -57,11 +60,11 @@
 "Saved successfully." = "Se ha guardado correctamente.";
 "OK" = "Aceptar";
 
-"VAT Rate:" = "Tasa de IVA:";
-"Minimum Purchase Amount:" = "Importe mínimo de compra:";
-"Refund Method:" = "Método de reembolso:";
-"Refund Location:" = "Lugar de reembolso:";
-"Notes:" = "Notas:";
+"VAT Rate" = "Tasa de IVA";
+"Minimum Purchase Amount" = "Importe mínimo de compra";
+"Refund Method" = "Método de reembolso";
+"Refund Location" = "Lugar de reembolso";
+"Notes" = "Notas";
 
 "Close" = "Cerrar";
 
