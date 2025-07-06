@@ -69,6 +69,11 @@
 "PleaseCalculateFirst" = "계산을 먼저 진행해주십시오.";
 "OK" = "확인";
 
+"Below minimum purchase" = "최소 구매금액 미달";
+"Check refund conditions" = "환급조건 확인";
+
+"Can't save because refund is not possible below minimum purchase amount." = "최소 구매금액 미달로 환급이 불가능하여 저장할 수 없습니다.";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "총 구매 금액";

@@ -69,6 +69,11 @@
 "PleaseCalculateFirst" = "先に計算を行ってください。";
 "OK" = "確認";
 
+"Below minimum purchase" = "最低購入金額未満";
+"Check refund conditions" = "還付条件確認";
+
+"Can't save because refund is not possible below minimum purchase amount." = "最低購入金額未満のため還付できず、保存できません。";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "総購入金額";

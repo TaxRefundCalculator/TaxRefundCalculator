@@ -69,6 +69,11 @@
 
 "Close" = "Schließen";
 
+"Below minimum purchase" = "Mindestkauf nicht erreicht";
+"Check refund conditions" = "Rückerstattungsbedingungen prüfen";
+
+"Can't save because refund is not possible below minimum purchase amount." = "Speichern nicht möglich, da Rückerstattung unter dem Mindestkaufbetrag nicht möglich ist.";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "Gesamtkaufbetrag";
