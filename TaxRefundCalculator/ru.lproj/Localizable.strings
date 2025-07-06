@@ -28,6 +28,9 @@
 "CurrencyCountryDuplicateError" = "Базовая валюта и страна поездки не могут совпадать.";
 "OK" = "ОК";
 
+// 데이터 미연결시
+"Network Required" = "Требуется сеть";
+"Data connection is required to proceed" = "Для продолжения требуется подключение к данным";
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Введите сумму покупки";
@@ -57,11 +60,11 @@
 "Saved successfully." = "Сохранение выполнено успешно.";
 "OK" = "ОК";
 
-"VAT Rate:" = "Ставка НДС:";
-"Minimum Purchase Amount:" = "Минимальная сумма покупки:";
-"Refund Method:" = "Способ возврата:";
-"Refund Location:" = "Место возврата:";
-"Notes:" = "Примечания:";
+"VAT Rate" = "Ставка НДС";
+"Minimum Purchase Amount" = "Минимальная сумма покупки";
+"Refund Method" = "Способ возврата";
+"Refund Location" = "Место возврата";
+"Notes" = "Примечания";
 
 "Close" = "Закрыть";
 

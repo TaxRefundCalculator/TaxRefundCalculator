@@ -81,26 +81,80 @@ final class SavedModalVC: UIViewController {
         $0.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
-    private let refundConditionView = UIView().then {
+    private let conditionScrollView = UIScrollView().then {
+        $0.showsVerticalScrollIndicator = true
+        $0.showsHorizontalScrollIndicator = false
+    }
+    
+    private let conditionContentView = UIView().then {
         $0.backgroundColor = .subButton
         $0.layer.cornerRadius = 12
     }
     
     private let rateLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15, weight: .semibold)
-        $0.text = NSLocalizedString("Applied Exchange Rate", comment: "")
+        $0.text = "💱 " +  NSLocalizedString("Applied Exchange Rate", comment: "")
         $0.textColor = .primaryText
     }
     
     private let exchangeRateLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15, weight: .medium)
-        $0.textColor = .primaryText
+        $0.textColor = .mainTeal
     }
     
-    private let conditionLabel = UILabel().then {
+    private let rateDividerView = UIView().then {
+        $0.backgroundColor = .currency.withAlphaComponent(0.3)
+        $0.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    }
+    
+    private let vatLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15, weight: .semibold)
         $0.numberOfLines = 0
-        $0.lineBreakMode = .byWordWrapping
+    }
+    
+    private let vatTextLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .regular)
+        $0.numberOfLines = 0
+    }
+    
+    private let minimumLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .semibold)
+        $0.numberOfLines = 0
+    }
+    
+    private let minimumTextLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .regular)
+        $0.numberOfLines = 0
+    }
+    
+    private let refundMethodLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .semibold)
+        $0.numberOfLines = 0
+    }
+    
+    private let methodTextLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .regular)
+        $0.numberOfLines = 0
+    }
+    
+    private let refundPlaceLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .semibold)
+        $0.numberOfLines = 0
+    }
+    
+    private let placeLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .regular)
+        $0.numberOfLines = 0
+    }
+    
+    private let notesLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .semibold)
+        $0.numberOfLines = 0
+    }
+    
+    private let notesTextLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .regular)
+        $0.numberOfLines = 0
     }
     
     private let dismissButton = UIButton(type: .system).then {
@@ -132,7 +186,6 @@ final class SavedModalVC: UIViewController {
     private func setupUI() {
         view.backgroundColor = UIColor.clear.withAlphaComponent(0.5)
         view.addSubview(containerView)
-        refundConditionView.addSubviews(rateLabel, exchangeRateLabel, conditionLabel)
         
         containerView.addSubviews(
             countryLabel, dateLabel,
@@ -140,8 +193,20 @@ final class SavedModalVC: UIViewController {
             refundTitleLabel, refundAmountLabel,
             dividerView,
             convertedPurchaseLabel, convertedRefundLabel,
-            refundConditionView,
+            conditionScrollView,
             dismissButton
+        )
+        
+        conditionScrollView.addSubview(conditionContentView)
+        
+        conditionContentView.addSubviews(
+            rateLabel, exchangeRateLabel,
+            rateDividerView,
+            vatLabel, vatTextLabel,
+            minimumLabel, minimumTextLabel,
+            refundMethodLabel, methodTextLabel,
+            refundPlaceLabel, placeLabel,
+            notesLabel, notesTextLabel
         )
         
         containerView.snp.makeConstraints {
@@ -206,28 +271,90 @@ final class SavedModalVC: UIViewController {
             $0.trailing.equalTo(refundTitleLabel)
         }
         
-        refundConditionView.snp.makeConstraints {
+        conditionScrollView.snp.makeConstraints {
             $0.top.greaterThanOrEqualTo(convertedPurchaseLabel.snp.bottom).offset(24)
             $0.leading.trailing.equalToSuperview().inset(24)
+            $0.height.equalTo(300)
+        }
+        
+        conditionContentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalTo(conditionScrollView.snp.width)
         }
         
         rateLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(16)
+            $0.top.leading.trailing.equalToSuperview().inset(16)
         }
         
         exchangeRateLabel.snp.makeConstraints {
             $0.top.equalTo(rateLabel.snp.bottom).offset(8)
-            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview().inset(40)
+            $0.trailing.equalToSuperview().inset(16)
         }
         
-        conditionLabel.snp.makeConstraints {
-            $0.top.equalTo(exchangeRateLabel.snp.bottom).offset(16)
+        rateDividerView.snp.makeConstraints {
+            $0.top.equalTo(exchangeRateLabel.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.bottom.equalToSuperview().inset(8)
+        }
+        
+        vatLabel.snp.makeConstraints {
+            $0.top.equalTo(rateDividerView.snp.bottom).offset(8)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        vatTextLabel.snp.makeConstraints {
+            $0.top.equalTo(vatLabel.snp.bottom).offset(4)
+            $0.leading.equalToSuperview().inset(40)
+            $0.trailing.equalToSuperview().inset(16)
+        }
+        
+        minimumLabel.snp.makeConstraints {
+            $0.top.equalTo(vatTextLabel.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        minimumTextLabel.snp.makeConstraints {
+            $0.top.equalTo(minimumLabel.snp.bottom).offset(4)
+            $0.leading.equalToSuperview().inset(40)
+            $0.trailing.equalToSuperview().inset(16)
+        }
+        
+        refundMethodLabel.snp.makeConstraints {
+            $0.top.equalTo(minimumTextLabel.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        methodTextLabel.snp.makeConstraints {
+            $0.top.equalTo(refundMethodLabel.snp.bottom).offset(4)
+            $0.leading.equalToSuperview().inset(40)
+            $0.trailing.equalToSuperview().inset(16)
+        }
+        
+        refundPlaceLabel.snp.makeConstraints {
+            $0.top.equalTo(methodTextLabel.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        placeLabel.snp.makeConstraints {
+            $0.top.equalTo(refundPlaceLabel.snp.bottom).offset(4)
+            $0.leading.equalToSuperview().inset(40)
+            $0.trailing.equalToSuperview().inset(16)
+        }
+        
+        notesLabel.snp.makeConstraints {
+            $0.top.equalTo(placeLabel.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        notesTextLabel.snp.makeConstraints {
+            $0.top.equalTo(notesLabel.snp.bottom).offset(4)
+            $0.leading.equalToSuperview().inset(40)
+            $0.trailing.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(16)
         }
         
         dismissButton.snp.makeConstraints {
-            $0.top.greaterThanOrEqualTo(refundConditionView.snp.bottom).offset(24)
+            $0.top.greaterThanOrEqualTo(conditionScrollView.snp.bottom).offset(24)
             $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(48)
             $0.bottom.equalToSuperview().inset(24)
@@ -248,7 +375,16 @@ final class SavedModalVC: UIViewController {
         viewModel.convertedPurchase.drive(convertedPurchaseLabel.rx.text).disposed(by: disposeBag)
         viewModel.convertedRefund.drive(convertedRefundLabel.rx.text).disposed(by: disposeBag)
         viewModel.exchangeRate.drive(exchangeRateLabel.rx.text).disposed(by: disposeBag)
-        viewModel.conditionText.drive(conditionLabel.rx.text).disposed(by: disposeBag)
+        
+        viewModel.vatRateTitle.drive(vatLabel.rx.text).disposed(by: disposeBag)
+        viewModel.vatRateValue.drive(vatTextLabel.rx.text).disposed(by: disposeBag)
+        viewModel.minimumAmountTitle.drive(minimumLabel.rx.text).disposed(by: disposeBag)
+        viewModel.minimumAmountValue.drive(minimumTextLabel.rx.text).disposed(by: disposeBag)
+        viewModel.refundMethodTitle.drive(refundMethodLabel.rx.text).disposed(by: disposeBag)
+        viewModel.refundMethodValue.drive(methodTextLabel.rx.text).disposed(by: disposeBag)
+        viewModel.refundPlaceTitle.drive(refundPlaceLabel.rx.text).disposed(by: disposeBag)
+        viewModel.refundPlaceValue.drive(placeLabel.rx.text).disposed(by: disposeBag)
+        viewModel.notesTitle.drive(notesLabel.rx.text).disposed(by: disposeBag)
+        viewModel.notesValue.drive(notesTextLabel.rx.text).disposed(by: disposeBag)
     }
 }
-
