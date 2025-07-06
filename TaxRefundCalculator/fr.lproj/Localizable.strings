@@ -60,11 +60,11 @@
 "Saved successfully." = "L’enregistrement a été effectué avec succès.";
 "OK" = "OK";
 
-"VAT Rate:" = "Taux de TVA :";
-"Minimum Purchase Amount:" = "Montant d’achat minimum :";
-"Refund Method:" = "Méthode de remboursement :";
-"Refund Location:" = "Lieu de remboursement :";
-"Notes:" = "Remarques :";
+"VAT Rate" = "Taux de TVA";
+"Minimum Purchase Amount:" = "Montant d’achat minimum";
+"Refund Method" = "Méthode de remboursement";
+"Refund Location" = "Lieu de remboursement";
+"Notes" = "Remarques";
 
 "Close" = "Fermer";
 

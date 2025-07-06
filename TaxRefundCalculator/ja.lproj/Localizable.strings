@@ -60,11 +60,11 @@
 "Saved successfully." = "保存が完了しました。";
 "OK" = "確認";
 
-"VAT Rate:" = "消費税率：";
-"Minimum Purchase Amount:" = "最低購入金額：";
-"Refund Method:" = "還付方法：";
-"Refund Location:" = "還付場所：";
-"Notes:" = "備考：";
+"VAT Rate" = "消費税率";
+"Minimum Purchase Amount" = "最低購入金額";
+"Refund Method" = "還付方法";
+"Refund Location" = "還付場所";
+"Notes" = "備考";
 
 "Close" = "閉じる";
 

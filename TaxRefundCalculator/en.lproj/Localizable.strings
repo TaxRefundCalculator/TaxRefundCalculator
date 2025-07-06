@@ -60,11 +60,11 @@
 "Saved successfully." = "Saved successfully.";
 "OK" = "OK";
 
-"VAT Rate:" = "VAT Rate:";
-"Minimum Purchase Amount:" = "Minimum Purchase Amount:";
-"Refund Method:" = "Refund Method:";
-"Refund Location:" = "Refund Location:";
-"Notes:" = "Notes:";
+"VAT Rate" = "VAT Rate";
+"Minimum Purchase Amount" = "Minimum Purchase Amount";
+"Refund Method" = "Refund Method";
+"Refund Location" = "Refund Location";
+"Notes" = "Notes";
 
 "Close" = "Close";
 

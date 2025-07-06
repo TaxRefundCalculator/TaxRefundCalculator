@@ -60,11 +60,11 @@
 "Saved successfully." = "Se ha guardado correctamente.";
 "OK" = "Aceptar";
 
-"VAT Rate:" = "Tasa de IVA:";
-"Minimum Purchase Amount:" = "Importe mínimo de compra:";
-"Refund Method:" = "Método de reembolso:";
-"Refund Location:" = "Lugar de reembolso:";
-"Notes:" = "Notas:";
+"VAT Rate" = "Tasa de IVA";
+"Minimum Purchase Amount" = "Importe mínimo de compra";
+"Refund Method" = "Método de reembolso";
+"Refund Location" = "Lugar de reembolso";
+"Notes" = "Notas";
 
 "Close" = "Cerrar";
 

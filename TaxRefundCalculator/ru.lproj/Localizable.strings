@@ -60,11 +60,11 @@
 "Saved successfully." = "Сохранение выполнено успешно.";
 "OK" = "ОК";
 
-"VAT Rate:" = "Ставка НДС:";
-"Minimum Purchase Amount:" = "Минимальная сумма покупки:";
-"Refund Method:" = "Способ возврата:";
-"Refund Location:" = "Место возврата:";
-"Notes:" = "Примечания:";
+"VAT Rate" = "Ставка НДС";
+"Minimum Purchase Amount" = "Минимальная сумма покупки";
+"Refund Method" = "Способ возврата";
+"Refund Location" = "Место возврата";
+"Notes" = "Примечания";
 
 "Close" = "Закрыть";
 

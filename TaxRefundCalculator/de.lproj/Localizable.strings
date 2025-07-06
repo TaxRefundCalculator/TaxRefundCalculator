@@ -65,11 +65,11 @@
 "Saved successfully." = "Erfolgreich gespeichert.";
 "OK" = "OK";
 
-"VAT Rate:" = "Mehrwertsteuersatz (MwSt):";
-"Minimum Purchase Amount:" = "Mindestkaufbetrag:";
-"Refund Method:" = "Erstattungsmethode:";
-"Refund Location:" = "Erstattungsstelle:";
-"Notes:" = "Hinweise:";
+"VAT Rate" = "Mehrwertsteuersatz (MwSt)";
+"Minimum Purchase Amount" = "Mindestkaufbetrag";
+"Refund Method" = "Erstattungsmethode";
+"Refund Location" = "Erstattungsstelle";
+"Notes" = "Hinweise";
 
 "Close" = "Schließen";
 
