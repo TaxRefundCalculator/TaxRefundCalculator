@@ -24,7 +24,7 @@
 		3B5B83722DBB40C500268C99 /* Exceptions for "TaxRefundCalculator" folder in "TaxRefundCalculator" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				SupportingFiles/Info.plist,
 			);
 			target = 3B5B835C2DBB40C300268C99 /* TaxRefundCalculator */;
 		};
