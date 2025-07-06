@@ -65,6 +65,10 @@
 
 "Close" = "Fermer";
 
+"Error" = "Erreur";
+"PleaseCalculateFirst" = "Veuillez effectuer le calcul d'abord.";
+"OK" = "OK";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "Montant total des achats";
@@ -97,6 +101,9 @@
 "Do you want to delete all records?" = "Voulez-vous supprimer tous les enregistrements ?";
 "No" = "Non";
 "Yes" = "Oui";
+
+"Reset Complete" = "Réinitialisation terminée";
+"The reset has been completed." = "La réinitialisation est terminée.";
 
 
 // MARK: - 탭바

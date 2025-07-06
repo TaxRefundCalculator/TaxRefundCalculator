@@ -70,15 +70,11 @@ class StartPageVM {
     enum StartBtnLogic {
         case valid // 문제없음
         case empty // 공백 확인
-        case duplicated // 중복 확인
     }
     func validateInput(baseCurrency: String?, travelCountry: String?) -> StartBtnLogic {
         guard let base = baseCurrency, !base.isEmpty,
               let travel = travelCountry, !travel.isEmpty else {
             return .empty
-        }
-        if base == travel {
-            return .duplicated
         }
         return .valid
     }
