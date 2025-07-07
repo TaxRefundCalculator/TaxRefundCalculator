@@ -134,37 +134,28 @@ extension CountryModal: UITableViewDelegate {
         if let tag = selectedTextFieldTag {
             // MARK: 중복 선택 체크
             if tag == 0 && selectedCountry == currentTravelCurrency {
-                let alert = UIAlertController(
-                    title: "\(NSLocalizedString("Notice", comment: ""))",
-                    message: "\(NSLocalizedString("CurrencyCountryDuplicateError", comment: ""))",
-                    preferredStyle: .alert
+                alert(
+                    title: NSLocalizedString("Notice", comment: ""),
+                    message: NSLocalizedString("CurrencyCountryDuplicateError", comment: "")
                 )
-                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
                 tableView.deselectRow(at: indexPath, animated: true)
                 return
             }
             if tag == 1 && selectedCountry == currentBaseCurrency {
-                let alert = UIAlertController(
-                    title: "\(NSLocalizedString("Notice", comment: ""))",
-                    message: "\(NSLocalizedString("CurrencyCountryDuplicateError", comment: ""))",
-                    preferredStyle: .alert
+                alert(
+                    title: NSLocalizedString("Notice", comment: ""),
+                    message: NSLocalizedString("CurrencyCountryDuplicateError", comment: "")
                 )
-                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
                 tableView.deselectRow(at: indexPath, animated: true)
                 return
             }
             
             // MARK: tag == 1 (여행국가)에서만 USD/GBP 제한 적용
             if tag == 1 && (selectedCountry.contains("USD") || selectedCountry.contains("GBP")) {
-                let alert = UIAlertController(
-                    title: "\(NSLocalizedString("Notice", comment: ""))",
-                    message: "\(NSLocalizedString("This country does not provide tax refund.", comment: ""))",
-                    preferredStyle: .alert
+                alert(
+                    title: NSLocalizedString("Notice", comment: ""),
+                    message: NSLocalizedString("This country does not provide tax refund.", comment: "")
                 )
-                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
                 tableView.deselectRow(at: indexPath, animated: true)
                 return
             }

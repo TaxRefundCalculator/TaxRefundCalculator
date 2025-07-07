@@ -13,11 +13,13 @@
 <br>
 
 ## 📱 프로젝트 소개
-**택스리펀 계산기**는 여행의 가장 큰 즐거움 중 하나인, 쇼핑을 서포트하기 위해 태어났습니다.  
-당일의 환율을 기반으로, 구매금액만 입력하면 얼만큼의 택스리펀을 받을 수 있는지,  
-물건의 가격은 내가 사용하는 화폐로 얼마인지, 환급금은 내 화폐로 얼마인지 한 눈에 보여줍니다.  
-또한 구매했던 물건들을 기록하여 총 얼마를 썼고, 얼마를 환급했는지도 한번에 확인할 수 있는 여행의 필수 앱입니다.  
-8개 언어 지원, 119개국에 글로벌 출시하였습니다.
+
+
+**택스리펀 계산기**는 해외여행 중 발생하는 부가세 환급(Tax Refund)을 실시간 환율로 쉽게 계산해주는 앱입니다.
+
+- 구매금액 입력만으로 환급 예상 금액과 내 화폐 기준 가격을 확인 가능
+- 환급액 기록 및 여행별 지출 정리
+- 8개 언어 지원 / 119개국 출시
 
 <br>
 
@@ -59,18 +61,78 @@
 - **Then**: 선언형 UI 구성
 - **Firebase Firestore**: 데이터베이스
 - **Combine**: 비동기 데이터 스트림 및 이벤트 처리
-- **RxSwift**: 비동기 및 이벤트 기반 프로그래밍, 리액티브 확장
+- **RxSwift + RxCocoa**: 비동기 스트림 처리 및 UI 반응형 바인딩
+- **UserDefaults**: 로컬 저장소 관리
 
 ### 디자인 패턴
 - **Protocol-Delegate**: 모달 및 팝업 데이터 전달
 - **MVVM**: 화면(View)과 데이터(Model) 분리, ViewModel을 통한 데이터 바인딩
 - **Singleton**: 전역에서 단 하나의 인스턴스만 사용
 
+### API
+- **FreeCurrencyAPI**: 실시간 환율 API
+
 <br>
 
 ## 🛠 개발 환경
 - iOS 16.0+
 - Swift 5.0+
+  
+<br>
+
+## 🧠 프로젝트 아키텍처 (MVVM)
+
+<img width="882" alt="스크린샷 2025-07-06 오후 8 27 23" src="https://github.com/user-attachments/assets/93e095be-1673-402b-9cc0-4033ae816739" />
+
+---
+
+### 📦 ViewModel별 의존성 요약
+
+| ViewModel     | 사용하는 모델/서비스                                       |
+|---------------|-------------------------------------------------------------|
+| `StartVM`     | ExchangeRateAPIService, ExchangeSyncManager, FirebaseExchangeService, RefundCondition, CurrencyDisplayUnit |
+| `CalculateVM` | RefundCondition, CurrencyDisplayUnit                         |
+| `SavedVM`     | SavedCard, SaveUserDefaults, RefundCondition                 |
+| `SavedModalVM`| SaveUserDefaults                                             |
+| `ExchangeVM`  | FirebaseExchangeService, CurrencyDisplayUnit                 |
+| `SettingVM`   | FirebaseExchangeService, SaveUserDefaults                    |
+
+<br>
+
+## 📡 데이터 흐름
+
+### 📌 앱 실행 시 초기 환율 동기화
+앱이 시작될 때, ExchangeSyncManager를 통해 오늘 날짜 기준 환율 데이터를 Firebase에서 조회합니다.
+
+- ✅ 데이터 존재 → 아무 동작 없음
+- ❌ 데이터 없음 → 외부 환율 API에서 요청 후 Firebase에 저장
+
+<img width="870" alt="스크린샷 2025-07-06 오후 8 56 43" src="https://github.com/user-attachments/assets/dcfb1d1c-4bea-4b1e-a6ba-f95e72487b9c" />
+
+### 📌 사용자 상호작용 – 기준 통화 및 여행 국가 선택
+사용자가 기준 통화 또는 여행 국가를 선택하면, Firebase에서 동기화된 환율을 기반으로 실시간 환율을 표시합니다.
+
+<img width="875" alt="스크린샷 2025-07-06 오후 8 37 09" src="https://github.com/user-attachments/assets/049822e6-e2a0-4835-a43c-2da3ce93aaee" />
+
+## 🗂 프로젝트 폴더 구조
+```
+TaxRefundCalculator/
+├── Application/              # AppDelegate, SceneDelegate
+├── Resources/                # Assets, LaunchScreen
+├── SupportingFiles/          # Info.plist, GoogleService-Info.plist
+├── API/                      # API 통신 계층
+├── CalculatePage/            # 계산 화면
+├── ExchangePage/             # 환율 화면
+├── Extension/                # UIView 관련 확장
+├── Modals/                   # 팝업 모달
+├── Models/                   # 데이터 모델
+├── SavedPage/                # 저장된 계산 기록
+├── SettingPage/              # 설정
+├── StartPage/                # 앱 시작 화면
+├── TabBar/                   # 탭바 컨트롤러
+├── Utils/                    # 유틸리티
+└── Localizable/              # 다국어 지원
+```
 
 <br>
 

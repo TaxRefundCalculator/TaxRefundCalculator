@@ -28,6 +28,14 @@
 "CurrencyCountryDuplicateError" = "Basiswährung und Reiseland dürfen nicht identisch sein.";
 "OK" = "OK";
 
+"Error" = "Fehler";
+"PleaseCalculateFirst" = "Bitte führen Sie zuerst die Berechnung durch.";
+"OK" = "OK";
+
+// 데이터 미연결시
+"Network Required" = "Netzwerk erforderlich";
+"Data connection is required to proceed" = "Eine Datenverbindung ist erforderlich, um fortzufahren";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Kaufbetrag eingeben";
@@ -57,11 +65,11 @@
 "Saved successfully." = "Erfolgreich gespeichert.";
 "OK" = "OK";
 
-"VAT Rate:" = "Mehrwertsteuersatz (MwSt):";
-"Minimum Purchase Amount:" = "Mindestkaufbetrag:";
-"Refund Method:" = "Erstattungsmethode:";
-"Refund Location:" = "Erstattungsstelle:";
-"Notes:" = "Hinweise:";
+"VAT Rate" = "Mehrwertsteuersatz (MwSt)";
+"Minimum Purchase Amount" = "Mindestkaufbetrag";
+"Refund Method" = "Erstattungsmethode";
+"Refund Location" = "Erstattungsstelle";
+"Notes" = "Hinweise";
 
 "Close" = "Schließen";
 
@@ -97,6 +105,9 @@
 "Do you want to delete all records?" = "Möchten Sie alle Einträge löschen?";
 "No" = "Nein";
 "Yes" = "Ja";
+
+"Reset Complete" = "Zurücksetzen abgeschlossen";
+"The reset has been completed." = "Das Zurücksetzen wurde abgeschlossen.";
 
 
 // MARK: - 탭바

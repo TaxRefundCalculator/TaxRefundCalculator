@@ -312,19 +312,18 @@ class SettingVC: UIViewController, CountryModalDelegate {
     }
     @objc
     private func didTapResetRow() {
-        let alert = UIAlertController(title: NSLocalizedString("Delete Records", comment: ""), message: NSLocalizedString("Do you want to delete all records?", comment: ""), preferredStyle: .alert)
-            
-            let confirmAction = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive) { _ in
-                
-                self.viewModel.deleteAllRecords()
+        self.confirmAlert(
+            title: NSLocalizedString("Delete Records", comment: ""),
+            message: NSLocalizedString("Do you want to delete all records?", comment: ""),
+            confirmHandler: { [weak self] in
+                self?.viewModel.deleteAllRecords()
                 print("기록 삭제됨")
+                self?.alert(
+                    title: NSLocalizedString("Reset Complete", comment: ""),
+                    message: NSLocalizedString("The reset has been completed.", comment: "")
+                )
             }
-            let cancelAction = UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil)
-            
-            alert.addAction(confirmAction)
-            alert.addAction(cancelAction)
-            
-            present(alert, animated: true, completion: nil)
+        )
     }
 
 
