@@ -94,6 +94,10 @@ class RefundModal: UIViewController {
     // userDefaults에 저장되어있는 국기 대조 후 출력
     private func loadRefundPolicy() {
         guard let (flag, policy) = viewModel.getRefundPolicyByCurrency() else {
+            alert(
+                title: NSLocalizedString("Error", comment: ""),
+                message: NSLocalizedString("Error", comment: "")
+            )
             print("환급 정책을 찾을 수 없습니다.")
             return
         }
