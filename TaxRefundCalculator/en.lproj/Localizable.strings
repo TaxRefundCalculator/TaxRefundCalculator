@@ -72,7 +72,7 @@
 "PleaseCalculateFirst" = "Please calculate first.";
 "OK" = "OK";
 
-"Below minimum purchase" = "Below minimum purchase";
+"Below minimum purchase" = "Below min. amount";
 "Check refund conditions" = "Check refund conditions";
 
 "Can't save because refund is not possible below minimum purchase amount." = "Can't save because refund is not possible below minimum purchase amount.";
