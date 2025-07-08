@@ -72,6 +72,11 @@
 "PleaseCalculateFirst" = "Сначала выполните расчет.";
 "OK" = "ОК";
 
+"Below minimum purchase" = "Мин. покупка";
+"Check refund conditions" = "Проверить условия возврата";
+
+"Can't save because refund is not possible below minimum purchase amount." = "Невозможно сохранить: возврат невозможен при покупке ниже минимума.";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "Общая сумма покупок";

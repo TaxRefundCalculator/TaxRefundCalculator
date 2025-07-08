@@ -103,7 +103,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
         $0.textColor = .subText
     }
     private let versionNumber = UILabel().then {
-        $0.text = "1.0.2"
+        $0.text = "1.0.3"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
         $0.textColor = .subText
     }
@@ -113,7 +113,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
         $0.textColor = .subText
     }
     private let updateDay = UILabel().then {
-        $0.text = "2025.07.06"
+        $0.text = "2025.07.08"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
         $0.textColor = .subText
     }

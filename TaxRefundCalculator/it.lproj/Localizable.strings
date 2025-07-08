@@ -72,6 +72,11 @@
 "PleaseCalculateFirst" = "Si prega di effettuare prima il calcolo.";
 "OK" = "OK";
 
+"Below minimum purchase" = "Sotto acquisto minimo";
+"Check refund conditions" = "Verifica condizioni rimborso";
+
+"Can't save because refund is not possible below minimum purchase amount." = "Impossibile salvare: rimborso non possibile sotto l’acquisto minimo.";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "Importo totale degli acquisti";
