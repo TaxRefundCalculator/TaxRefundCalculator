@@ -109,7 +109,7 @@ class RefundModal: UIViewController {
         vatValueLabel.text = "\(policy.vatRate)%"
         // 최소 구매금액
         minimumLabel.text = "💵 \(NSLocalizedString("Minimum Purchase Amount", comment: ""))"
-        minimumValueLabel.text = "\(Int(policy.minimumAmount)) \(policy.currencyCode)"
+        minimumValueLabel.text = "\(policy.minimumAmount.roundedString()) \(policy.currencyCode)"
         // 환급 방법
         refundMethodLabel.text = "🔁 \(NSLocalizedString("Refund Method", comment: ""))"
         refundMethodValueLabel.text = NSLocalizedString(policy.refundMethod, comment: "")
