@@ -72,6 +72,11 @@
 "PleaseCalculateFirst" = "Please calculate first.";
 "OK" = "OK";
 
+"Below minimum purchase" = "Below min. amount";
+"Check refund conditions" = "Check refund conditions";
+
+"Can't save because refund is not possible below minimum purchase amount." = "Can't save because refund is not possible below minimum purchase amount.";
+
 
 // MARK: - 기록화면
 "Total Purchase Amount" = "Total Purchase Amount";
