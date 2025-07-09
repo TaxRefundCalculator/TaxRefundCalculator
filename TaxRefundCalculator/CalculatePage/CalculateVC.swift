@@ -138,17 +138,17 @@ class CalculateVC: UIViewController {
         $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         $0.textColor = .mainTeal
     }
-    private let resultCurrency = UILabel().then {
+    private let refundCurrency = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         $0.textColor = .mainTeal
     }
-    private lazy var resultStackView = UIStackView(arrangedSubviews: [refundNum, resultCurrency]).then {
+    private let conversionRefundPrice = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 16.5, weight: .regular)
+    }
+    private lazy var resultStackView = UIStackView(arrangedSubviews: [refundNum, refundCurrency]).then {
         $0.axis = .horizontal
         $0.spacing = 5
         $0.distribution = .fill
-    }
-    private let conversionRefuncPrice = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 16.5, weight: .regular)
     }
     private lazy var saveBtn = UIButton().then {
         $0.backgroundColor = .mainTeal
@@ -188,7 +188,7 @@ class CalculateVC: UIViewController {
                 let code = value.suffix(3)
                 self?.currency2 = "\(code)"
                 self?.conversionBoughtPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) 0 \(code)"
-                self?.conversionRefuncPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) 0 \(code)"
+                self?.conversionRefundPrice.text = "\(NSLocalizedString("Approx. ", comment: "")) 0 \(code)"
             }
             .store(in: &cancellables)
         
@@ -202,7 +202,7 @@ class CalculateVC: UIViewController {
                 self?.currency1 = " \(code)"           // 환율표시 (예: " JPY")
                 self?.textFieldLabel.text = "\(code)    "   // 텍스트필드 우측 표시
                 self?.priceCurrency.text = " \(code)"      // 구매금액 통화 표시
-                self?.resultCurrency.text = " \(code)"      // 예상 환급금액 통화 표시
+                self?.refundCurrency.text = " \(code)"      // 예상 환급금액 통화 표시
             }
             .store(in: &cancellables) // 구독관리로 메모리관리
         
@@ -237,14 +237,14 @@ class CalculateVC: UIViewController {
             priceCurrency.text = " \(savedTravelCountry.code)"
             currency1 = " \(savedTravelCountry.code)"
             textFieldLabel.text = "\(savedTravelCountry.code)    "
-            resultCurrency.text = " \(savedTravelCountry.code)"
+            refundCurrency.text = " \(savedTravelCountry.code)"
         }
         
         // 기준화폐 가져오기
         if let savedBaseCurrency = viewModel.getBaseCurrency3() {
             currency2 = " \(savedBaseCurrency)"
             conversionBoughtPrice.text = "\(NSLocalizedString("Approx ", comment: "")) 0 \(savedBaseCurrency)"
-            conversionRefuncPrice.text = "\(NSLocalizedString("Approx ", comment: "")) 0 \(savedBaseCurrency)"
+            conversionRefundPrice.text = "\(NSLocalizedString("Approx ", comment: "")) 0 \(savedBaseCurrency)"
         }
         
         // 부가세율 가져오기
@@ -343,7 +343,7 @@ class CalculateVC: UIViewController {
         calculateCard.addSubview(conversionBoughtPrice)
         calculateCard.addSubview(expectation)
         calculateCard.addSubview(resultStackView)
-        calculateCard.addSubview(conversionRefuncPrice)
+        calculateCard.addSubview(conversionRefundPrice)
         calculateCard.addSubview(btnStackView)
         
         vatLabel.snp.makeConstraints {
@@ -384,7 +384,7 @@ class CalculateVC: UIViewController {
             $0.top.equalTo(expectation.snp.bottom).offset(10)
             $0.leading.equalToSuperview().inset(20)
         }
-        conversionRefuncPrice.snp.makeConstraints {
+        conversionRefundPrice.snp.makeConstraints {
             $0.top.equalTo(resultStackView.snp.bottom).offset(5)
             $0.leading.equalToSuperview().inset(20)
         }
@@ -396,17 +396,156 @@ class CalculateVC: UIViewController {
     }
     
     
+    // MARK: - 유틸리티 함수(문자열에서 숫자, 소수점, 콤마만 추출)
+    /// - "약 1,234.56 USD" → "1,234.56"
+    /// - "Approx. 12.000,00 EUR" → "12.000,00"
+    func extractNumberString(_ string: String) -> String {
+        return string.components(separatedBy: CharacterSet(charactersIn: "0123456789.,").inverted).joined()
+    }
+    
+    // 저장 완료 Alert
+    private func compliteAlert() {
+        alert(
+            title: NSLocalizedString("Save Complete", comment: ""),
+            message: NSLocalizedString("Saved successfully.", comment: "")
+        )
+    }
+    
+    
+    // MARK: - 환급조건 보기 버튼 액션
+    @objc
+    private func checkBtnTapped() {
+        let modal = RefundModal()
+        present(modal, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - 계산하기 버튼 액션
+    @objc
+    private func calculateBtnTapped() {
+        
+        // MARK: 구매금액 입력 필드 예외처리
+        guard let priceText = priceTextField.text else { return }
+        let isValid = viewModel.isValidFloatingPoint(priceText)
+        
+        if !isValid {
+            errorAlert1()
+            return
+        }
+        if priceText.isEmpty {
+            errorAlert2()
+            return
+        }
+        
+        // MARK: 구매금액 계산 로직
+        if let priceValue = Double(priceText) { // 구매금액 그대로 입력
+                priceNum.text = priceValue.roundedString()
+            }
+        let currencyCode = viewModel.getBaseCurrency3() ?? "" // 화폐단위 추출
+        if let result = viewModel.conversionPrice(priceText: priceText) {
+            conversionBoughtPrice.text = "\(NSLocalizedString("Approx ", comment: "")) \(result.roundedString()) \(currencyCode)"
+        } else {
+            conversionBoughtPrice.text = NSLocalizedString("Input Error", comment: "")
+        }
+        
+        // MARK: 최소 구매 금액 검증
+        guard let travelCountryText = travelCountry.text,
+              let flag = travelCountryText.first else { return }
+        let flagString = String(flag)
+        
+        // 환급 정책 불러오기
+        guard let policy = RefundCondition.flagToPolicyMap[flagString] else { return }
+        
+        // 최소 주문금액 비교
+        guard let priceValue = Double(priceText) else { return }
+        if priceValue < policy.minimumAmount {
+            refundNum.text = NSLocalizedString("Below minimum purchase", comment: "")
+            refundCurrency.text = ""
+            conversionRefundPrice.text = NSLocalizedString("Check refund conditions", comment: "")
+            
+            print("❌ 최소 주문금액 미달: \(policy.minimumAmount) 이상이어야 환급 가능") // 디버깅용
+            return
+        }
+        
+        // MARK: 환급금액(현지화폐) 계산 로직
+        if let refund = viewModel.calculateVatRefund(priceText: priceText) {
+            refundNum.text = refund.roundedString()
+            // 환급금액을 환율로 변환해서 conversionRefuncPrice에 표시
+            if let refundInBase = viewModel.convertRefundToBaseCurrency(refund: refund) {
+                conversionRefundPrice.text = "\(NSLocalizedString("Approx ", comment: "")) \(refundInBase.roundedString()) \(currencyCode)"
+            } else {
+                conversionRefundPrice.text = NSLocalizedString("Input Error", comment: "")
+            }
+        } else {
+            refundNum.text = NSLocalizedString("Calculate", comment: "")
+            conversionRefundPrice.text = ""
+        }
+    }
+    
+    // MARK: 계산버튼 예외처리용 얼럿
+    // 오입력 얼럿
+    private func errorAlert1() {
+        alert(
+            title: NSLocalizedString("Input Error", comment: ""),
+            message: NSLocalizedString("Only numbers and decimal points are allowed, and the decimal point can be entered only once.", comment: "")
+        )
+    }
+    // 공백 입력 얼럿
+    private func errorAlert2() {
+        alert(
+            title: NSLocalizedString("Input Error", comment: ""),
+            message: NSLocalizedString("You cannot enter blank spaces.", comment: "")
+        )
+    }
+    
+    
+    // MARK: - UILabel이 비어있는지 판단(기록 저장 검증용)
+    private func isLabelEmpty(_ label: UILabel) -> Bool {
+        let text = label.text ?? ""
+        return text.isEmpty || text == "0"
+    }
+
+    
     // MARK: - 저장하기 버튼 액션
     @objc
     private func saveBtnTapped() {
         print("saveBtnTapped")
-
+        
+        // MARK: 계산을 먼저 진행했는지(계산 카드의 값들이 빈값이 아닌지) 검증
+        if isLabelEmpty(priceNum) || isLabelEmpty(refundNum) {
+            alert(
+                title: NSLocalizedString("Error", comment: ""),
+                message: NSLocalizedString("PleaseCalculateFirst", comment: "")
+            )
+            return
+        }
+        
+        // MARK: 최소 구매금액 충족 검증 로직
+        guard let priceText = priceTextField.text,
+              let priceValue = Double(priceText),
+              let travelCountryText = travelCountry.text,
+              let flag = travelCountryText.first else { return }
+        let flagString = String(flag)
+        
+        // 정책 불러오기
+        guard let policy = RefundCondition.flagToPolicyMap[flagString] else { return }
+        
+        // 최소 주문금액 미달 체크
+        if priceValue < policy.minimumAmount {
+            alert(
+                title: NSLocalizedString("Notice", comment: ""),
+                message: NSLocalizedString("Can't save because refund is not possible below minimum purchase amount.", comment: "")
+            )
+            return
+        }
+        
+        // MARK: 데이터 검증 (nil이거나 변환에 실패하지 않았는지)
         guard let country = travelCountry.text,
               let exchangeRate = exchangeRate.text,
               let priceText = priceTextField.text,
               let refundText = refundNum.text,
               let convertedPriceText = conversionBoughtPrice.text,
-              let convertedText = conversionRefuncPrice.text,
+              let convertedText = conversionRefundPrice.text,
               let price = viewModel.parseLocalizedNumber(priceText),
               let refund = viewModel.parseLocalizedNumber(refundText),
               let convertedPrice = viewModel.parseLocalizedNumber(extractNumberString(convertedPriceText)),
@@ -415,6 +554,7 @@ class CalculateVC: UIViewController {
             return
         }
 
+        // SavedCard 구조체 인스턴스 생성
         let card = SavedCard(
             id: UUID().uuidString,
             country: country,
@@ -428,94 +568,24 @@ class CalculateVC: UIViewController {
             baseCurrencyCode: currency2.trimmingCharacters(in: .whitespaces)
         )
 
+        // 저장
         viewModel.saveCard(card)
         print("✅ 저장 성공: \(card)")
+        resetValues()
         compliteAlert()
     }
     
-    /// 문자열에서 숫자, 소수점, 콤마만 추출하는 유틸리티 함수
-    /// - "약 1,234.56 USD" → "1,234.56"
-    /// - "Approx. 12.000,00 EUR" → "12.000,00"
-    func extractNumberString(_ string: String) -> String {
-        return string.components(separatedBy: CharacterSet(charactersIn: "0123456789.,").inverted).joined()
-    }
-    
-    // 저장 완료 Alert
-    private func compliteAlert() {
-        let alert = UIAlertController(title: NSLocalizedString("Save Complete", comment: ""), message: NSLocalizedString("Saved successfully.", comment: ""), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
-    
-    // MARK: 환급조건 보기 버튼 액션
-    @objc
-    private func checkBtnTapped() {
-        let modal = RefundModal()
-        present(modal, animated: true, completion: nil)
-    }
-    
-    
-    // MARK: 계산하기 버튼 액션
-    @objc
-    private func calculateBtnTapped() {
-        
-        // 구매금액 입력 필드 예외처리
-        guard let priceText = priceTextField.text else { return }
-        let isValid = viewModel.isValidFloatingPoint(priceText)
-        
-        if !isValid {
-            errorAlert1()
-            return
+    // MARK: 기록하기 버튼 클릭시 계산결과 값들 0으로 변경
+    func resetValues() {
+        // 구매금액 입력 필드 공백으로 변경
+        priceTextField.text = ""
+        // 계산결과 카드 값들 0으로 변경
+        if let baseCurrency = viewModel.getBaseCurrency3() {
+            priceNum.text = "0"
+            conversionBoughtPrice.text = "\(NSLocalizedString("Approx ", comment: "")) 0 \(baseCurrency)"
+            refundNum.text = "0"
+            conversionRefundPrice.text = "\(NSLocalizedString("Approx ", comment: "")) 0 \(baseCurrency)"
         }
-        if priceText.isEmpty {
-            errorAlert2()
-            return
-        }
-        
-        // MARK: 계산 로직
-        // 구매 금액
-        if let priceValue = Double(priceText) {
-                priceNum.text = priceValue.roundedString()
-            }
-        
-        let currencyCode = viewModel.getBaseCurrency3() ?? ""
-        
-        // 구매금액 기준통화로 변환
-        if let result = viewModel.conversionPrice(priceText: priceText) {
-            conversionBoughtPrice.text = "\(NSLocalizedString("Approx ", comment: "")) \(result.roundedString()) \(currencyCode)"
-        } else {
-            conversionBoughtPrice.text = NSLocalizedString("Input Error", comment: "")
-        }
-        // 환급금액(현지화폐) 계산
-        if let refund = viewModel.calculateVatRefund(priceText: priceText) {
-            refundNum.text = refund.roundedString()
-            // 환급금액을 환율로 변환해서 conversionRefuncPrice에 표시
-            if let refundInBase = viewModel.convertRefundToBaseCurrency(refund: refund) {
-                conversionRefuncPrice.text = "\(NSLocalizedString("Approx ", comment: "")) \(refundInBase.roundedString()) \(currencyCode)"
-            } else {
-                conversionRefuncPrice.text = NSLocalizedString("Input Error", comment: "")
-            }
-        } else {
-            refundNum.text = NSLocalizedString("Calculate", comment: "")
-            conversionRefuncPrice.text = ""
-        }
-
-    }
-    
-    
-    // MARK: - 예외처리용 얼럿
-    // 오입력 얼럿
-    private func errorAlert1() {
-        let alert = UIAlertController(title: NSLocalizedString("Input Error", comment: ""), message: NSLocalizedString("Only numbers and decimal points are allowed, and the decimal point can be entered only once.", comment: ""), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    // 공백 입력 얼럿
-    private func errorAlert2() {
-        let alert = UIAlertController(title: NSLocalizedString("Input Error", comment: ""), message: NSLocalizedString("You cannot enter blank spaces.", comment: ""), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
     }
     
     

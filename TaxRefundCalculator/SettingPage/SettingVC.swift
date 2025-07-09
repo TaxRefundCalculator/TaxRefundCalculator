@@ -103,7 +103,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
         $0.textColor = .subText
     }
     private let versionNumber = UILabel().then {
-        $0.text = "1.0.1"
+        $0.text = "1.0.3"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
         $0.textColor = .subText
     }
@@ -113,7 +113,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
         $0.textColor = .subText
     }
     private let updateDay = UILabel().then {
-        $0.text = "2025.07.02"
+        $0.text = "2025.07.08"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
         $0.textColor = .subText
     }
@@ -312,19 +312,18 @@ class SettingVC: UIViewController, CountryModalDelegate {
     }
     @objc
     private func didTapResetRow() {
-        let alert = UIAlertController(title: NSLocalizedString("Delete Records", comment: ""), message: NSLocalizedString("Do you want to delete all records?", comment: ""), preferredStyle: .alert)
-            
-            let confirmAction = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive) { _ in
-                
-                self.viewModel.deleteAllRecords()
+        self.confirmAlert(
+            title: NSLocalizedString("Delete Records", comment: ""),
+            message: NSLocalizedString("Do you want to delete all records?", comment: ""),
+            confirmHandler: { [weak self] in
+                self?.viewModel.deleteAllRecords()
                 print("기록 삭제됨")
+                self?.alert(
+                    title: NSLocalizedString("Reset Complete", comment: ""),
+                    message: NSLocalizedString("The reset has been completed.", comment: "")
+                )
             }
-            let cancelAction = UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil)
-            
-            alert.addAction(confirmAction)
-            alert.addAction(cancelAction)
-            
-            present(alert, animated: true, completion: nil)
+        )
     }
 
 
