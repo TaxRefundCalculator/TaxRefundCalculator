@@ -2,7 +2,7 @@
 // MARK: - 시작화면
 "Tax Refund Calculator" = "택스리펀 환급금 예상 계산기";
 "Calculate your tax refund amount in advance." = "해외 쇼핑 시 세금 환급 금액을 미리 계산해보세요.";
-"Select Base Currency" = "기준 통화 선택";
+"Select Base Currency" = "기준 화폐 선택";
 "Please select a base currency." = "기준화폐를 선택하세요.";
 "Select Travel Country" = "여행 국가 선택";
 "Please select a travel country." = "여행국가를 선택하세요.";
