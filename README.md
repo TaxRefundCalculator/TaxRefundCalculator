@@ -291,7 +291,7 @@ TaxRefundCalculator/
 
 <br>
 
-🚀 모달(시트) 하단 여백 및 리스트 위치 트러블슈팅
+### 🚀 모달(시트) 하단 여백 및 리스트 위치 트러블슈팅 [(링크)](https://quaker.tistory.com/entry/%ED%83%9D%EC%8A%A4%EB%A6%AC%ED%8E%80-%EA%B3%84%EC%82%B0%EA%B8%B0-%EB%AA%A8%EB%8B%AC-%EA%B0%84%EA%B2%A9-%EC%A1%B0%EC%A0%95%EC%97%90-%EA%B4%80%ED%95%9C-%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85)
 
 🔍 원인
 - UISheetPresentationController의 레이아웃 시스템과 UITableView의 초기 콘텐츠 오프셋 동기화 이슈
@@ -307,7 +307,7 @@ TaxRefundCalculator/
 
 <br>
 
-🚀 금액 입력의 콤마(,)로 인한 계산 오류 트러블슈팅
+### 🚀 금액 입력의 콤마(,)로 인한 계산 오류 트러블슈팅 [(링크)](https://quaker.tistory.com/entry/%ED%83%9D%EC%8A%A4%EB%A6%AC%ED%8E%80-%EA%B3%84%EC%82%B0%EA%B8%B0-%EA%B3%84%EC%82%B0-%EB%A1%9C%EC%A7%81%EC%97%90-%EA%B4%80%ED%95%9C-%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85)
 
 🔍 원인
 - 금액 입력값에 ,(콤마)가 포함되어 있을 때 (예: "1,000" 등)
