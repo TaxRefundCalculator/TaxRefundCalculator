@@ -13,7 +13,7 @@ class CalculateVM {
     
     let saveUserDefaults = SaveUserDefaults()
     
-    // MARK: userDefaults 조회 메서드
+    // MARK: - userDefaults 조회 메서드
     func getBaseCurrency() -> String? {
         return saveUserDefaults.getBaseCurrency()
     }
@@ -31,19 +31,19 @@ class CalculateVM {
         return RefundCondition.flagToPolicyMap[flag].map { (flag, $0) }
     }
     
-    // MARK: 유저디폴트에 있는 화폐들, 부가세 띄우기
+    // MARK: - 유저디폴트에 있는 화폐들, 부가세 띄우기
     // 부가세
     func getVatRate() -> String? {
         return getRefundPolicyByCurrency().map { "\($0.policy.vatRate)%" }
     }
     
-    // 여행국가 통화
+    // 여행국가 통화 3글자만 추출
     func getTravelCountry3() -> (full: String, code: String)? {
         guard let currency = getTravelCountry() else { return nil }
         return (currency, String(currency.suffix(3))) // 뒤에서 3글자만 추출
     }
     
-    // 기준통화
+    // 기준통화 3글자만 추출
     func getBaseCurrency3() -> String? {
         return getBaseCurrency().map { String($0.suffix(3)) }
     }
@@ -58,17 +58,32 @@ class CalculateVM {
         saveUserDefaults.getExchangeValue() ?? ""
     }
     
-    // MARK: Helper to parse localized number strings
+    // MARK: - 숫자 출력 방식 보정
+    /// String -> Double, 다양한 국가별 숫자 포맷을 자동 인식하여 파싱하는 함수
+    /// - 사용자가 직접 입력하거나, 외부 API·서버 등에서 받아온 숫자 값이
+    ///   각 국가별 포맷(천 단위·소수점 구분자)이 다를 수 있기 때문에
+    /// - 우선적으로 사용자의 아이폰 로케일(`Locale.current`)을 사용해 파싱 시도
+    /// - 실패 시 대표적인 포맷을 순차적으로 파싱 시도
     func parseLocalizedNumber(_ string: String) -> Double? {
-        let locales = [Locale.current, Locale(identifier: "en_US"), Locale(identifier: "fr_FR"), Locale(identifier: "de_DE"), Locale(identifier: "it_IT"), Locale(identifier: "es_ES")]
+        // 1. 사용자의 기기 설정을 우선 적용하고, 실패시 대표 로케일로 파싱
+        let locales = [
+            Locale.current,
+            Locale(identifier: "en_US"),
+            Locale(identifier: "fr_FR"),
+            Locale(identifier: "de_DE"),
+            Locale(identifier: "it_IT"),
+            Locale(identifier: "es_ES")
+        ]
         for locale in locales {
             let formatter = NumberFormatter()
             formatter.locale = locale
             formatter.numberStyle = .decimal
+            // 각 국가별 표기법(천 단위, 소수점 구분자)에 맞게 파싱
             if let number = formatter.number(from: string) {
                 return number.doubleValue
             }
         }
+        // 모든 로케일에 실패하면 nil 반환
         return nil
     }
     
@@ -93,7 +108,7 @@ class CalculateVM {
         return true
     }
     
-    // MARK: 계산 로직
+    // MARK: - 계산 로직
     // 구매금액 변환
     func conversionPrice(priceText: String) -> Double? {
         // 단위 (ex. 1, 10, 100, 1000)

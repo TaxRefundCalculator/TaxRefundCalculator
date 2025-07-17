@@ -24,6 +24,18 @@
 "Refund format" = "Mindestens %2$d %1$@ Einkauf, %3$.0f%% Rückerstattung";
 "Refund policy not found" = "Erstattungsrichtlinie nicht gefunden";
 
+"Notice" = "Hinweis";
+"CurrencyCountryDuplicateError" = "Basiswährung und Reiseland dürfen nicht identisch sein.";
+"OK" = "OK";
+
+"Error" = "Fehler";
+"PleaseCalculateFirst" = "Bitte führen Sie zuerst die Berechnung durch.";
+"OK" = "OK";
+
+// 데이터 미연결시
+"Network Required" = "Netzwerk erforderlich";
+"Data connection is required to proceed" = "Eine Datenverbindung ist erforderlich, um fortzufahren";
+
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Kaufbetrag eingeben";
@@ -53,13 +65,18 @@
 "Saved successfully." = "Erfolgreich gespeichert.";
 "OK" = "OK";
 
-"VAT Rate:" = "Mehrwertsteuersatz (MwSt):";
-"Minimum Purchase Amount:" = "Mindestkaufbetrag:";
-"Refund Method:" = "Erstattungsmethode:";
-"Refund Location:" = "Erstattungsstelle:";
-"Notes:" = "Hinweise:";
+"VAT Rate" = "Mehrwertsteuersatz (MwSt)";
+"Minimum Purchase Amount" = "Mindestkaufbetrag";
+"Refund Method" = "Erstattungsmethode";
+"Refund Location" = "Erstattungsstelle";
+"Notes" = "Hinweise";
 
 "Close" = "Schließen";
+
+"Below minimum purchase" = "Mind. Kauf nicht erreicht";
+"Check refund conditions" = "Rückerstattungsbedingungen prüfen";
+
+"Can't save because refund is not possible below minimum purchase amount." = "Speichern nicht möglich, da Rückerstattung unter dem Mindestkaufbetrag nicht möglich ist.";
 
 
 // MARK: - 기록화면
@@ -93,6 +110,9 @@
 "Do you want to delete all records?" = "Möchten Sie alle Einträge löschen?";
 "No" = "Nein";
 "Yes" = "Ja";
+
+"Reset Complete" = "Zurücksetzen abgeschlossen";
+"The reset has been completed." = "Das Zurücksetzen wurde abgeschlossen.";
 
 
 // MARK: - 탭바
@@ -142,8 +162,8 @@
 "Israel - ILS" = "Israel - ILS";
 "India - INR" = "Indien - INR";
 
-// MARK: - 국가별 환급조건
 
+// MARK: - 국가별 환급조건
 "South Korea" = "Südkorea";
 "Up to 7% of purchase amount" = "Bis zu 7 % des Kaufbetrags";
 "Foreign tourists staying less than 6 months, overseas Koreans abroad 2+ years (stay less than 3 months)" = "Ausländische Touristen mit einem Aufenthalt von weniger als 6 Monaten, im Ausland lebende Koreaner mit über 2 Jahren Auslandsaufenthalt (Aufenthalt in Korea weniger als 3 Monate)";

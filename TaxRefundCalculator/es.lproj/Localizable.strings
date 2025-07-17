@@ -24,6 +24,13 @@
 "Refund format" = "Devolución del %3$.0f%% para una compra mínima de %2$d %1$@";
 "Refund policy not found" = "No se ha encontrado la política de reembolso";
 
+"Notice" = "Aviso";
+"CurrencyCountryDuplicateError" = "La moneda base y el país de viaje no pueden ser iguales.";
+"OK" = "Aceptar";
+
+// 데이터 미연결시
+"Network Required" = "Se requiere red";
+"Data connection is required to proceed" = "Se requiere una conexión de datos para continuar";
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Introduce el importe de la compra";
@@ -53,13 +60,22 @@
 "Saved successfully." = "Se ha guardado correctamente.";
 "OK" = "Aceptar";
 
-"VAT Rate:" = "Tasa de IVA:";
-"Minimum Purchase Amount:" = "Importe mínimo de compra:";
-"Refund Method:" = "Método de reembolso:";
-"Refund Location:" = "Lugar de reembolso:";
-"Notes:" = "Notas:";
+"VAT Rate" = "Tasa de IVA";
+"Minimum Purchase Amount" = "Importe mínimo de compra";
+"Refund Method" = "Método de reembolso";
+"Refund Location" = "Lugar de reembolso";
+"Notes" = "Notas";
 
 "Close" = "Cerrar";
+
+"Error" = "Error";
+"PleaseCalculateFirst" = "Por favor, realice primero el cálculo.";
+"OK" = "Aceptar";
+
+"Below minimum purchase" = "Por debajo del mínimo";
+"Check refund conditions" = "Ver condiciones de reembolso";
+
+"Can't save because refund is not possible below minimum purchase amount." = "No es posible guardar porque el reembolso no es posible por debajo del mínimo de compra.";
 
 
 // MARK: - 기록화면
@@ -93,6 +109,9 @@
 "Do you want to delete all records?" = "¿Deseas eliminar todos los registros?";
 "No" = "No";
 "Yes" = "Sí";
+
+"Reset Complete" = "Restablecimiento completado";
+"The reset has been completed." = "El restablecimiento se ha completado.";
 
 
 // MARK: - 탭바
@@ -142,8 +161,8 @@
 "Israel - ILS" = "Israel - ILS";
 "India - INR" = "India - INR";
 
-// MARK: - 국가별 환급조건
 
+// MARK: - 국가별 환급조건
 "South Korea" = "Corea del Sur";
 "Up to 7% of purchase amount" = "Hasta el 7% del importe de la compra";
 "Foreign tourists staying less than 6 months; overseas Koreans abroad 2+ years (stay less than 3 months)" = "Turistas extranjeros que permanecen menos de 6 meses; coreanos residentes en el extranjero por más de 2 años y que permanecen en Corea menos de 3 meses";

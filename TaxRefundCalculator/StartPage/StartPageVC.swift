@@ -25,7 +25,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: 상단 제목 두개
+    // MARK: - 상단 제목 두개
     private let titleLabel = UILabel().then {
         $0.text = NSLocalizedString("Tax Refund Calculator", comment: "")
         $0.textAlignment = .center
@@ -40,12 +40,12 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
     }
     
     
-    // MARK: 사이즈 대응을 위한 스크롤 뷰
+    // MARK: - 사이즈 대응을 위한 스크롤 뷰
     let scrollView = UIScrollView()
     let scrollContentView = UIView()
     
     
-    // MARK: 기준 통화 선택, 여행국가 선택 카드
+    // MARK: - 기준 통화 선택, 여행국가 선택 카드
     private let currencyCard = UIView().then {
         $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 15
@@ -89,7 +89,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
     }
     
     
-    // MARK: 환율 정보 카드
+    // MARK: - 환율 정보 카드
     private let exchangeRateCard = UIView().then {
         $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 15
@@ -110,7 +110,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
     }
     
     
-    // MARK: 환급 조건 카드
+    // MARK: - 환급 조건 카드
     private let conditionCard = UIView().then {
         $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 15
@@ -133,7 +133,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
     
     
     
-    // MARK: 시작버튼
+    // MARK: - 시작버튼
     private let startButton = UIButton().then {
         $0.setTitle(NSLocalizedString("Start →", comment: ""), for: .normal)
         $0.backgroundColor = .mainTeal
@@ -143,6 +143,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
     }
     
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -153,10 +154,12 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         bindExchangeRate()
     }
     
+    
+    // MARK: - AutoLayout 정의
     private func configureUI() {
         view.backgroundColor = .bgPrimary
         
-        // MARK: Labels
+        // MARK: - Labels
         view.addSubview(titleLabel) // "택스리펀 환급금 예상 계산기"
         titleLabel.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(25)
@@ -170,7 +173,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         }
         
         
-        // MARK: 시작하기 버튼
+        // MARK: - 시작하기 버튼
         view.addSubview(startButton)
         startButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(30)
@@ -179,7 +182,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         }
         
         
-        // MARK: 사이즈 대응을 위한 스크롤 뷰
+        // MARK: - 사이즈 대응을 위한 스크롤 뷰
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints {
             $0.top.equalTo(subLabel.snp.bottom)
@@ -194,7 +197,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         }
         
         
-        // MARK: 기준 통화 선택, 여행국가 선택 카드
+        // MARK: - 기준 통화 선택, 여행국가 선택 카드
         scrollContentView.addSubview(currencyCard)
         currencyCard.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
@@ -227,7 +230,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         }
         
         
-        // MARK: 환율 정보 카드
+        // MARK: - 환율 정보 카드
         scrollContentView.addSubview(exchangeRateCard)
         exchangeRateCard.snp.makeConstraints {
             $0.top.equalTo(currencyCard.snp.bottom).offset(15)
@@ -248,7 +251,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
         }
         
         
-        // MARK: 환급 조건 카드
+        // MARK: - 환급 조건 카드
         scrollContentView.addSubview(conditionCard)
         conditionCard.snp.makeConstraints {
             $0.top.equalTo(exchangeRateCard.snp.bottom).offset(15)
@@ -272,12 +275,14 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
 
     }
     
-    // MARK: 모달 관련
+    // MARK: - 모달 관련
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField.tag == 0 || textField.tag == 1 {
             let countryModal = CountryModal()
             countryModal.delegate = self
             countryModal.selectedTextFieldTag = textField.tag
+            countryModal.currentBaseCurrency = baseCurrencyField.text
+            countryModal.currentTravelCurrency = travelCountryField.text
             countryModal.modalPresentationStyle = .pageSheet
             present(countryModal, animated: true, completion: nil)
         }
@@ -285,7 +290,7 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
     }
     
     
-    // MARK: 텍스트필드에 리턴 및 유저디폴트에 저장
+    // MARK: - 텍스트필드에 리턴 및 유저디폴트에 저장
     // 화폐 선택
     func didSelectCountry(_ country: String, forFieldTag tag: Int) {
         switch tag {
@@ -304,27 +309,40 @@ class StartPageVC: UIViewController, UITextFieldDelegate, CountryModalDelegate {
     }
     
     
-    // MARK: 시작하기버튼 액션
+    // MARK: - 시작하기버튼 액션
     @objc
     private func startBtnTapped() {
-        let isValid = viewModel.isInputValid(
+        // 모두 선택되었는지 검증
+        let validation = viewModel.validateInput(
             baseCurrency: baseCurrencyField.text,
             travelCountry: travelCountryField.text
         )
-
-        if isValid {
+        
+        switch validation {
+        case .valid:
+            if viewModel.exchangeRateText.value == NSLocalizedString("Unable to load exchange rate information", comment: "환율 정보를 불러올 수 없습니다") {
+                let alert = UIAlertController(
+                    title: NSLocalizedString("Network Required", comment: ""),
+                    message: NSLocalizedString("Data connection is required to proceed", comment: ""),
+                    preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+                return
+            }
             let tabBar = TabBarController()
             tabBar.modalPresentationStyle = .fullScreen
             present(tabBar, animated: true, completion: nil)
             viewModel.saveDoneFIrstStep(true)
-        } else {
-            let alert = UIAlertController(title: NSLocalizedString("Input Confirmation", comment: ""), message: NSLocalizedString("Please select all items.", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
+        case .empty:
+            alert(
+                title: NSLocalizedString("Input Confirmation", comment: ""),
+                message: NSLocalizedString("Please select all items.", comment: "")
+            )
         }
     }
+
     
-    // MARK: 환율정보 바인딩 (Rx) - Na
+    // MARK: - 환율정보 바인딩 (Rx) - Na
     private func bindExchangeRate() {
         Observable
             .combineLatest(baseCurrencyField.rx.text.orEmpty, travelCountryField.rx.text.orEmpty)

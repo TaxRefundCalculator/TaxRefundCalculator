@@ -24,6 +24,14 @@
 "Refund format" = "At least %2$d %1$@ purchase, %3$.0f%% refund";
 "Refund policy not found" = "Refund policy not found";
 
+"Notice" = "Notice";
+"CurrencyCountryDuplicateError" = "Base currency and travel country cannot be the same.";
+"OK" = "OK";
+
+// 데이터 미연결시
+"Network Required" = "Network Required";
+"Data connection is required to proceed" = "Data connection is required to proceed";
+
 // MARK: - 계산화면
 "Enter purchase amount" = "Enter purchase amount";
 "Please enter numbers only." = "Please enter numbers only.";
@@ -52,13 +60,22 @@
 "Saved successfully." = "Saved successfully.";
 "OK" = "OK";
 
-"VAT Rate:" = "VAT Rate:";
-"Minimum Purchase Amount:" = "Minimum Purchase Amount:";
-"Refund Method:" = "Refund Method:";
-"Refund Location:" = "Refund Location:";
-"Notes:" = "Notes:";
+"VAT Rate" = "VAT Rate";
+"Minimum Purchase Amount" = "Minimum Purchase Amount";
+"Refund Method" = "Refund Method";
+"Refund Location" = "Refund Location";
+"Notes" = "Notes";
 
 "Close" = "Close";
+
+"Error" = "Error";
+"PleaseCalculateFirst" = "Please calculate first.";
+"OK" = "OK";
+
+"Below minimum purchase" = "Below min. amount";
+"Check refund conditions" = "Check refund conditions";
+
+"Can't save because refund is not possible below minimum purchase amount." = "Can't save because refund is not possible below minimum purchase amount.";
 
 
 // MARK: - 기록화면
@@ -92,6 +109,9 @@
 "Do you want to delete all records?" = "Do you want to delete all records?";
 "No" = "No";
 "Yes" = "Yes";
+
+"Reset Complete" = "Reset Complete";
+"The reset has been completed." = "The reset has been completed.";
 
 
 // MARK: - 탭바
@@ -141,8 +161,8 @@
 "Israel - ILS" = "Israel - ILS";
 "India - INR" = "India - INR";
 
-// MARK: - 국가별 환급조건
 
+// MARK: - 국가별 환급조건
 "South Korea" = "South Korea";
 "Up to 7% of purchase amount" = "Up to 7% of purchase amount";
 "Foreign tourists staying less than 6 months, overseas Koreans abroad 2+ years (stay less than 3 months)" = "Foreign tourists staying less than 6 months, overseas Koreans abroad 2+ years (stay less than 3 months)";

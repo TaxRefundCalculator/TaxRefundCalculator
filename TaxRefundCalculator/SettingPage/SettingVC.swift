@@ -13,7 +13,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
     
     private let viewModel = SettingVM.shared // 싱글턴 패턴이기때문에 싱글턴 인스턴스. 새로 생성하면 안됨.
     
-    // MARK: 앱 설정 카드
+    // MARK: - 앱 설정 카드
     private let settingCard = UIView().then {
         $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 16
@@ -49,7 +49,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
-    private let nowCurreny = UILabel().then {
+    private let nowCurrency = UILabel().then {
         $0.textColor = .primaryText
         $0.font = .systemFont(ofSize: 17)
     }
@@ -83,7 +83,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
     }
     
     
-    // MARK: 앱 정보 카드
+    // MARK: - 앱 정보 카드
     private let infoCard = UIView().then {
         $0.backgroundColor = .bgSecondary
         $0.layer.cornerRadius = 16
@@ -103,7 +103,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
         $0.textColor = .subText
     }
     private let versionNumber = UILabel().then {
-        $0.text = "1.0.0"
+        $0.text = "1.0.3"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
         $0.textColor = .subText
     }
@@ -113,12 +113,13 @@ class SettingVC: UIViewController, CountryModalDelegate {
         $0.textColor = .subText
     }
     private let updateDay = UILabel().then {
-        $0.text = "2025.05.11"
+        $0.text = "2025.07.08"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .thin)
         $0.textColor = .subText
     }
     
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -127,7 +128,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
     }
     
     
-    // MARK: UserDefaults에서 값 불러오기
+    // MARK: - UserDefaults에서 값 불러오기
     private func loadFromUserdefaults() {
         // 기준화폐 설정
         if let loadBaseCurrency = viewModel.getBaseCurrency() {
@@ -135,13 +136,14 @@ class SettingVC: UIViewController, CountryModalDelegate {
         }
         // 여행화폐 설정
         if let loadTravelCountry = viewModel.getTravelCountry() {
-            nowCurreny.text = loadTravelCountry
+            nowCurrency.text = loadTravelCountry
         }
         // 다크모드 스위치 활성화 체크
         darkModeSwitch.isOn = viewModel.getDarkModeEnabled()
     }
     
     
+    // MARK: - AutoLayout 정의
     private func configureUI() {
         view.backgroundColor = .bgPrimary
         
@@ -161,7 +163,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
         
         settingCard.addSubview(currencyRow)
         currencyRow.addSubview(currencyChange)
-        currencyRow.addSubview(nowCurreny)
+        currencyRow.addSubview(nowCurrency)
         
         settingCard.addSubview(darkModeRow)
         darkModeRow.addSubview(darkMode)
@@ -201,7 +203,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
             $0.leading.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()
         }
-        nowCurreny.snp.makeConstraints {
+        nowCurrency.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()
         }
@@ -236,7 +238,8 @@ class SettingVC: UIViewController, CountryModalDelegate {
         baseCurrencyRow.tag = 0
         currencyRow.tag = 1
 
-        //MARK: 각 row 클릭시
+        
+        //MARK: - 각 row 클릭시
         let baseTap = UITapGestureRecognizer(target: self, action: #selector(didTapBaseCurrencyRow))
         baseCurrencyRow.addGestureRecognizer(baseTap)
         baseCurrencyRow.isUserInteractionEnabled = true
@@ -247,7 +250,8 @@ class SettingVC: UIViewController, CountryModalDelegate {
         resetRow.addGestureRecognizer(resetTap)
         resetRow.isUserInteractionEnabled = true
         
-        // MARK: Info Card
+        
+        // MARK: - Info Card
         view.addSubview(infoCard)
         infoCard.snp.makeConstraints {
             $0.top.equalTo(settingCard.snp.bottom).offset(16)
@@ -288,36 +292,38 @@ class SettingVC: UIViewController, CountryModalDelegate {
     // MARK: - Tap Actions 클릭시 모달로 출력
     @objc
     private func didTapBaseCurrencyRow() {
-        let vc = CountryModal()
-        vc.delegate = self
-        vc.selectedTextFieldTag = baseCurrencyRow.tag
-        vc.modalPresentationStyle = .pageSheet
-        present(vc, animated: true, completion: nil)
+        let modal = CountryModal()
+        modal.delegate = self
+        modal.selectedTextFieldTag = baseCurrencyRow.tag
+        modal.currentBaseCurrency = nowBaseCurrency.text
+        modal.currentTravelCurrency = nowCurrency.text
+        modal.modalPresentationStyle = .pageSheet
+        present(modal, animated: true, completion: nil)
     }
-
     @objc
     private func didTapTravelCountryRow() {
-        let vc = CountryModal()
-        vc.delegate = self
-        vc.selectedTextFieldTag = currencyRow.tag
-        vc.modalPresentationStyle = .pageSheet
-        present(vc, animated: true, completion: nil)
+        let modal = CountryModal()
+        modal.delegate = self
+        modal.selectedTextFieldTag = currencyRow.tag
+        modal.currentBaseCurrency = nowBaseCurrency.text
+        modal.currentTravelCurrency = nowCurrency.text
+        modal.modalPresentationStyle = .pageSheet
+        present(modal, animated: true, completion: nil)
     }
     @objc
     private func didTapResetRow() {
-        let alert = UIAlertController(title: NSLocalizedString("Delete Records", comment: ""), message: NSLocalizedString("Do you want to delete all records?", comment: ""), preferredStyle: .alert)
-            
-            let confirmAction = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive) { _ in
-                
-                self.viewModel.deleteAllRecords()
+        self.confirmAlert(
+            title: NSLocalizedString("Delete Records", comment: ""),
+            message: NSLocalizedString("Do you want to delete all records?", comment: ""),
+            confirmHandler: { [weak self] in
+                self?.viewModel.deleteAllRecords()
                 print("기록 삭제됨")
+                self?.alert(
+                    title: NSLocalizedString("Reset Complete", comment: ""),
+                    message: NSLocalizedString("The reset has been completed.", comment: "")
+                )
             }
-            let cancelAction = UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil)
-            
-            alert.addAction(confirmAction)
-            alert.addAction(cancelAction)
-            
-            present(alert, animated: true, completion: nil)
+        )
     }
 
 
@@ -327,9 +333,9 @@ class SettingVC: UIViewController, CountryModalDelegate {
         switch tag {
         case 0:
             nowBaseCurrency.text = country
-            SettingVM.shared.saveBaseCurrency(country) // userDefaults에 저장 및 Combine
+            SettingVM.shared.saveBaseCurrency(country)
         case 1:
-            nowCurreny.text = country
+            nowCurrency.text = country
             SettingVM.shared.saveTravelCountry(country) // userDefaults에 저장 및 Combine
         default:
             break
@@ -337,7 +343,7 @@ class SettingVC: UIViewController, CountryModalDelegate {
     }
     
     
-    // MARK: 다크모드 토글 스위치 액션
+    // MARK: - 다크모드 토글 스위치 액션
     @objc
     private func darkModeSwitchChanged(_ sender: UISwitch) {
         viewModel.saveDarkModeEnabled(sender.isOn)

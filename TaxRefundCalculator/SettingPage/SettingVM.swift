@@ -13,7 +13,7 @@ import RxSwift
 
 class SettingVM {
     
-    // MARK: 싱글톤 패턴
+    // MARK: - 싱글톤 패턴
     static let shared = SettingVM()
     private init() { // 외부에서 생성 방지
         // 반드시 UserDefaults 값으로 @Published 초기화
@@ -21,14 +21,16 @@ class SettingVM {
         self.travelCountry = saveUserDefaults.getTravelCountry() ?? ""
         setupCombineBindings()
     }
-    // MARK: Combine - 환율 정보, 환폐단위 최신화
+    
+    
+    // MARK: - Combine 환율 정보, 환폐단위 최신화
     @Published var exchangeValue: String = ""
     @Published var travelCurrencyUnit: Int = 1
     
     var firebaseService: FirebaseExchangeService!
     private let disposeBag = DisposeBag()
     
-    // MARK: Combine - 기존화폐, 여행화폐 변경시 최신화를 위함
+    // MARK: - Combine 기존화폐, 여행화폐 변경시 최신화를 위함
     @Published var baseCurrency: String = ""
     @Published var travelCountry: String = ""
     
@@ -36,10 +38,8 @@ class SettingVM {
     
     let saveUserDefaults = SaveUserDefaults()
     
-    // MARK: userDefaults 저장 메서드
-//    func saveSelectedLanguage(_ language: String) {
-//        saveUserDefaults.saveLanguage(language)
-//    }
+    
+    // MARK: - userDefaults 저장 메서드
     func saveBaseCurrency(_ baseCurrency: String) {
         saveUserDefaults.saveBaseCurrency(baseCurrency) // 유저디폴트에 저장
         self.baseCurrency = baseCurrency // @Published 갱신
@@ -57,10 +57,8 @@ class SettingVM {
         self.exchangeValue = exchangeValue
     }
     
-    // MARK: userDefaults 조회 메서드
-//    func getSelectedLanguage() -> String? {
-//        return saveUserDefaults.getLanguage()
-//    }
+    
+    // MARK: - userDefaults 조회 메서드
     func getBaseCurrency() -> String? {
         return saveUserDefaults.getBaseCurrency()
     }
@@ -68,7 +66,7 @@ class SettingVM {
         return saveUserDefaults.getTravelCountry()
     }
     
-    // MARK: 다크모드
+    // MARK: - 다크모드
     // 저장
     func saveDarkModeEnabled(_ enabled: Bool) {
         saveUserDefaults.saveDarkModeEnabled(enabled)
@@ -78,11 +76,14 @@ class SettingVM {
         saveUserDefaults.getDarkModeEnabled()
     }
     
-    // MARK: 기록 초기화
+    
+    // MARK: - 기록 초기화
     func deleteAllRecords() {
         saveUserDefaults.deleteAllRecords()
     }
     
+    
+    // MARK: - 컴바인
     private func setupCombineBindings() {
         // 기준 화폐가 변경되었을 때
         $baseCurrency
@@ -91,7 +92,7 @@ class SettingVM {
                 self?.updateExchangeInfoAfterCurrencyChange()
             }
             .store(in: &cancellables)
-        // 여행 화폐도 동일하게 바인딩 (필요 시)
+        // 여행 화폐도 동일하게 바인딩
         $travelCountry
             .dropFirst()
             .sink { [weak self] _ in
@@ -100,6 +101,7 @@ class SettingVM {
             .store(in: &cancellables)
     }
     
+    // MARK: - 위에서 기준화폐 여행국가 변경시 환율 정보 갱신
     func updateExchangeInfoAfterCurrencyChange() {
         guard let base = getBaseCurrency(), let travel = getTravelCountry(), !base.isEmpty, !travel.isEmpty else { return }
         let baseCode = String(base.suffix(3))

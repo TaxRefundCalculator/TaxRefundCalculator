@@ -18,8 +18,10 @@ class CountryModal: UIViewController {
     weak var delegate: CountryModalDelegate?
     var selectedTextFieldTag: Int?
     
+    var currentBaseCurrency: String?
+    var currentTravelCurrency: String?
     
-    // MARK: 지원국가 목록 배열
+    // MARK: - 지원국가 목록 배열
     private let countries = [
         "🇰🇷 \(NSLocalizedString("South Korea - KRW", comment: ""))",
         "🇯🇵 \(NSLocalizedString("Japan - JPY", comment: ""))",
@@ -61,10 +63,7 @@ class CountryModal: UIViewController {
         "🇿🇦 \(NSLocalizedString("South Africa - ZAR", comment: ""))"
     ]
     
-    private let tableView = UITableView().then {
-        $0.backgroundColor = .systemBackground
-    }
-    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -83,6 +82,11 @@ class CountryModal: UIViewController {
         }
     }
     
+    // MARK: - 테이블 뷰 속성
+    private let tableView = UITableView().then {
+        $0.backgroundColor = .systemBackground
+    }
+    // MARK: - 테이블 뷰 UI
     private func setupTableView() {
         // 테이블뷰를 뷰에 추가
         view.addSubview(tableView)
@@ -128,15 +132,30 @@ extension CountryModal: UITableViewDelegate {
         print("\(countries[indexPath.row])") // 선택된 국가
         
         if let tag = selectedTextFieldTag {
-            // tag == 1 (여행국가)에서만 USD/GBP 제한 적용
-            if tag == 1 && (selectedCountry.contains("USD") || selectedCountry.contains("GBP")) {
-                let alert = UIAlertController(
-                    title: "\(NSLocalizedString("Notice", comment: ""))",
-                    message: "\(NSLocalizedString("This country does not provide tax refund.", comment: ""))",
-                    preferredStyle: .alert
+            // MARK: 중복 선택 체크
+            if tag == 0 && selectedCountry == currentTravelCurrency {
+                alert(
+                    title: NSLocalizedString("Notice", comment: ""),
+                    message: NSLocalizedString("CurrencyCountryDuplicateError", comment: "")
                 )
-                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
+                tableView.deselectRow(at: indexPath, animated: true)
+                return
+            }
+            if tag == 1 && selectedCountry == currentBaseCurrency {
+                alert(
+                    title: NSLocalizedString("Notice", comment: ""),
+                    message: NSLocalizedString("CurrencyCountryDuplicateError", comment: "")
+                )
+                tableView.deselectRow(at: indexPath, animated: true)
+                return
+            }
+            
+            // MARK: tag == 1 (여행국가)에서만 USD/GBP 제한 적용
+            if tag == 1 && (selectedCountry.contains("USD") || selectedCountry.contains("GBP")) {
+                alert(
+                    title: NSLocalizedString("Notice", comment: ""),
+                    message: NSLocalizedString("This country does not provide tax refund.", comment: "")
+                )
                 tableView.deselectRow(at: indexPath, animated: true)
                 return
             }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - 캡슐화를 위한 protocol
 protocol SaveUserDefaultsProtocol { // 캡슐화
     // 정보 저장용
     func saveBaseCurrency(_ currency: String)
@@ -21,7 +22,7 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     private let userDefaults = UserDefaults.standard
     private let listKey = "SavedCardKeys" // [String] (키들의 순서 저장)
     
-    // MARK: 정보 저장용
+    // MARK: - 정보 저장용
     // 저장
     func saveBaseCurrency(_ currency: String) { // 기준 통화
         userDefaults.set(currency, forKey: "baseCurrency")
@@ -57,36 +58,34 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     }
     
     
-    // MARK: 다크모드
+    // MARK: - 다크모드
     private var darkModeKey: String { "darkModeEnabled" }
     // 저장
     func saveDarkModeEnabled(_ enabled: Bool) {
         userDefaults.set(enabled, forKey: darkModeKey)
     }
-    
     // 불러오기
     func getDarkModeEnabled() -> Bool {
         userDefaults.bool(forKey: darkModeKey)
     }
     
     
-    // MARK: 기록 초기화
+    // MARK: - 기록 초기화
     func deleteAllRecords() {
         userDefaults.removeObject(forKey: "SavedCardList")
     }
-    
 }
 
-// MARK: 설정탭 기록카드 관련
+// MARK: - 설정탭 기록카드 관련
 extension SaveUserDefaults {
-    /// 모든 SavedCard 배열을 1개 Key("SavedCardList")로 통째로 저장
+    // 모든 SavedCard 배열을 1개 Key("SavedCardList")로 통째로 저장
     func overwriteAllCards(_ cards: [SavedCard]) {
         if let encoded = try? JSONEncoder().encode(cards) {
             userDefaults.set(encoded, forKey: "SavedCardList")
         }
     }
     
-    /// 모든 SavedCard를 불러오기
+    // 모든 SavedCard를 불러오기
     func loadAllCards() -> [SavedCard] {
         if let data = userDefaults.data(forKey: "SavedCardList"),
            let decoded = try? JSONDecoder().decode([SavedCard].self, from: data) {
@@ -95,7 +94,7 @@ extension SaveUserDefaults {
         return []
     }
     
-    /// 기록 추가
+    // 기록 추가
     func addCard(_ card: SavedCard) {
         var cards = loadAllCards()
         cards.append(card)

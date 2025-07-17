@@ -2,9 +2,9 @@
 // MARK: - 시작화면
 "Tax Refund Calculator" = "택스리펀 환급금 예상 계산기";
 "Calculate your tax refund amount in advance." = "해외 쇼핑 시 세금 환급 금액을 미리 계산해보세요.";
-"Select Base Currency" = "기준 통화 선택";
+"Select Base Currency" = "기준 화폐 선택";
 "Please select a base currency." = "기준화폐를 선택하세요.";
-"Select Travel Country" = "여행국가 선택";
+"Select Travel Country" = "여행 국가 선택";
 "Please select a travel country." = "여행국가를 선택하세요.";
 "Exchange Rate Info" = "환율 정보";
 "Please select a currency and a country." = "화폐, 국가 선택이 필요합니다.";
@@ -24,6 +24,13 @@
 "Refund format" = "최소 %2$d %1$@ 구매 시 %3$.0f%% 환급";
 "Refund policy not found" = "환급 정책을 찾을 수 없습니다";
 
+"Notice" = "알림";
+"CurrencyCountryDuplicateError" = "기준 통화와 여행 국가는 중복될 수 없습니다.";
+"OK" = "확인";
+
+// 데이터 미연결시
+"Network Required" = "네트워크 필요";
+"Data connection is required to proceed" = "진행하려면 데이터 연결이 필요합니다";
 
 // MARK: - 계산화면
 "Enter purchase amount" = "구매 금액 입력";
@@ -53,13 +60,22 @@
 "Saved successfully." = "저장이 완료되었습니다.";
 "OK" = "확인";
 
-"VAT Rate:" = "부가세율:";
-"Minimum Purchase Amount:" = "최소 구매금액:";
-"Refund Method:" = "환급 방법:";
-"Refund Location:" = "환급장소:";
-"Notes:" = "비고:";
+"VAT Rate" = "부가세율";
+"Minimum Purchase Amount" = "최소 구매금액";
+"Refund Method" = "환급 방법";
+"Refund Location" = "환급장소";
+"Notes" = "비고";
 
 "Close" = "닫기";
+
+"Error" = "에러";
+"PleaseCalculateFirst" = "계산을 먼저 진행해주십시오.";
+"OK" = "확인";
+
+"Below minimum purchase" = "최소 구매금액 미달";
+"Check refund conditions" = "환급조건 확인";
+
+"Can't save because refund is not possible below minimum purchase amount." = "최소 구매금액 미달로 환급이 불가능하여 저장할 수 없습니다.";
 
 
 // MARK: - 기록화면
@@ -94,6 +110,9 @@
 "No" = "아니오";
 "Yes" = "예";
 
+"Reset Complete" = "초기화 완료";
+"The reset has been completed." = "초기화가 완료되었습니다.";
+
 
 // MARK: - 탭바
 "Calculate" = "계산";
@@ -105,8 +124,8 @@
 // MARK: - 지원국가 목록
 "South Korea - KRW" = "대한민국 - KRW";
 "Japan - JPY" = "일본 - JPY";
-"United States - USD" = "미국 - USD";
-"United Kingdom - GBP" = "영국 - GBP";
+"USA - USD" = "미국 - USD";
+"UK - GBP" = "영국 - GBP";
 "Thailand - THB" = "태국 - THB";
 "Malaysia - MYR" = "말레이시아 - MYR";
 "Singapore - SGD" = "싱가포르 - SGD";
@@ -114,7 +133,7 @@
 "Australia - AUD" = "호주 - AUD";
 "Türkiye - TRY" = "튀르키예 - TRY";
 "South Africa - ZAR" = "남아프리카공화국 - ZAR";
-"Czech Republic - CZK" = "체코 - CZK";
+"Czech - CZK" = "체코 - CZK";
 "Hungary - HUF" = "헝가리 - HUF";
 "Bulgaria - BGN" = "불가리아 - BGN";
 "Switzerland - CHF" = "스위스 - CHF";
@@ -144,7 +163,6 @@
 
 
 // MARK: - 국가별 환급조건
-
 "South Korea" = "대한민국";
 "Up to 7% of purchase amount" = "구매 금액의 최대 7%";
 "Foreign tourists staying less than 6 months, overseas Koreans abroad 2+ years (stay less than 3 months)" = "6개월 미만 체류 외국인, 3개월 미만 체류하며 해외에 2년 이상 거주한 해외 교포";

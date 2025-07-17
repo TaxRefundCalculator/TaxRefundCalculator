@@ -24,6 +24,13 @@
 "Refund format" = "Rimborso del %3$.0f%% per acquisti di almeno %2$d %1$@";
 "Refund policy not found" = "Politica di rimborso non trovata";
 
+"Notice" = "Avviso";
+"CurrencyCountryDuplicateError" = "La valuta di base e il paese di viaggio non possono coincidere.";
+"OK" = "OK";
+
+// 데이터 미연결시
+"Network Required" = "Rete richiesta";
+"Data connection is required to proceed" = "È necessaria una connessione dati per continuare";
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Inserisci l’importo dell’acquisto";
@@ -53,13 +60,22 @@
 "Saved successfully." = "Il salvataggio è stato completato.";
 "OK" = "OK";
 
-"VAT Rate:" = "Aliquota IVA:";
-"Minimum Purchase Amount:" = "Importo minimo d’acquisto:";
-"Refund Method:" = "Metodo di rimborso:";
-"Refund Location:" = "Luogo di rimborso:";
-"Notes:" = "Note:";
+"VAT Rate" = "Aliquota IVA";
+"Minimum Purchase Amount" = "Importo minimo d’acquisto";
+"Refund Method" = "Metodo di rimborso";
+"Refund Location" = "Luogo di rimborso";
+"Notes" = "Note";
 
 "Close" = "Chiudi";
+
+"Error" = "Errore";
+"PleaseCalculateFirst" = "Si prega di effettuare prima il calcolo.";
+"OK" = "OK";
+
+"Below minimum purchase" = "Sotto acquisto minimo";
+"Check refund conditions" = "Verifica condizioni rimborso";
+
+"Can't save because refund is not possible below minimum purchase amount." = "Impossibile salvare: rimborso non possibile sotto l’acquisto minimo.";
 
 
 // MARK: - 기록화면
@@ -93,6 +109,9 @@
 "Do you want to delete all records?" = "Vuoi eliminare tutte le registrazioni?";
 "No" = "No";
 "Yes" = "Sì";
+
+"Reset Complete" = "Ripristino completato";
+"The reset has been completed." = "Il ripristino è stato completato.";
 
 
 // MARK: - 탭바
@@ -142,8 +161,8 @@
 "Israel - ILS" = "Israele - ILS";
 "India - INR" = "India - INR";
 
-// MARK: - 국가별 환급조건
 
+// MARK: - 국가별 환급조건
 "South Korea" = "Corea del Sud";
 "Up to 7% of purchase amount" = "Fino al 7% dell’importo di acquisto";
 "Foreign tourists staying less than 6 months; overseas Koreans abroad 2+ years (stay less than 3 months)" = "Turisti stranieri che soggiornano meno di 6 mesi; coreani residenti all'estero da oltre 2 anni e che soggiornano in Corea meno di 3 mesi";

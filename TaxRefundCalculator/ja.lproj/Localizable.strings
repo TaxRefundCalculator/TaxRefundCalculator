@@ -24,6 +24,13 @@
 "Refund format" = "最低%2$d%1$@の購入で%3$.0f%%還付";
 "Refund policy not found" = "還付ポリシーが見つかりませんでした";
 
+"Notice" = "お知らせ";
+"CurrencyCountryDuplicateError" = "基準通貨と旅行先の国は重複できません。";
+"OK" = "確認";
+
+// 데이터 미연결시
+"Network Required" = "ネットワークが必要です";
+"Data connection is required to proceed" = "続行するにはデータ接続が必要です";
 
 // MARK: - 계산화면
 "Enter purchase amount" = "購入金額を入力";
@@ -53,13 +60,22 @@
 "Saved successfully." = "保存が完了しました。";
 "OK" = "確認";
 
-"VAT Rate:" = "消費税率：";
-"Minimum Purchase Amount:" = "最低購入金額：";
-"Refund Method:" = "還付方法：";
-"Refund Location:" = "還付場所：";
-"Notes:" = "備考：";
+"VAT Rate" = "消費税率";
+"Minimum Purchase Amount" = "最低購入金額";
+"Refund Method" = "還付方法";
+"Refund Location" = "還付場所";
+"Notes" = "備考";
 
 "Close" = "閉じる";
+
+"Error" = "エラー";
+"PleaseCalculateFirst" = "先に計算を行ってください。";
+"OK" = "確認";
+
+"Below minimum purchase" = "最低購入金額未満";
+"Check refund conditions" = "還付条件確認";
+
+"Can't save because refund is not possible below minimum purchase amount." = "最低購入金額未満のため還付できず、保存できません。";
 
 
 // MARK: - 기록화면
@@ -93,6 +109,9 @@
 "Do you want to delete all records?" = "すべての記録を削除しますか？";
 "No" = "いいえ";
 "Yes" = "はい";
+
+"Reset Complete" = "初期化完了";
+"The reset has been completed." = "初期化が完了しました。";
 
 
 // MARK: - 탭바
@@ -144,7 +163,6 @@
 
 
 // MARK: - 국가별 환급조건
-
 "South Korea" = "韓国";
 "Up to 7% of purchase amount" = "購入金額の最大7％まで";
 "Foreign tourists staying less than 6 months, overseas Koreans abroad 2+ years (stay less than 3 months)" = "6ヶ月未満滞在の外国人観光客、海外に2年以上居住し韓国に3ヶ月未満滞在の在外韓国人";
