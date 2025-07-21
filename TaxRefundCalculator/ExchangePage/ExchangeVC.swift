@@ -17,7 +17,7 @@ final class ExchangeVC: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel: ExchangeVM
 
-    init(viewModel: ExchangeVM = ExchangeVM(apiService: ExchangeRateAPIService(), firebaseService: FirebaseExchangeService())) {
+    init(viewModel: ExchangeVM = ExchangeVM(firebaseService: FirebaseExchangeService())) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
