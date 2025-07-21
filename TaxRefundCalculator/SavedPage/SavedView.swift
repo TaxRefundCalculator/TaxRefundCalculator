@@ -15,6 +15,10 @@ final class SavedView: UIView {
     let totalContainer = UIView().then {
         $0.backgroundColor = .mainTeal
         $0.layer.cornerRadius = 16
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOpacity = 0.1
+        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+        $0.layer.shadowRadius = 6
     }
 
     let totalPurchaseLabel = UILabel().then {
