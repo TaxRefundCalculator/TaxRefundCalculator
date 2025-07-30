@@ -28,6 +28,9 @@
 "CurrencyCountryDuplicateError" = "Базовая валюта и страна поездки не могут совпадать.";
 "OK" = "ОК";
 
+// 데이터 미연결시
+"Network Required" = "Требуется сеть";
+"Data connection is required to proceed" = "Для продолжения требуется подключение к данным";
 
 // MARK: - 계산화면
 "Enter purchase amount" = "Введите сумму покупки";
@@ -57,13 +60,22 @@
 "Saved successfully." = "Сохранение выполнено успешно.";
 "OK" = "ОК";
 
-"VAT Rate:" = "Ставка НДС:";
-"Minimum Purchase Amount:" = "Минимальная сумма покупки:";
-"Refund Method:" = "Способ возврата:";
-"Refund Location:" = "Место возврата:";
-"Notes:" = "Примечания:";
+"VAT Rate" = "Ставка НДС";
+"Minimum Purchase Amount" = "Минимальная сумма покупки";
+"Refund Method" = "Способ возврата";
+"Refund Location" = "Место возврата";
+"Notes" = "Примечания";
 
 "Close" = "Закрыть";
+
+"Error" = "Ошибка";
+"PleaseCalculateFirst" = "Сначала выполните расчет.";
+"OK" = "ОК";
+
+"Below minimum purchase" = "Мин. покупка";
+"Check refund conditions" = "Проверить условия возврата";
+
+"Can't save because refund is not possible below minimum purchase amount." = "Невозможно сохранить: возврат невозможен при покупке ниже минимума.";
 
 
 // MARK: - 기록화면
@@ -97,6 +109,9 @@
 "Do you want to delete all records?" = "Вы хотите удалить все записи?";
 "No" = "Нет";
 "Yes" = "Да";
+
+"Reset Complete" = "Сброс завершён";
+"The reset has been completed." = "Сброс успешно завершён.";
 
 
 // MARK: - 탭바
