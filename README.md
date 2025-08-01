@@ -34,7 +34,9 @@
 <br>
 
 ## 📅 프로젝트 기간
-2025.04.28 ~ 2025.06.27
+개발 - 2025.04.28 ~ 2025.06.27  
+업데이트 - 2025.06.27 ~ ing  
+리팩토링 - 2025.07.14 ~ ing  
 
 <br>
 
@@ -370,3 +372,4 @@ TaxRefundCalculator/
 
 ### v1.0.3
 - [Update: 🚀 1.0.3 업데이트](https://github.com/TaxRefundCalculator/TaxRefundCalculator/pull/122)
+
