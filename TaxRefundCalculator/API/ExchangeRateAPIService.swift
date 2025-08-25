@@ -31,7 +31,7 @@ final class ExchangeRateAPIService {
 
                 do {
                     let decoded = try JSONDecoder().decode(ExchangeRateResponse.self, from: data)
-                    let today = DateUtils.todayString()
+                    let today = DateUtils.todayStringUTC()
                     let exchangeRate = ExchangeAPIModel(base: "USD", date: today, rates: decoded.data)
                     single(.success(exchangeRate))
                 } catch {

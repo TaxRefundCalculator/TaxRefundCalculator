@@ -18,7 +18,7 @@ final class ExchangeSyncManager {
     private init() {}
     
     func performInitialSyncIfNeeded() -> Single<Void> {
-        let today = DateUtils.todayString()
+        let today = DateUtils.todayStringUTC()
         
         return firebaseService.fetchRates(for: today)
             .flatMap { _ in

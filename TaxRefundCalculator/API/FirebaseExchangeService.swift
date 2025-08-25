@@ -19,7 +19,7 @@ final class FirebaseExchangeService {
     
     /// 환율 업로드
     func uploadRates(_ rates: [ExchangeRateModel]) {
-        let today = DateUtils.todayString()
+        let today = DateUtils.todayStringUTC()
         let batch = db.batch()
         
         for rate in rates {

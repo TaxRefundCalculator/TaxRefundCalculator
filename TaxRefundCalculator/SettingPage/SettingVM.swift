@@ -106,7 +106,7 @@ class SettingVM {
         guard let base = getBaseCurrency(), let travel = getTravelCountry(), !base.isEmpty, !travel.isEmpty else { return }
         let baseCode = String(base.suffix(3))
         let travelCode = String(travel.suffix(3))
-        firebaseService.fetchRates(for: DateUtils.todayString())
+        firebaseService.fetchRates(for: DateUtils.todayStringUTC())
             .subscribe(onSuccess: { [weak self] model in
                 if let baseRate = model.rates[baseCode], let travelRate = model.rates[travelCode] {
                     let travelUnit = travelCode.displayUnit

@@ -45,7 +45,7 @@ class ExchangeVM {
     
     /// 파이어베이스에서 받아오기
     func fetchExchangeRates() {
-        let today = DateUtils.todayString()
+        let today = DateUtils.todayStringUTC()
         firebaseService.fetchRates(for: today)
             .catch { _ in self.firebaseService.fetchLatestRates() }
             .observe(on: MainScheduler.instance)
