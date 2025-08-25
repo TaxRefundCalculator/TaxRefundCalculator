@@ -93,7 +93,7 @@ class StartPageVM {
         let travelCode = extractCurrencyCode(travel)
         
         // 오늘날짜의 파이어베이스 데이터 불러오기
-        firebaseService.fetchRates(for: DateUtils.todayString())
+        firebaseService.fetchRates(for: DateUtils.todayStringUTC())
             .subscribe(onSuccess: { [weak self] model in
                 guard let self = self else { return }
                 // USD 기준으로 저장된 해당 통화의 환율 불러오기

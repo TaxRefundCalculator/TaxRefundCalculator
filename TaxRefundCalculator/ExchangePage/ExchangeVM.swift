@@ -11,7 +11,6 @@ import RxCocoa
 import Combine
 
 class ExchangeVM {
-    private let apiService: ExchangeRateAPIService
     private let firebaseService: FirebaseExchangeService
     
     /// 설정탭 컴바인 연동 부분 - 통일 필요
@@ -29,8 +28,7 @@ class ExchangeVM {
     let latestUpdateDate = BehaviorRelay<String>(value: "") // 갱신날짜
     private let disposeBag = DisposeBag()
 
-    init(apiService: ExchangeRateAPIService, firebaseService: FirebaseExchangeService) {
-        self.apiService = apiService
+    init(firebaseService: FirebaseExchangeService) {
         self.firebaseService = firebaseService
         
         /// 기준통화 변경되면 자동으로 환율 갱신 - Combine
@@ -47,7 +45,7 @@ class ExchangeVM {
     
     /// 파이어베이스에서 받아오기
     func fetchExchangeRates() {
-        let today = DateUtils.todayString()
+        let today = DateUtils.todayStringUTC()
         firebaseService.fetchRates(for: today)
             .catch { _ in self.firebaseService.fetchLatestRates() }
             .observe(on: MainScheduler.instance)
