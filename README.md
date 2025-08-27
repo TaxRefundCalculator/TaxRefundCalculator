@@ -41,7 +41,7 @@
 <br>
 
 ## ⚡️ 주요 기능
-### 🌍 글로벌 119개국 지원
+### 🌍 글로벌 173개국 지원
 - 전 세계 119개국에서 자유롭게 사용 가능
 - 각 국가별 통화 및 환급(부가가치세/VAT) 정책 반영
 - 다양한 언어와 국가별 환경에 최적화된 사용자 경험 제공
@@ -373,3 +373,8 @@ TaxRefundCalculator/
 ### v1.0.3
 - [Update: 🚀 1.0.3 업데이트](https://github.com/TaxRefundCalculator/TaxRefundCalculator/pull/122)
 
+### v1.0.4
+- [Update: 🚀 1.0.4 업데이트](https://github.com/TaxRefundCalculator/TaxRefundCalculator/pull/135)
+
+### v1.0.5
+- [Update: 🚀 1.0.5 업데이트](https://github.com/TaxRefundCalculator/TaxRefundCalculator/pull/141)
