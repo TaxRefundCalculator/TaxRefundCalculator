@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -14,31 +15,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        // 앱 실행 시 파이어베이스 데이터 날짜 싱크 맞추기
-        ExchangeSyncManager.shared.performInitialSyncIfNeeded()
-        
         //UIWindowScene 객체 생성.
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        
-        //window에게 루트 뷰 컨트롤러 지정.
+        // 다크모드 설정
         let saveUserDefaults = SaveUserDefaults()
         let isDarkMode = saveUserDefaults.getDarkModeEnabled() // 다크모드
         window.overrideUserInterfaceStyle = isDarkMode ? .dark : .light // 다크모드
-        if saveUserDefaults.getIsDoneFirstStep() == true {
-            window.rootViewController = TabBarController()
-        } else {
-            let firebaseExchangeService = FirebaseExchangeService()
-            let startPageVM = StartPageVM(firebaseService: firebaseExchangeService)
-            window.rootViewController = StartPageVC(viewModel: startPageVM)
-        }
         
-
-        //이 메서드를 반드시 작성해줘야만 윈도우가 활성화 됨
-        window.makeKeyAndVisible()
-        
-        self.window = window
+        // 앱 실행 시 파이어베이스 데이터 날짜 싱크 맞추기
+        let _ = ExchangeSyncManager.shared.performInitialSyncIfNeeded()
+            .observe(on: MainScheduler.instance)
+            .subscribe(onSuccess: {
+                // 동기화 완료 → rootVC 교체
+                if saveUserDefaults.getIsDoneFirstStep() == true {
+                    window.rootViewController = TabBarController()
+                } else {
+                    let firebaseExchangeService = FirebaseExchangeService()
+                    let startPageVM = StartPageVM(firebaseService: firebaseExchangeService)
+                    window.rootViewController = StartPageVC(viewModel: startPageVM)
+                }
+                window.makeKeyAndVisible()
+                self.window = window
+            }, onFailure: { error in
+                // 동기화 실패, 에러 -> 기본 화면
+                if saveUserDefaults.getIsDoneFirstStep() == true {
+                    window.rootViewController = TabBarController()
+                } else {
+                    let firebaseExchangeService = FirebaseExchangeService()
+                    let startPageVM = StartPageVM(firebaseService: firebaseExchangeService)
+                    window.rootViewController = StartPageVC(viewModel: startPageVM)
+                }
+                window.makeKeyAndVisible()
+                self.window = window
+            })
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -74,4 +85,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
-
