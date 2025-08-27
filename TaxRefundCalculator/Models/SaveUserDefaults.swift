@@ -76,7 +76,7 @@ class SaveUserDefaults: SaveUserDefaultsProtocol {
     }
 }
 
-// MARK: - 설정탭 기록카드 관련
+// MARK: - 기록저장
 extension SaveUserDefaults {
     // 모든 SavedCard 배열을 1개 Key("SavedCardList")로 통째로 저장
     func overwriteAllCards(_ cards: [SavedCard]) {

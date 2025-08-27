@@ -19,9 +19,8 @@ class TabBarController: UITabBarController {
         let savedVM = SavedVM()
         let savedVC = SavedVC(viewModel: savedVM)
 
-        let exchangeService = ExchangeRateAPIService()
         let firebaseExchangeService = FirebaseExchangeService()
-        let exchangeVM = ExchangeVM(apiService: exchangeService, firebaseService: firebaseExchangeService)
+        let exchangeVM = ExchangeVM(firebaseService: firebaseExchangeService)
         let exchangeVC = ExchangeVC(viewModel: exchangeVM)
         
         SettingVM.shared.firebaseService = firebaseExchangeService

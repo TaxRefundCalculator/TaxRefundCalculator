@@ -9,10 +9,10 @@ import Foundation
 
 enum DateUtils {
     // 환율탭
-    static func todayString() -> String {
+    static func todayStringUTC() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        formatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
         return formatter.string(from: Date())
     }
     
