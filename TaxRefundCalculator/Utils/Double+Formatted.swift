@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Double 타입 숫자를 로케일(국가별 설정)에 맞게 문자열로 변환해주는 유틸리티
+// MARK: -  Double 타입 숫자를 로케일(국가별 설정)에 맞게 문자열로 변환해주는 유틸리티
 extension Double {
     /// 소수점 이하 자리수를 지정하여, 사용자의 Locale(국가 설정)에 맞는 숫자 문자열로 변환
     /// - Parameter fractionDigits: 표시할 소수점 이하 자리수(기본값: 2)
