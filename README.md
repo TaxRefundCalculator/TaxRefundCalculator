@@ -378,3 +378,6 @@ TaxRefundCalculator/
 
 ### v1.0.5
 - [Update: 🚀 1.0.5 업데이트](https://github.com/TaxRefundCalculator/TaxRefundCalculator/pull/141)
+
+### v1.0.6
+- [Update: 🚀 1.0.6 업데이트](https://github.com/TaxRefundCalculator/TaxRefundCalculator/pull/147)
